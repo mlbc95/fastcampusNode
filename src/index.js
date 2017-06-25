@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import FastCampusContainer from './containers/FastCampusContainer'
+import FastCampusContainer from './containers/FastCampusContainer/FastCampusContainer'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import registerServiceWorker from './registerServiceWorker'
 import injectTapEventPlugin from 'react-tap-event-plugin';
