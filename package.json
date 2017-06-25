@@ -3,10 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "body-parser": "^1.17.2",
+    "express": "^4.15.3",
+    "material-ui": "^0.18.3",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-router": "^4.1.1",
-    "react-router-dom": "^4.1.1"
+    "react-router-dom": "^4.1.1",
+    "validator": "^7.1.0"
   },
   "devDependencies": {
     "react-scripts": "1.0.7"

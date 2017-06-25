@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
-
+import React, { Component } from 'react'
+import { Card, CardTitle } from 'material-ui/Card'
 class Home extends Component {    
 
   render() {
     return (
-      <div>
-        <h2>Home</h2>
-      </div>
+      <Card className="container">
+        <CardTitle title="FastCampus" subtitle="Login"/>
+      </Card>
     )
   }
 }

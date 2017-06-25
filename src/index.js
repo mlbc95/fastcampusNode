@@ -1,14 +1,22 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import FastCampusContainer from './containers/FastCampusContainer';
-import registerServiceWorker from './registerServiceWorker'; 
-import './css/index.css';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import FastCampusContainer from './containers/FastCampusContainer'
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
+import registerServiceWorker from './registerServiceWorker'
+import './css/index.css'
+
+const App = () => (
+  <MuiThemeProvider>
+    <FastCampusContainer />
+  </MuiThemeProvider>
+)
 
 ReactDOM.render(
-  <FastCampusContainer />,
+  <App />,
   document.getElementById('root')
-);
-registerServiceWorker(); 
+)
+
+registerServiceWorker()
 
 if (module.hot) {
   module.hot.accept()
