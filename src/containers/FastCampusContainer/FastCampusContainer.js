@@ -16,7 +16,7 @@ import SignUpPage from '../SignUpPage/SignUpPage'
 const FastCampusContainer = () => (
   <BrowserRouter>
     <div style={{ height: '100%' }}>
-      {/*<NavBar />*/}
+      <NavBar />
       <Base />
       <Switch>
         <Route exact path='/' component={Home} />
