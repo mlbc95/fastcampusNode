@@ -1,5 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
+import ThemeDefault from '../../ThemeDefault'
 import LoginForm from '../../components/Login/LoginForm'
 
 class LoginPage extends React.Component {
@@ -87,12 +89,14 @@ class LoginPage extends React.Component {
    */
   render() {
     return (
-      <LoginForm
-        onSubmit={this.processForm}
-        onChange={this.changeUser}
-        errors={this.state.errors}
-        user={this.state.user}
-      />
+      <MuiThemeProvider muiTheme={ThemeDefault}>
+        <LoginForm
+          onSubmit={this.processForm}
+          onChange={this.changeUser}
+          errors={this.state.errors}
+          user={this.state.user}
+        />
+      </MuiThemeProvider>
     )
   }
 

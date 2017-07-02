@@ -6,30 +6,31 @@ import {
 } from 'react-router-dom'
 
 // App components
-import NavBar from '../../components/NavBar/NavBar'
-import Home from '../../components/Home/Home'
-import Base from '../../components/Base/Base'
+import App from '../App/App'
 import NotFound from '../../components/NotFound/NotFound'
 import LoginPage from '../LoginPage/LoginPage'
 import SignUpPage from '../SignUpPage/SignUpPage'
+import DashboardPage from '../DashboardPage/DashboardPage'
+import FormPage from '../FormPage/FormPage'
 
-const FastCampusContainer = () => (
+const FastCampusApp = () => (
+  <div>
+    <App />
+    <Route path='/dashboard' component={DashboardPage} />
+    <Route path='/form' component={FormPage} />
+  </div>
+)
+
+const FastCampus = () => (
   <BrowserRouter>
     <div style={{ height: '100%' }}>
-      <NavBar />
-      <Base />
       <Switch>
-        <Route exact path='/' component={Home} />
         <Route path='/login' component={LoginPage} />
         <Route path='/signup' component={SignUpPage} />
-        <Route component={NotFound} />
+        <Route path='/' component={FastCampusApp} />
       </Switch>
     </div>
   </BrowserRouter>
 )
 
-export default FastCampusContainer
-
-
-
-
+export default FastCampus

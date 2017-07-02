@@ -1,28 +1,34 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Link } from 'react-router-dom'
+import Paper from 'material-ui/Paper'
+import Divider from 'material-ui/Divider'
+import globalStyles from '../../styles'
 
-const Base = ({ children }) => (
-  <div>
-    <div className='top-bar'>
-      <div className='top-bar-left'>
-        <Link to='/'>React App</Link>
+const Base = (props) => {
+
+    const {title, navigation} = props
+
+    return (
+      <div>
+        <span style={globalStyles.navigation}>{navigation}</span>
+
+        <Paper style={globalStyles.paper}>
+          <h3 style={globalStyles.title}>{title}</h3>
+
+          <Divider/>
+          {props.children}
+
+          <div style={globalStyles.clear}/>
+
+        </Paper>
       </div>
-
-      <div className='top-bar-right'>
-        <Link to='/login' replace >Log in</Link>
-        <Link to='/signup' replace >Sign up</Link>
-      </div>
-
-    </div>
-
-    {children}
-
-  </div>
-)
+    )
+}
 
 Base.propTypes = {
-  children: PropTypes.object.isRequired
+  title: PropTypes.string,
+  navigation: PropTypes.string,
+  children: PropTypes.element
 }
 
 export default Base
