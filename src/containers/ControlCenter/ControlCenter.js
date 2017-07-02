@@ -6,7 +6,6 @@ import Sidebar from '../../components/Sidebar/Sidebar'
 import withWidth, { LARGE, SMALL } from 'material-ui/utils/withWidth'
 import ThemeDefault from '../../ThemeDefault'
 import Data from '../../data'
-import { withRouter } from 'react-router'
 
 class ControlCenter extends Component {
 
@@ -67,6 +66,4 @@ ControlCenter.propTypes = {
   width: PropTypes.number
 }
 
-const connectedControlCenter = withWidth()(ControlCenter)
-
-export default withRouter(connectedControlCenter)
+export default withWidth()(ControlCenter)
