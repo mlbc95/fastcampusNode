@@ -8,7 +8,7 @@ import ThemeDefault from '../../ThemeDefault'
 import Data from '../../data'
 import { withRouter } from 'react-router'
 
-class App extends Component {
+class ControlCenter extends Component {
 
   constructor(props) {
     super(props)
@@ -62,11 +62,11 @@ class App extends Component {
   }
 }
 
-App.propTypes = {
+ControlCenter.propTypes = {
   children: PropTypes.element,
   width: PropTypes.number
 }
 
-const connectedApp = withWidth()(App)
+const connectedControlCenter = withWidth()(ControlCenter)
 
-export default withRouter(connectedApp)
+export default withRouter(connectedControlCenter)

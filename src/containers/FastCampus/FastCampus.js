@@ -5,19 +5,23 @@ import {
   Switch
 } from 'react-router-dom'
 
-// App components
-import App from '../App/App'
+// ControlCenter components
+import ControlCenter from '../ControlCenter/ControlCenter'
 import NotFound from '../../components/NotFound/NotFound'
 import LoginPage from '../LoginPage/LoginPage'
 import SignUpPage from '../SignUpPage/SignUpPage'
 import DashboardPage from '../DashboardPage/DashboardPage'
 import FormPage from '../FormPage/FormPage'
 
-const FastCampusApp = () => (
+const FastCampusControlCenter = () => (
   <div>
-    <App />
-    <Route path='/dashboard' component={DashboardPage} />
-    <Route path='/form' component={FormPage} />
+    <ControlCenter />
+    <Switch>
+      <Route exact path='/' component={DashboardPage} />
+      <Route path='/dashboard' component={DashboardPage} />
+      <Route path='/form' component={FormPage} />
+      <Route component={NotFound} />
+    </Switch>
   </div>
 )
 
@@ -27,7 +31,7 @@ const FastCampus = () => (
       <Switch>
         <Route path='/login' component={LoginPage} />
         <Route path='/signup' component={SignUpPage} />
-        <Route path='/' component={FastCampusApp} />
+        <Route path='/' component={FastCampusControlCenter} />
       </Switch>
     </div>
   </BrowserRouter>
