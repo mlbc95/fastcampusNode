@@ -6,6 +6,8 @@
     "bcrypt": "^1.0.2",
     "body-parser": "^1.17.2",
     "express": "^4.15.3",
+    "flexboxgrid": "^6.3.1",
+    "font-awesome": "^4.7.0",
     "jsonwebtoken": "^7.4.1",
     "material-ui": "^0.18.3",
     "mongoose": "^4.11.0",
