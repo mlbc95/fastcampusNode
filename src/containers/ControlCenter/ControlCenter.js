@@ -1,10 +1,8 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import NavBar from '../../components/NavBar/NavBar'
 import Sidebar from '../../components/Sidebar/Sidebar'
 import withWidth, { LARGE, SMALL } from 'material-ui/utils/withWidth'
-import ThemeDefault from '../../ThemeDefault'
 import Data from '../../data'
 
 class ControlCenter extends Component {
@@ -43,20 +41,18 @@ class ControlCenter extends Component {
     }
 
     return (
-      <MuiThemeProvider muiTheme={ThemeDefault}>
-        <div>
-          <NavBar styles={styles.NavBar}
-                  handleChangeRequestNavDrawer={this.handleChangeRequestNavDrawer.bind(this)}/>
+      <div>
+        <NavBar styles={styles.NavBar}
+                handleChangeRequestNavDrawer={this.handleChangeRequestNavDrawer.bind(this)}/>
 
-          <Sidebar navDrawerOpen={navDrawerOpen}
-                      menus={Data.menus}
-                      username='User Admin'/>
+        <Sidebar navDrawerOpen={navDrawerOpen}
+                    menus={Data.menus}
+                    username='User Admin'/>
 
-          <div style={styles.container}>
-            {this.props.children}
-          </div>
+        <div style={styles.container}>
+          {this.props.children}
         </div>
-      </MuiThemeProvider>
+      </div>
     )
   }
 }
