@@ -1,8 +1,3 @@
-body {
-  margin: 0;
-  font-size: 16px;
-}
-
 a {
   color: #00bcd4;
   font-weight: bold;
@@ -16,30 +11,6 @@ a:hover {
 
 .text-center {
   text-align: center;
-}
-
-.top-bar {
-  padding: 10px 15px;
-  margin-bottom: 50px;
-}
-.top-bar::after {
-  content: '';
-  display: block;
-  clear: both;
-}
-
-.top-bar-left {
-  float: left;
-  font-size: 1.5em;
-}
-
-.top-bar-right {
-  float: right;
-}
-
-.top-bar a,
-.nav a {
-  margin: 0 8px;
 }
 
 .container {
@@ -64,4 +35,28 @@ a:hover {
 .success-message {
   padding: 0 16px;
   color: green;
+}
+
+html {
+  font-family: 'Roboto', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+body, h1, h2, h3, h4, h5, h6 {
+  font-size: 15px;
+  margin: 0;
+  line-height: 24px;
+}
+
+body {
+  margin: 0;
+  background-color: #efefef;
+}
+
+body, html, #app, #app > div{
+  height: 100%;
+}
+
+.m-b-15 {
+  margin-bottom: 15px
 }
