@@ -89,17 +89,14 @@ class LoginPage extends React.Component {
    */
   render() {
     return (
-      <MuiThemeProvider muiTheme={ThemeDefault}>
-        <LoginForm
-          onSubmit={this.processForm}
-          onChange={this.changeUser}
-          errors={this.state.errors}
-          user={this.state.user}
-        />
-      </MuiThemeProvider>
+      <LoginForm
+        onSubmit={this.processForm}
+        onChange={this.changeUser}
+        errors={this.state.errors}
+        user={this.state.user}
+      />
     )
   }
-
 }
 
 export default LoginPage
