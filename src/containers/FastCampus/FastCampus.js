@@ -14,16 +14,14 @@ import DashboardPage from '../DashboardPage/DashboardPage'
 import FormPage from '../FormPage/FormPage'
 
 const FastCampusControlCenter = () => (
-  <div>
-    <ControlCenter>
-      <Switch>
-        <Route exact path='/' component={DashboardPage} />
-        <Route path='/dashboard' component={DashboardPage} />
-        <Route path='/form' component={FormPage} />
-        <Route component={NotFound} />
-      </Switch>
-    </ControlCenter>
-  </div>
+  <ControlCenter>
+    <Switch>
+      <Route exact path='/' component={DashboardPage} />
+      <Route path='/dashboard' component={DashboardPage} />
+      <Route path='/form' component={FormPage} />
+      <Route component={NotFound} />
+    </Switch>
+  </ControlCenter>
 )
 
 const FastCampus = () => (
