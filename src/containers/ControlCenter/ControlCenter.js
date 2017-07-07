@@ -35,7 +35,7 @@ class ControlCenter extends Component {
         paddingLeft: navDrawerOpen ? paddingSidebarOpen : 0
       },
       container: {
-        margin: '80px 20px 20px 15px',
+        margin: '20px 20px 20px 20px',
         paddingLeft: navDrawerOpen && this.props.width !== SMALL ? paddingSidebarOpen : 0
       }
     }
