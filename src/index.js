@@ -1,22 +1,23 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import FastCampusContainer from './containers/FastCampusContainer'
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
+import FastCampus from './containers/FastCampus/FastCampus'
 import registerServiceWorker from './registerServiceWorker'
-import injectTapEventPlugin from 'react-tap-event-plugin';
+import injectTapEventPlugin from 'react-tap-event-plugin'
+import 'font-awesome/css/font-awesome.css'
+import 'flexboxgrid/css/flexboxgrid.css'
 import './css/index.css'
 
-injectTapEventPlugin();
+// Material UI theme wrapper
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
+import ThemeDefault from './ThemeDefault'
 
-const App = () => (
-  <MuiThemeProvider>
-    <FastCampusContainer />
-  </MuiThemeProvider>
-)
+injectTapEventPlugin()
 
 ReactDOM.render(
-  <App />,
-  document.getElementById('root')
+  <MuiThemeProvider muiTheme={ThemeDefault}>
+    <FastCampus />
+  </MuiThemeProvider>,
+  document.getElementById('app')
 )
 
 registerServiceWorker()

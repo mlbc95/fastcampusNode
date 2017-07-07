@@ -4,14 +4,11 @@ class Home extends Component {
 
   render() {
     return (
-      <Card className="container">
-        <CardTitle title="FastCampus" subtitle="Login"/>
+      <Card className='container'>
+        <CardTitle title='FastCampus' subtitle='Login'/>
       </Card>
     )
   }
 }
 
-export default Home;
-
-
-
+export default Home
