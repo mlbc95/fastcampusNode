@@ -12,12 +12,24 @@ import LoginPage from '../LoginPage/LoginPage'
 import SignUpPage from '../SignUpPage/SignUpPage'
 import DashboardPage from '../DashboardPage/DashboardPage'
 import FormPage from '../FormPage/FormPage'
+import ProfilePage from '../ProfilePage/ProfilePage'
+import SchoolPage from '../SchoolPage/SchoolPage'
+import MessagePage from '../MessagePage/MessagePage'
+import AcademicsPage from '../AcademicsPage/AcademicsPage'
+
+
+
 
 const FastCampusControlCenter = () => (
   <ControlCenter>
     <Switch>
       <Route exact path='/' component={DashboardPage} />
       <Route path='/dashboard' component={DashboardPage} />
+      <Route path='/profile' component={ProfilePage} />
+      <Route path='/school' component={SchoolPage} />
+      <Route path='/messages' component={MessagePage} />
+      <Route path='/academics' component={AcademicsPage} />
+
       <Route path='/form' component={FormPage} />
       <Route component={NotFound} />
     </Switch>
