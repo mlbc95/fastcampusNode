@@ -16,6 +16,8 @@ import ProfilePage from '../ProfilePage/ProfilePage'
 import SchoolPage from '../SchoolPage/SchoolPage'
 import MessagePage from '../MessagePage/MessagePage'
 import AcademicsPage from '../AcademicsPage/AcademicsPage'
+import SettingsPage from '../SettingsPage/SettingsPage'
+
 
 
 
@@ -29,7 +31,7 @@ const FastCampusControlCenter = () => (
       <Route path='/school' component={SchoolPage} />
       <Route path='/messages' component={MessagePage} />
       <Route path='/academics' component={AcademicsPage} />
-
+      <Route path='/settings' component={SettingsPage} />
       <Route path='/form' component={FormPage} />
       <Route component={NotFound} />
     </Switch>
