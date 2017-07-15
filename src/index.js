@@ -4,7 +4,6 @@ import FastCampus from './containers/FastCampus/FastCampus'
 import registerServiceWorker from './registerServiceWorker'
 import injectTapEventPlugin from 'react-tap-event-plugin'
 import 'font-awesome/css/font-awesome.css'
-import 'flexboxgrid/css/flexboxgrid.css'
 import './css/index.css'
 
 // Material UI theme wrapper

@@ -1,18 +1,12 @@
 import React, { Component } from 'react'
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card'
 import FlatButton from 'material-ui/FlatButton'
+import { profilePageData } from '../../data'
 
 class ProfilePage extends Component {
   constructor(props) {
     super(props)
-    this.state = {
-      fName: 'Andres',
-      lName: 'Rodriguez',
-      email: 'test@email.com',
-      username: 'arodriguez',
-      school: 'UMSL',
-      avatar: 'http://www.material-ui.com/images/uxceo-128.jpg'
-    }
+    this.state = {...profilePageData}
   }
 
   fullName() {
@@ -23,15 +17,17 @@ class ProfilePage extends Component {
     return (
       <Card>
         <CardMedia
-          overlay={<CardHeader title={this.fullName()} 
-                               subtitle={this.state.username} 
-                               avatar='http://www.material-ui.com/images/uxceo-128.jpg'
-                   />}
+          overlay={
+            <CardHeader
+              title={this.fullName()}
+              subtitle={this.state.username}
+              avatar='http://www.material-ui.com/images/uxceo-128.jpg'
+            />}
           mediaStyle={{height: '30%', maxHeight: '500px', overflow: 'hidden'}}
         >
-          <img style={{height: '100%', width: '100%'}} 
-               src='http://blogs.umsl.edu/news/files/2015/09/msc_ponds_818.jpg' 
-               alt='' 
+          <img style={{height: '100%', width: '100%'}}
+               src='http://blogs.umsl.edu/news/files/2015/09/msc_ponds_818.jpg'
+               alt={`${this.state.username}'s background`}
           />
         </CardMedia>
         <CardTitle title='Card title' subtitle='Card subtitle' />
