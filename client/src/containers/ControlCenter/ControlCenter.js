@@ -6,28 +6,27 @@ import withWidth, { LARGE, SMALL } from 'material-ui/utils/withWidth'
 import Data from '../../data'
 
 class ControlCenter extends Component {
-
-  constructor(props) {
+  constructor (props) {
     super(props)
     this.state = {
       navDrawerOpen: false
     }
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentWillReceiveProps (nextProps) {
     if (this.props.width !== nextProps.width) {
-      this.setState({navDrawerOpen: nextProps.width === LARGE})
+      this.setState({ navDrawerOpen: nextProps.width === LARGE })
     }
   }
 
-  handleChangeRequestNavDrawer() {
+  handleChangeRequestNavDrawer () {
     this.setState({
       navDrawerOpen: !this.state.navDrawerOpen
     })
   }
 
-  render() {
-    let { navDrawerOpen } = this.state
+  render () {
+    const { navDrawerOpen } = this.state
     const paddingSidebarOpen = 236
 
     const styles = {
@@ -42,12 +41,16 @@ class ControlCenter extends Component {
 
     return (
       <div>
-        <NavBar styles={styles.NavBar}
-                handleChangeRequestNavDrawer={this.handleChangeRequestNavDrawer.bind(this)}/>
+        <NavBar
+          styles={styles.NavBar}
+          handleChangeRequestNavDrawer={() => this.handleChangeRequestNavDrawer()}
+        />
 
-        <Sidebar navDrawerOpen={navDrawerOpen}
-                    menus={Data.menus}
-                    username='User Admin'/>
+        <Sidebar
+          navDrawerOpen={navDrawerOpen}
+          menus={Data.menus}
+          username='User Admin'
+        />
 
         <div style={styles.container}>
           {this.props.children}
