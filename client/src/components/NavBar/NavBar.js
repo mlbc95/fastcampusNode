@@ -10,8 +10,7 @@ import ViewModule from 'material-ui/svg-icons/action/view-module'
 import { white } from 'material-ui/styles/colors'
 
 class NavBar extends Component {
-
-  render() {
+  render () {
     const {styles, handleChangeRequestNavDrawer} = this.props
 
     const style = {
@@ -24,41 +23,41 @@ class NavBar extends Component {
     }
 
     return (
-        <div>
-            <AppBar
+      <div>
+          <AppBar
               style={{...styles}}
               iconElementLeft={
-                  <IconButton style={style.menuButton} onClick={handleChangeRequestNavDrawer}>
+                <IconButton style={style.menuButton} onClick={handleChangeRequestNavDrawer}>
                     <Menu color={white} />
                   </IconButton>
               }
               iconElementRight={
                 <div style={style.iconsRightContainer}>
                   <IconMenu color={white}
-                            iconButtonElement={
-                              <IconButton><ViewModule color={white}/></IconButton>
+                    iconButtonElement={
+                              <IconButton><ViewModule color={white} /></IconButton>
                             }
-                            targetOrigin={{horizontal: 'right', vertical: 'top'}}
-                            anchorOrigin={{horizontal: 'right', vertical: 'top'}}
+                    targetOrigin={{horizontal: 'right', vertical: 'top'}}
+                    anchorOrigin={{horizontal: 'right', vertical: 'top'}}
                   >
-                    <MenuItem key={1} primaryText='Application 1'/>
-                    <MenuItem key={2} primaryText='Application 2'/>
-                    <MenuItem key={3} primaryText='Application 3'/>
+                    <MenuItem key={1} primaryText='Application 1' />
+                    <MenuItem key={2} primaryText='Application 2' />
+                    <MenuItem key={3} primaryText='Application 3' />
                   </IconMenu>
                   <IconMenu color={white}
-                            iconButtonElement={
-                              <IconButton><MoreVertIcon color={white}/></IconButton>
+                    iconButtonElement={
+                              <IconButton><MoreVertIcon color={white} /></IconButton>
                             }
-                            targetOrigin={{horizontal: 'right', vertical: 'top'}}
-                            anchorOrigin={{horizontal: 'right', vertical: 'top'}}
+                    targetOrigin={{horizontal: 'right', vertical: 'top'}}
+                    anchorOrigin={{horizontal: 'right', vertical: 'top'}}
                   >
-                    <MenuItem primaryText='Sign out'/>
+                    <MenuItem primaryText='Sign out' />
                   </IconMenu>
                 </div>
               }
             />
-          </div>
-      )
+        </div>
+    )
   }
 }
 
