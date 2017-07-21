@@ -18,10 +18,6 @@ import MessagePage from '../MessagePage/MessagePage'
 import AcademicsPage from '../AcademicsPage/AcademicsPage'
 import SettingsPage from '../SettingsPage/SettingsPage'
 
-
-
-
-
 const FastCampusControlCenter = () => (
   <ControlCenter>
     <Switch>

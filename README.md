@@ -77,4 +77,3 @@ The stucture so far (Jul 15, 2017) is
 ├── server.js
 ├── start-client.js
 └── yarn.lock
-```

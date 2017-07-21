@@ -10,7 +10,7 @@ const router = new express.Router()
  * @returns {object} The result of validation. Object contains a boolean validation result,
  *                   errors tips, and a global message for the whole form.
  */
-function validateSignupForm(payload) {
+function validateSignupForm (payload) {
   const errors = {}
   let isFormValid = true
   let message = ''
@@ -48,7 +48,7 @@ function validateSignupForm(payload) {
  * @returns {object} The result of validation. Object contains a boolean validation result,
  *                   errors tips, and a global message for the whole form.
  */
-function validateLoginForm(payload) {
+function validateLoginForm (payload) {
   const errors = {}
   let isFormValid = true
   let message = ''
@@ -99,6 +99,5 @@ router.post('/login', (req, res) => {
 
   return res.status(200).end()
 })
-
 
 module.exports = router
