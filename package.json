@@ -12,11 +12,13 @@
   "dependencies": {
     "babel-core": "^6.25.0",
     "bcrypt": "^1.0.2",
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.17.2",
     "express": "^4.15.3",
     "jsonwebtoken": "^7.4.1",
     "mongoose": "^4.11.3",
     "passport": "^0.3.2",
+    "passport-jwt": "^2.2.1",
     "passport-local": "^1.0.0",
     "validator": "^8.0.0"
   },

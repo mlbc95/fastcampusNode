@@ -1,15 +1,15 @@
 import React from 'react'
+import axios from 'axios'
 import PropTypes from 'prop-types'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import ThemeDefault from '../../ThemeDefault'
 import SignUpForm from '../../components/Signup/SignupForm'
 
 class SignUpPage extends React.Component {
-
   /**
    * Class constructor.
    */
-  constructor(props) {
+  constructor (props) {
     super(props)
 
     // set the initial component state
@@ -31,7 +31,7 @@ class SignUpPage extends React.Component {
    *
    * @param {object} event - the JavaScript event object
    */
-  changeUser(event) {
+  changeUser (event) {
     const field = event.target.name
     const user = this.state.user
     user[field] = event.target.value
@@ -46,10 +46,16 @@ class SignUpPage extends React.Component {
    *
    * @param {object} event - the JavaScript event object
    */
-  processForm(event) {
+  processForm (event) {
     // prevent default action. in this case, action is the form submission event
     event.preventDefault()
-
+    axios.get('auth/signup')
+      .then(function (response) {
+        console.log(response)
+  })
+  .catch(function (error) {
+    console.log(error)
+  })
     console.log('name:', this.state.user.name)
     console.log('email:', this.state.user.email)
     console.log('password:', this.state.user.password)
@@ -58,7 +64,7 @@ class SignUpPage extends React.Component {
   /**
    * Render the component.
    */
-  render() {
+  render () {
     return (
       <SignUpForm
         onSubmit={this.processForm}
