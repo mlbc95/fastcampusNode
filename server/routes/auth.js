@@ -3,10 +3,9 @@ const validator = require('validator')
 const passport = require('passport')
 const jwt = require('jsonwebtoken')
 const User = require('../models/user')
-const config = require('../../config')
+const config = require('../../config/database')
 const bcrypt = require('bcryptjs')
 const router = new express.Router()
-var mongojs = require('mongojs')
 
 /**
  * Validate the sign up form
@@ -82,19 +81,17 @@ var mongojs = require('mongojs')
 
 router.post('/signup', (req, res) => {
   console.log('in signup')
-  // const validationResult = validateSignupForm(req.body)
-  const validationResult = {
-    success: true
-  }
-  if (!validationResult.success) {
-    return res.status(400).json({
-      success: false,
-      message: validationResult.message,
-      errors: validationResult.errors
-    })
-  }
+  console.log(req.body)
+  var newUser = new User(req.body)
 
-  return res.status(200).end()
+  User.addUser(newUser, (err, user) => {
+    if (err) {
+      console.log(err)
+      res.json({success: false, msg: 'Failed to register user'})
+    } else {
+      res.json({success: true, msg: 'User registered'})
+    }
+  })
 })
 
 router.post('/login', (req, res) => {
