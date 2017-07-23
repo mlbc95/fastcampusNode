@@ -1,6 +1,10 @@
 const express = require('express')
 const validator = require('validator')
-
+const passport = require('passport')
+const jwt = require('jsonwebtoken')
+const User = require('../models/user')
+const config = require('../../config/database')
+const bcrypt = require('bcryptjs')
 const router = new express.Router()
 
 /**
@@ -10,7 +14,7 @@ const router = new express.Router()
  * @returns {object} The result of validation. Object contains a boolean validation result,
  *                   errors tips, and a global message for the whole form.
  */
-function validateSignupForm(payload) {
+/* function validateSignupForm (payload) {
   const errors = {}
   let isFormValid = true
   let message = ''
@@ -39,7 +43,7 @@ function validateSignupForm(payload) {
     message,
     errors
   }
-}
+} */
 
 /**
  * Validate the login form
@@ -48,14 +52,14 @@ function validateSignupForm(payload) {
  * @returns {object} The result of validation. Object contains a boolean validation result,
  *                   errors tips, and a global message for the whole form.
  */
-function validateLoginForm(payload) {
+/* function validateLoginForm (payload) {
   const errors = {}
   let isFormValid = true
   let message = ''
 
-  if (!payload || typeof payload.email !== 'string' || payload.email.trim().length === 0) {
+  if (!payload || typeof payload.userName !== 'string' || payload.userName.trim().length === 0) {
     isFormValid = false
-    errors.email = 'Please provide your email address.'
+    errors.userName = 'Please provide your email address.'
   }
 
   if (!payload || typeof payload.password !== 'string' || payload.password.trim().length === 0) {
@@ -73,32 +77,70 @@ function validateLoginForm(payload) {
     errors
   }
 }
+*/
 
 router.post('/signup', (req, res) => {
-  const validationResult = validateSignupForm(req.body)
-  if (!validationResult.success) {
-    return res.status(400).json({
-      success: false,
-      message: validationResult.message,
-      errors: validationResult.errors
-    })
-  }
+  console.log('in signup')
+  console.log(req.body)
+  var newUser = new User(req.body)
 
-  return res.status(200).end()
+  User.addUser(newUser, (err, user) => {
+    if (err) {
+      console.log(err)
+      res.json({success: false, msg: 'Failed to register user'})
+    } else {
+      res.json({success: true, msg: 'User registered'})
+    }
+  })
 })
 
 router.post('/login', (req, res) => {
-  const validationResult = validateLoginForm(req.body)
-  if (!validationResult.success) {
-    return res.status(400).json({
-      success: false,
-      message: validationResult.message,
-      errors: validationResult.errors
+  // const validationResult = validateLoginForm(req.body)
+  // const validationResult = {
+  //   success: true
+  // }
+  // if (!validationResult.success) {
+  //   return res.json({
+  //     success: false,
+  //     message: validationResult.message,
+  //     errors: validationResult.errors
+  //   })
+  // }
+
+  const username = req.body.userName
+  const password = req.body.password
+
+  User.getUserByUsername(username, (err, user) => {
+    console.log('get user')
+    if (err) throw err
+    if (!user) {
+      console.log('no user')
+      return res.json({success: false, msg: 'User not found'})
+    }
+
+    User.comparePassword(password, user.password, (err, isMatch) => {
+      console.log('compare pass')
+      if (err) throw err
+      if (isMatch) {
+        const token = jwt.sign(user, config.secret, {
+          expiresIn: 604800 // 1 week
+        })
+
+        res.json({
+          success: true,
+          token: 'JWT ' + token,
+          user: {
+            id: user._id,
+            name: user.name,
+            username: user.username,
+            email: user.email
+          }
+        })
+      } else {
+        return res.json({success: false, msg: 'Wrong password'})
+      }
     })
-  }
-
-  return res.status(200).end()
+  })
 })
-
 
 module.exports = router
