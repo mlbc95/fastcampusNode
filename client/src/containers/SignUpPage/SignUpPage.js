@@ -17,8 +17,11 @@ class SignUpPage extends React.Component {
       errors: {},
       user: {
         email: '',
-        name: '',
-        password: ''
+        fName: '',
+        lName: '',
+        userName: '',
+        password: '',
+        school: ''
       }
     }
 
@@ -52,13 +55,16 @@ class SignUpPage extends React.Component {
     axios.get('auth/signup')
       .then(function (response) {
         console.log(response)
-  })
+      })
   .catch(function (error) {
     console.log(error)
   })
-    console.log('name:', this.state.user.name)
+    console.log('fName:', this.state.user.fName)
+    console.log('lName:', this.state.user.lName)
     console.log('email:', this.state.user.email)
     console.log('password:', this.state.user.password)
+    console.log('userName:', this.state.userName)
+    console.log('school:', this.state.user.school)
   }
 
   /**

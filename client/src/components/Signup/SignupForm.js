@@ -9,47 +9,76 @@ const SignUpForm = ({
   onSubmit,
   onChange,
   errors,
-  user,
+  user
 }) => (
-  <Card className="container">
-    <form action="/" onSubmit={onSubmit}>
-      <h2 className="card-heading">Sign Up</h2>
+  <Card className='container'>
+    <form action='/' onSubmit={onSubmit}>
+      <h2 className='card-heading'>Sign Up</h2>
 
-      {errors.summary && <p className="error-message">{errors.summary}</p>}
+      {errors.summary && <p className='error-message'>{errors.summary}</p>}
 
-      <div className="field-line">
+      <div className='field-line'>
         <TextField
-          floatingLabelText="Name"
-          name="name"
-          errorText={errors.name}
+          floatingLabelText='First Name'
+          name='fName'
+          errorText={errors.fName}
           onChange={onChange}
-          value={user.name}
+          value={user.fName}
         />
       </div>
 
-      <div className="field-line">
+      <div className='field-line'>
         <TextField
-          floatingLabelText="Email"
-          name="email"
+          floatingLabelText='Last Name'
+          name='lName'
+          errorText={errors.lName}
+          onChange={onChange}
+          value={user.lName}
+        />
+      </div>
+
+      <div className='field-line'>
+        <TextField
+          floatingLabelText='Username'
+          name='userName'
+          onChange={onChange}
+          errorText={errors.userName}
+          value={user.userName}
+        />
+      </div>
+
+      <div className='field-line'>
+        <TextField
+          floatingLabelText='Email'
+          name='email'
           errorText={errors.email}
           onChange={onChange}
           value={user.email}
         />
       </div>
 
-      <div className="field-line">
+      <div className='field-line'>
         <TextField
-          floatingLabelText="Password"
-          type="password"
-          name="password"
+          floatingLabelText='Password'
+          type='password'
+          name='password'
           onChange={onChange}
           errorText={errors.password}
           value={user.password}
         />
       </div>
+      <div className='field-line'>
+        <TextField
+          floatingLabelText='School'
+          name='school'
+          onChange={onChange}
+          errorText={errors.school}
+          value={user.school}
+        />
+      </div>
 
-      <div className="button-line">
-        <RaisedButton type="submit" label="Create New Account" primary />
+      <div className='button-line'>
+        <RaisedButton type='submit' label='Create New Account' primary />
       </div>
 
       <CardText>Already have an account? <Link to={'/login'}>Log in</Link></CardText>
@@ -64,4 +93,4 @@ SignUpForm.propTypes = {
   user: PropTypes.object.isRequired
 }
 
-export default SignUpForm;
+export default SignUpForm
