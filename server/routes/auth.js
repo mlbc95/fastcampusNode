@@ -96,7 +96,7 @@ router.post('/signup', (req, res) => {
   return res.status(200).end()
 })
 
-router.post('/login', (req, res) => {
+router.post('/login', (req, res, next) => {
   // const validationResult = validateLoginForm(req.body)
   // const validationResult = {
   //   success: true
@@ -109,41 +109,37 @@ router.post('/login', (req, res) => {
   //   })
   // }
 
-  const username = req.body.username
+  const username = req.body.userName
   const password = req.body.password
+  console.log(username)
+
+  // console.log(req)
   console.log('in login')
+  User.getUserByUsername(username)
 
-  User.getUserByUsername(username, (err, user) => {
-    console.log('get user')
-    if (err) throw err
-    if (!user) {
-      console.log('no user')
-      return res.json({success: false, msg: 'User not found'})
-    }
+  //   User.comparePassword(password, user.password, (err, isMatch) => {
+  //     console.log('compare pass')
+  //     if (err) throw err
+  //     if (isMatch) {
+  //       const token = jwt.sign(user, config.secret, {
+  //         expiresIn: 604800 // 1 week
+  //       })
 
-    User.comparePassword(password, user.password, (err, isMatch) => {
-      console.log('compare pass')
-      if (err) throw err
-      if (isMatch) {
-        const token = jwt.sign(user, config.secret, {
-          expiresIn: 604800 // 1 week
-        })
-
-        res.json({
-          success: true,
-          token: 'JWT ' + token,
-          user: {
-            id: user._id,
-            name: user.name,
-            username: user.username,
-            email: user.email
-          }
-        })
-      } else {
-        return res.json({success: false, msg: 'Wrong password'})
-      }
-    })
-  })
+  //       res.json({
+  //         success: true,
+  //         token: 'JWT ' + token,
+  //         user: {
+  //           id: user._id,
+  //           name: user.name,
+  //           username: user.username,
+  //           email: user.email
+  //         }
+  //       })
+  //     } else {
+  //       return res.json({success: false, msg: 'Wrong password'})
+  //     }
+  //   })
+  // })
 })
 
 module.exports = router

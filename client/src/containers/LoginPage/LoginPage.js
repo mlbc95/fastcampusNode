@@ -25,32 +25,20 @@ class LoginPage extends React.Component {
     event.preventDefault()
     console.log(user.userName)
     console.log(user.password)
-    const formData = `userName=${user.userName}&password=${user.password}`
+    // create a string for an HTTP body message
 
-    // create an AJAX request
-    /* eslint-disable */
-    const xhr = new XMLHttpRequest() 
-    xhr.open('post', '/auth/login')
-    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded')
-    xhr.responseType = 'json'
-    xhr.addEventListener('load', () => {
-      if (xhr.status === 200) {
-        // success
-
-        // change the component-container state
-        console.log('The form is valid')
-      } else {
-        // failure
-
-        // change the component state
-        const errors = xhr.response.errors ? xhr.response.errors : {}
-        errors.summary = xhr.response.message
-      }
+    axios.post('/auth/login', {
+      userName: user.userName,
+      password: user.password
     })
-    xhr.send(formData)
-    console.log(xhr)
+  .then(function (response) {
+    console.log(response)
+  })
+  .catch(function (error) {
+    console.log(error)
+  })
   }
-  /* eslint-enable */
+
   /**
    * Render the component.
    */

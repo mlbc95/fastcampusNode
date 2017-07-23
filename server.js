@@ -23,30 +23,21 @@ app.use(express.static('./client/dist'))
 // app.use(express.static('./server/static/'))
 // app.use(express.static('./dist/'))
 // tell the app to parse HTTP body messages
-app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.json()) // <--- Here
 
 // passing the passport middleware
 app.use(passport.initialize())
 
-var allowCrossDomain = function (req, res, next) {
-  res.header('Access-Control-Allow-Origin', '*')
-  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS')
-  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-With')
-  // intercept OPTIONS method
-  if (req.method === 'OPTIONS') {
-    res.sendStatus(200)
-  } else {
-    next()
-  }
-}
-
-app.use(allowCrossDomain)
-// loaiding passport strategies 
-const localSignupStrategy = require('./server/passport/local-signup')
-const localLoginStrategy = require('./server/passport/local-login')
-
-passport.use('local-signup', localSignupStrategy)
-passport.use('local-login', localLoginStrategy)
+// var allowCrossDomain = function (req, res, next) {
+//   res.setHeader('Content-type', 'application/json')
+//   // intercept OPTIONS method
+//   if (req.method === 'OPTIONS') {
+//     res.sendStatus(200)
+//   } else {
+//     next()
+//   }
+// }
 
 // routes
 const authRoutes = require('./server/routes/auth')
