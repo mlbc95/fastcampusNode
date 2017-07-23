@@ -41,18 +41,9 @@ module.exports.getUserById = function (id, callback) {
   User.findById(id, callback)
 }
 
-module.exports.getUserByUsername = function (username) {
-  console.log('in getuserbyusername user')
-  console.log(User)
+module.exports.getUserByUsername = function (username, callback) {
   const query = {username: username}
-  User.findOne(query).exec(function (err, user) {
-    console.log('in getuserbyusername user-findone', user)
-    if (err) throw err
-    if (!user) {
-      console.log('no user')
-      return {error: 'User not Found'}
-    }
-  })
+  User.findOne(query, callback)
 }
 
 module.exports.addUser = function (newUser, callback) {
