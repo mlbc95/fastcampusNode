@@ -21,7 +21,7 @@ import SettingsPage from '../SettingsPage/SettingsPage'
 const FastCampusControlCenter = () => (
   <ControlCenter>
     <Switch>
-      <Route exact path='/login' component={LoginPage} />
+      <Route exact path='/' component={DashboardPage} />
       <Route path='/dashboard' component={DashboardPage} />
       <Route path='/profile' component={ProfilePage} />
       <Route path='/school' component={SchoolPage} />
