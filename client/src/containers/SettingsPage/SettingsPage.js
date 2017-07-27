@@ -7,6 +7,8 @@ import RaisedButton from 'material-ui/RaisedButton'
 import FlatButton from 'material-ui/FlatButton'
 import styled from 'styled-components'
 import Settings from '../../components/Settings/Settings'
+import EditCard from '../../components/Settings/EditCards'
+import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card'
 
 const StyledQuestions = styled.div`
   .text {
@@ -54,21 +56,95 @@ class SettingsPage extends Component {
         title='Settings'
         navigation='Application / Settings'
       >
-        {
-          this.state.edit ? (
-            <h1>Edit</h1>
-          ) : (
-            <Settings {...this.state} />
-          )
-        }
-        <RaisedButton
-          className='buttons'
-          backgroundColor='#a4c639'
-          label='Update'
-          primary
-          onClick={() => this.handleClick()}
+        <div style={{paddingTop: '30px'}}>
+          <EditCard
+            title='Personal'
+            subtitle='Email / Password'
+            edit={this.state.edit}
+            handleClick={() => this.handleClick()}
+            data={
+              this.state.edit ? (
+                <div>
+                  <h1>Fill the fields that are to be updated</h1>
+                  <TextField
+                    className='text'
+                    hintText={settingsData.fName}
+                    floatingLabelText='First Name'
+                    floatingLabelFixed
+                  /> <br />
+                  <TextField
+                    className='text'
+                    hintText={settingsData.lName}
+                    floatingLabelText='Last Name'
+                    floatingLabelFixed
+                  /> <br />
+                  <TextField
+                    className='text'
+                    hintText={settingsData.school}
+                    floatingLabelText='School'
+                    floatingLabelFixed
+                  />
+                </div>
+
+                ) : (
+
+                  <Settings {...this.state} />
+                )
+              }
+          />
+          <EditCard title='School' subtitle='Year/Major' data='Hello' edit={this.state.edit} />
+        </div>
+      </Base>
+
+    )
+  }
+}
+
+export default SettingsPage
+
+{ /*  <Base
+          title='Settings'
+          navigation='Application / Settings'
+      >
+          <Card>
+            <CardHeader
+              title='Personal'
+              subtitle='Email / Password'
+              actAsExpander
+              showExpandableButton
         />
-        {/* <StyledQuestions>
+            <CardText expandable>
+              {
+              this.state.edit ? (
+                <h1>Edit</h1>
+              ) : (
+                <Settings {...this.state} />
+              )
+            }
+              <RaisedButton
+                className='buttons'
+                backgroundColor='#a4c639'
+                label='Update'
+                primary
+                onClick={() => this.handleClick()}
+            />
+            </CardText>
+          </Card>
+          <Card>
+            <CardHeader
+              title='School'
+              subtitle='Year / Major'
+              actAsExpander
+              showExpandableButton
+        />
+            <CardText expandable>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Donec mattis pretium massa. Aliquam erat volutpat. Nulla facilisi.
+            Donec vulputate interdum sollicitudin. Nunc lacinia auctor quam sed pellentesque.
+            Aliquam dui mauris, mattis quis lacus id, pellentesque lobortis odio.
+          </CardText>
+          </Card>
+          {/* <StyledQuestions>
           <h1 className='text'>
             Change your settings by filling the corresponding field and click on Edit
           </h1>
@@ -121,11 +197,4 @@ class SettingsPage extends Component {
             backgroundColor='#a4c639'
             label='Apply'
                     />
-        </StyledQuestions> */}
-      </Base>
-
-    )
-  }
-}
-
-export default SettingsPage
+</StyledQuestions>         </Base> */ }

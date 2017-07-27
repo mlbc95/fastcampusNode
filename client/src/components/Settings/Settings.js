@@ -8,15 +8,9 @@ const Settings = ({
   gps
 }) => (
   <div>
-    <h1>
-      {fName}
-    </h1>
-    <h1>
-      {lName}
-    </h1>
-    <h1>
-      {school}
-    </h1>
+    First Name: <br /> <span> {fName} </span> <br />
+    Last Name: <br /> <span> {lName} </span> <br />
+    School: <br /> <span> {school} </span> <br />
   </div>
 )
 
