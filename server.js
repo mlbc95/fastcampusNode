@@ -33,8 +33,11 @@ app.use(passport.initialize())
 // routes
 const authRoutes = require('./server/routes/auth')
 const apiRoutes = require('./server/routes/api')
+// const updateInfoRoutes = require('./server/routes/updateInfo')
+
 app.use('/auth', authRoutes)
 app.use('/api', apiRoutes)
+// app.use('/updateInfo', updateInfoRoutes)
 
 app.listen(port, () => {
   console.log('Server started on port ' + port)

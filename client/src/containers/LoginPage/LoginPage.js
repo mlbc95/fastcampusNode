@@ -30,11 +30,13 @@ class LoginPage extends React.Component {
     axios.post('/auth/login', {
       userName: user.userName,
       password: user.password
-    })
-  .then(function (response) {
+    }, {headers: {Accept: 'application/json'}})
+  .then((response) => { // response is a javascript object
     console.log(response)
+    console.log(response.data.token)
+    localStorage.setItem('token', response.data.token)
   })
-  .catch(function (error) {
+  .catch((error) => {
     console.log(error)
   })
   }
