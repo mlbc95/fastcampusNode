@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {Component} from 'react'
 import {
   BrowserRouter,
   Route,
@@ -17,6 +17,46 @@ import SchoolPage from '../SchoolPage/SchoolPage'
 import MessagePage from '../MessagePage/MessagePage'
 import AcademicsPage from '../AcademicsPage/AcademicsPage'
 import SettingsPage from '../SettingsPage/SettingsPage'
+
+/* const FastCampusControlCenter = () => (
+  <ControlCenter>
+    <Switch>
+      <Route exact path='/' component={DashboardPage} />
+      <Route path='/dashboard' component={DashboardPage} />
+      <Route path='/profile' component={ProfilePage} />
+      <Route path='/school' component={SchoolPage} />
+      <Route path='/messages' component={MessagePage} />
+      <Route path='/academics' component={AcademicsPage} />
+      <Route path='/settings' component={SettingsPage} />
+      <Route path='/form' component={FormPage} />
+      <Route component={NotFound} />
+    </Switch>
+  </ControlCenter>
+)
+
+const FastCampusRoute = () => (
+  <BrowserRouter>
+    <Switch>
+      <Route path='/login' component={LoginPage} />
+      <Route path='/signup' component={SignUpPage} />
+      <Route path='/' component={FastCampusControlCenter} />
+    </Switch>
+  </BrowserRouter>
+)
+
+class FastCampus extends Component {
+  constructor (props) {
+    super(props)
+    this.state = {
+      loggedIn: localStorage.getItem('token')
+    }
+  }
+  render (){
+    return (
+
+    )
+  }
+} */
 
 const FastCampusControlCenter = () => (
   <ControlCenter>
@@ -39,7 +79,7 @@ const FastCampus = () => (
     <Switch>
       <Route path='/login' component={LoginPage} />
       <Route path='/signup' component={SignUpPage} />
-      <Route path='/' component={FastCampusControlCenter} />
+      <Route path='/' component={localStorage.getItem('token') ? FastCampusControlCenter : LoginPage} />
     </Switch>
   </BrowserRouter>
 )
