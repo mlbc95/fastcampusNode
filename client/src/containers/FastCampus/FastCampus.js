@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {Component} from 'react'
 import {
   BrowserRouter,
   Route,
@@ -39,7 +39,7 @@ const FastCampus = () => (
     <Switch>
       <Route path='/login' component={LoginPage} />
       <Route path='/signup' component={SignUpPage} />
-      <Route path='/' component={FastCampusControlCenter} />
+      <Route path='/' component={localStorage.getItem('token') ? FastCampusControlCenter : LoginPage} />
     </Switch>
   </BrowserRouter>
 )
