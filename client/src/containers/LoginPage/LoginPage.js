@@ -31,14 +31,14 @@ class LoginPage extends React.Component {
       userName: user.userName,
       password: user.password
     }, {headers: {Accept: 'application/json'}})
-  .then((response) => { // response is a javascript object
-    console.log(response)
-    console.log(response.data.token)
-    localStorage.setItem('token', response.data.token)
-  })
-  .catch((error) => {
-    console.log(error)
-  })
+    .then((response) => { // response is a javascript object
+      console.log(response)
+      console.log(response.data.token)
+      localStorage.setItem('token', response.data.token)
+    })
+    .catch((error) => {
+      console.log(error)
+    })
   }
 
   /**

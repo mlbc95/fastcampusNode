@@ -128,7 +128,7 @@ router.post('/login', (req, res) => {
 
         res.json({
           success: true,
-          token: token,
+          token: 'JWT ' + token,
           user: {
             id: user._id,
             name: user.name,
