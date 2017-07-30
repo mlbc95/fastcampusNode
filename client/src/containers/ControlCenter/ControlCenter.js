@@ -4,6 +4,7 @@ import NavBar from '../../components/NavBar/NavBar'
 import Sidebar from '../../components/Sidebar/Sidebar'
 import withWidth, { LARGE, SMALL } from 'material-ui/utils/withWidth'
 import Data from '../../data'
+import authHelper from '../../modules/authHelper'
 
 class ControlCenter extends Component {
   constructor (props) {
@@ -25,6 +26,10 @@ class ControlCenter extends Component {
     })
   }
 
+  doLogout () {
+    authHelper.deauthenticateUser()
+  }
+
   render () {
     const { navDrawerOpen } = this.state
     const paddingSidebarOpen = 236
@@ -44,6 +49,8 @@ class ControlCenter extends Component {
         <NavBar
           styles={styles.NavBar}
           handleChangeRequestNavDrawer={() => this.handleChangeRequestNavDrawer()}
+          doLogout={() => this.doLogout()}
+
         />
 
         <Sidebar
