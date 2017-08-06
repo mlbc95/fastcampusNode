@@ -16,3 +16,13 @@ const RequiredAuth = ({ component: Component, ...rest }) => (
 )
 
 export default RequiredAuth
+
+export const NoAuth = ({component: Component, ...rest}) => (
+  <Route {...rest} render={props => (
+    !Auth.isUserAuthenticated() ? (
+      <Component {...props} />
+    ) : (
+      <Redirect to='/' />
+      )
+  )} />
+)
