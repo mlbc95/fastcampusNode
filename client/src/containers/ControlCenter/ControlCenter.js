@@ -28,6 +28,7 @@ class ControlCenter extends Component {
 
   doLogout () {
     authHelper.deauthenticateUser()
+    window.location.reload()
   }
 
   render () {
