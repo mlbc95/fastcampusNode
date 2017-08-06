@@ -1,10 +1,6 @@
 import React from 'react'
-import PropTypes from 'prop-types'
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
-import ThemeDefault from '../../ThemeDefault'
 import LoginForm from '../../components/Login/LoginForm'
 import axios from 'axios'
-import {Route, Redirect} from 'react-router'
 import authHelper from '../../modules/authHelper'
 
 class LoginPage extends React.Component {
@@ -36,6 +32,7 @@ class LoginPage extends React.Component {
       console.log(response)
       console.log(response.data.token)
       authHelper.authenticateUser(response.data.token) // modules -> authHelper
+      window.location.reload()
       // authHelper.isUserAuthenticated ? this.redirecTo('/') : this.redirecTo('/')
     })
     .catch((error) => {
