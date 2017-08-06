@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React from 'react'
 import {
   BrowserRouter,
   Route,
@@ -17,6 +17,7 @@ import SchoolPage from '../SchoolPage/SchoolPage'
 import MessagePage from '../MessagePage/MessagePage'
 import AcademicsPage from '../AcademicsPage/AcademicsPage'
 import SettingsPage from '../SettingsPage/SettingsPage'
+import RequiredAuth from '../../hocs/withAuth'
 
 const FastCampusControlCenter = () => (
   <ControlCenter>
@@ -39,7 +40,7 @@ const FastCampus = () => (
     <Switch>
       <Route path='/login' component={LoginPage} />
       <Route path='/signup' component={SignUpPage} />
-      <Route path='/' component={localStorage.getItem('token') ? FastCampusControlCenter : LoginPage} />
+      <RequiredAuth path='/' component={FastCampusControlCenter} />
     </Switch>
   </BrowserRouter>
 )
