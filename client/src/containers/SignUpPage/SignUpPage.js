@@ -1,8 +1,5 @@
 import React from 'react'
 import axios from 'axios'
-import PropTypes from 'prop-types'
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
-import ThemeDefault from '../../ThemeDefault'
 import SignUpForm from '../../components/Signup/SignupForm'
 
 class SignUpPage extends React.Component {

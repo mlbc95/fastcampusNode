@@ -9,7 +9,7 @@ import Finantial from 'material-ui/svg-icons/action/account-balance-wallet'
 import Settings from 'material-ui/svg-icons/action/settings'
 import PermIdentity from 'material-ui/svg-icons/action/perm-identity'
 import Web from 'material-ui/svg-icons/av/web'
-
+/* eslint-disable*/
 const data = {
   menus: [
     { text: 'DashBoard', icon: <Assessment />, link: '/dashboard' },
