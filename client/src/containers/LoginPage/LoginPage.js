@@ -30,9 +30,15 @@ class LoginPage extends React.Component {
     }, {headers: {Accept: 'application/json'}})
     .then((response) => { // response is a javascript object
       console.log(response)
-      console.log(response.data.token)
-      authHelper.authenticateUser(response.data.token) // modules -> authHelper
-      window.location.reload()
+      if (!response.data.success) { // if success comes as false then the user does not log in
+        // ERROR ON THE PAGE HERE
+        console.log(response.data.msg)
+      } else {
+        console.log(response.data.token)
+        authHelper.authenticateUser(response.data.token) // modules -> authHelper
+        window.location.reload()
+      }
+
       // authHelper.isUserAuthenticated ? this.redirecTo('/') : this.redirecTo('/')
     })
     .catch((error) => {
