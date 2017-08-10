@@ -76,3 +76,8 @@ module.exports.addUser = function (newUser, callback) {
     })
   })
 }
+
+module.exports.updateUser = function (id, updatedUser, callback) {
+  console.log(updatedUser)
+  User.findByIdAndUpdate({_id: mongoose.Types.ObjectId(id)}, updatedUser, callback)
+}

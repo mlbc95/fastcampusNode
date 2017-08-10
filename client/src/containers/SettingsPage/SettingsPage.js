@@ -9,6 +9,7 @@ import styled from 'styled-components'
 import Settings from '../../components/Settings/Settings'
 import EditCard from '../../components/Settings/EditCards'
 import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card'
+import axios from 'axios'
 
 const StyledQuestions = styled.div`
   .text {
@@ -32,9 +33,21 @@ const StyledQuestions = styled.div`
   }
 `
 
+var user
+
 class SettingsPage extends Component {
   constructor (props) {
+    var token = localStorage.getItem('token')
     super(props)
+
+    axios.get('auth/profile', {
+      headers: {Authorization: token}
+    }).then(function (response) {
+      user = response.data.user
+      console.log(user)
+    }).catch(function (error) {
+      console.log(error)
+    })
     this.state = {
       fName: settingsData.fName,
       lName: settingsData.lName,
