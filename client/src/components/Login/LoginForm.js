@@ -8,13 +8,13 @@ import TextField from 'material-ui/TextField'
 class LoginForm extends Component {
   constructor () {
     super()
-
     // set the initial component state
     this.state = {
       errors: {},
       user: {
         userName: '',
-        password: ''
+        password: '',
+        loginStatus: false
       }
     }
   }

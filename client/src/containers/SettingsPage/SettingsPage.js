@@ -1,39 +1,10 @@
 import React, { Component } from 'react'
 import Base from '../../components/Base/Base'
-import Toggle from 'material-ui/Toggle'
 import {settingsData} from '../../data'
 import TextField from 'material-ui/TextField'
-import RaisedButton from 'material-ui/RaisedButton'
-import FlatButton from 'material-ui/FlatButton'
-import styled from 'styled-components'
 import Settings from '../../components/Settings/Settings'
 import EditCard from '../../components/Settings/EditCards'
-import {Card, CardActions, CardHeader, CardText} from 'material-ui/Card'
 import axios from 'axios'
-
-const StyledQuestions = styled.div`
-  .text {
-    margin: 5px 17.5% 2% 25%;
-  }
-
-  .toggle {
-    width: 2%;
-    margin: 0 0 0 0%;
-  }
-
-  .edit {
-    margin: 0;
-    position: relative;
-    width: auto;
-  }
-
-  .buttons {
-    margin: 50px 0 0 25%;
-    width: 50%;
-  }
-`
-
-var user
 
 class SettingsPage extends Component {
   constructor (props) {
