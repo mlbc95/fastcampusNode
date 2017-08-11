@@ -10,9 +10,8 @@ import ViewModule from 'material-ui/svg-icons/action/view-module'
 import { white } from 'material-ui/styles/colors'
 
 class NavBar extends Component {
-
-  render() {
-    const {styles, handleChangeRequestNavDrawer} = this.props
+  render () {
+    const {styles, handleChangeRequestNavDrawer, doLogout} = this.props
 
     const style = {
       menuButton: {
@@ -24,47 +23,48 @@ class NavBar extends Component {
     }
 
     return (
-        <div>
-            <AppBar
-              style={{...styles}}
-              iconElementLeft={
-                  <IconButton style={style.menuButton} onClick={handleChangeRequestNavDrawer}>
-                    <Menu color={white} />
-                  </IconButton>
+      <div>
+        <AppBar
+          style={{...styles}}
+          iconElementLeft={
+            <IconButton style={style.menuButton} onClick={handleChangeRequestNavDrawer}>
+              <Menu color={white} />
+            </IconButton>
               }
-              iconElementRight={
-                <div style={style.iconsRightContainer}>
-                  <IconMenu color={white}
-                            iconButtonElement={
-                              <IconButton><ViewModule color={white}/></IconButton>
+          iconElementRight={
+            <div style={style.iconsRightContainer}>
+              <IconMenu color={white}
+                iconButtonElement={
+                  <IconButton><ViewModule color={white} /></IconButton>
                             }
-                            targetOrigin={{horizontal: 'right', vertical: 'top'}}
-                            anchorOrigin={{horizontal: 'right', vertical: 'top'}}
+                targetOrigin={{horizontal: 'right', vertical: 'top'}}
+                anchorOrigin={{horizontal: 'right', vertical: 'top'}}
                   >
-                    <MenuItem key={1} primaryText='Application 1'/>
-                    <MenuItem key={2} primaryText='Application 2'/>
-                    <MenuItem key={3} primaryText='Application 3'/>
-                  </IconMenu>
-                  <IconMenu color={white}
-                            iconButtonElement={
-                              <IconButton><MoreVertIcon color={white}/></IconButton>
+                <MenuItem key={1} primaryText='Application 1' />
+                <MenuItem key={2} primaryText='Application 2' />
+                <MenuItem key={3} primaryText='Application 3' />
+              </IconMenu>
+              <IconMenu color={white}
+                iconButtonElement={
+                  <IconButton><MoreVertIcon color={white} /></IconButton>
                             }
-                            targetOrigin={{horizontal: 'right', vertical: 'top'}}
-                            anchorOrigin={{horizontal: 'right', vertical: 'top'}}
+                targetOrigin={{horizontal: 'right', vertical: 'top'}}
+                anchorOrigin={{horizontal: 'right', vertical: 'top'}}
                   >
-                    <MenuItem primaryText='Sign out'/>
-                  </IconMenu>
-                </div>
+                <MenuItem primaryText='Sign out' onTouchTap={doLogout} />
+              </IconMenu>
+            </div>
               }
             />
-          </div>
-      )
+      </div>
+    )
   }
 }
 
 NavBar.propTypes = {
   styles: PropTypes.object,
-  handleChangeRequestNavDrawer: PropTypes.func
+  handleChangeRequestNavDrawer: PropTypes.func,
+  doLogout: PropTypes.func
 }
 
 export default NavBar

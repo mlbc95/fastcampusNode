@@ -19,7 +19,7 @@ const Sidebar = (props) => {
       fontWeight: typography.fontWeightLight,
       backgroundColor: blue600,
       paddingLeft: 40,
-      height: 56,
+      height: 56
     },
     menuItem: {
       color: white,
@@ -28,7 +28,7 @@ const Sidebar = (props) => {
     avatar: {
       div: {
         padding: '15px 0 20px 15px',
-        backgroundImage:  'url(' + require('../../images/material_bg.png') + ')',
+        backgroundImage: 'url(' + require('../../images/material_bg.png') + ')',
         height: 45
       },
       icon: {
@@ -49,28 +49,28 @@ const Sidebar = (props) => {
 
   return (
     <Drawer
-      docked={true}
+      docked
       open={navDrawerOpen}>
-        <div style={styles.logo}>
+      <div style={styles.logo}>
           Material Admin
         </div>
-        <div style={styles.avatar.div}>
-          <Avatar src='http://www.material-ui.com/images/uxceo-128.jpg'
-                  size={50}
-                  style={styles.avatar.icon}/>
-          <span style={styles.avatar.span}>{props.username}</span>
-        </div>
-        <div>
-          {props.menus.map((menu, index) =>
-            <MenuItem
-              key={index}
-              style={styles.menuItem}
-              primaryText={menu.text}
-              leftIcon={menu.icon}
-              containerElement={<Link to={menu.link}/>}
+      <div style={styles.avatar.div}>
+        <Avatar src='http://www.material-ui.com/images/uxceo-128.jpg'
+          size={50}
+          style={styles.avatar.icon} />
+        <span style={styles.avatar.span}>{props.username}</span>
+      </div>
+      <div>
+        {props.menus.map((menu, index) =>
+          <MenuItem
+            key={index}
+            style={styles.menuItem}
+            primaryText={menu.text}
+            leftIcon={menu.icon}
+            containerElement={<Link to={menu.link} />}
             />
           )}
-        </div>
+      </div>
     </Drawer>
   )
 }
@@ -78,7 +78,7 @@ const Sidebar = (props) => {
 Sidebar.propTypes = {
   navDrawerOpen: PropTypes.bool,
   menus: PropTypes.array,
-  username: PropTypes.string,
+  username: PropTypes.string
 }
 
 export default Sidebar

@@ -1,9 +1,7 @@
 import React from 'react'
 import axios from 'axios'
-import PropTypes from 'prop-types'
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
-import ThemeDefault from '../../ThemeDefault'
 import SignUpForm from '../../components/Signup/SignupForm'
+import Base from '../../components/Base/Base'
 
 class SignUpPage extends React.Component {
   /**
@@ -15,6 +13,7 @@ class SignUpPage extends React.Component {
     // set the initial component state
     this.state = {
       errors: {},
+      error: '',
       user: {
         email: '',
         fName: '',
@@ -52,6 +51,8 @@ class SignUpPage extends React.Component {
   processForm (event) {
     // prevent default action. in this case, action is the form submission event
     event.preventDefault()
+    const self = this
+
     axios.post('auth/signup', {
       fName: this.state.user.fName,
       lName: this.state.user.lName,
@@ -62,17 +63,16 @@ class SignUpPage extends React.Component {
 
     })
       .then(function (response) {
-        console.log(response)
+        if (!response.data.success) {
+          self.setState({ error: response.data.msg })
+        } else {
+          window.location = '/login'
+        }
+        return response
       })
-  .catch(function (error) {
-    console.log(error)
-  })
-    console.log('fName:', this.state.user.fName)
-    console.log('lName:', this.state.user.lName)
-    console.log('email:', this.state.user.email)
-    console.log('password:', this.state.user.password)
-    console.log('userName:', this.state.userName)
-    console.log('school:', this.state.user.school)
+    .catch(function (error) {
+      self.setState({error})
+    })
   }
 
   /**
@@ -80,12 +80,17 @@ class SignUpPage extends React.Component {
    */
   render () {
     return (
-      <SignUpForm
-        onSubmit={this.processForm}
-        onChange={this.changeUser}
-        errors={this.state.errors}
-        user={this.state.user}
-      />
+      <Base title='Sign Up'>
+        <div>
+          {this.state.error && <p className='error-message'>{this.state.error}</p>}
+          <SignUpForm
+            onSubmit={this.processForm}
+            onChange={this.changeUser}
+            errors={this.state.errors}
+            user={this.state.user}
+          />
+        </div>
+      </Base>
     )
   }
 }

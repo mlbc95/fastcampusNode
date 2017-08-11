@@ -16,9 +16,13 @@ mongoose.connection.on('connected', () => {
 mongoose.connection.on('error', (err) => {
   console.log('Database error: ' + err)
 })
+const app = express()
+
+// Passport Middleware
+app.use(passport.initialize())
+app.use(passport.session())
 
 const port = process.env.PORT || 3001
-const app = express()
 
 // tellint the app to look for static files in these directories 
 app.use(express.static('.client/public/index.html'))
@@ -27,14 +31,15 @@ app.use(express.static('./client/dist'))
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json()) // <--- Here
 
-// passing the passport middleware
-app.use(passport.initialize())
-
+require('./config/passport')(passport)
 // routes
 const authRoutes = require('./server/routes/auth')
 const apiRoutes = require('./server/routes/api')
+// const updateInfoRoutes = require('./server/routes/updateInfo')
+
 app.use('/auth', authRoutes)
 app.use('/api', apiRoutes)
+// app.use('/updateInfo', updateInfoRoutes)
 
 app.listen(port, () => {
   console.log('Server started on port ' + port)

@@ -9,19 +9,19 @@ import Finantial from 'material-ui/svg-icons/action/account-balance-wallet'
 import Settings from 'material-ui/svg-icons/action/settings'
 import PermIdentity from 'material-ui/svg-icons/action/perm-identity'
 import Web from 'material-ui/svg-icons/av/web'
-
+/* eslint-disable*/
 const data = {
   menus: [
-    { text: 'DashBoard', icon: <Assessment/>, link: '/dashboard' },
-    { text:  'Profile' , icon: <Account_circle/>, link: '/profile'},
-    { text:  'UMSL' , icon: <School/>, link: '/school'},
-    { text:  'Messages' , icon: <Message/>, link: '/messages'},
-    { text:  'Academics' , icon: <Academics/>, link: '/academics'},
-    { text:  'Finantial' , icon: <Finantial/>, link: '/finantial'},
-    { text:  'Settings' , icon: <Settings/>, link: '/settings'},
-    { text: 'Form Page', icon: <Web/>, link: '/form' },
-    { text: 'Table Page', icon: <GridOn/>, link: '/table' },
-    { text: 'Login Page', icon: <PermIdentity/>, link: '/login' }
+    { text: 'DashBoard', icon: <Assessment />, link: '/dashboard' },
+    { text: 'Profile', icon: <Account_circle />, link: '/profile'},
+    { text: 'UMSL', icon: <School />, link: '/school'},
+    { text: 'Messages', icon: <Message />, link: '/messages'},
+    { text: 'Academics', icon: <Academics />, link: '/academics'},
+    { text: 'Finantial', icon: <Finantial />, link: '/finantial'},
+    { text: 'Settings', icon: <Settings />, link: '/settings'},
+    { text: 'Form Page', icon: <Web />, link: '/form' },
+    { text: 'Table Page', icon: <GridOn />, link: '/table' },
+    { text: 'Login Page', icon: <PermIdentity />, link: '/login' }
   ]
 }
 
@@ -35,11 +35,11 @@ export const profilePageData = {
 }
 
 export const settingsData = {
-  fName : 'Boris',
-  lName : 'Pallares',
-  email : 'borispallares@hotmail.com',
+  fName: 'Boris',
+  lName: 'Pallares',
+  email: 'borispallares@hotmail.com',
   school: 'Lindenwood',
-  gps : true,
+  gps: true
 }
 
 export default data

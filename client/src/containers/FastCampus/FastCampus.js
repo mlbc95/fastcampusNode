@@ -17,6 +17,7 @@ import SchoolPage from '../SchoolPage/SchoolPage'
 import MessagePage from '../MessagePage/MessagePage'
 import AcademicsPage from '../AcademicsPage/AcademicsPage'
 import SettingsPage from '../SettingsPage/SettingsPage'
+import RequiredAuth, { NoAuth } from '../../hocs/withAuth'
 
 const FastCampusControlCenter = () => (
   <ControlCenter>
@@ -37,9 +38,9 @@ const FastCampusControlCenter = () => (
 const FastCampus = () => (
   <BrowserRouter>
     <Switch>
-      <Route path='/login' component={LoginPage} />
-      <Route path='/signup' component={SignUpPage} />
-      <Route path='/' component={FastCampusControlCenter} />
+      <NoAuth path='/login' component={LoginPage} />
+      <NoAuth path='/signup' component={SignUpPage} />
+      <RequiredAuth path='/' component={FastCampusControlCenter} />
     </Switch>
   </BrowserRouter>
 )
