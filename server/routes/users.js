@@ -26,4 +26,16 @@ router.post('/updateUser', (req, res) => {
   })
 })
 
+router.get('/getAllUsers',(req,res)=>{
+  User.getAllUsers((err,ret)=>{
+    if (err)
+    {
+      console.log("there is an error")
+    }else
+    {
+      res.json({success:true,data :ret})
+    }
+  })
+})
+
 module.exports = router
