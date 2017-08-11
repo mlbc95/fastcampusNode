@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
-import { Card, CardText } from 'material-ui/Card'
+import { CardText } from 'material-ui/Card'
 import RaisedButton from 'material-ui/RaisedButton'
 import TextField from 'material-ui/TextField'
 
@@ -11,11 +11,8 @@ const SignUpForm = ({
   errors,
   user
 }) => (
-  <Card className='container'>
+  <div className='container'>
     <form action='/' onSubmit={onSubmit}>
-      <h2 className='card-heading'>Sign Up</h2>
-
-      {errors.summary && <p className='error-message'>{errors.summary}</p>}
 
       <div className='field-line'>
         <TextField
@@ -83,7 +80,7 @@ const SignUpForm = ({
 
       <CardText>Already have an account? <Link to={'/login'}>Log in</Link></CardText>
     </form>
-  </Card>
+  </div>
 )
 
 SignUpForm.propTypes = {

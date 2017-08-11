@@ -1,5 +1,6 @@
 import React from 'react'
 import LoginForm from '../../components/Login/LoginForm'
+import Base from '../../components/Base/Base'
 import axios from 'axios'
 import authHelper from '../../modules/authHelper'
 
@@ -10,6 +11,10 @@ class LoginPage extends React.Component {
   constructor (props) {
     super(props)
     this.processForm = this.processForm.bind(this)
+
+    this.state = {
+      error: ''
+    }
   }
 
   /**
@@ -32,6 +37,9 @@ class LoginPage extends React.Component {
       console.log(response)
       if (!response.data.success) { // if success comes as false then the user does not log in
         // ERROR ON THE PAGE HERE
+        this.setState({
+          error: 'Invalid credentials'
+        })
         console.log(response.data.msg)
       } else {
         console.log(response.data.token)
@@ -51,9 +59,14 @@ class LoginPage extends React.Component {
    */
   render () {
     return (
-      <LoginForm
-        onSubmit={this.processForm}
-      />
+      <Base title='Login'>
+        <div>
+          {this.state.error && <p className='error-message'>{this.state.error}</p>}
+          <LoginForm
+            onSubmit={this.processForm}
+          />
+        </div>
+      </Base>
     )
   }
 }

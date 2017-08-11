@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
-import { Card, CardText } from 'material-ui/Card'
+import { CardText } from 'material-ui/Card'
 import RaisedButton from 'material-ui/RaisedButton'
 import TextField from 'material-ui/TextField'
 
@@ -36,12 +36,9 @@ class LoginForm extends Component {
 
   render () {
     return (
-      <Card
+      <div
         className='container'>
         <form action='/' onSubmit={(event) => this.props.onSubmit(event, this.state.user)}>
-          <h2 className='card-heading'>Login</h2>
-
-          {this.state.errors.summary && <p className='error-message'>{this.state.errors.summary}</p>}
 
           <div className='field-line'>
             <TextField
@@ -71,7 +68,7 @@ class LoginForm extends Component {
 
           <CardText>Don't have an account? <Link to={'/signup'}>Create one</Link>.</CardText>
         </form>
-      </Card>
+      </div>
     )
   }
 }
