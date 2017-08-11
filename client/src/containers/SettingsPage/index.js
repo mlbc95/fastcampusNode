@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Base from '../../components/Base/Base'
+import Base from '../../components/Base'
 import {settingsData} from '../../data'
 import TextField from 'material-ui/TextField'
 import Settings from '../../components/Settings/Settings'

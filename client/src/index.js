@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import FastCampus from './containers/FastCampus/FastCampus'
+import FastCampus from './containers/FastCampus'
 import registerServiceWorker from './registerServiceWorker'
 import injectTapEventPlugin from 'react-tap-event-plugin'
 import 'font-awesome/css/font-awesome.css'

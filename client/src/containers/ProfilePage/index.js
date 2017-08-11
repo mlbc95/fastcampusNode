@@ -2,15 +2,15 @@ import React, { Component } from 'react'
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card'
 import FlatButton from 'material-ui/FlatButton'
 import { profilePageData } from '../../data'
-import Base from '../../components/Base/Base'
+import Base from '../../components/Base'
 
 class ProfilePage extends Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
     this.state = {...profilePageData}
   }
 
-  fullName() {
+  fullName () {
     return this.state.fName + ' ' + this.state.lName
   }
 
@@ -28,8 +28,8 @@ class ProfilePage extends Component {
             mediaStyle={{height: '30%', maxHeight: '500px', overflow: 'hidden'}}
           >
             <img style={{height: '100%', width: '100%'}}
-                src='http://blogs.umsl.edu/news/files/2015/09/msc_ponds_818.jpg'
-                alt={`${this.state.username}'s background`}
+              src='http://blogs.umsl.edu/news/files/2015/09/msc_ponds_818.jpg'
+              alt={`${this.state.username}'s background`}
             />
           </CardMedia>
           <CardTitle title='Card title' subtitle='Card subtitle' />
