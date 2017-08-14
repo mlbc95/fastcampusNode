@@ -12,7 +12,7 @@ class ControlCenter extends Component {
     super(props)
     this.state = {
       navDrawerOpen: false,
-      username: 'none'
+      user: {}
     }
   }
 
@@ -32,7 +32,7 @@ class ControlCenter extends Component {
   getProfile () {
     axios.get('/auth/profile', {headers: {Authorization: authHelper.getToken()}})
     .then((response) => {
-      this.setState({username: response.data.user})
+      this.setState({user: response.data.user})
     })
     .catch((error) => console.log(error))
     // console.log(this.state)
@@ -44,7 +44,7 @@ class ControlCenter extends Component {
   }
 
   render () {
-    const { navDrawerOpen, username } = this.state
+    const { navDrawerOpen, user } = this.state
     const paddingSidebarOpen = 236
 
     const styles = {
@@ -69,7 +69,7 @@ class ControlCenter extends Component {
         <Sidebar
           navDrawerOpen={navDrawerOpen}
           menus={Data.menus}
-          username={username.fName}
+          {...this.state.user}
         />
 
         <div style={styles.container}>
