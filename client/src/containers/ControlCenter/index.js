@@ -44,16 +44,15 @@ class ControlCenter extends Component {
   }
 
   render () {
-    const { navDrawerOpen, user } = this.state
     const paddingSidebarOpen = 236
 
     const styles = {
       NavBar: {
-        paddingLeft: navDrawerOpen ? paddingSidebarOpen : 0
+        paddingLeft: this.state.navDrawerOpen ? paddingSidebarOpen : 0
       },
       container: {
         margin: '20px 20px 20px 20px',
-        paddingLeft: navDrawerOpen && this.props.width !== SMALL ? paddingSidebarOpen : 0
+        paddingLeft: this.state.navDrawerOpen && this.props.width !== SMALL ? paddingSidebarOpen : 0
       }
     }
 
@@ -67,7 +66,7 @@ class ControlCenter extends Component {
         />
 
         <Sidebar
-          navDrawerOpen={navDrawerOpen}
+          navDrawerOpen={this.state.navDrawerOpen}
           menus={Data.menus}
           {...this.state.user}
         />

@@ -23,7 +23,7 @@ const Avatar = ({
 }) => (
   <StyledAvatar bg={!!(!url && firstName && lastName)} size={size || 30}>
     <span>{createDefaultAvatar(firstName, lastName)}</span>
-    <img src={url || getGravatar(email || 'none')} />
+    <img src={url || getGravatar(email || 'none')} alt={firstName + ' ' + lastName} />
   </StyledAvatar>
   )
 
