@@ -5,11 +5,16 @@ import { spacing, typography } from 'material-ui/styles'
 import { white, blue600 } from 'material-ui/styles/colors'
 import MenuItem from 'material-ui/MenuItem'
 import { Link } from 'react-router-dom'
-import Avatar from 'material-ui/Avatar'
+import Avatar from '../Avatar'
+import AvatarWrapper from './AvatarWrapper'
 
-const Sidebar = (props) => {
-  let { navDrawerOpen } = props
-
+const Sidebar = ({
+  navDrawerOpen,
+  email,
+  fName,
+  lName,
+  menus
+}) => {
   const styles = {
     logo: {
       cursor: 'pointer',
@@ -50,18 +55,22 @@ const Sidebar = (props) => {
   return (
     <Drawer
       docked
-      open={navDrawerOpen}>
+      open={navDrawerOpen}
+    >
       <div style={styles.logo}>
-          Material Admin
-        </div>
-      <div style={styles.avatar.div}>
-        <Avatar src='http://www.material-ui.com/images/uxceo-128.jpg'
+        FastCampus
+      </div>
+      <AvatarWrapper>
+        <Avatar
+          email={email}
+          firstName={fName}
+          lastName={lName}
           size={50}
           style={styles.avatar.icon} />
-        <span style={styles.avatar.span}>{props.username}</span>
-      </div>
+        <span style={styles.avatar.span}>{fName + ' ' + lName}</span>
+      </AvatarWrapper>
       <div>
-        {props.menus.map((menu, index) =>
+        {menus.map((menu, index) =>
           <MenuItem
             key={index}
             style={styles.menuItem}
@@ -78,7 +87,9 @@ const Sidebar = (props) => {
 Sidebar.propTypes = {
   navDrawerOpen: PropTypes.bool,
   menus: PropTypes.array,
-  username: PropTypes.string
+  fName: PropTypes.string,
+  lName: PropTypes.string,
+  email: PropTypes.string
 }
 
 export default Sidebar
