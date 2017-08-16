@@ -1,8 +1,9 @@
 import styled from 'styled-components'
+import { blue300, indigo900 } from 'material-ui/styles/colors'
 
 export default styled.div`
-  background-color: ${props => props.bg ? '#fff' : 'transparent'};
-  color: #fff;
+  background-color: ${props => props.bg ? indigo900 : 'transparent'};
+  color: ${blue300};
   display: flex;
   align-items: center;
   justify-content: center;
@@ -12,7 +13,6 @@ export default styled.div`
   width: ${props => props.size}px;
   font-size: ${props => props.size * 0.35}px;
   font-weight: bold;
-  color: #fff;
   position: relative;
   overflow: hidden;
   z-index: 2;
