@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Sidebar from '../Sidebar/Sidebar'
+import Sidebar from '../Sidebar'
 
 class Dashboard extends Component {
   render () {

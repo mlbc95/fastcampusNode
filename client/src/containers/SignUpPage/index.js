@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios'
-import SignUpForm from '../../components/Signup/SignupForm'
-import Base from '../../components/Base/Base'
+import SignUpForm from '../../components/SignupForm'
+import Base from '../../components/Base'
 
 class SignUpPage extends React.Component {
   /**

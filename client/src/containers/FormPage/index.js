@@ -8,10 +8,9 @@ import Toggle from 'material-ui/Toggle'
 import DatePicker from 'material-ui/DatePicker'
 import { grey400 } from 'material-ui/styles/colors'
 import Divider from 'material-ui/Divider'
-import Base from '../../components/Base/Base'
+import Base from '../../components/Base'
 
 const FormPage = () => {
-
   const styles = {
     toggleDiv: {
       maxWidth: 300,
@@ -33,28 +32,28 @@ const FormPage = () => {
 
   return (
     <Base title='Form Page'
-              navigation='Application / Form Page'>
+      navigation='Application / Form Page'>
       <form>
 
         <TextField
           hintText='Name'
           floatingLabelText='Name'
-          fullWidth={true}
+          fullWidth
         />
 
         <SelectField
           floatingLabelText='City'
           value=''
-          fullWidth={true}>
-          <MenuItem key={0} primaryText='London'/>
-          <MenuItem key={1} primaryText='Paris'/>
-          <MenuItem key={2} primaryText='Rome'/>
+          fullWidth>
+          <MenuItem key={0} primaryText='London' />
+          <MenuItem key={1} primaryText='Paris' />
+          <MenuItem key={2} primaryText='Rome' />
         </SelectField>
 
         <DatePicker
           hintText='Expiration Date'
           floatingLabelText='Expiration Date'
-          fullWidth={true}/>
+          fullWidth />
 
         <div style={styles.toggleDiv}>
           <Toggle
@@ -63,17 +62,17 @@ const FormPage = () => {
           />
         </div>
 
-        <Divider/>
+        <Divider />
 
         <div style={styles.buttons}>
           <Link to='/'>
-            <RaisedButton label='Cancel'/>
+            <RaisedButton label='Cancel' />
           </Link>
 
           <RaisedButton label='Save'
-                        style={styles.saveButton}
-                        type='submit'
-                        primary={true}/>
+            style={styles.saveButton}
+            type='submit'
+            primary />
         </div>
       </form>
     </Base>

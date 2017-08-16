@@ -10,7 +10,7 @@ const Base = (props) => {
 
     return (
       <div>
-        <span style={globalStyles.navigation}>{navigation}</span>
+        {navigation && <span style={globalStyles.navigation}>{navigation}</span>}
 
         <Paper style={globalStyles.paper}>
           <h3 style={globalStyles.title}>{title}</h3>

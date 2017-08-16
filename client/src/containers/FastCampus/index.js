@@ -6,17 +6,17 @@ import {
 } from 'react-router-dom'
 
 // ControlCenter components
-import ControlCenter from '../ControlCenter/ControlCenter'
-import NotFound from '../../components/NotFound/NotFound'
-import LoginPage from '../LoginPage/LoginPage'
-import SignUpPage from '../SignUpPage/SignUpPage'
-import DashboardPage from '../DashboardPage/DashboardPage'
-import FormPage from '../FormPage/FormPage'
-import ProfilePage from '../ProfilePage/ProfilePage'
-import SchoolPage from '../SchoolPage/SchoolPage'
-import MessagePage from '../MessagePage/MessagePage'
-import AcademicsPage from '../AcademicsPage/AcademicsPage'
-import SettingsPage from '../SettingsPage/SettingsPage'
+import ControlCenter from '../ControlCenter'
+import NotFound from '../NotFound'
+import LoginPage from '../LoginPage'
+import SignUpPage from '../SignUpPage'
+import DashboardPage from '../DashboardPage'
+import FormPage from '../FormPage'
+import ProfilePage from '../ProfilePage'
+import SchoolPage from '../SchoolPage'
+import MessagePage from '../MessagePage'
+import AcademicsPage from '../AcademicsPage'
+import SettingsPage from '../SettingsPage'
 import RequiredAuth, { NoAuth } from '../../hocs/withAuth'
 
 const FastCampusControlCenter = () => (

@@ -1,6 +1,6 @@
 import React from 'react'
-import LoginForm from '../../components/Login/LoginForm'
-import Base from '../../components/Base/Base'
+import LoginForm from '../../components/LoginForm'
+import Base from '../../components/Base'
 import axios from 'axios'
 import authHelper from '../../modules/authHelper'
 
