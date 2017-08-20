@@ -108,3 +108,12 @@ module.exports.addClasses = function (id, classes, classback) {
   console.log(classes)
   User.findByIdAndUpdate({_id: mongoose.Types.ObjectId(id), classes, classback})
 }
+
+module.exports.updateUser = function (id, updatedUser, callback) {
+  console.log(updatedUser)
+  User.findByIdAndUpdate({_id: mongoose.Types.ObjectId(id)}, updatedUser, callback)
+}
+
+module.exports.getAllUsers = function (callback){
+  User.find({},{password:0,_id:0},callback)
+}

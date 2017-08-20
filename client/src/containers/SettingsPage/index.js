@@ -4,10 +4,21 @@ import {settingsData} from '../../data'
 import TextField from 'material-ui/TextField'
 import Settings from '../../components/Settings/Settings'
 import EditCard from '../../components/Settings/EditCards'
+import axios from 'axios'
 
 class SettingsPage extends Component {
   constructor (props) {
+    var token = localStorage.getItem('token')
     super(props)
+
+    axios.get('auth/profile', {
+      headers: {Authorization: token}
+    }).then(function (response) {
+      user = response.data.user
+      console.log(user)
+    }).catch(function (error) {
+      console.log(error)
+    })
     this.state = {
       fName: settingsData.fName,
       lName: settingsData.lName,
