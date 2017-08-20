@@ -30,7 +30,6 @@ const port = process.env.PORT || 3001
 // tellint the app to look for static files in these directories 
 app.use(express.static('.client/public/index.html'))
 app.use(express.static('./client/dist'))
-
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json()) // <--- Here
 
