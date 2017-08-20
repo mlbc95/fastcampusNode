@@ -33,11 +33,13 @@ app.use(bodyParser.json()) // <--- Here
 
 require('./config/passport')(passport)
 // routes
-const authRoutes = require('./server/routes/auth')
+const authRoutes = require('./server/routes/auth') // /login /signup /profile
+const academicRoutes = require('./server/routes/academics')
 const apiRoutes = require('./server/routes/api')
 // const updateInfoRoutes = require('./server/routes/updateInfo')
 
 app.use('/auth', authRoutes)
+app.use('/academ', academicRoutes)
 app.use('/api', apiRoutes)
 // app.use('/updateInfo', updateInfoRoutes)
 
