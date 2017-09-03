@@ -6,6 +6,7 @@ const User = require('../models/user')
 const config = require('../../config/database')
 const bcrypt = require('bcryptjs')
 const router = new express.Router()
+const classes = require('../data.json')
 
 router.post('/updateUser', (req, res) => {
   console.log(req.body)
@@ -26,16 +27,18 @@ router.post('/updateUser', (req, res) => {
   })
 })
 
-router.get('/getAllUsers',(req,res)=>{
-  User.getAllUsers((err,ret)=>{
-    if (err)
-    {
-      console.log("there is an error")
-    }else
-    {
-      res.json({success:true,data :ret})
+router.get('/getAllUsers', (req, res) => {
+  User.getAllUsers((err, ret) => {
+    if (err) {
+      console.log('there is an error')
+    } else {
+      res.json({success: true, data: ret})
     }
   })
+})
+
+router.get('/classes', (req, res, next) => {
+  return res.json(classes)
 })
 
 module.exports = router

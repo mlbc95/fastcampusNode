@@ -14,7 +14,7 @@ class SettingsPage extends Component {
     axios.get('auth/profile', {
       headers: {Authorization: token}
     }).then(function (response) {
-      user = response.data.user
+      response.data.user
       console.log(user)
     }).catch(function (error) {
       console.log(error)

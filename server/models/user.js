@@ -31,6 +31,9 @@ const UserSchema = mongoose.Schema({
   pNumber: {
     type: String
 
+  },
+  lastLogin: {
+    type: Date
   }
 
 })
@@ -82,6 +85,6 @@ module.exports.updateUser = function (id, updatedUser, callback) {
   User.findByIdAndUpdate({_id: mongoose.Types.ObjectId(id)}, updatedUser, callback)
 }
 
-module.exports.getAllUsers = function (callback){
-  User.find({},{password:0,_id:0},callback)
+module.exports.getAllUsers = function (callback) {
+  User.find({}, {password: 0, _id: 0}, callback)
 }
