@@ -36,22 +36,6 @@ const router = new express.Router()
           Wrong password.
         Sucess:
           returns token
-    -------------------------------------
-    /auth/profile | GET | Retrives user Information 
-      Authrization 
-      Information Expected : 
-        token
-      Returns:
-        Fail: -> if token is invalid 
-          Unauthroized 
-        Success: 
-          JSON object named user
-          user{
-            fName,
-            lName,
-            userName,
-            email
-          }
 */
 
 // /signup api call 
@@ -114,17 +98,6 @@ router.post('/login', (req, res) => {
       }
     })
   })
-})
-
-// returns user info by token
-router.get('/profile', passport.authenticate('jwt', {session: false}), (req, res, next) => {
-  res.json({user: {
-    id: req.user._id,
-    fName: req.user.fName,
-    lName: req.user.lName,
-    userName: req.user.username,
-    email: req.user.email
-  }})
 })
 
 module.exports = router
