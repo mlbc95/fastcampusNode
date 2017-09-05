@@ -50,7 +50,10 @@ const UserSchema = mongoose.Schema({
       timeOut: Date,
       professor: String
     }
-  ]
+  ],
+  lastLogin: {
+    type: Date
+  }
 
 })
 

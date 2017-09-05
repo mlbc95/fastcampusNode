@@ -6,6 +6,7 @@ const User = require('../models/user')
 const config = require('../../config/database')
 const bcrypt = require('bcryptjs')
 const router = new express.Router()
+const classes = require('../data.json')
 
 /* 
     /users/profile | GET | Retrives user Information 
@@ -66,6 +67,10 @@ router.get('/getAllUsers', (req, res) => {
       res.json({success: true, data: ret})
     }
   })
+})
+
+router.get('/classes', (req, res, next) => {
+  return res.json(classes)
 })
 
 module.exports = router
