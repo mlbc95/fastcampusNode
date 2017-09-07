@@ -3,16 +3,22 @@ const bodyParser = require('body-parser')
 const passport = require('passport')
 const mongoose = require('mongoose')
 const config = require('./config/database')
-const PDFParser = require('pdf2json')
-const fs = require('fs')
-let pdfParser = new PDFParser()
+// const PDFParser = require('pdf2json')
+// const fs = require('fs')
+// let pdfParser = new PDFParser()
 
+mongoose.Promise = global.Promise
 // Connect To Database
-mongoose.connect(config.database)
+// ued useMOngoClient | keep Alive | reconnectTries to solve depracation warning and open Uri warning
+mongoose.connect(config.database, {
+  keepAlive: true,
+  reconnectTries: Number.MAX_VALUE,
+  useMongoClient: true
+})
 
 // On Connection
 mongoose.connection.on('connected', () => {
-  console.log('Connected to database ' + config.database)
+  console.log('Connected to Mongo Database: ' + config.database)
 })
 
 // On Error

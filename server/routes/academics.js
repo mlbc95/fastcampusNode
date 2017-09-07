@@ -1,10 +1,14 @@
 const express = require('express')
-const validator = require('validator')
+// const validator = require('validator')
 const passport = require('passport')
-const jwt = require('jsonwebtoken')
-const User = require('../models/user')
-const config = require('../../config/database')
+// const jwt = require('jsonwebtoken')
+// const User = require('../models/user')
+// const config = require('../../config/database')
 const router = new express.Router()
+
+router.post('/addDegree', (req, res) => {
+  console.log('/addDegree')
+})
 
 router.post('/addClasses', (req, res) => {
   console.log('Adding classes')
