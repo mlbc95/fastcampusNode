@@ -9,7 +9,7 @@ const router = new express.Router()
 const classes = require('../data.json')
 
 /* 
-    /users/profile | GET | Retrives user Information 
+    /user/profile | GET | Retrives user Information 
       Authrization 
       Information Expected : 
         token

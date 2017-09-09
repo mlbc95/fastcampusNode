@@ -45,13 +45,13 @@ require('./config/passport')(passport)
 const authRoutes = require('./server/routes/auth') // /login /signup /profile
 const academicRoutes = require('./server/routes/academics')
 const apiRoutes = require('./server/routes/api')
-const userRoute = require('./server/routes/users')
+const userRoute = require('./server/routes/user')
 
 // list of backend routes in our app 
 app.use('/auth', authRoutes)
 app.use('/academ', academicRoutes)
 app.use('/api', apiRoutes)
-app.use('/users', userRoute)
+app.use('/user', userRoute)
 // app.use('/updateInfo', updateInfoRoutes)
 
 app.listen(port, () => {
