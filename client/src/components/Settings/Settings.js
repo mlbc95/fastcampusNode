@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const Settings = ({
+export const Settings = ({
   fName,
   lName,
   school,
@@ -10,8 +10,19 @@ const Settings = ({
   <div>
     First Name: <br /> <span> {fName} </span> <br />
     Last Name: <br /> <span> {lName} </span> <br />
-    School: <br /> <span> {school} </span> <br />
   </div>
+)
+
+export const School = ({
+  school,
+  degree,
+  year
+  }) => (
+    <div>
+      School: <br /> <span> {school} </span> <br />
+      Degree: <br /> <span> {degree} </span> <br />
+      Year: <br /> <span> {year} </span> <br />
+    </div>
 )
 
 Settings.propTypes = {
@@ -20,4 +31,9 @@ Settings.propTypes = {
   school: PropTypes.string,
   gps: PropTypes.bool
 }
-export default Settings
+
+School.protoTypes = {
+  school: PropTypes.string,
+  degree: PropTypes.string,
+  year: PropTypes.string
+}

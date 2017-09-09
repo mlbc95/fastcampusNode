@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Base from '../../components/Base'
 import TextField from 'material-ui/TextField'
-import Settings from '../../components/Settings/Settings'
+import {Settings, School} from '../../components/Settings/Settings'
 import EditCard from '../../components/Settings/EditCards'
 import axios from 'axios'
 
@@ -13,12 +13,15 @@ class SettingsPage extends Component {
       fName: 'Na',
       lName: 'NA',
       school: 'NA',
+      degree: 'NA',
+      year: 'NA',
       gps: false,
       edit: false
     }
     var self = this // this means something different in axios
     axios.get('user/profile', { headers: {Authorization: token}
     }).then(function (response) {
+      console.log(response)
       var user = response.data.user
       self.setState({
         fName: user.fName,
@@ -87,23 +90,50 @@ class SettingsPage extends Component {
                     id='2'
                     onChange={editValues}
                   /> <br />
-                  <TextField
-                    className='text'
-                    hintText={this.state.school}
-                    floatingLabelText='School'
-                    floatingLabelFixed
-                    id='3'
-                    onChange={editValues}
-                  />
                 </div>
-
                 ) : (
-
                   <Settings {...this.state} />
                 )
               }
           />
-          <EditCard title='School' subtitle='Year/Major' data='Hello' edit={this.state.edit} />
+          <EditCard
+            title='School'
+            subtitle='Year/Major'
+            edit={this.state.edit}
+            handleClick={() => handleClick()}
+            data={this.state.edit ? (
+              <div>
+                <h1>Fill the fields that are to be updated</h1>
+                <TextField
+                  className='text'
+                  hintText={this.state.school}
+                  floatingLabelText='School'
+                  floatingLabelFixed
+                  id='3'
+                  onChange={editValues}
+                  /> <br />
+                <TextField
+                  className='text'
+                  hintText={this.state.degree}
+                  floatingLabelText='Degree'
+                  floatingLabelFixed
+                  id='4'
+                  onChange={editValues}
+                  /> <br />
+                <TextField
+                  className='text'
+                  hintText={this.state.year}
+                  floatingLabelText='Year'
+                  floatingLabelFixed
+                  id='5'
+                  onChange={editValues}
+                  />
+              </div>
+                ) : (
+                  <School {...this.state} />
+                )
+              }
+          />
         </div>
       </Base>
 
