@@ -7,6 +7,7 @@ import Divider from 'material-ui/Divider'
 import styled from 'styled-components'
 import { List } from 'material-ui/List'
 import ListItem from './components/ListItem'
+import Tutorial from '../../components/Dashboard/tutorial'
 
 const Wrapper = styled.div`
   display: flex;
@@ -37,6 +38,10 @@ let allViews = Object.keys(BigCalendar.views).map(k => BigCalendar.views[k])
 
 const DashboardPage = () => (
   <Wrapper>
+    <Tutorial
+      text='Close Me'
+      closePopup={this.togglePopup}
+    />
     <Left>
       <Paper style={{ padding: '20px', margin: '10px'}}>
         <h1>Classes</h1>

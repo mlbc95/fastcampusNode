@@ -10,6 +10,7 @@ class SettingsPage extends Component {
     var token = localStorage.getItem('token')
     super(props)
     this.state = {
+      _id: 'NA',
       fName: 'Na',
       lName: 'NA',
       school: 'NA',
@@ -24,6 +25,7 @@ class SettingsPage extends Component {
       console.log(response)
       var user = response.data.user
       self.setState({
+        _id: user.id,
         fName: user.fName,
         lName: user.lName,
         school: user.school
@@ -37,7 +39,7 @@ class SettingsPage extends Component {
       if (this.state.edit) {
         axios.post('user/updateUser', this.state, { headers: {Authorization: localStorage.getItem('token')}
         }).then(function (response) {
-          console.log(response)
+          // console.log(response)
         }).catch(function (error) {
           console.log(error)
         })
