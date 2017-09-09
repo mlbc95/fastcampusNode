@@ -30,7 +30,7 @@ class ControlCenter extends Component {
   }
 
   getProfile () {
-    axios.get('/user/profile', {headers: {Authorization: authHelper.getToken()}})
+    axios.get('/users/profile', {headers: {Authorization: authHelper.getToken()}})
     .then((response) => {
       this.setState({user: response.data.user})
     })
