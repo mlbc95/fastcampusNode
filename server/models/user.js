@@ -1,6 +1,9 @@
 const mongoose = require('mongoose')
 const config = require('../../config/database')
 const bcrypt = require('bcrypt')
+var moment = require('moment')
+
+var date = new Date()
 
 // User Schema
 const UserSchema = mongoose.Schema({
@@ -86,10 +89,16 @@ module.exports.addUser = function (newUser, callback) {
 }
 
 // checks if user's password is correct or not 
-module.exports.comparePassword = function (candidatePassword, hash, callback) {
+module.exports.comparePassword = function (candidatePassword, hash, user, callback) {
   bcrypt.compare(candidatePassword, hash, (err, isMatch) => {
-    if (err) throw err
-    callback(null, isMatch)
+    if (err) {
+      callback(null, !isMatch)
+    }
+    if (isMatch) {
+      // var currentTime = moment.now()
+
+      User.findByIdAndUpdate({_id: mongoose.Types.ObjectId(user._id)}, {lastLogin: new Date()}, callback)
+    }
   })
 }
 
