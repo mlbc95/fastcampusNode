@@ -6,8 +6,8 @@
   "author": "Andres Rodriguez <andrese.rodriguezh@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "concurrently \"nodemon\" \"npm run client\"",
-    "client": "node start-client.js"
+    "start": "node server.js"
+   
   },
   "dependencies": {
     "babel-core": "^6.25.0",
