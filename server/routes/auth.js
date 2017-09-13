@@ -44,6 +44,8 @@ router.post('/signup', (req, res) => {
   console.log(req.body)
   var newUser = new User(req.body)
 
+  // validation here
+
   User.addUser(newUser, (err, user) => {
     if (err) {
       console.log(err)
