@@ -12,16 +12,16 @@ import Web from 'material-ui/svg-icons/av/web'
 
 const data = {
   menus: [
-    { text: 'DashBoard', icon: <Assessment/>, link: '/dashboard' },
-    { text:  'Profile' , icon: <Account_circle/>, link: '/profile'},
-    { text:  'UMSL' , icon: <School/>, link: '/school'},
-    { text:  'Messages' , icon: <Message/>, link: '/messages'},
-    { text:  'Academics' , icon: <Academics/>, link: '/academics'},
-    { text:  'Finantial' , icon: <Finantial/>, link: '/finantial'},
-    { text:  'Settings' , icon: <Settings/>, link: '/settings'},
-    { text: 'Form Page', icon: <Web/>, link: '/form' },
-    { text: 'Table Page', icon: <GridOn/>, link: '/table' },
-    { text: 'Login Page', icon: <PermIdentity/>, link: '/login' }
+    { text: 'DashBoard', icon: <Assessment />, link: '/dashboard' },
+    { text: 'Profile', icon: <Account_circle />, link: '/profile'},
+    { text: 'UMSL', icon: <School />, link: '/school'},
+    { text: 'Messages', icon: <Message />, link: '/messages'},
+    { text: 'Academics', icon: <Academics />, link: '/academics'},
+    { text: 'Finantial', icon: <Finantial />, link: '/finantial'},
+    { text: 'Settings', icon: <Settings />, link: '/settings'},
+    { text: 'Form Page', icon: <Web />, link: '/form' },
+    { text: 'Table Page', icon: <GridOn />, link: '/table' },
+    { text: 'Login Page', icon: <PermIdentity />, link: '/login' }
   ]
 }
 

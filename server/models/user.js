@@ -1,6 +1,9 @@
 const mongoose = require('mongoose')
 const config = require('../../config/database')
 const bcrypt = require('bcrypt')
+var moment = require('moment')
+
+var date = new Date()
 
 // User Schema
 const UserSchema = mongoose.Schema({
@@ -30,49 +33,50 @@ const UserSchema = mongoose.Schema({
   },
   pNumber: {
     type: String
-
+  },
+  year: {
+    type: String
+  },
+  degree: [{
+    type: String,
+    name: String
+  }],
+  classes: [ // course registration number 
+    {
+      courseNumber: Number,
+      className: String,
+      crnNum: Number,
+      section: Number,
+      timeIn: Date,
+      timeOut: Date,
+      professor: String
+    }
+  ],
+  lastLogin: {
+    type: Date
   }
 
 })
 
 const User = module.exports = mongoose.model('User', UserSchema)
 
-module.exports.getUserById = function (id, callback) {
-  User.findById(id, callback)
-}
-
-module.exports.getUserByUsername = function (username, callback) {
-  const query = {username: username}
-  User.findOne(query, callback)
-}
-
-module.exports.addUser = function (newUser, callback) {
-  bcrypt.genSalt(10, (err, salt) => {
+// checks if user's password is correct or not 
+module.exports.comparePassword = function (candidatePassword, hash, user, callback) {
+  bcrypt.compare(candidatePassword, hash, (err, isMatch) => {
     if (err) {
-      console.log('error', err)
-    } else {
-      bcrypt.hash(newUser.password, salt, (err, hash) => {
-        if (err) { console.log('error', err) }
-        newUser.password = hash
-        newUser.save(callback)
-      })
+      callback(null, !isMatch)
+    }
+    if (isMatch) {
+      // var currentTime = moment.now()
+
+      User.findByIdAndUpdate({_id: mongoose.Types.ObjectId(user._id)}, {lastLogin: new Date()}, callback)
     }
   })
 }
 
-module.exports.comparePassword = function (candidatePassword, hash, callback) {
-  bcrypt.compare(candidatePassword, hash, (err, isMatch) => {
-    if (err) throw err
-    callback(null, isMatch)
-  })
-}
-
-module.exports.addUser = function (newUser, callback) {
-  bcrypt.genSalt(10, (err, salt) => {
-    bcrypt.hash(newUser.password, salt, (err, hash) => {
-      if (err) throw err
-      newUser.password = hash
-      newUser.save(callback)
-    })
-  })
+module.exports.getAllUsers = function (callback) {
+  User.find({}, {
+    password: 0,
+    _id: 0
+  }, callback)
 }
