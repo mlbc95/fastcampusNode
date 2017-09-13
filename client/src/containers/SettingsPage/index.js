@@ -20,7 +20,7 @@ class SettingsPage extends Component {
       edit: false
     }
     var self = this // this means something different in axios
-    axios.get('user/profile', { headers: {Authorization: token}
+    axios.get('users/profile', { headers: {Authorization: token}
     }).then(function (response) {
       console.log(response)
       var user = response.data.user
@@ -37,7 +37,7 @@ class SettingsPage extends Component {
   render () {
     const handleClick = async() => {
       if (this.state.edit) {
-        axios.post('user/updateUser', this.state, { headers: {Authorization: localStorage.getItem('token')}
+        axios.post('users/updateUser', this.state, { headers: {Authorization: localStorage.getItem('token')}
         }).then(function (response) {
           // console.log(response)
         }).catch(function (error) {

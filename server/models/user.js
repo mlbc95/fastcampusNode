@@ -1,6 +1,9 @@
 const mongoose = require('mongoose')
 const config = require('../../config/database')
 const bcrypt = require('bcrypt')
+var moment = require('moment')
+
+var date = new Date()
 
 // User Schema
 const UserSchema = mongoose.Schema({
@@ -57,6 +60,7 @@ const UserSchema = mongoose.Schema({
 
 const User = module.exports = mongoose.model('User', UserSchema)
 
+<<<<<<< HEAD
 // returns user information by userID
 module.exports.getUserById = function (id, callback) {
   User.findById(id, callback)
@@ -117,6 +121,20 @@ module.exports.updateUser = function (id, updatedUser, callback) {
 
 module.exports.getAllUsers = function (callback) {
   User.find({}, {password: 0, _id: 0}, callback)
+=======
+// checks if user's password is correct or not 
+module.exports.comparePassword = function (candidatePassword, hash, user, callback) {
+  bcrypt.compare(candidatePassword, hash, (err, isMatch) => {
+    if (err) {
+      callback(null, !isMatch)
+    }
+    if (isMatch) {
+      // var currentTime = moment.now()
+
+      User.findByIdAndUpdate({_id: mongoose.Types.ObjectId(user._id)}, {lastLogin: new Date()}, callback)
+    }
+  })
+>>>>>>> develop/api
 }
 
 module.exports.getAllUsers = function (callback) {

@@ -9,7 +9,9 @@ const tempStyle1 = {
   right: 0,
   bottom: 0,
   margin: 'auto',
-  backgroundcolor: '#000000'
+  // opacity: 0.5,
+  zIndex: 9999,
+  backgroundColor: 'rgba(0, 0, 0, 0.5)'
 }
 const tempStyle2 = {
   position: 'absolute',
