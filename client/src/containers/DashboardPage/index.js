@@ -7,6 +7,7 @@ import Divider from 'material-ui/Divider'
 import styled from 'styled-components'
 import { List } from 'material-ui/List'
 import ListItem from './components/ListItem'
+import Tutorial from '../../components/Dashboard/tutorial'
 
 const Wrapper = styled.div`
   display: flex;

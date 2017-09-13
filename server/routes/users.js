@@ -27,6 +27,25 @@ const classes = require('../data.json')
 
 */
 
+/* 
+    /user/profile | GET | Update user 
+      Authrization 
+      Information Expected : 
+        JSON 
+      Returns:
+        Fail: -> if token is invalid 
+          Unauthroized 
+        Success: 
+          JSON object named user
+          user{
+            fName,
+            lName,
+            userName,
+            email
+          }
+
+*/
+
 // returns user info by token
 router.get('/profile', passport.authenticate('jwt', {session: false}), (req, res, next) => {
   res.json({user: {
@@ -34,27 +53,29 @@ router.get('/profile', passport.authenticate('jwt', {session: false}), (req, res
     fName: req.user.fName,
     lName: req.user.lName,
     userName: req.user.username,
-    email: req.user.email
+    email: req.user.email,
+    degree: req.user.degree
   }})
 })
 
 router.post('/updateUser', (req, res) => {
+  console.log('/updateUser called')
   console.log(req.body)
 
   var updatedUser = {
     fName: req.body.fName,
     lName: req.body.lName,
-    school: req.body.school,
-    email: req.body.email,
-    userName: req.body.userName
+    school: req.body.school
   }
 
-  User.updateUser(req.body.id, updatedUser, (err) => {
+  User.updateUser(req.body._id, updatedUser, (err) => {
     if (err) {
       console.log(err)
       res.json({success: false, msg: 'Error occured, fialed to update '})
+      console.log('Error occured, fialed to update.')
     } else {
       res.json({success: true, msg: 'Updated '})
+      console.log('Updated')
     }
   })
 })
