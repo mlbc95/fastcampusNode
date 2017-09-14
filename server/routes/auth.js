@@ -7,6 +7,10 @@ const config = require('../../config/database')
 const bcrypt = require('bcryptjs')
 const router = new express.Router()
 
+// Not sure where to put this but it is needed to check error array
+function isEmptyObject (obj) {
+  return !Object.keys(obj).length
+}
 /*
   This file contains api calls for user signup, login and profile information.
   api calls
@@ -40,25 +44,63 @@ const router = new express.Router()
 
 // /signup api call
 router.post('/signup', (req, res) => {
+  // Log to find where we are
   console.log('in signup')
   console.log(req.body)
+
+  // Create new user to pass to function
   var newUser = new User(req.body)
 
-  // validation here
-
-  User.addUser(newUser, (err, user) => {
-    if (err) {
-      console.log(err)
-      res.json({success: false,
-        err: err,
-        msg: 'Failed to register user'})
-    } else {
-      const token = jwt.sign(newUser, config.secret, {
-        expiresIn: 604800 // 1 week
+  // Validate the username before checking against the db
+  // We do this as CPU time is cheap compared to having to
+  // search through records on HDD
+  User.validationWrapper(newUser, (errorArray) => {
+    // After initial validation if the array is empty
+    if (isEmptyObject(errorArray)) {
+      // We check to see if the username is unique
+      User.doesUserNameExist(newUser, (err, user) => {
+        // Error handling
+        if (err) {
+          console.log(err)
+          res.json({success: false,
+            err: err,
+            msg: 'Soemthing went wrong on our end.  Plesae try again.'})
+        } else {
+          // No error, check to see if the username is taken
+          if (user !== '[]') {
+            // Means user namename is taken, error out
+            let erArray = {}
+            erArray.username = 'This username is already taken.  Please choose another.'
+            res.json({success: false,
+              msg: erArray
+            })
+          } else {
+            // Username is not taken so add new user
+            // Have not touched this since before 9/9/17
+            User.addUser(newUser, (err, user) => {
+              // Handle error
+              if (err) {
+                console.log(err)
+                res.json({success: false,
+                  err: err})
+              } else {
+                // Add user and set token
+                const token = jwt.sign(newUser, config.secret, {
+                  expiresIn: 604800 // 1 week
+                })
+                res.json({success: true,
+                  token: 'JWT ' + token,
+                  msg: 'User registered'})
+              }
+            })
+          }
+        }
       })
-      res.json({success: true,
-        token: 'JWT ' + token,
-        msg: 'User registered'})
+    } else {
+      // There were errors found, return error object to client for rendering
+      res.json({success: false,
+        msg: errorArray
+      })
     }
   })
 })
@@ -67,6 +109,7 @@ router.post('/signup', (req, res) => {
 router.post('/login', (req, res) => {
   const username = req.body.userName
   const password = req.body.password
+  // console.log('username: ', username, 'password: ', password)
 
   User.getUserByUsername(username, (err, user) => {
     console.log('/auth/login API call called')
@@ -76,7 +119,7 @@ router.post('/login', (req, res) => {
       return res.json({success: false, msg: 'User not found.'})
     }
 
-    User.comparePassword(password, user.password, user, (err, isMatch) => {
+    User.comparePassword(password, user.password, (err, isMatch) => {
       console.log('compare pass')
       if (err) throw err
       if (isMatch) {
