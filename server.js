@@ -54,6 +54,7 @@ const academicRoutes = require('./server/routes/academics')
 const apiRoutes = require('./server/routes/api')
 const userRoute = require('./server/routes/users')
 
+// to push
 // list of backend routes in our app
 app.use('/auth', authRoutes)
 app.use('/academ', academicRoutes)
