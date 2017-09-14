@@ -27,13 +27,20 @@ mongoose.connection.on('error', (err) => {
 })
 const app = express()
 
+// Allow CORS
+app.use(function (req, res, next) {
+  res.header('Access-Control-Allow-Origin', '*')
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
+  next()
+})
+
 // Passport Middleware
 app.use(passport.initialize())
 app.use(passport.session())
 
 const port = process.env.PORT || 3001
 
-// tellint the app to look for static files in these directories 
+// tellint the app to look for static files in these directories
 app.use(express.static('.client/public/index.html'))
 app.use(express.static('./client/dist'))
 app.use(bodyParser.urlencoded({ extended: true }))
@@ -47,7 +54,7 @@ const academicRoutes = require('./server/routes/academics')
 const apiRoutes = require('./server/routes/api')
 const userRoute = require('./server/routes/users')
 
-// list of backend routes in our app 
+// list of backend routes in our app
 app.use('/auth', authRoutes)
 app.use('/academ', academicRoutes)
 app.use('/api', apiRoutes)
