@@ -8,37 +8,37 @@ const bcrypt = require('bcryptjs')
 const router = new express.Router()
 
 /*
-  This file contains api calls for user signup, login and profile information. 
+  This file contains api calls for user signup, login and profile information.
   api calls
-      /auth/signup | POST | Allows user to Sign up 
+      /auth/signup | POST | Allows user to Sign up
         Content-Type : application/json
-        Information Expected 
+        Information Expected
           fName, lName, email, username, password, shcool, password, degree, year
-        Returns: 
+        Returns:
           Fail:
             Error Message
             Boolean | Success | True
-            String | msg | Faild to user 
-            String | err | err msg 
-          Success: 
-            Boolean | Success | Ture 
+            String | msg | Faild to user
+            String | err | err msg
+          Success:
+            Boolean | Success | Ture
             token
             String | msg | User Registered
      ----------------------------------------------------
-     /auth/login | POST | Allows user to Login 
+     /auth/login | POST | Allows user to Login
       Content-Type : application/json
-      Information Expected during login : 
+      Information Expected during login :
         userName
         password
-      Returns: 
-        Fail: 
+      Returns:
+        Fail:
           User not found.
           Wrong password.
         Sucess:
           returns token
 */
 
-// /signup api call 
+// /signup api call
 router.post('/signup', (req, res) => {
   console.log('in signup')
   console.log(req.body)
@@ -63,11 +63,10 @@ router.post('/signup', (req, res) => {
   })
 })
 
-// /login Api call taken in a json and if user exists it returns a token 
+// /login Api call taken in a json and if user exists it returns a token
 router.post('/login', (req, res) => {
   const username = req.body.userName
   const password = req.body.password
-  // console.log('username: ', username, 'password: ', password)
 
   User.getUserByUsername(username, (err, user) => {
     console.log('/auth/login API call called')
