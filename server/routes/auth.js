@@ -53,54 +53,43 @@ router.post('/signup', (req, res) => {
 
   // Validate the username before checking against the db
   // We do this as CPU time is cheap compared to having to
-  // search through records on HDD
-  User.validationWrapper(newUser, (errorArray) => {
-    // After initial validation if the array is empty
-    if (isEmptyObject(errorArray)) {
-      // We check to see if the username is unique
-      User.doesUserNameExist(newUser, (err, user) => {
-        // Error handling
-        if (err) {
-          console.log(err)
-          res.json({success: false,
-            err: err,
-            msg: 'Soemthing went wrong on our end.  Plesae try again.'})
-        } else {
-          // No error, check to see if the username is taken
-          if (user !== '[]') {
-            // Means user namename is taken, error out
-            let erArray = {}
-            erArray.username = 'This username is already taken.  Please choose another.'
-            res.json({success: false,
-              msg: erArray
-            })
-          } else {
-            // Username is not taken so add new user
-            // Have not touched this since before 9/9/17
-            User.addUser(newUser, (err, user) => {
-              // Handle error
-              if (err) {
-                console.log(err)
-                res.json({success: false,
-                  err: err})
-              } else {
-                // Add user and set token
-                const token = jwt.sign(newUser, config.secret, {
-                  expiresIn: 604800 // 1 week
-                })
-                res.json({success: true,
-                  token: 'JWT ' + token,
-                  msg: 'User registered'})
-              }
-            })
-          }
-        }
-      })
-    } else {
-      // There were errors found, return error object to client for rendering
+  // search through records on HD
+  User.doesUserNameExist(newUser, (err, user) => {
+    // Error handling
+    if (err) {
+      console.log(err)
       res.json({success: false,
-        msg: errorArray
-      })
+        err: err,
+        msg: 'Soemthing went wrong on our end.  Plesae try again.'})
+    } else {
+      // No error, check to see if the username is taken
+      if (user !== '[]') {
+        // Means user namename is taken, error out
+        let erArray = {}
+        erArray.username = 'This username is already taken.  Please choose another.'
+        res.json({success: false,
+          msg: erArray
+        })
+      } else {
+        // Username is not taken so add new user
+        // Have not touched this since before 9/9/17
+        User.addUser(newUser, (err, user) => {
+          // Handle error
+          if (err) {
+            console.log(err)
+            res.json({success: false,
+              err: err})
+          } else {
+            // Add user and set token
+            const token = jwt.sign(newUser, config.secret, {
+              expiresIn: 604800 // 1 week
+            })
+            res.json({success: true,
+              token: 'JWT ' + token,
+              msg: 'User registered'})
+          }
+        })
+      }
     }
   })
 })
