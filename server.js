@@ -39,7 +39,7 @@ app.use(function (req, res, next) {
 app.use(passport.initialize())
 app.use(passport.session())
 
-const port = process.env.PORT || 3001
+const port = process.env.PORT || 3000
 
 // tellint the app to look for static files in these directories
 app.use(express.static('.client/public/index.html'))
