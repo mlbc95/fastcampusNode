@@ -12542,274 +12542,298 @@
       {
         "Course number ": "4143",
         "Class name ": "Inquiries in World History",
-        "crn #": "13544",
-        "section": "002",
-        "time ": "ARR",
-        "professor": "Fernlund,K"
+        "classes":[
+          {
+            "crn #": "13544",
+            "section": "002",
+            "time ": "ARR",
+            "professor": "Fernlund,K"
+          }
+        ]
       },
       {
         "Course number ": "4999",
         "Class name ": "Senior Seminar",
-        "crn #": "13534",
-        "section": "1",
-        "time ": "08:30 - 10:35 am",
-        "professor": "HC -LEGRS"
-      },
-      {
-        "Course number ": "4999",
-        "Class name ": "Senior Seminar",
-        "crn #": "13535",
-        "section": "2",
-        "time ": "ARR",
-        "professor": "ONLINE"
+        "classes":[
+          {
+            "crn #": "13534",
+            "section": "1",
+            "time ": "08:30 - 10:35 am",
+            "professor": "Acsay,P"
+          },
+          {
+            "crn #": "13535",
+            "section": "2",
+            "time ": "ARR",
+            "professor": "Ray,G"
+          }
+        ]
       },
       {
         "Course number ": "5142",
         "Class name ": "Advanced Inquiries in U.S. History",
-        "crn #": "15161",
-        "section": "G01",
-        "time ": "02:00 - 04:30 pm",
-        "professor": "Acsay,P"
+        "classes":[
+          {
+            "crn #": "15161",
+            "section": "G01",
+            "time ": "02:00 - 04:30 pm",
+            "professor": "Acsay,P"
+          }
+        ]
       },
       {
         "Course number ": "5143",
         "Class name ": "Advanced Inquiries in World History",
-        "crn #": "13546",
-        "section": "G01",
-        "time ": "ARR",
-        "professor": "Ray,G"
+        "classes":[
+          {
+            "crn #": "13546",
+            "section": "G01",
+            "time ": "ARR",
+            "professor": "Ray,G"
+          }
+        ]
       },
       {
         "Course number ": "6000",
         "Class name ": "The Historian's Craft",
-        "crn #": "13536",
-        "section": "G01",
-        "time ": "05:30 - 08:10 pm",
-        "professor": "Hurley,A"
+        "classes":[
+          {
+            "crn #": "13536",
+            "section": "G01",
+            "time ": "05:30 - 08:10 pm",
+            "professor": "Hurley,A"
+          }
+        ]
       },
       {
         "Course number ": "6001",
         "Class name ": "Introduction to Public History and Cultural Heritage",
-        "crn #": "13548",
-        "section": "G01",
-        "time ": "",
-        "professor": "Fernlund,K"
+        "classes":[
+          {
+            "crn #": "13548",
+            "section": "G01",
+            "time ": "",
+            "professor": "Fernlund,K"
+          }
+        ]
       },
       {
         "Course number ": "6003",
         "Class name ": "Economics of Museums and Heritage",
-        "crn #": "15224",
-        "section": "G01",
-        "time ": "05:30 - 08:10 pm",
-        "professor": "Kang,M"
-      },
-      {
-        "Course number ": "6116",
-        "Class name ": "Historical Thinking in Theory and Practice II",
-        "crn #": "15152",
-        "section": "G01",
-        "time ": "04:00 - 06:30 pm",
-        "professor": ""
+        "classes":[
+          {
+            "crn #": "15224",
+            "section": "G01",
+            "time ": "05:30 - 08:10 pm",
+            "professor": "Kang,M"
+          }
+        ]
       },
       {
         "Course number ": "6121",
         "Class name ": "Directed Readings",
-        "crn #": "14174",
-        "section": "G01",
-        "time ": "ARR",
-        "professor": "Clark,A"
-      },
-      {
-        "Course number ": "6121",
-        "Class name ": "Directed Readings",
-        "crn #": "14175",
-        "section": "G02",
-        "time ": "ARR",
-        "professor": "Westhoff,L"
-      },
-      {
-        "Course number ": "6121",
-        "Class name ": "Directed Readings",
-        "crn #": "14177",
-        "section": "G03",
-        "time ": "ARR",
-        "professor": "Acsay,P"
-      },
-      {
-        "Course number ": "6121",
-        "Class name ": "Directed Readings",
-        "crn #": "14178",
-        "section": "G04",
-        "time ": "ARR",
-        "professor": "Bliss,R"
-      },
-      {
-        "Course number ": "6121",
-        "Class name ": "Directed Readings",
-        "crn #": "14179",
-        "section": "G05",
-        "time ": "ARR",
-        "professor": "Cohen,D"
-      },
-      {
-        "Course number ": "6121",
-        "Class name ": "Directed Readings",
-        "crn #": "14180",
-        "section": "G06",
-        "time ": "ARR",
-        "professor": "Dowden,P"
-      },
-      {
-        "Course number ": "6121",
-        "Class name ": "Directed Readings",
-        "crn #": "14181",
-        "section": "G07",
-        "time ": "ARR",
-        "professor": "Fausz,J"
-      },
-      {
-        "Course number ": "6121",
-        "Class name ": "Directed Readings",
-        "crn #": "14182",
-        "section": "G08",
-        "time ": "ARR",
-        "professor": "Fernlund,K"
-      },
-      {
-        "Course number ": "6121",
-        "Class name ": "Directed Readings",
-        "crn #": "14183",
-        "section": "G09",
-        "time ": "ARR",
-        "professor": "Gerteis,L"
-      },
-      {
-        "Course number ": "6121",
-        "Class name ": "Directed Readings",
-        "crn #": "14184",
-        "section": "G10",
-        "time ": "ARR",
-        "professor": "Gillette,M"
-      },
-      {
-        "Course number ": "6121",
-        "Class name ": "Directed Readings",
-        "crn #": "14185",
-        "section": "G11",
-        "time ": "ARR",
-        "professor": "Hurley,A"
-      },
-      {
-        "Course number ": "6121",
-        "Class name ": "Directed Readings",
-        "crn #": "14187",
-        "section": "G12",
-        "time ": "ARR",
-        "professor": "Kang,M"
-      },
-      {
-        "Course number ": "6121",
-        "Class name ": "Directed Readings",
-        "crn #": "14188",
-        "section": "G13",
-        "time ": "ARR",
-        "professor": "Moskowitz,K"
-      },
-      {
-        "Course number ": "6121",
-        "Class name ": "Directed Readings",
-        "crn #": "14189",
-        "section": "G14",
-        "time ": "ARR",
-        "professor": ""
-      },
-      {
-        "Course number ": "6121",
-        "Class name ": "Directed Readings",
-        "crn #": "14190",
-        "section": "G15",
-        "time ": "ARR",
-        "professor": "Ray,G"
+        "classes":[
+          {
+            "crn #": "14174",
+            "section": "G01",
+            "time ": "ARR",
+            "professor": "Clark,A"
+          },
+          {
+            "crn #": "14175",
+            "section": "G02",
+            "time ": "ARR",
+            "professor": "Westhoff,L"
+          },
+          {
+            "crn #": "14177",
+            "section": "G03",
+            "time ": "ARR",
+            "professor": "Acsay,P"
+          },
+          {
+            "crn #": "14178",
+            "section": "G04",
+            "time ": "ARR",
+            "professor": "Bliss,R"
+          },
+          {
+            "crn #": "14179",
+            "section": "G05",
+            "time ": "ARR",
+            "professor": "Cohen,D"
+          },
+          {
+            "crn #": "14180",
+            "section": "G06",
+            "time ": "ARR",
+            "professor": "Dowden,P"
+          },
+          {
+            "crn #": "14181",
+            "section": "G07",
+            "time ": "ARR",
+            "professor": "Fausz,J"
+          },
+          {
+            "crn #": "14182",
+            "section": "G08",
+            "time ": "ARR",
+            "professor": "Fernlund,K"
+          },
+          {
+            "crn #": "14183",
+            "section": "G09",
+            "time ": "ARR",
+            "professor": "Gerteis,L"
+          },
+          {
+            "crn #": "14184",
+            "section": "G10",
+            "time ": "ARR",
+            "professor": "Gillette,M"
+          },
+          {
+            "crn #": "14185",
+            "section": "G11",
+            "time ": "ARR",
+            "professor": "Hurley,A"
+          },
+          {
+            "crn #": "14187",
+            "section": "G12",
+            "time ": "ARR",
+            "professor": "Kang,M"
+          },
+          {
+            "crn #": "14188",
+            "section": "G13",
+            "time ": "ARR",
+            "professor": "Moskowitz,K"
+          },
+          {
+            "crn #": "14189",
+            "section": "G14",
+            "time ": "ARR",
+            "professor": ""
+          },
+          {
+            "crn #": "14190",
+            "section": "G15",
+            "time ": "ARR",
+            "professor": "Ray,G"
+          }
+        ]
       },
       {
         "Course number ": "6122",
         "Class name ": "Collaborative Research",
-        "crn #": "14191",
-        "section": "G01",
-        "time ": "ARR",
-        "professor": "Schwantes,C"
+        "classes":[
+          {
+            "crn #": "14191",
+            "section": "G01",
+            "time ": "ARR",
+            "professor": "Schwantes,C"
+          }
+        ]
       },
       {
         "Course number ": "6122",
         "Class name ": "Collaborative Research",
-        "crn #": "14192",
-        "section": "G02",
-        "time ": "ARR",
-        "professor": "Westhoff,L"
+        "classes":[
+        ]
+
       },
       {
         "Course number ": "6123",
         "Class name ": "Thesis Seminar",
-        "crn #": "14193",
-        "section": "G01",
-        "time ": "ARR",
-        "professor": "Hurley,A"
+        "classes":[
+          {
+            "crn #": "14193",
+            "section": "G01",
+            "time ": "ARR",
+            "professor": "Hurley,A"
+          }
+        ]
       },
       {
         "Course number ": "6124",
         "Class name ": "Graduate Internship",
-        "crn #": "14195",
-        "section": "G01",
-        "time ": "ARR",
-        "professor": "Gillette,M"
+        "classes":[
+          {
+            "crn #": "14195",
+            "section": "G01",
+            "time ": "ARR",
+            "professor": "Gillette,M"
+          }
+        ]
       },
       {
         "Course number ": "6131",
         "Class name ": "Museum Origins and Evolution",
-        "crn #": "13550",
-        "section": "G01",
-        "time ": "02:00 - 04:40 pm",
-        "professor": "Hurley,A"
+        "classes":[
+          {
+            "crn #": "13550",
+            "section": "G01",
+            "time ": "02:00 - 04:40 pm",
+            "professor": "Hurley,A"
+          }
+        ]
       },
       {
         "Course number ": "6138",
         "Class name ": "Museum Studies Master's Project",
-        "crn #": "14742",
-        "section": "G01",
-        "time ": "02:00 - 04:40 pm",
-        "professor": "Hurley,A"
+        "classes":[
+        ]
+
       },
       {
         "Course number ": "6139",
         "Class name ": "Practicum In Exhibit & Program Development",
-        "crn #": "15432",
-        "section": "G01",
-        "time ": "02:00 - 04:40 pm",
-        "professor": "Zarucchi,J"
+        "classes":[
+          {
+            "crn #": "15432",
+            "section": "G01",
+            "time ": "02:00 - 04:40 pm",
+            "professor": "Zarucchi,J"
+          }
+        ]
       },
       {
         "Course number ": "6142",
         "Class name ": "Readings in U.S. History",
-        "crn #": "13589",
-        "section": "G01",
-        "time ": "05:30 - 08:10 pm",
-        "professor": "Gillette,M"
+        "classes":[
+          {
+            "crn #": "13589",
+            "section": "G01",
+            "time ": "05:30 - 08:10 pm",
+            "professor": "Gillette,M"
+          }
+        ]
       },
       {
         "Course number ": "6142",
         "Class name ": "Readings in U.S. History",
-        "crn #": "15326",
-        "section": "G02",
-        "time ": "09:00 - 11:50 am",
-        "professor": "Gillette,M"
+        "classes":[
+          {
+            "crn #": "15326",
+            "section": "G02",
+            "time ": "09:00 - 11:50 am",
+            "professor": "Gillette,M"
+          }
+        ]
       },
       {
         "Course number ": "6143",
         "Class name ": "Readings in World History",
-        "crn #": "14715",
-        "section": "G01",
-        "time ": "ARR",
-        "professor": "Bliss,R"
+        "classes":[
+          {
+            "crn #": "14715",
+            "section": "G01",
+            "time ": "ARR",
+            "professor": "Bliss,R"
+          }
+        ]
       }
     ]
   },
@@ -12831,1404 +12855,1403 @@
     ]
   },
   {
-    "Course number ": "Honors",
-    "Class name ": "",
-    "crn #": "",
-    "section": "",
-    "time ": "",
-    "professor": ""
-  },
-  {
-    "Course number ": "1100",
-    "Class name ": "Honors Freshman Composition",
-    "crn #": "11345",
-    "section": "1",
-    "time ": "09:30 - 10:45 am",
-    "professor": "Bueltmann,J"
-  },
-  {
-    "Course number ": "1100",
-    "Class name ": "Honors Freshman Composition",
-    "crn #": "11346",
-    "section": "2",
-    "time ": "12:30 - 01:45 pm",
-    "professor": ""
-  },
-  {
-    "Course number ": "1100",
-    "Class name ": "Honors Freshman Composition",
-    "crn #": "11347",
-    "section": "3",
-    "time ": "11:00 - 12:15 pm",
-    "professor": "Cormier,D"
-  },
-  {
-    "Course number ": "1110",
-    "Class name ": "Western Traditions: Humanities",
-    "crn #": "11348",
-    "section": "1",
-    "time ": "02:00 - 03:15 pm",
-    "professor": "Cormier,D"
-  },
-  {
-    "Course number ": "1200",
-    "Class name ": "Freshman Symposium: Cultural Traditions I - Humanities",
-    "crn #": "11349",
-    "section": "1",
-    "time ": "09:30 - 10:45 am",
-    "professor": "Delvaux,K"
-  },
-  {
-    "Course number ": "1200",
-    "Class name ": "Freshman Symposium: Cultural Traditions I - Humanities",
-    "crn #": "11350",
-    "section": "2",
-    "time ": "12:30 - 01:45 pm",
-    "professor": "Oman,K"
-  },
-  {
-    "Course number ": "1200",
-    "Class name ": "Freshman Symposium: Cultural Traditions I - Humanities",
-    "crn #": "11351",
-    "section": "3",
-    "time ": "12:30 - 01:45 pm",
-    "professor": "Torrusio,A"
-  },
-  {
-    "Course number ": "1200",
-    "Class name ": "Freshman Symposium: Cultural Traditions I - Humanities",
-    "crn #": "11352",
-    "section": "4",
-    "time ": "11:00 - 12:15 pm",
-    "professor": "Torrusio,A"
-  },
-  {
-    "Course number ": "1200",
-    "Class name ": "Freshman Symposium: Cultural Traditions I - Humanities",
-    "crn #": "11379",
-    "section": "5",
-    "time ": "02:00 - 03:15 pm",
-    "professor": "Friedline,G"
-  },
-  {
-    "Course number ": "1202",
-    "Class name ": "Freshman Symposium: Cultural",
-    "crn #": "11442",
-    "section": "1",
-    "time ": "09:30 - 10:45 am",
-    "professor": "Baldus,K"
-  },
-  {
-    "Course number ": "1202",
-    "Class name ": "Freshman Symposium: Cultural",
-    "crn #": "11443",
-    "section": "2",
-    "time ": "02:00 - 03:15 pm",
-    "professor": "Baldus,K"
-  },
-  {
-    "Course number ": "1230",
-    "Class name ": "American Traditions: Social And Behavioral Sciences",
-    "crn #": "11353",
-    "section": "1",
-    "time ": "09:30 - 10:45 am",
-    "professor": "Schiessl,C"
-  },
-  {
-    "Course number ": "1230",
-    "Class name ": "American Traditions: Social And Behavioral Sciences",
-    "crn #": "11354",
-    "section": "2",
-    "time ": "09:30 - 10:45 am",
-    "professor": "Schiessl,C"
-  },
-  {
-    "Course number ": "1230",
-    "Class name ": "American Traditions: Social And Behavioral Sciences",
-    "crn #": "11355",
-    "section": "3",
-    "time ": "12:30 - 01:45 pm",
-    "professor": "Wilson,C"
-  },
-  {
-    "Course number ": "1310",
-    "Class name ": "Non-Western Traditions Series Humanities",
-    "crn #": "11450",
-    "section": "1",
-    "time ": "12:30 - 01:45 pm",
-    "professor": "Herrick,C"
-  },
-  {
-    "Course number ": "1310",
-    "Class name ": "Non-Western Traditions Series Humanities",
-    "crn #": "11452",
-    "section": "2",
-    "time ": "05:30 - 06:45 pm",
-    "professor": "Herrick,C"
-  },
-  {
-    "Course number ": "1330",
-    "Class name ": "Non-Western Traditions Series-Social Sciences",
-    "crn #": "11356",
-    "section": "1",
-    "time ": "11:00 - 12:15 pm",
-    "professor": "Walterscheid,K"
-  },
-  {
-    "Course number ": "1330",
-    "Class name ": "Non-Western Traditions Series-Social Sciences",
-    "crn #": "15064",
-    "section": "2",
-    "time ": "03:30 - 04:45 pm",
-    "professor": "TBA,I"
-  },
-  {
-    "Course number ": "2010",
-    "Class name ": "Inquiries In The Humanities",
-    "crn #": "11357",
-    "section": "1",
-    "time ": "11:00 - 12:15 pm",
-    "professor": "Born,C"
-  },
-  {
-    "Course number ": "2010",
-    "Class name ": "Inquiries In The Humanities",
-    "crn #": "11381",
-    "section": "2",
-    "time ": "02:00 - 03:15 pm",
-    "professor": "Vermilion,M"
-  },
-  {
-    "Course number ": "2010",
-    "Class name ": "Inquiries In The Humanities",
-    "crn #": "11385",
-    "section": "3",
-    "time ": "12:30 - 01:45 pm",
-    "professor": "Olin,L"
-  },
-  {
-    "Course number ": "2010",
-    "Class name ": "Inquiries In The Humanities",
-    "crn #": "11389",
-    "section": "E01",
-    "time ": "05:30 - 08:10 pm",
-    "professor": "Higgins,D"
-  },
-  {
-    "Course number ": "2010",
-    "Class name ": "Inquiries In The Humanities",
-    "crn #": "15075",
-    "section": "4",
-    "time ": "09:30 - 10:45 am",
-    "professor": "Gerth,D"
-  },
-  {
-    "Course number ": "2020",
-    "Class name ": "Inquiries In The Fine And Performing Arts",
-    "crn #": "11390",
-    "section": "1",
-    "time ": "02:00 - 04:40 pm",
-    "professor": "Wolfe,K"
-  },
-  {
-    "Course number ": "2030",
-    "Class name ": " Inquiries In The Social And Behavioral Sciences",
-    "crn #": "11392",
-    "section": "1",
-    "time ": "11:00 - 12:15 pm",
-    "professor": "Lakshmanan,M"
-  },
-  {
-    "Course number ": "2030",
-    "Class name ": " Inquiries In The Social And Behavioral Sciences",
-    "crn #": "11358",
-    "section": "2",
-    "time ": "03:30 - 04:45 pm",
-    "professor": "Friedline,G"
-  },
-  {
-    "Course number ": "2030",
-    "Class name ": " Inquiries In The Social And Behavioral Sciences",
-    "crn #": "11359",
-    "section": "3",
-    "time ": "12:30 - 01:45 pm",
-    "professor": "Votaw,K"
-  },
-  {
-    "Course number ": "2030",
-    "Class name ": " Inquiries In The Social And Behavioral Sciences",
-    "crn #": "15139",
-    "section": "E01",
-    "time ": "05:30 - 08:10 pm",
-    "professor": "Votaw,K"
-  },
-  {
-    "Course number ": "2050",
-    "Class name ": "Inquiries In The Natural Sciences",
-    "crn #": "11456",
-    "section": "1",
-    "time ": "04:00 - 05:15 pm",
-    "professor": "Votaw,K"
-  },
-  {
-    "Course number ": "2050",
-    "Class name ": "Inquiries In The Natural Sciences",
-    "crn #": "10803",
-    "section": "XC1",
-    "time ": "02:00 - 03:15 pm",
-    "professor": "Petty,C"
-  },
-  {
-    "Course number ": "2051",
-    "Class name ": "Inquiries in the Sciences: Laboratory or Field Work",
-    "crn #": "10855",
-    "section": "XC1",
-    "time ": "03:30 - 04:15 pm",
-    "professor": "Pope,H"
-  },
-  {
-    "Course number ": "2060",
-    "Class name ": "Inquiries In Business",
-    "crn #": "11382",
-    "section": "1",
-    "time ": "09:30 - 10:45 am",
-    "professor": "Granger,C"
-  },
-  {
-    "Course number ": "2080",
-    "Class name ": "Inquiries In Nursing",
-    "crn #": "11363",
-    "section": "1",
-    "time ": "02:00 - 04:40 pm",
-    "professor": "Granger,C"
-  },
-  {
-    "Course number ": "2330",
-    "Class name ": "Cultural Diversity In The Social Sciences",
-    "crn #": "11387",
-    "section": "1",
-    "time ": "03:30 - 04:45 pm",
-    "professor": "Grimm-Howell,E"
-  },
-  {
-    "Course number ": "3010",
-    "Class name ": "Advanced Honors Seminar In The Humanities",
-    "crn #": "11364",
-    "section": "1",
-    "time ": "02:00 - 04:40 pm",
-    "professor": "Nelson,J"
-  },
-  {
-    "Course number ": "3010",
-    "Class name ": "Advanced Honors Seminar In The Humanities",
-    "crn #": "11366",
-    "section": "2",
-    "time ": "11:00 - 12:15 pm",
-    "professor": "Weber,K"
-  },
-  {
-    "Course number ": "3010",
-    "Class name ": "Advanced Honors Seminar In The Humanities",
-    "crn #": "11399",
-    "section": "3",
-    "time ": "02:00 - 04:40 pm",
-    "professor": "Carroll,J"
-  },
-  {
-    "Course number ": "3020",
-    "Class name ": "Advanced Honors Seminar In The Fine And Performing Arts",
-    "crn #": "11393",
-    "section": "1",
-    "time ": "12:30 - 01:45 pm",
-    "professor": "Nigro,K"
-  },
-  {
-    "Course number ": "3030",
-    "Class name ": "Advanced Honors Seminar In The Social And Behavioral Sciences",
-    "crn #": "11367",
-    "section": "1",
-    "time ": "12:30 - 01:45 pm",
-    "professor": "Delston,J"
-  },
-  {
-    "Course number ": "3030",
-    "Class name ": "Advanced Honors Seminar In The Social And Behavioral Sciences",
-    "crn #": "11368",
-    "section": "2",
-    "time ": "11:00 - 12:15 pm",
-    "professor": "Allen,K"
-  },
-  {
-    "Course number ": "3030",
-    "Class name ": "Advanced Honors Seminar In The Social And Behavioral Sciences",
-    "crn #": "11391",
-    "section": "3",
-    "time ": "11:00 - 12:15 pm",
-    "professor": "Wilson,C"
-  },
-  {
-    "Course number ": "3030",
-    "Class name ": "Advanced Honors Seminar In The Social And Behavioral Sciences",
-    "crn #": "11394",
-    "section": "4",
-    "time ": "12:30 - 03:10 pm",
-    "professor": "Hudson,R"
-  },
-  {
-    "Course number ": "3030",
-    "Class name ": "Advanced Honors Seminar In The Social And Behavioral Sciences",
-    "crn #": "11395",
-    "section": "5",
-    "time ": "02:00 - 04:40 pm",
-    "professor": "Schiessl,C"
-  },
-  {
-    "Course number ": "3030",
-    "Class name ": "Advanced Honors Seminar In The Social And Behavioral Sciences",
-    "crn #": "12983",
-    "section": "6",
-    "time ": "04:15 - 06:55 pm",
-    "professor": "Hurwicz,M"
-  },
-  {
-    "Course number ": "3030",
-    "Class name ": "Advanced Honors Seminar In The Social And Behavioral Sciences",
-    "crn #": "15086",
-    "section": "7",
-    "time ": "09:30 - 12:10 pm",
-    "professor": "Segal,U"
-  },
-  {
-    "Course number ": "3030",
-    "Class name ": "Advanced Honors Seminar In The Social And Behavioral Sciences",
-    "crn #": "15157",
-    "section": "8",
-    "time ": "12:30 - 01:45 pm",
-    "professor": "Porterfield,S"
-  },
-  {
-    "Course number ": "3100",
-    "Class name ": "Honors Advanced Composition: Writing The City",
-    "crn #": "11369",
-    "section": "1",
-    "time ": "09:30 - 10:45 am",
-    "professor": "Phipps,S"
-  },
-  {
-    "Course number ": "3100",
-    "Class name ": "Honors Advanced Composition: Writing The City",
-    "crn #": "12131",
-    "section": "2",
-    "time ": "11:00 - 12:15 pm",
-    "professor": "Brownell,S"
-  },
-  {
-    "Course number ": "3100",
-    "Class name ": "Honors Advanced Composition: Writing The City",
-    "crn #": "15078",
-    "section": "3",
-    "time ": "03:30 - 04:45 pm",
-    "professor": "Allen,K"
-  },
-  {
-    "Course number ": "3160",
-    "Class name ": "Honors Writing In The Sciences",
-    "crn #": "11397",
-    "section": "1",
-    "time ": "02:00 - 03:15 pm",
-    "professor": "Oman,K"
-  },
-  {
-    "Course number ": "4100",
-    "Class name ": "Independent Portfolio Writing",
-    "crn #": "11371",
-    "section": "1",
-    "time ": "12:30 - 01:30 pm",
-    "professor": "Oman,K"
-  },
-  {
-    "Course number ": "4100",
-    "Class name ": "Independent Portfolio Writing",
-    "crn #": "11372",
-    "section": "2",
-    "time ": "12:30 - 01:30 pm",
-    "professor": "Torrusio,A"
-  },
-  {
-    "Course number ": "4100",
-    "Class name ": "Independent Portfolio Writing",
-    "crn #": "11388",
-    "section": "3",
-    "time ": "12:30 - 01:30 pm",
-    "professor": "Wilson,C"
-  },
-  {
-    "Course number ": "4100",
-    "Class name ": "Independent Portfolio Writing",
-    "crn #": "11398",
-    "section": "4",
-    "time ": "12:30 - 01:30 pm",
-    "professor": "Walterscheid,K"
-  },
-  {
-    "Course number ": "4900",
-    "Class name ": "Independent Study In Honors",
-    "crn #": "11373",
-    "section": "1",
-    "time ": "ARR",
-    "professor": "Gleason,N"
-  },
-  {
-    "Course number ": "4900",
-    "Class name ": "Independent Study In Honors",
-    "crn #": "11374",
-    "section": "2",
-    "time ": "ARR",
-    "professor": "TBA,I"
-  },
-  {
-    "Course number ": "4900",
-    "Class name ": "Independent Study In Honors",
-    "crn #": "11375",
-    "section": "3",
-    "time ": "ARR",
-    "professor": "Baldus,K"
-  },
-  {
-    "Course number ": "4900",
-    "Class name ": "Independent Study In Honors",
-    "crn #": "11376",
-    "section": "4",
-    "time ": "ARR",
-    "professor": "Friedline,G"
-  },
-  {
-    "Course number ": "4900",
-    "Class name ": "Independent Study In Honors",
-    "crn #": "11377",
-    "section": "5",
-    "time ": "ARR",
-    "professor": "Gerth,D"
-  },
-  {
-    "Course number ": "4900",
-    "Class name ": "Independent Study In Honors",
-    "crn #": "11378",
-    "section": "6",
-    "time ": "ARR",
-    "professor": "Gleason,N"
-  },
-  {
-    "Course number ": "4900",
-    "Class name ": "Independent Study In Honors",
-    "crn #": "11380",
-    "section": "7",
-    "time ": "ARR",
-    "professor": "Schiessl,C"
-  },
-  {
-    "Course number ": "4900",
-    "Class name ": "Independent Study In Honors",
-    "crn #": "11400",
-    "section": "8",
-    "time ": "02:00 - 04:40 pm",
-    "professor": "Torrusio,A"
-  },
-  {
-    "Course number ": "4900",
-    "Class name ": "Independent Study In Honors",
-    "crn #": "11451",
-    "section": "9",
-    "time ": "08:30 - 10:30 am",
-    "professor": "Votaw,K"
-  },
-  {
-    "Course number ": "4900",
-    "Class name ": "Independent Study In Honors",
-    "crn #": "15063",
-    "section": "11",
-    "time ": "03:30 - 04:30 pm",
-    "professor": "Friedline,G"
-  },
-  {
-    "Course number ": "4900",
-    "Class name ": "Independent Study In Honors",
-    "crn #": "15232",
-    "section": "10",
-    "time ": "11:00 - 12:00 pm",
-    "professor": "Gerth,D"
-  },
-  {
-    "Course number ": "4910",
-    "Class name ": "Independent Study: Internships",
-    "crn #": "11384",
-    "section": "1",
-    "time ": "ARR",
-    "professor": "Rohloff,W"
-  },
-  {
-    "Course number ": "4910",
-    "Class name ": "Independent Study: Internships",
-    "crn #": "11386",
-    "section": "2",
-    "time ": "ARR",
-    "professor": "Gerth,D"
-  },
-  {
-    "Course number ": "Information Systems",
-    "Class name ": "",
-    "crn #": "",
-    "section": "",
-    "time ": "",
-    "professor": "Friedline,G"
-  },
-  {
-    "Course number ": "1800",
-    "Class name ": "Computers And Information Systems",
-    "crn #": "12206",
-    "section": "1",
-    "time ": "12:30 - 01:45 pm",
-    "professor": "Gleason,N"
-  },
-  {
-    "Course number ": "1800",
-    "Class name ": "Computers And Information Systems",
-    "crn #": "12207",
-    "section": "2",
-    "time ": "02:00 - 03:15 pm",
-    "professor": ""
-  },
-  {
-    "Course number ": "1800",
-    "Class name ": "Computers And Information Systems",
-    "crn #": "12208",
-    "section": "3",
-    "time ": "09:30 - 10:45 am",
-    "professor": "Duncan,M"
-  },
-  {
-    "Course number ": "1800",
-    "Class name ": "Computers And Information Systems",
-    "crn #": "12209",
-    "section": "4",
-    "time ": "11:00 - 12:15 pm",
-    "professor": "Duncan,M"
-  },
-  {
-    "Course number ": "1800",
-    "Class name ": "Computers And Information Systems",
-    "crn #": "12210",
-    "section": "5",
-    "time ": "ARR",
-    "professor": "Duncan,M"
-  },
-  {
-    "Course number ": "1800",
-    "Class name ": "Computers And Information Systems",
-    "crn #": "12211",
-    "section": "6",
-    "time ": "ARR",
-    "professor": "Duncan,M"
-  },
-  {
-    "Course number ": "1800",
-    "Class name ": "Computers And Information Systems",
-    "crn #": "12212",
-    "section": "7",
-    "time ": "ARR",
-    "professor": "Lovelace,R"
-  },
-  {
-    "Course number ": "1800",
-    "Class name ": "Computers And Information Systems",
-    "crn #": "12213",
-    "section": "8",
-    "time ": "ARR",
-    "professor": "Duncan,M"
-  },
-  {
-    "Course number ": "2800",
-    "Class name ": "Information Systems Concepts And Applications",
-    "crn #": "12214",
-    "section": "1",
-    "time ": "09:00 - 09:50 am",
-    "professor": "Duncan,M"
-  },
-  {
-    "Course number ": "2800",
-    "Class name ": "Information Systems Concepts And Applications",
-    "crn #": "12224",
-    "section": "S01",
-    "time ": "ARR",
-    "professor": "Lovelace,R"
-  },
-  {
-    "Course number ": "3806",
-    "Class name ": "Managerial Applications Of Object-Oriented Programming I",
-    "crn #": "12227",
-    "section": "1",
-    "time ": "06:55 - 09:35 pm",
-    "professor": "McCarthy,R"
-  },
-  {
-    "Course number ": "3806",
-    "Class name ": "Managerial Applications Of Object-Oriented Programming I",
-    "crn #": "12228",
-    "section": "2",
-    "time ": "ARR",
-    "professor": "Pande,A"
-  },
-  {
-    "Course number ": "3810",
-    "Class name ": "Information Systems Analysis",
-    "crn #": "12229",
-    "section": "1",
-    "time ": "11:00 - 12:15 pm",
-    "professor": "Lawton,B"
-  },
-  {
-    "Course number ": "3816",
-    "Class name ": "Managerial Application Of Object-Oriented Programming II",
-    "crn #": "12230",
-    "section": "E01",
-    "time ": "06:55 - 09:35 pm",
-    "professor": "Pande,A"
-  },
-  {
-    "Course number ": "3816",
-    "Class name ": "Managerial Application Of Object-Oriented Programming II",
-    "crn #": "",
-    "section": "",
-    "time ": "",
-    "professor": "Sauter,V"
-  },
-  {
-    "Course number ": "3841",
-    "Class name ": "Enterprise Information Systems",
-    "crn #": "12232",
-    "section": "1",
-    "time ": "09:00 - 12:00 pm",
-    "professor": "Lawton,B"
-  },
-  {
-    "Course number ": "3842",
-    "Class name ": "Data Networks and Security",
-    "crn #": "12233",
-    "section": "E01",
-    "time ": "06:55 - 09:35 pm",
-    "professor": ""
-  },
-  {
-    "Course number ": "3844",
-    "Class name ": "Developing Business Applications In .NET",
-    "crn #": "12235",
-    "section": "1",
-    "time ": "ARR",
-    "professor": "Sumner,M"
-  },
-  {
-    "Course number ": "3845",
-    "Class name ": "Database Management Systems",
-    "crn #": "12237",
-    "section": "1",
-    "time ": "02:00 - 04:40 pm",
-    "professor": "Khan,S"
-  },
-  {
-    "Course number ": "3848",
-    "Class name ": "Introduction to Information Security",
-    "crn #": "12238",
-    "section": "E01",
-    "time ": "06:55 - 09:35 pm",
-    "professor": "Lawton,B"
-  },
-  {
-    "Course number ": "3858",
-    "Class name ": "Advanced Security and Information Systems",
-    "crn #": "12240",
-    "section": "E01",
-    "time ": "05:30 - 06:45 pm",
-    "professor": "Joshi,K"
-  },
-  {
-    "Course number ": "3868",
-    "Class name ": "Secure Software Development",
-    "crn #": "12242",
-    "section": "E01",
-    "time ": "06:55 - 09:35 pm",
-    "professor": "Khan,S"
-  },
-  {
-    "Course number ": "3890",
-    "Class name ": "Internship in Information Systems",
-    "crn #": "12244",
-    "section": "1",
-    "time ": "ARR",
-    "professor": "Dawson,M"
-  },
-  {
-    "Course number ": "3890",
-    "Class name ": "Internship in Information Systems",
-    "crn #": "14831",
-    "section": "2",
-    "time ": "ARR",
-    "professor": "Dawson,M"
-  },
-  {
-    "Course number ": "3890",
-    "Class name ": "Internship in Information Systems",
-    "crn #": "14965",
-    "section": "3",
-    "time ": "ARR",
-    "professor": "Rottman,J"
-  },
-  {
-    "Course number ": "3898",
-    "Class name ": "Seminar in Information Systems",
-    "crn #": "12245",
-    "section": "E01",
-    "time ": "05:30 - 06:45 pm",
-    "professor": "Khan,S"
-  },
-  {
-    "Course number ": "3898",
-    "Class name ": "Seminar in Information Systems",
-    "crn #": "15444",
-    "section": "2",
-    "time ": "02:00 - 04:40 pm",
-    "professor": "Mirchandani,D"
-  },
-  {
-    "Course number ": "3898",
-    "Class name ": "Seminar in Information Systems",
-    "crn #": "15447",
-    "section": "3",
-    "time ": "11:00 - 01:40 pm",
-    "professor": "Earls,J"
-  },
-  {
-    "Course number ": "3898",
-    "Class name ": "Seminar in Information Systems",
-    "crn #": "12247",
-    "section": "1",
-    "time ": "05:30 - 06:45 pm",
-    "professor": "Sauter,V"
-  },
-  {
-    "Course number ": "3899",
-    "Class name ": "Independent Study In Information Systems",
-    "crn #": "12249",
-    "section": "1",
-    "time ": "ARR",
-    "professor": "Mirchandani,D"
-  },
-  {
-    "Course number ": "3899",
-    "Class name ": "Independent Study In Information Systems",
-    "crn #": "14984",
-    "section": "2",
-    "time ": "ARR",
-    "professor": "Mirchandani,D"
-  },
-  {
-    "Course number ": "3899",
-    "Class name ": "Independent Study In Information Systems",
-    "crn #": "14996",
-    "section": "3",
-    "time ": "ARR",
-    "professor": "TBA,I"
-  },
-  {
-    "Course number ": "4850",
-    "Class name ": "Information Systems Design",
-    "crn #": "12250",
-    "section": "E01",
-    "time ": "06:55 - 09:35 pm",
-    "professor": "Lawton,B"
-  },
-  {
-    "Course number ": "5800",
-    "Class name ": "Management Information Systems",
-    "crn #": "12251",
-    "section": "G01",
-    "time ": "06:55 - 09:35 pm",
-    "professor": "Mirchandani,D"
-  },
-  {
-    "Course number ": "5800",
-    "Class name ": "Management Information Systems",
-    "crn #": "12252",
-    "section": "G02",
-    "time ": "09:00 - 12:00 pm",
-    "professor": "Rottman,J"
-  },
-  {
-    "Course number ": "5890",
-    "Class name ": "Graduate Internship in Information Systems",
-    "crn #": "12253",
-    "section": "G01",
-    "time ": "ARR",
-    "professor": "Lacity,M"
-  },
-  {
-    "Course number ": "5899",
-    "Class name ": "Individual Research in Information Systems",
-    "crn #": "12254",
-    "section": "G01",
-    "time ": "ARR",
-    "professor": "Lacity,M"
-  },
-  {
-    "Course number ": "5899",
-    "Class name ": "Individual Research in Information Systems",
-    "crn #": "15003",
-    "section": "G02",
-    "time ": "00:00 - 00:00 am",
-    "professor": "Mirchandani,D"
-  },
-  {
-    "Course number ": "5899",
-    "Class name ": "Individual Research in Information Systems",
-    "crn #": "15005",
-    "section": "G03",
-    "time ": "ARR",
-    "professor": "TBA,I"
-  },
-  {
-    "Course number ": "5899",
-    "Class name ": "Individual Research in Information Systems",
-    "crn #": "15006",
-    "section": "G04",
-    "time ": "ARR",
-    "professor": "Lawton,B"
-  },
-  {
-    "Course number ": "5899",
-    "Class name ": "Individual Research in Information Systems",
-    "crn #": "15009",
-    "section": "G05",
-    "time ": "ARR",
-    "professor": "Womer,N"
-  },
-  {
-    "Course number ": "5899",
-    "Class name ": "Individual Research in Information Systems",
-    "crn #": "15010",
-    "section": "G06",
-    "time ": "ARR",
-    "professor": "Pande,A"
-  },
-  {
-    "Course number ": "6805",
-    "Class name ": "Applications Of Programming For Business Solutions",
-    "crn #": "12236",
-    "section": "G01",
-    "time ": "ARR",
-    "professor": "Mirchandani,D"
-  },
-  {
-    "Course number ": "6806",
-    "Class name ": "Managerial Applications Of  Object-Oriented Technologies",
-    "crn #": "12225",
-    "section": "G01",
-    "time ": "06:55 - 09:35 pm",
-    "professor": "Dawson,M"
-  },
-  {
-    "Course number ": "6806",
-    "Class name ": "Managerial Applications Of  Object-Oriented Technologies",
-    "crn #": "12226",
-    "section": "G02",
-    "time ": "ARR",
-    "professor": "Lawton,B"
-  },
-  {
-    "Course number ": "6808",
-    "Class name ": "Internet Programming For Business",
-    "crn #": "12231",
-    "section": "G01",
-    "time ": "06:55 - 09:35 pm",
-    "professor": "Lawton,B"
-  },
-  {
-    "Course number ": "6828",
-    "Class name ": "Principles of Information Security",
-    "crn #": "12239",
-    "section": "G01",
-    "time ": "06:55 - 09:35 pm",
-    "professor": "Pande,A"
-  },
-  {
-    "Course number ": "6832",
-    "Class name ": "Information Systems Strategy",
-    "crn #": "15448",
-    "section": "G01",
-    "time ": "11:00 - 01:40 pm",
-    "professor": "Lawton,B"
-  },
-  {
-    "Course number ": "6836",
-    "Class name ": "Management of Data Networks and Security",
-    "crn #": "12254",
-    "section": "LEC",
-    "time ": "T",
-    "professor": "Khan,S"
-  },
-  {
-    "Course number ": "6838",
-    "Class name ": "Business Processes: Management & Integration",
-    "crn #": "12255",
-    "section": "LEC",
-    "time ": "Th",
-    "professor": "Mirchandani,D"
-  },
-  {
-    "Course number ": "6840",
-    "Class name ": "Information Systems Analysis",
-    "crn #": "12257",
-    "section": "LEC",
-    "time ": "W",
-    "professor": "ESH-00104"
-  },
-  {
-    "Course number ": "6845",
-    "Class name ": "Database Management Systems",
-    "crn #": "12258",
-    "section": "LEC",
-    "time ": "T",
-    "professor": "ESH-00104"
-  },
-  {
-    "Course number ": "6847",
-    "Class name ": "Project Management",
-    "crn #": "14698",
-    "section": "LEC",
-    "time ": "M",
-    "professor": "ESH-00104"
-  },
-  {
-    "Course number ": "6851",
-    "Class name ": "Practicum in Business Intelligence",
-    "crn #": "14991",
-    "section": "FLD",
-    "time ": "ARR",
-    "professor": "ESH -00106"
-  },
-  {
-    "Course number ": "6858",
-    "Class name ": "Advanced Cybersecurity Concepts",
-    "crn #": "12241",
-    "section": "LEC",
-    "time ": "MW",
-    "professor": "ABH -00003"
-  },
-  {
-    "Course number ": "6860",
-    "Class name ": "Data Integration",
-    "crn #": "12248",
-    "section": "LEC",
-    "time ": "MW",
-    "professor": "ARR"
-  },
-  {
-    "Course number ": "6868",
-    "Class name ": "Software Assurance",
-    "crn #": "12243",
-    "section": "LEC",
-    "time ": "M",
-    "professor": "ESH -00003"
-  },
-  {
-    "Course number ": "6891",
-    "Class name ": "Seminar in Information Systems",
-    "crn #": "12259",
-    "section": "G01",
-    "time ": "09:00 - 12:00 pm",
-    "professor": "ABH -00003"
-  },
-  {
-    "Course number ": "6891",
-    "Class name ": "Seminar in Information Systems",
-    "crn #": "15445",
-    "section": "G02",
-    "time ": "02:00 - 04:40 pm",
-    "professor": "ESH -00005"
-  },
-  {
-    "Course number ": "Interdisciplinary Courses",
-    "Class name ": "",
-    "crn #": "",
-    "section": "",
-    "time ": "",
-    "professor": "Sumner,M"
-  },
-  {
-    "Course number ": "1002",
-    "Class name ": "SUCCEED First Year Experience",
-    "crn #": "15442",
-    "section": "1",
-    "time ": "01:00 - 02:30 pm",
-    "professor": "Sauter,V"
-  },
-  {
-    "Course number ": "1003",
-    "Class name ": "University Studies",
-    "crn #": "14140",
-    "section": "1",
-    "time ": "09:30 - 10:45 am",
-    "professor": ""
-  },
-  {
-    "Course number ": "1003",
-    "Class name ": "University Studies",
-    "crn #": "14141",
-    "section": "2",
-    "time ": "09:30 - 10:45 am",
-    "professor": "Kliethermes,A"
-  },
-  {
-    "Course number ": "1003",
-    "Class name ": "University Studies",
-    "crn #": "14142",
-    "section": "3",
-    "time ": "11:00 - 12:15 pm",
-    "professor": "Krull,R"
-  },
-  {
-    "Course number ": "1003",
-    "Class name ": "University Studies",
-    "crn #": "14143",
-    "section": "4",
-    "time ": "12:30 - 01:45 pm",
-    "professor": "Baker,S"
-  },
-  {
-    "Course number ": "1003",
-    "Class name ": "University Studies",
-    "crn #": "14144",
-    "section": "5",
-    "time ": "12:30 - 01:45 pm",
-    "professor": "Chism,S"
-  },
-  {
-    "Course number ": "1003",
-    "Class name ": "University Studies",
-    "crn #": "14145",
-    "section": "6",
-    "time ": "12:30 - 01:45 pm",
-    "professor": "Chism,S"
-  },
-  {
-    "Course number ": "1003",
-    "Class name ": "University Studies",
-    "crn #": "14146",
-    "section": "7",
-    "time ": "02:00 - 03:15 pm",
-    "professor": "Culbertson,A"
-  },
-  {
-    "Course number ": "1003",
-    "Class name ": "University Studies",
-    "crn #": "14147",
-    "section": "8",
-    "time ": "02:00 - 03:15 pm",
-    "professor": "TBA,I"
-  },
-  {
-    "Course number ": "1003",
-    "Class name ": "University Studies",
-    "crn #": "14148",
-    "section": "9",
-    "time ": "02:00 - 03:15 pm",
-    "professor": "Chism,S"
-  },
-  {
-    "Course number ": "1003",
-    "Class name ": "University Studies",
-    "crn #": "14149",
-    "section": "10",
-    "time ": "02:00 - 03:15 pm",
-    "professor": "Krull,R"
-  },
-  {
-    "Course number ": "1003",
-    "Class name ": "University Studies",
-    "crn #": "14150",
-    "section": "11",
-    "time ": "02:00 - 03:15 pm",
-    "professor": "Roberts,A"
-  },
-  {
-    "Course number ": "1003",
-    "Class name ": "University Studies",
-    "crn #": "14151",
-    "section": "12",
-    "time ": "02:00 - 03:15 pm",
-    "professor": "Krull,R"
-  },
-  {
-    "Course number ": "1003",
-    "Class name ": "University Studies",
-    "crn #": "14152",
-    "section": "13",
-    "time ": "09:30 - 10:45 am",
-    "professor": "Southerland,J"
-  },
-  {
-    "Course number ": "1003",
-    "Class name ": "University Studies",
-    "crn #": "14153",
-    "section": "14",
-    "time ": "09:30 - 10:45 am",
-    "professor": "Culbertson,A"
-  },
-  {
-    "Course number ": "1003",
-    "Class name ": "University Studies",
-    "crn #": "14154",
-    "section": "15",
-    "time ": "09:30 - 10:45 am",
-    "professor": "Chism,S"
-  },
-  {
-    "Course number ": "1003",
-    "Class name ": "University Studies",
-    "crn #": "14155",
-    "section": "16",
-    "time ": "02:00 - 02:50 pm",
-    "professor": "Schara,C"
-  },
-  {
-    "Course number ": "1003",
-    "Class name ": "University Studies",
-    "crn #": "14156",
-    "section": "17",
-    "time ": "02:00 - 02:50 pm",
-    "professor": "Culbertson,A"
-  },
-  {
-    "Course number ": "1003",
-    "Class name ": "University Studies",
-    "crn #": "14157",
-    "section": "18",
-    "time ": "08:00 - 08:50 am",
-    "professor": "Hinderliter,I"
-  },
-  {
-    "Course number ": "1003",
-    "Class name ": "University Studies",
-    "crn #": "14158",
-    "section": "19",
-    "time ": "08:00 - 08:50 am",
-    "professor": "Hinderliter,I"
-  },
-  {
-    "Course number ": "1010",
-    "Class name ": "Information Research & Student Success",
-    "crn #": "14159",
-    "section": "1",
-    "time ": "ARR",
-    "professor": "Hinderliter,I"
-  },
-  {
-    "Course number ": "1700",
-    "Class name ": "Major and Career Exploration",
-    "crn #": "14160",
-    "section": "1",
-    "time ": "02:00 - 03:40 pm",
-    "professor": "Hinderliter,I"
-  },
-  {
-    "Course number ": "1999",
-    "Class name ": "Big History: From the Big Bang to the",
-    "crn #": "15389",
-    "section": "1",
-    "time ": "ARR",
-    "professor": "Niemeyer,C"
-  },
-  {
-    "Course number ": "1999A",
-    "Class name ": "Big History: From the Big Bang to thePresent",
-    "crn #": "14295",
-    "section": "1",
-    "time ": "ARR",
-    "professor": "Koertel,M"
-  },
-  {
-    "Course number ": "International Business",
-    "Class name ": "",
-    "crn #": "",
-    "section": "",
-    "time ": "",
-    "professor": "Fernlund,K"
-  },
-  {
-    "Course number ": "3281",
-    "Class name ": "Business In China",
-    "crn #": "13499",
-    "section": "1",
-    "time ": "11:00 - 12:15 pm",
-    "professor": "Fernlund,K"
-  },
-  {
-    "Course number ": "3281",
-    "Class name ": "Business In China",
-    "crn #": "13500",
-    "section": "2",
-    "time ": "09:30 - 10:45 am",
-    "professor": ""
-  },
-  {
-    "Course number ": "3289",
-    "Class name ": "Practicum In International Business",
-    "crn #": "13501",
-    "section": "1",
-    "time ": "ARR",
-    "professor": "Fung,H"
-  },
-  {
-    "Course number ": "3290",
-    "Class name ": "Internship In International Business",
-    "crn #": "13502",
-    "section": "1",
-    "time ": "ARR",
-    "professor": "Fung,H"
-  },
-  {
-    "Course number ": "3298",
-    "Class name ": "Management International Business",
-    "crn #": "15451",
-    "section": "1",
-    "time ": "02:00 - 03:15 pm",
-    "professor": "TBA,I"
-  },
-  {
-    "Course number ": "3299",
-    "Class name ": "Independent Study In International Business",
-    "crn #": "13503",
-    "section": "1",
-    "time ": "ARR",
-    "professor": "Pellegrini,E"
-  },
-  {
-    "Course number ": "3299",
-    "Class name ": "Independent Study In International Business",
-    "crn #": "13504",
-    "section": "2",
-    "time ": "ARR",
-    "professor": "Lane,E"
-  },
-  {
-    "Course number ": "3299",
-    "Class name ": "Independent Study In International Business",
-    "crn #": "13505",
-    "section": "3",
-    "time ": "ARR",
-    "professor": "Rust,D"
-  },
-  {
-    "Course number ": "3580",
-    "Class name ": "International Corporate Finance",
-    "crn #": "13509",
-    "section": "1",
-    "time ": "09:30 - 12:10 pm",
-    "professor": "Mano,H"
-  },
-  {
-    "Course number ": "3582",
-    "Class name ": "International Investments",
-    "crn #": "13515",
-    "section": "1",
-    "time ": "ARR",
-    "professor": "TBA,I"
-  },
-  {
-    "Course number ": "3680",
-    "Class name ": "International Management",
-    "crn #": "13396",
-    "section": "1",
-    "time ": "ARR",
-    "professor": "Zhang,G"
-  },
-  {
-    "Course number ": "3680",
-    "Class name ": "International Management",
-    "crn #": "13398",
-    "section": "2",
-    "time ": "ARR",
-    "professor": "Weise,D"
-  },
-  {
-    "Course number ": "3680",
-    "Class name ": "International Management",
-    "crn #": "13399",
-    "section": "3",
-    "time ": "ARR",
-    "professor": "Pathak,S"
-  },
-  {
-    "Course number ": "3780",
-    "Class name ": "International Marketing",
-    "crn #": "13537",
-    "section": "1",
-    "time ": "09:30 - 10:45 am",
-    "professor": "Pathak,S"
-  },
-  {
-    "Course number ": "3780",
-    "Class name ": "International Marketing",
-    "crn #": "13538",
-    "section": "2",
-    "time ": "ARR",
-    "professor": "Pellegrini,E"
-  },
-  {
-    "Course number ": "3780",
-    "Class name ": "International Marketing",
-    "crn #": "13539",
-    "section": "3",
-    "time ": "ARR",
-    "professor": "Murray,J"
-  },
-  {
-    "Course number ": "3780",
-    "Class name ": "International Marketing",
-    "crn #": "14651",
-    "section": "4",
-    "time ": "12:30 - 01:45 pm",
-    "professor": "Vining,E"
-  },
-  {
-    "Course number ": "4280",
-    "Class name ": "International Business Experience",
-    "crn #": "13497",
-    "section": "1",
-    "time ": "ARR",
-    "professor": "Vining,E"
-  },
-  {
-    "Course number ": "5289",
-    "Class name ": "International Business Strategies",
-    "crn #": "13708",
-    "section": "G01",
-    "time ": "08:00 - 05:00 pm",
-    "professor": "Ju,M"
-  },
-  {
-    "Course number ": "5289",
-    "Class name ": "International Business Strategies",
-    "crn #": "14936",
-    "section": "X01",
-    "time ": "ARR",
-    "professor": "Rottman,J"
-  },
-  {
-    "Course number ": "6581",
-    "Class name ": "Seminar In International Investments",
-    "crn #": "13709",
-    "section": "G01",
-    "time ": "ARR",
-    "professor": "Eyssell,T"
+    "Field": "Honors",
+    "courses": [
+      {
+        "Course number ": "1100",
+        "Class name ": "Honors Freshman Composition",
+        "classes":[
+          {
+            "crn #": "11345",
+            "section": "1",
+            "time ": "09:30 - 10:45 am",
+            "professor": "Bueltmann,J"
+          },
+          {
+            "crn #": "11346",
+            "section": "2",
+            "time ": "12:30 - 01:45 pm",
+            "professor": ""
+          },
+          {
+            "crn #": "11347",
+            "section": "3",
+            "time ": "11:00 - 12:15 pm",
+            "professor": "Cormier,D"
+          },
+          {
+            "crn #": "11348",
+            "section": "1",
+            "time ": "02:00 - 03:15 pm",
+            "professor": "Cormier,D"
+          }
+        ]
+      },
+      {
+        "Course number ": "1200",
+        "Class name ": "Freshman Symposium: Cultural Traditions I - Humanities",
+        "classes":[
+          {
+            "crn #": "11349",
+            "section": "1",
+            "time ": "09:30 - 10:45 am",
+            "professor": "Delvaux,K"
+          },
+          {
+            "crn #": "11350",
+            "section": "2",
+            "time ": "12:30 - 01:45 pm",
+            "professor": "Oman,K"
+          },
+          {
+            "crn #": "11351",
+            "section": "3",
+            "time ": "12:30 - 01:45 pm",
+            "professor": "Torrusio,A"
+          },
+          {
+            "crn #": "11352",
+            "section": "4",
+            "time ": "11:00 - 12:15 pm",
+            "professor": "Torrusio,A"
+          },
+          {
+            "crn #": "11379",
+            "section": "5",
+            "time ": "02:00 - 03:15 pm",
+            "professor": "Friedline,G"
+          }
+        ]
+      },
+      {
+        "Course number ": "1202",
+        "Class name ": "Freshman Symposium: Cultural",
+        "classes":[
+          {
+            "crn #": "11442",
+            "section": "1",
+            "time ": "09:30 - 10:45 am",
+            "professor": "Baldus,K"
+          },
+          {
+            "crn #": "11443",
+            "section": "2",
+            "time ": "02:00 - 03:15 pm",
+            "professor": "Baldus,K"
+          }
+        ]
+      },
+      {
+        "Course number ": "1230",
+        "Class name ": "American Traditions: Social And Behavioral Sciences",
+        "classes":[
+          {
+            "crn #": "11353",
+            "section": "1",
+            "time ": "09:30 - 10:45 am",
+            "professor": "Schiessl,C"
+          },
+          {
+            "crn #": "11354",
+            "section": "2",
+            "time ": "09:30 - 10:45 am",
+            "professor": "Schiessl,C"
+          },
+          {
+            "crn #": "11355",
+            "section": "3",
+            "time ": "12:30 - 01:45 pm",
+            "professor": "Wilson,C"
+          }
+        ]
+      },
+      {
+        "Course number ": "1310",
+        "Class name ": "Non-Western Traditions Series Humanities",
+        "classes":[
+          {
+            "crn #": "11450",
+            "section": "1",
+            "time ": "12:30 - 01:45 pm",
+            "professor": "Herrick,C"
+          }
+        ]
+      },
+      {
+        "Course number ": "1310",
+        "Class name ": "Non-Western Traditions Series Humanities",
+        "classes":[
+          {
+            "crn #": "11452",
+            "section": "2",
+            "time ": "05:30 - 06:45 pm",
+            "professor": "Herrick,C"
+          },
+          {
+            "crn #": "11356",
+            "section": "1",
+            "time ": "11:00 - 12:15 pm",
+            "professor": "Walterscheid,K"
+          },
+          {
+            "crn #": "15064",
+            "section": "2",
+            "time ": "03:30 - 04:45 pm",
+            "professor": "TBA,I"
+          }
+        ]
+      },
+      {
+        "Course number ": "2010",
+        "Class name ": "Inquiries In The Humanities",
+        "classes":[
+          {
+            "crn #": "11357",
+            "section": "1",
+            "time ": "11:00 - 12:15 pm",
+            "professor": "Born,C"
+          },
+          {
+            "crn #": "11381",
+            "section": "2",
+            "time ": "02:00 - 03:15 pm",
+            "professor": "Vermilion,M"
+          },
+          {
+            "crn #": "11385",
+            "section": "3",
+            "time ": "12:30 - 01:45 pm",
+            "professor": "Olin,L"
+          },
+          {
+            "crn #": "11389",
+            "section": "E01",
+            "time ": "05:30 - 08:10 pm",
+            "professor": "Higgins,D"
+          },
+          {
+            "crn #": "15075",
+            "section": "4",
+            "time ": "09:30 - 10:45 am",
+            "professor": "Gerth,D"
+          }
+        ]
+      },
+      {
+        "Course number ": "2020",
+        "Class name ": "Inquiries In The Fine And Performing Arts",
+        "classes":[
+          {
+            "crn #": "11390",
+            "section": "1",
+            "time ": "02:00 - 04:40 pm",
+            "professor": "Wolfe,K"
+          }
+        ]
+      },
+      {
+        "Course number ": "2030",
+        "Class name ": " Inquiries In The Social And Behavioral Sciences",
+        "classes":[
+          {
+            "crn #": "11392",
+            "section": "1",
+            "time ": "11:00 - 12:15 pm",
+            "professor": "Lakshmanan,M"
+          },
+          {
+            "crn #": "11358",
+            "section": "2",
+            "time ": "03:30 - 04:45 pm",
+            "professor": "Friedline,G"
+          },
+          {
+            "crn #": "11359",
+            "section": "3",
+            "time ": "12:30 - 01:45 pm",
+            "professor": "Votaw,K"
+          },
+          {
+            "crn #": "15139",
+            "section": "E01",
+            "time ": "05:30 - 08:10 pm",
+            "professor": "Votaw,K"
+          }
+        ]
+      },
+      {
+        "Course number ": "2050",
+        "Class name ": "Inquiries In The Natural Sciences",
+        "classes":[
+          {
+            "crn #": "11456",
+            "section": "1",
+            "time ": "04:00 - 05:15 pm",
+            "professor": "Votaw,K"
+          },
+          {
+            "crn #": "10803",
+            "section": "XC1",
+            "time ": "02:00 - 03:15 pm",
+            "professor": "Petty,C"
+          }
+        ]
+      },
+
+      {
+        "Course number ": "2051",
+        "Class name ": "Inquiries in the Sciences: Laboratory or Field Work",
+        "classes":[
+          {
+            "crn #": "10855",
+            "section": "XC1",
+            "time ": "03:30 - 04:15 pm",
+            "professor": "Pope,H"
+          }
+        ]
+      },
+      {
+        "Course number ": "2060",
+        "Class name ": "Inquiries In Business",
+        "classes":[
+          {
+            "crn #": "11382",
+            "section": "1",
+            "time ": "09:30 - 10:45 am",
+            "professor": "Granger,C"
+          }
+        ]
+      },
+      {
+        "Course number ": "2080",
+        "Class name ": "Inquiries In Nursing",
+        "classes":[
+          {
+            "crn #": "11363",
+            "section": "1",
+            "time ": "02:00 - 04:40 pm",
+            "professor": "Granger,C"
+          }
+        ]
+      },
+      {
+        "Course number ": "2330",
+        "Class name ": "Cultural Diversity In The Social Sciences",
+        "classes":[
+          {
+            "crn #": "11387",
+            "section": "1",
+            "time ": "03:30 - 04:45 pm",
+            "professor": "Grimm-Howell,E"
+          }
+        ]
+      },
+      {
+        "Course number ": "3010",
+        "Class name ": "Advanced Honors Seminar In The Humanities",
+        "classes":[
+          {
+            "crn #": "11364",
+            "section": "1",
+            "time ": "02:00 - 04:40 pm",
+            "professor": "Nelson,J"
+          },
+          {
+            "crn #": "11366",
+            "section": "2",
+            "time ": "11:00 - 12:15 pm",
+            "professor": "Weber,K"
+          },
+          {
+            "crn #": "11399",
+            "section": "3",
+            "time ": "02:00 - 04:40 pm",
+            "professor": "Carroll,J"
+          }
+        ]
+      },
+      {
+        "Course number ": "3020",
+        "Class name ": "Advanced Honors Seminar In The Fine And Performing Arts",
+        "classes":[
+          {
+            "crn #": "11393",
+            "section": "1",
+            "time ": "12:30 - 01:45 pm",
+            "professor": "Nigro,K"
+          }
+        ]
+      },
+      {
+        "Course number ": "3030",
+        "Class name ": "Advanced Honors Seminar In The Social And Behavioral Sciences",
+        "classes":[
+          {
+            "crn #": "11367",
+            "section": "1",
+            "time ": "12:30 - 01:45 pm",
+            "professor": "Delston,J"
+          },
+          {
+            "crn #": "11368",
+            "section": "2",
+            "time ": "11:00 - 12:15 pm",
+            "professor": "Allen,K"
+          },
+          {
+            "crn #": "11391",
+            "section": "3",
+            "time ": "11:00 - 12:15 pm",
+            "professor": "Wilson,C"
+          },
+          {
+            "crn #": "11394",
+            "section": "4",
+            "time ": "12:30 - 03:10 pm",
+            "professor": "Hudson,R"
+          },
+          {
+            "crn #": "11395",
+            "section": "5",
+            "time ": "02:00 - 04:40 pm",
+            "professor": "Schiessl,C"
+          },
+          {
+            "crn #": "12983",
+            "section": "6",
+            "time ": "04:15 - 06:55 pm",
+            "professor": "Hurwicz,M"
+          },
+          {
+            "crn #": "15086",
+            "section": "7",
+            "time ": "09:30 - 12:10 pm",
+            "professor": "Segal,U"
+          },
+          {
+            "crn #": "15157",
+            "section": "8",
+            "time ": "12:30 - 01:45 pm",
+            "professor": "Porterfield,S"
+          }
+        ]
+      },
+      {
+        "Course number ": "3100",
+        "Class name ": "Honors Advanced Composition: Writing The City",
+        "classes":[
+          {
+            "crn #": "11369",
+            "section": "1",
+            "time ": "09:30 - 10:45 am",
+            "professor": "Phipps,S"
+          },
+          {
+            "crn #": "12131",
+            "section": "2",
+            "time ": "11:00 - 12:15 pm",
+            "professor": "Brownell,S"
+          },
+          {
+            "crn #": "15078",
+            "section": "3",
+            "time ": "03:30 - 04:45 pm",
+            "professor": "Allen,K"
+          }
+        ]
+      },
+      {
+        "Course number ": "3160",
+        "Class name ": "Honors Writing In The Sciences",
+        "classes":[
+          {
+            "crn #": "11397",
+            "section": "1",
+            "time ": "02:00 - 03:15 pm",
+            "professor": "Oman,K"
+          }
+        ]
+      },
+      {
+        "Course number ": "4100",
+        "Class name ": "Independent Portfolio Writing",
+        "classes":[
+          {
+            "crn #": "11371",
+            "section": "1",
+            "time ": "12:30 - 01:30 pm",
+            "professor": "Oman,K"
+          }
+        ]
+      },
+      {
+        "Course number ": "4100",
+        "Class name ": "Independent Portfolio Writing",
+        "classes":[
+          {
+            "crn #": "11372",
+            "section": "2",
+            "time ": "12:30 - 01:30 pm",
+            "professor": "Torrusio,A"
+          }
+        ]
+      },
+      {
+        "Course number ": "4100",
+        "Class name ": "Independent Portfolio Writing",
+        "classes":[
+          {
+            "crn #": "11388",
+            "section": "3",
+            "time ": "12:30 - 01:30 pm",
+            "professor": "Wilson,C"
+          },
+          {
+            "crn #": "11398",
+            "section": "4",
+            "time ": "12:30 - 01:30 pm",
+            "professor": "Walterscheid,K"
+          }
+        ]
+      },
+      {
+        "Course number ": "4900",
+        "Class name ": "Independent Study In Honors",
+        "classes":[
+          {
+            "crn #": "11373",
+            "section": "1",
+            "time ": "ARR",
+            "professor": "Gleason,N"
+          },
+          {
+            "crn #": "11374",
+            "section": "2",
+            "time ": "ARR",
+            "professor": "TBA,I"
+          },
+          {
+            "crn #": "11375",
+            "section": "3",
+            "time ": "ARR",
+            "professor": "Baldus,K"
+          },
+          {
+            "crn #": "11376",
+            "section": "4",
+            "time ": "ARR",
+            "professor": "Friedline,G"
+          },
+          {
+            "crn #": "11377",
+            "section": "5",
+            "time ": "ARR",
+            "professor": "Gerth,D"
+          },
+          {
+            "crn #": "11378",
+            "section": "6",
+            "time ": "ARR",
+            "professor": "Gleason,N"
+          },
+          {
+            "crn #": "11380",
+            "section": "7",
+            "time ": "ARR",
+            "professor": "Schiessl,C"
+          },
+          {
+            "crn #": "11400",
+            "section": "8",
+            "time ": "02:00 - 04:40 pm",
+            "professor": "Torrusio,A"
+          },
+          {
+            "crn #": "11451",
+            "section": "9",
+            "time ": "08:30 - 10:30 am",
+            "professor": "Votaw,K"
+          },
+          {
+            "crn #": "15063",
+            "section": "11",
+            "time ": "03:30 - 04:30 pm",
+            "professor": "Friedline,G"
+          },
+          {
+            "crn #": "15232",
+            "section": "10",
+            "time ": "11:00 - 12:00 pm",
+            "professor": "Gerth,D"
+          }
+        ]
+      },
+      {
+        "Course number ": "4910",
+        "Class name ": "Independent Study: Internships",
+        "classes":[
+          {
+            "crn #": "11384",
+            "section": "1",
+            "time ": "ARR",
+            "professor": "Rohloff,W"
+          },
+          {
+            "crn #": "11386",
+            "section": "2",
+            "time ": "ARR",
+            "professor": "Gerth,D"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "Filed": "Information Systems",
+    "courses": [
+      {
+        "Course number ": "1800",
+        "Class name ": "Computers And Information Systems",
+        "crn #": "12206",
+        "section": "1",
+        "time ": "12:30 - 01:45 pm",
+        "professor": "Gleason,N"
+      },
+      {
+        "Course number ": "1800",
+        "Class name ": "Computers And Information Systems",
+        "crn #": "12207",
+        "section": "2",
+        "time ": "02:00 - 03:15 pm",
+        "professor": ""
+      },
+      {
+        "Course number ": "1800",
+        "Class name ": "Computers And Information Systems",
+        "crn #": "12208",
+        "section": "3",
+        "time ": "09:30 - 10:45 am",
+        "professor": "Duncan,M"
+      },
+      {
+        "Course number ": "1800",
+        "Class name ": "Computers And Information Systems",
+        "crn #": "12209",
+        "section": "4",
+        "time ": "11:00 - 12:15 pm",
+        "professor": "Duncan,M"
+      },
+      {
+        "Course number ": "1800",
+        "Class name ": "Computers And Information Systems",
+        "crn #": "12210",
+        "section": "5",
+        "time ": "ARR",
+        "professor": "Duncan,M"
+      },
+      {
+        "Course number ": "1800",
+        "Class name ": "Computers And Information Systems",
+        "crn #": "12211",
+        "section": "6",
+        "time ": "ARR",
+        "professor": "Duncan,M"
+      },
+      {
+        "Course number ": "1800",
+        "Class name ": "Computers And Information Systems",
+        "crn #": "12212",
+        "section": "7",
+        "time ": "ARR",
+        "professor": "Lovelace,R"
+      },
+      {
+        "Course number ": "1800",
+        "Class name ": "Computers And Information Systems",
+        "crn #": "12213",
+        "section": "8",
+        "time ": "ARR",
+        "professor": "Duncan,M"
+      },
+      {
+        "Course number ": "2800",
+        "Class name ": "Information Systems Concepts And Applications",
+        "crn #": "12214",
+        "section": "1",
+        "time ": "09:00 - 09:50 am",
+        "professor": "Duncan,M"
+      },
+      {
+        "Course number ": "2800",
+        "Class name ": "Information Systems Concepts And Applications",
+        "crn #": "12224",
+        "section": "S01",
+        "time ": "ARR",
+        "professor": "Lovelace,R"
+      },
+      {
+        "Course number ": "3806",
+        "Class name ": "Managerial Applications Of Object-Oriented Programming I",
+        "crn #": "12227",
+        "section": "1",
+        "time ": "06:55 - 09:35 pm",
+        "professor": "McCarthy,R"
+      },
+      {
+        "Course number ": "3806",
+        "Class name ": "Managerial Applications Of Object-Oriented Programming I",
+        "crn #": "12228",
+        "section": "2",
+        "time ": "ARR",
+        "professor": "Pande,A"
+      },
+      {
+        "Course number ": "3810",
+        "Class name ": "Information Systems Analysis",
+        "crn #": "12229",
+        "section": "1",
+        "time ": "11:00 - 12:15 pm",
+        "professor": "Lawton,B"
+      },
+      {
+        "Course number ": "3816",
+        "Class name ": "Managerial Application Of Object-Oriented Programming II",
+        "crn #": "12230",
+        "section": "E01",
+        "time ": "06:55 - 09:35 pm",
+        "professor": "Pande,A"
+      },
+      {
+        "Course number ": "3816",
+        "Class name ": "Managerial Application Of Object-Oriented Programming II",
+        "crn #": "",
+        "section": "",
+        "time ": "",
+        "professor": "Sauter,V"
+      },
+      {
+        "Course number ": "3841",
+        "Class name ": "Enterprise Information Systems",
+        "crn #": "12232",
+        "section": "1",
+        "time ": "09:00 - 12:00 pm",
+        "professor": "Lawton,B"
+      },
+      {
+        "Course number ": "3842",
+        "Class name ": "Data Networks and Security",
+        "crn #": "12233",
+        "section": "E01",
+        "time ": "06:55 - 09:35 pm",
+        "professor": ""
+      },
+      {
+        "Course number ": "3844",
+        "Class name ": "Developing Business Applications In .NET",
+        "crn #": "12235",
+        "section": "1",
+        "time ": "ARR",
+        "professor": "Sumner,M"
+      },
+      {
+        "Course number ": "3845",
+        "Class name ": "Database Management Systems",
+        "crn #": "12237",
+        "section": "1",
+        "time ": "02:00 - 04:40 pm",
+        "professor": "Khan,S"
+      },
+      {
+        "Course number ": "3848",
+        "Class name ": "Introduction to Information Security",
+        "crn #": "12238",
+        "section": "E01",
+        "time ": "06:55 - 09:35 pm",
+        "professor": "Lawton,B"
+      },
+      {
+        "Course number ": "3858",
+        "Class name ": "Advanced Security and Information Systems",
+        "crn #": "12240",
+        "section": "E01",
+        "time ": "05:30 - 06:45 pm",
+        "professor": "Joshi,K"
+      },
+      {
+        "Course number ": "3868",
+        "Class name ": "Secure Software Development",
+        "crn #": "12242",
+        "section": "E01",
+        "time ": "06:55 - 09:35 pm",
+        "professor": "Khan,S"
+      },
+      {
+        "Course number ": "3890",
+        "Class name ": "Internship in Information Systems",
+        "crn #": "12244",
+        "section": "1",
+        "time ": "ARR",
+        "professor": "Dawson,M"
+      },
+      {
+        "Course number ": "3890",
+        "Class name ": "Internship in Information Systems",
+        "crn #": "14831",
+        "section": "2",
+        "time ": "ARR",
+        "professor": "Dawson,M"
+      },
+      {
+        "Course number ": "3890",
+        "Class name ": "Internship in Information Systems",
+        "crn #": "14965",
+        "section": "3",
+        "time ": "ARR",
+        "professor": "Rottman,J"
+      },
+      {
+        "Course number ": "3898",
+        "Class name ": "Seminar in Information Systems",
+        "crn #": "12245",
+        "section": "E01",
+        "time ": "05:30 - 06:45 pm",
+        "professor": "Khan,S"
+      },
+      {
+        "Course number ": "3898",
+        "Class name ": "Seminar in Information Systems",
+        "crn #": "15444",
+        "section": "2",
+        "time ": "02:00 - 04:40 pm",
+        "professor": "Mirchandani,D"
+      },
+      {
+        "Course number ": "3898",
+        "Class name ": "Seminar in Information Systems",
+        "crn #": "15447",
+        "section": "3",
+        "time ": "11:00 - 01:40 pm",
+        "professor": "Earls,J"
+      },
+      {
+        "Course number ": "3898",
+        "Class name ": "Seminar in Information Systems",
+        "crn #": "12247",
+        "section": "1",
+        "time ": "05:30 - 06:45 pm",
+        "professor": "Sauter,V"
+      },
+      {
+        "Course number ": "3899",
+        "Class name ": "Independent Study In Information Systems",
+        "crn #": "12249",
+        "section": "1",
+        "time ": "ARR",
+        "professor": "Mirchandani,D"
+      },
+      {
+        "Course number ": "3899",
+        "Class name ": "Independent Study In Information Systems",
+        "crn #": "14984",
+        "section": "2",
+        "time ": "ARR",
+        "professor": "Mirchandani,D"
+      },
+      {
+        "Course number ": "3899",
+        "Class name ": "Independent Study In Information Systems",
+        "crn #": "14996",
+        "section": "3",
+        "time ": "ARR",
+        "professor": "TBA,I"
+      },
+      {
+        "Course number ": "4850",
+        "Class name ": "Information Systems Design",
+        "crn #": "12250",
+        "section": "E01",
+        "time ": "06:55 - 09:35 pm",
+        "professor": "Lawton,B"
+      },
+      {
+        "Course number ": "5800",
+        "Class name ": "Management Information Systems",
+        "crn #": "12251",
+        "section": "G01",
+        "time ": "06:55 - 09:35 pm",
+        "professor": "Mirchandani,D"
+      },
+      {
+        "Course number ": "5800",
+        "Class name ": "Management Information Systems",
+        "crn #": "12252",
+        "section": "G02",
+        "time ": "09:00 - 12:00 pm",
+        "professor": "Rottman,J"
+      },
+      {
+        "Course number ": "5890",
+        "Class name ": "Graduate Internship in Information Systems",
+        "crn #": "12253",
+        "section": "G01",
+        "time ": "ARR",
+        "professor": "Lacity,M"
+      },
+      {
+        "Course number ": "5899",
+        "Class name ": "Individual Research in Information Systems",
+        "crn #": "12254",
+        "section": "G01",
+        "time ": "ARR",
+        "professor": "Lacity,M"
+      },
+      {
+        "Course number ": "5899",
+        "Class name ": "Individual Research in Information Systems",
+        "crn #": "15003",
+        "section": "G02",
+        "time ": "00:00 - 00:00 am",
+        "professor": "Mirchandani,D"
+      },
+      {
+        "Course number ": "5899",
+        "Class name ": "Individual Research in Information Systems",
+        "crn #": "15005",
+        "section": "G03",
+        "time ": "ARR",
+        "professor": "TBA,I"
+      },
+      {
+        "Course number ": "5899",
+        "Class name ": "Individual Research in Information Systems",
+        "crn #": "15006",
+        "section": "G04",
+        "time ": "ARR",
+        "professor": "Lawton,B"
+      },
+      {
+        "Course number ": "5899",
+        "Class name ": "Individual Research in Information Systems",
+        "crn #": "15009",
+        "section": "G05",
+        "time ": "ARR",
+        "professor": "Womer,N"
+      },
+      {
+        "Course number ": "5899",
+        "Class name ": "Individual Research in Information Systems",
+        "crn #": "15010",
+        "section": "G06",
+        "time ": "ARR",
+        "professor": "Pande,A"
+      },
+      {
+        "Course number ": "6805",
+        "Class name ": "Applications Of Programming For Business Solutions",
+        "crn #": "12236",
+        "section": "G01",
+        "time ": "ARR",
+        "professor": "Mirchandani,D"
+      },
+      {
+        "Course number ": "6806",
+        "Class name ": "Managerial Applications Of  Object-Oriented Technologies",
+        "crn #": "12225",
+        "section": "G01",
+        "time ": "06:55 - 09:35 pm",
+        "professor": "Dawson,M"
+      },
+      {
+        "Course number ": "6806",
+        "Class name ": "Managerial Applications Of  Object-Oriented Technologies",
+        "crn #": "12226",
+        "section": "G02",
+        "time ": "ARR",
+        "professor": "Lawton,B"
+      },
+      {
+        "Course number ": "6808",
+        "Class name ": "Internet Programming For Business",
+        "crn #": "12231",
+        "section": "G01",
+        "time ": "06:55 - 09:35 pm",
+        "professor": "Lawton,B"
+      },
+      {
+        "Course number ": "6828",
+        "Class name ": "Principles of Information Security",
+        "crn #": "12239",
+        "section": "G01",
+        "time ": "06:55 - 09:35 pm",
+        "professor": "Pande,A"
+      },
+      {
+        "Course number ": "6832",
+        "Class name ": "Information Systems Strategy",
+        "crn #": "15448",
+        "section": "G01",
+        "time ": "11:00 - 01:40 pm",
+        "professor": "Lawton,B"
+      },
+      {
+        "Course number ": "6836",
+        "Class name ": "Management of Data Networks and Security",
+        "crn #": "12254",
+        "section": "LEC",
+        "time ": "T",
+        "professor": "Khan,S"
+      },
+      {
+        "Course number ": "6838",
+        "Class name ": "Business Processes: Management & Integration",
+        "crn #": "12255",
+        "section": "LEC",
+        "time ": "Th",
+        "professor": "Mirchandani,D"
+      },
+      {
+        "Course number ": "6840",
+        "Class name ": "Information Systems Analysis",
+        "crn #": "12257",
+        "section": "LEC",
+        "time ": "W",
+        "professor": "ESH-00104"
+      },
+      {
+        "Course number ": "6845",
+        "Class name ": "Database Management Systems",
+        "crn #": "12258",
+        "section": "LEC",
+        "time ": "T",
+        "professor": "ESH-00104"
+      },
+      {
+        "Course number ": "6847",
+        "Class name ": "Project Management",
+        "crn #": "14698",
+        "section": "LEC",
+        "time ": "M",
+        "professor": "ESH-00104"
+      },
+      {
+        "Course number ": "6851",
+        "Class name ": "Practicum in Business Intelligence",
+        "crn #": "14991",
+        "section": "FLD",
+        "time ": "ARR",
+        "professor": "ESH -00106"
+      },
+      {
+        "Course number ": "6858",
+        "Class name ": "Advanced Cybersecurity Concepts",
+        "crn #": "12241",
+        "section": "LEC",
+        "time ": "MW",
+        "professor": "ABH -00003"
+      },
+      {
+        "Course number ": "6860",
+        "Class name ": "Data Integration",
+        "crn #": "12248",
+        "section": "LEC",
+        "time ": "MW",
+        "professor": "ARR"
+      },
+      {
+        "Course number ": "6868",
+        "Class name ": "Software Assurance",
+        "crn #": "12243",
+        "section": "LEC",
+        "time ": "M",
+        "professor": "ESH -00003"
+      },
+      {
+        "Course number ": "6891",
+        "Class name ": "Seminar in Information Systems",
+        "crn #": "12259",
+        "section": "G01",
+        "time ": "09:00 - 12:00 pm",
+        "professor": "ABH -00003"
+      },
+      {
+        "Course number ": "6891",
+        "Class name ": "Seminar in Information Systems",
+        "crn #": "15445",
+        "section": "G02",
+        "time ": "02:00 - 04:40 pm",
+        "professor": "ESH -00005"
+      }
+    ]
+  },
+  {
+    "Filed": "Interdisciplinary Courses",
+    "courses": [
+      {
+        "Course number ": "1002",
+        "Class name ": "SUCCEED First Year Experience",
+        "crn #": "15442",
+        "section": "1",
+        "time ": "01:00 - 02:30 pm",
+        "professor": "Sauter,V"
+      },
+      {
+        "Course number ": "1003",
+        "Class name ": "University Studies",
+        "crn #": "14140",
+        "section": "1",
+        "time ": "09:30 - 10:45 am",
+        "professor": ""
+      },
+      {
+        "Course number ": "1003",
+        "Class name ": "University Studies",
+        "crn #": "14141",
+        "section": "2",
+        "time ": "09:30 - 10:45 am",
+        "professor": "Kliethermes,A"
+      },
+      {
+        "Course number ": "1003",
+        "Class name ": "University Studies",
+        "crn #": "14142",
+        "section": "3",
+        "time ": "11:00 - 12:15 pm",
+        "professor": "Krull,R"
+      },
+      {
+        "Course number ": "1003",
+        "Class name ": "University Studies",
+        "crn #": "14143",
+        "section": "4",
+        "time ": "12:30 - 01:45 pm",
+        "professor": "Baker,S"
+      },
+      {
+        "Course number ": "1003",
+        "Class name ": "University Studies",
+        "crn #": "14144",
+        "section": "5",
+        "time ": "12:30 - 01:45 pm",
+        "professor": "Chism,S"
+      },
+      {
+        "Course number ": "1003",
+        "Class name ": "University Studies",
+        "crn #": "14145",
+        "section": "6",
+        "time ": "12:30 - 01:45 pm",
+        "professor": "Chism,S"
+      },
+      {
+        "Course number ": "1003",
+        "Class name ": "University Studies",
+        "crn #": "14146",
+        "section": "7",
+        "time ": "02:00 - 03:15 pm",
+        "professor": "Culbertson,A"
+      },
+      {
+        "Course number ": "1003",
+        "Class name ": "University Studies",
+        "crn #": "14147",
+        "section": "8",
+        "time ": "02:00 - 03:15 pm",
+        "professor": "TBA,I"
+      },
+      {
+        "Course number ": "1003",
+        "Class name ": "University Studies",
+        "crn #": "14148",
+        "section": "9",
+        "time ": "02:00 - 03:15 pm",
+        "professor": "Chism,S"
+      },
+      {
+        "Course number ": "1003",
+        "Class name ": "University Studies",
+        "crn #": "14149",
+        "section": "10",
+        "time ": "02:00 - 03:15 pm",
+        "professor": "Krull,R"
+      },
+      {
+        "Course number ": "1003",
+        "Class name ": "University Studies",
+        "crn #": "14150",
+        "section": "11",
+        "time ": "02:00 - 03:15 pm",
+        "professor": "Roberts,A"
+      },
+      {
+        "Course number ": "1003",
+        "Class name ": "University Studies",
+        "crn #": "14151",
+        "section": "12",
+        "time ": "02:00 - 03:15 pm",
+        "professor": "Krull,R"
+      },
+      {
+        "Course number ": "1003",
+        "Class name ": "University Studies",
+        "crn #": "14152",
+        "section": "13",
+        "time ": "09:30 - 10:45 am",
+        "professor": "Southerland,J"
+      },
+      {
+        "Course number ": "1003",
+        "Class name ": "University Studies",
+        "crn #": "14153",
+        "section": "14",
+        "time ": "09:30 - 10:45 am",
+        "professor": "Culbertson,A"
+      },
+      {
+        "Course number ": "1003",
+        "Class name ": "University Studies",
+        "crn #": "14154",
+        "section": "15",
+        "time ": "09:30 - 10:45 am",
+        "professor": "Chism,S"
+      },
+      {
+        "Course number ": "1003",
+        "Class name ": "University Studies",
+        "crn #": "14155",
+        "section": "16",
+        "time ": "02:00 - 02:50 pm",
+        "professor": "Schara,C"
+      },
+      {
+        "Course number ": "1003",
+        "Class name ": "University Studies",
+        "crn #": "14156",
+        "section": "17",
+        "time ": "02:00 - 02:50 pm",
+        "professor": "Culbertson,A"
+      },
+      {
+        "Course number ": "1003",
+        "Class name ": "University Studies",
+        "crn #": "14157",
+        "section": "18",
+        "time ": "08:00 - 08:50 am",
+        "professor": "Hinderliter,I"
+      },
+      {
+        "Course number ": "1003",
+        "Class name ": "University Studies",
+        "crn #": "14158",
+        "section": "19",
+        "time ": "08:00 - 08:50 am",
+        "professor": "Hinderliter,I"
+      },
+      {
+        "Course number ": "1010",
+        "Class name ": "Information Research & Student Success",
+        "crn #": "14159",
+        "section": "1",
+        "time ": "ARR",
+        "professor": "Hinderliter,I"
+      },
+      {
+        "Course number ": "1700",
+        "Class name ": "Major and Career Exploration",
+        "crn #": "14160",
+        "section": "1",
+        "time ": "02:00 - 03:40 pm",
+        "professor": "Hinderliter,I"
+      },
+      {
+        "Course number ": "1999",
+        "Class name ": "Big History: From the Big Bang to the",
+        "crn #": "15389",
+        "section": "1",
+        "time ": "ARR",
+        "professor": "Niemeyer,C"
+      },
+      {
+        "Course number ": "1999A",
+        "Class name ": "Big History: From the Big Bang to thePresent",
+        "crn #": "14295",
+        "section": "1",
+        "time ": "ARR",
+        "professor": "Koertel,M"
+      }
+]
+},
+  {
+    "Filed": "International Business",
+    "Course": [
+      {
+        "Course number ": "3281",
+        "Class name ": "Business In China",
+        "crn #": "13499",
+        "section": "1",
+        "time ": "11:00 - 12:15 pm",
+        "professor": "Fernlund,K"
+      },
+      {
+        "Course number ": "3281",
+        "Class name ": "Business In China",
+        "crn #": "13500",
+        "section": "2",
+        "time ": "09:30 - 10:45 am",
+        "professor": ""
+      },
+      {
+        "Course number ": "3289",
+        "Class name ": "Practicum In International Business",
+        "crn #": "13501",
+        "section": "1",
+        "time ": "ARR",
+        "professor": "Fung,H"
+      },
+      {
+        "Course number ": "3290",
+        "Class name ": "Internship In International Business",
+        "crn #": "13502",
+        "section": "1",
+        "time ": "ARR",
+        "professor": "Fung,H"
+      },
+      {
+        "Course number ": "3298",
+        "Class name ": "Management International Business",
+        "crn #": "15451",
+        "section": "1",
+        "time ": "02:00 - 03:15 pm",
+        "professor": "TBA,I"
+      },
+      {
+        "Course number ": "3299",
+        "Class name ": "Independent Study In International Business",
+        "crn #": "13503",
+        "section": "1",
+        "time ": "ARR",
+        "professor": "Pellegrini,E"
+      },
+      {
+        "Course number ": "3299",
+        "Class name ": "Independent Study In International Business",
+        "crn #": "13504",
+        "section": "2",
+        "time ": "ARR",
+        "professor": "Lane,E"
+      },
+      {
+        "Course number ": "3299",
+        "Class name ": "Independent Study In International Business",
+        "crn #": "13505",
+        "section": "3",
+        "time ": "ARR",
+        "professor": "Rust,D"
+      },
+      {
+        "Course number ": "3580",
+        "Class name ": "International Corporate Finance",
+        "crn #": "13509",
+        "section": "1",
+        "time ": "09:30 - 12:10 pm",
+        "professor": "Mano,H"
+      },
+      {
+        "Course number ": "3582",
+        "Class name ": "International Investments",
+        "crn #": "13515",
+        "section": "1",
+        "time ": "ARR",
+        "professor": "TBA,I"
+      },
+      {
+        "Course number ": "3680",
+        "Class name ": "International Management",
+        "crn #": "13396",
+        "section": "1",
+        "time ": "ARR",
+        "professor": "Zhang,G"
+      },
+      {
+        "Course number ": "3680",
+        "Class name ": "International Management",
+        "crn #": "13398",
+        "section": "2",
+        "time ": "ARR",
+        "professor": "Weise,D"
+      },
+      {
+        "Course number ": "3680",
+        "Class name ": "International Management",
+        "crn #": "13399",
+        "section": "3",
+        "time ": "ARR",
+        "professor": "Pathak,S"
+      },
+      {
+        "Course number ": "3780",
+        "Class name ": "International Marketing",
+        "crn #": "13537",
+        "section": "1",
+        "time ": "09:30 - 10:45 am",
+        "professor": "Pathak,S"
+      },
+      {
+        "Course number ": "3780",
+        "Class name ": "International Marketing",
+        "crn #": "13538",
+        "section": "2",
+        "time ": "ARR",
+        "professor": "Pellegrini,E"
+      },
+      {
+        "Course number ": "3780",
+        "Class name ": "International Marketing",
+        "crn #": "13539",
+        "section": "3",
+        "time ": "ARR",
+        "professor": "Murray,J"
+      },
+      {
+        "Course number ": "3780",
+        "Class name ": "International Marketing",
+        "crn #": "14651",
+        "section": "4",
+        "time ": "12:30 - 01:45 pm",
+        "professor": "Vining,E"
+      },
+      {
+        "Course number ": "4280",
+        "Class name ": "International Business Experience",
+        "crn #": "13497",
+        "section": "1",
+        "time ": "ARR",
+        "professor": "Vining,E"
+      },
+      {
+        "Course number ": "5289",
+        "Class name ": "International Business Strategies",
+        "crn #": "13708",
+        "section": "G01",
+        "time ": "08:00 - 05:00 pm",
+        "professor": "Ju,M"
+      },
+      {
+        "Course number ": "5289",
+        "Class name ": "International Business Strategies",
+        "crn #": "14936",
+        "section": "X01",
+        "time ": "ARR",
+        "professor": "Rottman,J"
+      },
+      {
+        "Course number ": "6581",
+        "Class name ": "Seminar In International Investments",
+        "crn #": "13709",
+        "section": "G01",
+        "time ": "ARR",
+        "professor": "Eyssell,T"
+      }
+    ]
   },
   {
     "Course number ": "Japanese",

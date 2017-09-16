@@ -133,4 +133,22 @@ router.post('/login', (req, res) => {
   })
 })
 
+router.post('/logout', passport.authenticate('jwt', {session: false}), (req, res, next) => {
+  const updatedUser = {}
+  updatedUser.lastLogin = validator.toDate(new Date().getTime() / 1000)
+  User.updateUser(req.body._id, updatedUser, (err) => {
+    if (err) {
+      console.log(err)
+      res.json({success: false,
+        err: err,
+        msg: 'Soemthing went wrong on our end.  Plesae try again.'})
+    } else {
+      res.json({
+        success: true,
+        msg: 'Lastlogin updated'
+      })
+    }
+  })
+})
+
 module.exports = router
