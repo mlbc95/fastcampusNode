@@ -120,7 +120,7 @@ router.post('/login', (req, res) => {
           success: true,
           user: {
             id: user._id,
-            name: user.fName,
+            fName: user.fName,
             lName: user.lName,
             username: user.username,
             email: user.email,
