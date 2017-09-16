@@ -118,12 +118,13 @@ router.post('/login', (req, res) => {
 
         res.json({
           success: true,
-          token: 'JWT ' + token,
           user: {
             id: user._id,
             name: user.name,
+            lName: user.lName,
             username: user.username,
-            email: user.email
+            email: user.email,
+            token: 'JWT ' + token
           }
         })
       } else {
