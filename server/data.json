@@ -14657,410 +14657,398 @@
     "coureses": [{
         "Course number ": "3600",
         "Class name ": "Management And Organizational Behavior",
-        "crn #": "13376",
-        "section": "1",
-        "time ": "ARR",
-        "professor": "Hupman Cadenbach,A"
-      },
-      {
-        "Course number ": "3600",
-        "Class name ": "Management And Organizational Behavior",
-        "crn #": "13378",
-        "section": "2",
-        "time ": "09:30 - 10:45 am",
-        "professor": ""
-      },
-      {
-        "Course number ": "3600",
-        "Class name ": "Management And Organizational Behavior",
-        "crn #": "13380",
-        "section": "3",
-        "time ": "11:00 - 12:15 pm",
-        "professor": "Lane,E"
-      },
-      {
-        "Course number ": "3600",
-        "Class name ": "Management And Organizational Behavior",
-        "crn #": "14815",
-        "section": "4",
-        "time ": "ARR",
-        "professor": "McKenna,M"
-      },
-      {
-        "Course number ": "3600",
-        "Class name ": "Management And Organizational Behavior",
-        "crn #": "13383",
-        "section": "E01",
-        "time ": "06:55 - 08:10 pm",
-        "professor": "Bryant,W"
-      },
-      {
-        "Course number ": "3600",
-        "Class name ": "Management And Organizational Behavior",
-        "crn #": "13385",
-        "section": "E02",
-        "time ": "06:55 - 08:10 pm",
-        "professor": "Lane,E"
-      },
-      {
-        "Course number ": "3600",
-        "Class name ": "Management And Organizational Behavior",
-        "crn #": "14334",
-        "section": "C01",
-        "time ": "ARR",
-        "professor": "McKenna,M"
-      },
-      {
-        "Course number ": "3600",
-        "Class name ": "Management And Organizational Behavior",
-        "crn #": "14335",
-        "section": "S01",
-        "time ": "ARR",
-        "professor": "Bryant,W"
-      },
-      {
-        "Course number ": "3600",
-        "Class name ": "Management And Organizational Behavior",
-        "crn #": "14336",
-        "section": "W01",
-        "time ": "ARR",
-        "professor": "Lane,E"
+        "classes": [{
+            "crn #": "13376",
+            "section": "1",
+            "time ": "ARR",
+            "professor": "Hupman Cadenbach,A"
+          },
+          {
+            "crn #": "13378",
+            "section": "2",
+            "time ": "09:30 - 10:45 am",
+            "professor": ""
+          },
+          {
+            "crn #": "13380",
+            "section": "3",
+            "time ": "11:00 - 12:15 pm",
+            "professor": "Lane,E"
+          },
+          {
+            "crn #": "14815",
+            "section": "4",
+            "time ": "ARR",
+            "professor": "McKenna,M"
+          },
+          {
+            "crn #": "13383",
+            "section": "E01",
+            "time ": "06:55 - 08:10 pm",
+            "professor": "Bryant,W"
+          },
+          {
+            "crn #": "13385",
+            "section": "E02",
+            "time ": "06:55 - 08:10 pm",
+            "professor": "Lane,E"
+          },
+          {
+            "crn #": "14334",
+            "section": "C01",
+            "time ": "ARR",
+            "professor": "McKenna,M"
+          },
+          {
+            "crn #": "14335",
+            "section": "S01",
+            "time ": "ARR",
+            "professor": "Bryant,W"
+          },
+          {
+            "crn #": "14336",
+            "section": "W01",
+            "time ": "ARR",
+            "professor": "Lane,E"
+          }
+        ]
       },
       {
         "Course number ": "3611",
         "Class name ": "Advanced Management And Organizational Behavior",
-        "crn #": "13386",
-        "section": "1",
-        "time ": "09:30 - 10:45 am",
-        "professor": "Lane,E"
-      },
-      {
-        "Course number ": "3611",
-        "Class name ": "Advanced Management And Organizational Behavior",
-        "crn #": "13387",
-        "section": "2",
-        "time ": "11:00 - 12:15 pm",
-        "professor": "Lane,E"
-      },
-      {
-        "Course number ": "3611",
-        "Class name ": "Advanced Management And Organizational Behavior",
-        "crn #": "13388",
-        "section": "3",
-        "time ": "ARR",
-        "professor": "Dakich,J"
-      },
-      {
-        "Course number ": "3611",
-        "Class name ": "Advanced Management And Organizational Behavior",
-        "crn #": "14337",
-        "section": "C01",
-        "time ": "ARR",
-        "professor": "Lane,E"
-      },
-      {
-        "Course number ": "3611",
-        "Class name ": "Advanced Management And Organizational Behavior",
-        "crn #": "14338",
-        "section": "S01",
-        "time ": "ARR",
-        "professor": "Lane,E"
-      },
-      {
-        "Course number ": "3611",
-        "Class name ": "Advanced Management And Organizational Behavior",
-        "crn #": "14339",
-        "section": "W01",
-        "time ": "ARR",
-        "professor": "Lane,E"
+        "classes": [{
+            "crn #": "13386",
+            "section": "1",
+            "time ": "09:30 - 10:45 am",
+            "professor": "Lane,E"
+          },
+          {
+            "crn #": "13387",
+            "section": "2",
+            "time ": "11:00 - 12:15 pm",
+            "professor": "Lane,E"
+          },
+          {
+            "crn #": "13388",
+            "section": "3",
+            "time ": "ARR",
+            "professor": "Dakich,J"
+          },
+          {
+            "crn #": "14337",
+            "section": "C01",
+            "time ": "ARR",
+            "professor": "Lane,E"
+          },
+          {
+            "crn #": "14338",
+            "section": "S01",
+            "time ": "ARR",
+            "professor": "Lane,E"
+          },
+          {
+            "crn #": "14339",
+            "section": "W01",
+            "time ": "ARR",
+            "professor": "Lane,E"
+          }
+        ]
       },
       {
         "Course number ": "3612",
         "Class name ": "Professional Skills Development",
-        "crn #": "13389",
-        "section": "1",
-        "time ": "11:00 - 12:15 pm",
-        "professor": "Lane,E"
-      },
-      {
-        "Course number ": "3612",
-        "Class name ": "Professional Skills Development",
-        "crn #": "13390",
-        "section": "E01",
-        "time ": "06:55 - 08:10 pm",
-        "professor": "Lane,E"
-      },
-      {
-        "Course number ": "3621",
-        "Class name ": "Human Resource Management",
-        "crn #": "13391",
-        "section": "1",
-        "time ": "11:00 - 12:15 pm",
-        "professor": "Dakich,J"
+        "classes": [{
+            "crn #": "13389",
+            "section": "1",
+            "time ": "11:00 - 12:15 pm",
+            "professor": "Lane,E"
+          },
+          {
+            "crn #": "13390",
+            "section": "E01",
+            "time ": "06:55 - 08:10 pm",
+            "professor": "Lane,E"
+          }
+        ]
       },
       {
         "Course number ": "3621",
         "Class name ": "Human Resource Management",
-        "crn #": "13392",
-        "section": "E01",
-        "time ": "06:55 - 09:35 pm",
-        "professor": "Dakich,J"
+        "classes": [{
+          "crn #": "13391",
+          "section": "1",
+          "time ": "11:00 - 12:15 pm",
+          "professor": "Dakich,J"
+        }]
+      },
+      {
+        "Course number ": "3621",
+        "Class name ": "Human Resource Management",
+        "classes": [{
+          "crn #": "13392",
+          "section": "E01",
+          "time ": "06:55 - 09:35 pm",
+          "professor": "Dakich,J"
+        }]
       },
       {
         "Course number ": "3622",
         "Class name ": "Industrial And Labor Relations",
-        "crn #": "13393",
-        "section": "E01",
-        "time ": "05:30 - 06:45 pm",
-        "professor": "Synovec,R"
+        "classes": [{
+          "crn #": "13393",
+          "section": "E01",
+          "time ": "05:30 - 06:45 pm",
+          "professor": "Synovec,R"
+        }]
       },
       {
         "Course number ": "3623",
         "Class name ": "Industrial And Organizational Psychology",
-        "crn #": "14353",
-        "section": "1",
-        "time ": "11:00 - 12:15 pm",
-        "professor": "Synovec,R"
+        "classes": [{
+          "crn #": "14353",
+          "section": "1",
+          "time ": "11:00 - 12:15 pm",
+          "professor": "Synovec,R"
+        }]
       },
       {
         "Course number ": "3624",
         "Class name ": "Employee Training And Development",
-        "crn #": "13394",
-        "section": "1",
-        "time ": "09:30 - 10:45 am",
-        "professor": "Dakich,J"
+        "classes": [{
+          "crn #": "13394",
+          "section": "1",
+          "time ": "09:30 - 10:45 am",
+          "professor": "Dakich,J"
+        }]
       },
       {
         "Course number ": "3680",
         "Class name ": "International Management",
-        "crn #": "13395",
-        "section": "1",
-        "time ": "ARR",
-        "professor": "Merritt,S"
-      },
-      {
-        "Course number ": "3680",
-        "Class name ": "International Management",
-        "crn #": "13397",
-        "section": "2",
-        "time ": "ARR",
-        "professor": "Lane,E"
-      },
-      {
-        "Course number ": "3680",
-        "Class name ": "International Management",
-        "crn #": "13400",
-        "section": "3",
-        "time ": "ARR",
-        "professor": "Pathak,S"
-      },
-      {
-        "Course number ": "3690",
-        "Class name ": "Internship In Management",
-        "crn #": "13401",
-        "section": "1",
-        "time ": "ARR",
-        "professor": "Pathak,S"
+        "classes": [{
+            "crn #": "13395",
+            "section": "1",
+            "time ": "ARR",
+            "professor": "Merritt,S"
+          },
+          {
+            "crn #": "13397",
+            "section": "2",
+            "time ": "ARR",
+            "professor": "Lane,E"
+          },
+          {
+            "crn #": "13400",
+            "section": "3",
+            "time ": "ARR",
+            "professor": "Pathak,S"
+          }
+        ]
       },
       {
         "Course number ": "3690",
         "Class name ": "Internship In Management",
-        "crn #": "13402",
-        "section": "2",
-        "time ": "ARR",
-        "professor": "Pellegrini,E"
-      },
-      {
-        "Course number ": "3690",
-        "Class name ": "Internship In Management",
-        "crn #": "13403",
-        "section": "3",
-        "time ": "ARR",
-        "professor": "Pellegrini,E"
-      },
-      {
-        "Course number ": "3690",
-        "Class name ": "Internship In Management",
-        "crn #": "14957",
-        "section": "4",
-        "time ": "ARR",
-        "professor": "Lane,E"
+        "classes": [{
+            "crn #": "13401",
+            "section": "1",
+            "time ": "ARR",
+            "professor": "Pathak,S"
+          },
+          {
+            "crn #": "13402",
+            "section": "2",
+            "time ": "ARR",
+            "professor": "Pellegrini,E"
+          },
+          {
+            "crn #": "13403",
+            "section": "3",
+            "time ": "ARR",
+            "professor": "Pellegrini,E"
+          },
+          {
+            "crn #": "14957",
+            "section": "4",
+            "time ": "ARR",
+            "professor": "Lane,E"
+          }
+        ]
       },
       {
         "Course number ": "3698",
         "Class name ": "Seminar in Management",
-        "crn #": "14432",
-        "section": "1",
-        "time ": "02:00 - 03:15 pm",
-        "professor": "Dakich,J"
+        "classes": [{
+          "crn #": "14432",
+          "section": "1",
+          "time ": "02:00 - 03:15 pm",
+          "professor": "Dakich,J"
+        }]
       },
       {
         "Course number ": "3699",
         "Class name ": "Independent Study In Management",
-        "crn #": "13404",
-        "section": "1",
-        "time ": "ARR",
-        "professor": "Rottman,J"
-      },
-      {
-        "Course number ": "3699",
-        "Class name ": "Independent Study In Management",
-        "crn #": "13405",
-        "section": "2",
-        "time ": "ARR",
-        "professor": "Lane,E"
-      },
-      {
-        "Course number ": "4219",
-        "Class name ": "Strategic Management",
-        "crn #": "13406",
-        "section": "1",
-        "time ": "09:30 - 10:45 am",
-        "professor": "Dakich,J"
+        "classes": [{
+            "crn #": "13404",
+            "section": "1",
+            "time ": "ARR",
+            "professor": "Rottman,J"
+          },
+          {
+            "crn #": "13405",
+            "section": "2",
+            "time ": "ARR",
+            "professor": "Lane,E"
+          }
+        ]
       },
       {
         "Course number ": "4219",
         "Class name ": "Strategic Management",
-        "crn #": "13408",
-        "section": "2",
-        "time ": "09:30 - 10:45 am",
-        "professor": "Lane,E"
-      },
-      {
-        "Course number ": "4219",
-        "Class name ": "Strategic Management",
-        "crn #": "14845",
-        "section": "3",
-        "time ": "02:00 - 04:40 pm",
-        "professor": "Arya,B"
-      },
-      {
-        "Course number ": "4219",
-        "Class name ": "Strategic Management",
-        "crn #": "13409",
-        "section": "E01",
-        "time ": "ARR",
-        "professor": "Ofem,B"
-      },
-      {
-        "Course number ": "4219",
-        "Class name ": "Strategic Management",
-        "crn #": "13410",
-        "section": "E02",
-        "time ": "06:55 - 09:35 pm",
-        "professor": "Zegarra-Ballon,J"
-      },
-      {
-        "Course number ": "4220",
-        "Class name ": "Business Assessment Testing",
-        "crn #": "13411",
-        "section": "1",
-        "time ": "02:00 - 04:40 pm",
-        "professor": "Ofem,B"
+        "classes": [{
+            "crn #": "13406",
+            "section": "1",
+            "time ": "09:30 - 10:45 am",
+            "professor": "Dakich,J"
+          },
+          {
+            "crn #": "13408",
+            "section": "2",
+            "time ": "09:30 - 10:45 am",
+            "professor": "Lane,E"
+          },
+          {
+            "crn #": "14845",
+            "section": "3",
+            "time ": "02:00 - 04:40 pm",
+            "professor": "Arya,B"
+          },
+          {
+            "crn #": "13409",
+            "section": "E01",
+            "time ": "ARR",
+            "professor": "Ofem,B"
+          },
+          {
+            "crn #": "13410",
+            "section": "E02",
+            "time ": "06:55 - 09:35 pm",
+            "professor": "Zegarra-Ballon,J"
+          }
+        ]
       },
       {
         "Course number ": "4220",
         "Class name ": "Business Assessment Testing",
-        "crn #": "13412",
-        "section": "2",
-        "time ": "02:00 - 04:40 pm",
-        "professor": "Zegarra-Ballon,J"
-      },
-      {
-        "Course number ": "4220",
-        "Class name ": "Business Assessment Testing",
-        "crn #": "13413",
-        "section": "3",
-        "time ": "02:00 - 04:40 pm",
-        "professor": "Rapsilber,K"
-      },
-      {
-        "Course number ": "4220",
-        "Class name ": "Business Assessment Testing",
-        "crn #": "13414",
-        "section": "4",
-        "time ": "09:00 - 11:40 am",
-        "professor": "Rapsilber,K"
-      },
-      {
-        "Course number ": "4220",
-        "Class name ": "Business Assessment Testing",
-        "crn #": "14643",
-        "section": "5",
-        "time ": "09:00 - 11:40 am",
-        "professor": "Rapsilber,K"
-      },
-      {
-        "Course number ": "4220",
-        "Class name ": "Business Assessment Testing",
-        "crn #": "13415",
-        "section": "E01",
-        "time ": "05:30 - 07:45 pm",
-        "professor": "Rapsilber,K"
+        "classes": [{
+            "crn #": "13411",
+            "section": "1",
+            "time ": "02:00 - 04:40 pm",
+            "professor": "Ofem,B"
+          },
+          {
+            "crn #": "13412",
+            "section": "2",
+            "time ": "02:00 - 04:40 pm",
+            "professor": "Zegarra-Ballon,J"
+          },
+          {
+
+            "crn #": "13413",
+            "section": "3",
+            "time ": "02:00 - 04:40 pm",
+            "professor": "Rapsilber,K"
+          },
+          {
+            "crn #": "13414",
+            "section": "4",
+            "time ": "09:00 - 11:40 am",
+            "professor": "Rapsilber,K"
+          },
+          {
+            "crn #": "14643",
+            "section": "5",
+            "time ": "09:00 - 11:40 am",
+            "professor": "Rapsilber,K"
+          },
+          {
+            "crn #": "13415",
+            "section": "E01",
+            "time ": "05:30 - 07:45 pm",
+            "professor": "Rapsilber,K"
+          }
+        ]
       },
       {
         "Course number ": "4614",
         "Class name ": "Entrepreneurship/Small Business Management",
-        "crn #": "15487",
-        "section": "1",
-        "time ": "02:00 - 04:40 pm",
-        "professor": "Rapsilber,K"
+        "classes": [{
+          "crn #": "15487",
+          "section": "1",
+          "time ": "02:00 - 04:40 pm",
+          "professor": "Rapsilber,K"
+        }]
       },
       {
         "Course number ": "5600",
         "Class name ": "Managing People in Organizations",
-        "crn #": "13592",
-        "section": "G01",
-        "time ": "06:55 - 09:35 pm",
-        "professor": "Rapsilber,K"
+        "classes": [{
+          "crn #": "13592",
+          "section": "G01",
+          "time ": "06:55 - 09:35 pm",
+          "professor": "Rapsilber,K"
+        }]
       },
       {
         "Course number ": "5611",
         "Class name ": "Advanced Organizational Behavior And Administrative Processes",
-        "crn #": "13593",
-        "section": "G01",
-        "time ": "06:55 - 09:35 pm",
-        "professor": "Miller,C"
+        "classes": [{
+          "crn #": "13593",
+          "section": "G01",
+          "time ": "06:55 - 09:35 pm",
+          "professor": "Miller,C"
+        }]
       },
       {
         "Course number ": "5621",
         "Class name ": "Managing Human Resources",
-        "crn #": "13613",
-        "section": "XC1",
-        "time ": "06:00 - 08:40 pm",
-        "professor": "Balser,D"
+        "classes": [{
+          "crn #": "13613",
+          "section": "XC1",
+          "time ": "06:00 - 08:40 pm",
+          "professor": "Balser,D"
+        }]
       },
       {
         "Course number ": "5690",
         "Class name ": "Management Internship",
-        "crn #": "15028",
-        "section": "G01",
-        "time ": "ARR",
-        "professor": "Breaugh,J"
+        "classes": [{
+          "crn #": "15028",
+          "section": "G01",
+          "time ": "ARR",
+          "professor": "Breaugh,J"
+        }]
       },
       {
         "Course number ": "5695",
         "Class name ": "Seminar In Management",
-        "crn #": "14534",
-        "section": "XC1",
-        "time ": "05:30 - 09:00 pm",
-        "professor": "Breaugh,J"
-      },
-      {
-        "Course number ": "5695",
-        "Class name ": "Seminar In Management",
-        "crn #": "14694",
-        "section": "XC2",
-        "time ": "05:30 - 09:00 pm",
-        "professor": "Lane,E"
-      },
-      {
-        "Course number ": "5695",
-        "Class name ": "Seminar In Management",
-        "crn #": "14939",
-        "section": "X03",
-        "time ": "ARR",
-        "professor": "Pellegrini,E"
+        "classes": [{
+            "crn #": "14534",
+            "section": "XC1",
+            "time ": "05:30 - 09:00 pm",
+            "professor": "Breaugh,J"
+          },
+          {
+            "crn #": "14694",
+            "section": "XC2",
+            "time ": "05:30 - 09:00 pm",
+            "professor": "Lane,E"
+          },
+          {
+            "crn #": "14939",
+            "section": "X03",
+            "time ": "ARR",
+            "professor": "Pellegrini,E"
+          }
+        ]
       }
     ]
   },
