@@ -105,7 +105,8 @@ router.post('/login', (req, res) => {
     if (err) throw err
     if (!user) {
       console.log('No User Found')
-      res.status(400)
+      res.status(401)
+      res.setHeader('WWW-Authenticate', 'Basic realm="FASTCampus"')
       return res.json({success: false, msg: 'User not found.'})
     }
 
@@ -128,7 +129,8 @@ router.post('/login', (req, res) => {
           }
         })
       } else {
-        res.status(400)
+        res.status(401)
+        res.setHeader('WWW-Authenticate', 'Basic realm="FASTCampus"')
         return res.json({success: false, msg: 'Wrong password'})
       }
     })
