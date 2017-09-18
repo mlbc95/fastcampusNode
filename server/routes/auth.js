@@ -139,7 +139,6 @@ router.post('/login', (req, res) => {
 
 router.post('/logout', (req, res) => {
   const updatedUser = {}
-  updatedUser.lastLogin = validator.toDate(new Date().getTime() / 1000)
   User.updateUser(req.body._id, updatedUser, (err) => {
     if (err) {
       console.log(err)
