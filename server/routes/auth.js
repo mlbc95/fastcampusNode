@@ -105,6 +105,7 @@ router.post('/login', (req, res) => {
     if (err) throw err
     if (!user) {
       console.log('No User Found')
+      res.status(400)
       return res.json({success: false, msg: 'User not found.'})
     }
 
@@ -115,7 +116,6 @@ router.post('/login', (req, res) => {
         const token = jwt.sign(user, config.secret, {
           expiresIn: 604800 // 1 week
         })
-
         res.json({
           success: true,
           user: {
@@ -128,6 +128,7 @@ router.post('/login', (req, res) => {
           }
         })
       } else {
+        res.status(400)
         return res.json({success: false, msg: 'Wrong password'})
       }
     })
