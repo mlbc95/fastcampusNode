@@ -137,7 +137,7 @@ router.post('/login', (req, res) => {
   })
 })
 
-router.post('/logout', passport.authenticate('jwt', {session: false}), (req, res, next) => {
+router.post('/logout', (req, res) => {
   const updatedUser = {}
   updatedUser.lastLogin = validator.toDate(new Date().getTime() / 1000)
   User.updateUser(req.body._id, updatedUser, (err) => {
