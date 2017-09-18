@@ -139,7 +139,8 @@ router.post('/login', (req, res) => {
 
 router.post('/logout', (req, res) => {
   const updatedUser = {}
-  User.updateUser(req.body._id, updatedUser, (err) => {
+  updatedUser.lastLogin = Date.now()
+  User.updateUser(req.body.id, updatedUser, (err) => {
     if (err) {
       console.log(err)
       res.json({success: false,
