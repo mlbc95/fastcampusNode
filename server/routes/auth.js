@@ -118,14 +118,14 @@ router.post('/login', (req, res) => {
           expiresIn: 604800 // 1 week
         })
         res.json({
-          success: true,
+          token: 'JWT ' + token,
           user: {
             id: user._id,
             fName: user.fName,
             lName: user.lName,
             username: user.username,
             email: user.email,
-            token: 'JWT ' + token
+
           }
         })
       } else {
