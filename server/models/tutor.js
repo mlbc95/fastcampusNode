@@ -17,7 +17,7 @@ const TutorSchema = mongoose.Schema({
   courses: [ // classes available to tutor
     {
       courseNumber: Number,
-      className: String
+      courseName: String
     }
   ],
   walkIn: {
@@ -85,10 +85,10 @@ module.exports.validateCourses = function (tutor, obj) {
               break
             }
             break
-          case 'className':
+          case 'courseName':
             const regex = /((\w+) ?){1,}/
             if (!regex.test(value)) {
-              obj.courses.courseName = 'Please enter a valid classname'
+              obj.courses.courseName = 'Please enter a valid coursename'
               break
             }
             break
@@ -97,3 +97,5 @@ module.exports.validateCourses = function (tutor, obj) {
     })
   }
 }
+
+module.expotrs.validateAvailable = function (tutor)
