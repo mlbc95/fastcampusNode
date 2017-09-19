@@ -98,7 +98,7 @@ module.exports.validateCourses = function (tutor, obj) {
   }
 }
 
-module.expotrs.validateAvailable = function (tutor, obj) {
+module.exports.validateAvailable = function (tutor, obj) {
   // If the object is present and equal to an array we process further
   if ('available' in tutor && !lodash.isArray(tutor.available)) {
     // The object exists but is in an invalid format
@@ -128,5 +128,23 @@ module.expotrs.validateAvailable = function (tutor, obj) {
         }
       })
     })
+  }
+}
+
+module.exports.validateOffice = function (tutor, obj) {
+  if ('office' in tutor && !lodash.isObject(tutor.office)) {
+    // Error as the office is not an object
+    obj.office = 'Please enter the office in a valid format'
+  } else if ('office' in tutor && lodash.isObject(tutor.office)) {
+    const regex = /((\w+) ?){1,}/
+    const regex1 = /[A-Z]?\d{1,5}/
+    // If building and roomNumber are present but do not match the regex
+    if ('building' in tutor.office &&
+        'roomNumber' in tutor.office &&
+        !regex.test(tutor.office.building) &&
+        !regex1.test(tutor.office.roomNumber)) {
+      // Error as the office is not an object
+      obj.office = 'Please enter the office in a valid format'
+    }
   }
 }
