@@ -98,4 +98,35 @@ module.exports.validateCourses = function (tutor, obj) {
   }
 }
 
-module.expotrs.validateAvailable = function (tutor)
+module.expotrs.validateAvailable = function (tutor, obj) {
+  // If the object is present and equal to an array we process further
+  if ('available' in tutor && !lodash.isArray(tutor.available)) {
+    // The object exists but is in an invalid format
+    obj.available = 'Please enter classes in a valid array'
+  } else if ('available' in tutor && lodash.isArray(tutor.available)) {
+    // Is present and in an array loop through array
+    lodash.forEach(tutor.availavle, function (value) {
+      // Get the day of the week to manipulate the value
+      lodash.forIn(value, function (key, val) {
+        // Make sure key is set properly
+        if (key === 'dayOfWeek') {
+          // validate day against days of the week
+          const regex = /([Ss]unday|[Mm]onday|[Tt]uesday|[Ww]ednesday|[Tt]hursday|[Ff]riday|[Ss]aturday)/
+          if ('day' in val && !regex.test(val.day)) {
+            // Day of week was entered inproperly
+            obj.available.dayOfWeek.day = 'Please enter a valid day of week'
+          } else if ('day' in val && regex.test(val.day)) {
+            // Passed validation for day, now validate hours
+            lodash.forIn(val.hours, function (k, v) {
+              // Regex forces 3 or 4 numbers, dash, 3 or 4 numbers
+              const regex1 = /\d{3,4}[-]\d{3,4}/
+              if (!regex1.test(v)) {
+                obj.available.dayOfWeek.hours = 'please enter a valid time'
+              }
+            })
+          }
+        }
+      })
+    })
+  }
+}
