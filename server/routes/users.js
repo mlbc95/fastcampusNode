@@ -15,8 +15,13 @@ const classes = require('../data.json')
       Information Expected :
         JWT token
       Returns:
-        Fail: -> if token is invalid
-          Unauthroized
+        Fail:
+          General err ->
+            Boolean | Success | false
+            String | err | err message
+          authentication failure ->
+            Boolean | Success | false
+            String | msg | err message
         Success:
           JSON object named user
           user{
@@ -25,25 +30,19 @@ const classes = require('../data.json')
             userName,
             email
           }
-
-*/
-
-/*
-    /user/profile | GET | Update user
-      Authrization
-      Information Expected :
-        JSON
-      Returns:
-        Fail: -> if token is invalid
-          Unauthroized
-        Success:
-          JSON object named user
-          user{
-            fName,
-            lName,
-            userName,
-            email
-          }
+     ----------------------------------------------------
+     /user/updateUser | POST | Allows client to update user
+        Content-Type : application/json
+        Infomation Expected:
+          id, content to be updated
+        Returns:
+          Fail:
+            General err ->
+              Boolean | Success | false
+              String | err | err message
+          Success:
+            Boolean | Success | true
+            String | msg | User readable message
 
 */
 
