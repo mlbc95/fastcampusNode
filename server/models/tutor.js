@@ -11,7 +11,7 @@ const TutorSchema = mongoose.Schema({
     type: String,
     required: true
   },
-  classes: [ // classes available to tutor
+  courses: [ // classes available to tutor
     {
       courseNumber: Number,
       className: String
@@ -23,9 +23,16 @@ const TutorSchema = mongoose.Schema({
   appointment: {
     type: Boolean
   },
-  hours: [
+  available: [
     {
-      type: String
+      dayOfWeek: {
+        day: String,
+        hours: [
+          {
+            type: String
+          }
+        ]
+      }
     }
   ],
   office: {
