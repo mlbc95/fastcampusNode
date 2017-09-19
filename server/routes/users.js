@@ -8,15 +8,16 @@ const bcrypt = require('bcryptjs')
 const router = new express.Router()
 const classes = require('../data.json')
 
-/* 
-    /user/profile | GET | Retrives user Information 
-      Authrization 
-      Information Expected : 
-        token
+/*
+  This file contains api calls for user profile, updateUser, getAllUsers, classes
+    /user/profile | GET | Retrives user Information
+      Authrization
+      Information Expected :
+        JWT token
       Returns:
-        Fail: -> if token is invalid 
-          Unauthroized 
-        Success: 
+        Fail: -> if token is invalid
+          Unauthroized
+        Success:
           JSON object named user
           user{
             fName,
@@ -27,15 +28,15 @@ const classes = require('../data.json')
 
 */
 
-/* 
-    /user/profile | GET | Update user 
-      Authrization 
-      Information Expected : 
-        JSON 
+/*
+    /user/profile | GET | Update user
+      Authrization
+      Information Expected :
+        JSON
       Returns:
-        Fail: -> if token is invalid 
-          Unauthroized 
-        Success: 
+        Fail: -> if token is invalid
+          Unauthroized
+        Success:
           JSON object named user
           user{
             fName,
