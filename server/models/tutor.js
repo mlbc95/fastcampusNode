@@ -149,6 +149,24 @@ module.exports.validateOffice = function (tutor, obj) {
   }
 }
 
+module.exports.addTutorValidationWrapper = function (tutor, obj, callback) {
+  Tutor.validatrFName(tutor, obj)
+  Tutor.validateLName(tutor, obj)
+  Tutor.validateCourses(tutor, obj)
+  Tutor.validateAvailable(tutor, obj)
+  Tutor.validateOffice(tutor, obj)
+  callback()
+}
+
+// CRUD operations
 module.exports.addTutor = function (newTutor, callback) {
-  
+  const obj = new Tutor(newTutor)
+  obj.save()
+  newTutor._id = obj._id
+  callback()
+}
+
+module.exports.updateTutor = function (id, updatedTutor, callback) {
+  console.log(updatedTutor)
+  Tutor.findByIdAndUpdate({_id: mongoose.Types.ObjectId(id)}, updatedTutor, callback)
 }
