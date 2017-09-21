@@ -100,8 +100,25 @@ router.put('/', (req, res) => {
 })
 
 router.get('/', (req, res) => {
-  if (validator.isMondoId(req.query.id)) {
-    Tutor.
+  if (req.query.id && validator.isMongoId(req.query.id)) {
+    Tutor.getTutorById(req.query.id, (err, ret) => {
+      if (err) {
+        console.log(err)
+        res.json({success: false})
+      } else {
+        console.log(ret)
+        res.json({success: true, msg: ret})
+      }
+    })
+  } else {
+    Tutor.getAllTutors((err, ret) => {
+      if (err) {
+        console.log(err)
+        res.json({success: false})
+      } else {
+        res.json({success: true, msg: ret})
+      }
+    })
   }
 })
 module.exports = router

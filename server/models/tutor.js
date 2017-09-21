@@ -183,6 +183,10 @@ module.exports.updateTutor = function (id, updatedTutor, callback) {
   Tutor.findByIdAndUpdate({_id: mongoose.Types.ObjectId(id)}, updatedTutor, callback)
 }
 
-module.exports.getTutor = function (id, callback) {
+module.exports.getTutorById = function (id, callback) {
   Tutor.findById(id, callback)
+}
+
+module.exports.getAllTutors = function (callback) {
+  Tutor.find({}, callback)
 }
