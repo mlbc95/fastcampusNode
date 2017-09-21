@@ -29,7 +29,7 @@ router.post('/', (req, res) => {
 router.put('/', (req, res) => {
   const errObj = {}
   const updatedTutor = {}
-  lodash.foIn(req.body, function (val, key) {
+  lodash.forIn(req.body, function (val, key) {
     switch (key) {
       case 'fName':
         Tutor.validateFName(req.body, errObj)
@@ -82,17 +82,16 @@ router.put('/', (req, res) => {
         break
     }
   })
-  if (lodash.isEmpty(errObj)) {
-    Tutor.updateTutor(req.body._id, updatedTutor, (err) => {
-      // Handle error
-      if (err) {
-        console.log(err)
-        res.json({success: false, msg: 'Failed to udpate tutor', err: err})
-      }
-      res.json({success: true, msg: 'Updated tutor'})
-    })
-  }
-  res.json({success: false, msg: errObj})
+  console.log(errObj)
+  Tutor.updateTutor(req.body._id, updatedTutor, (err) => {
+    // Handle error
+    if (!lodash.isEmpty(err)) {
+      console.log(err)
+      res.json({success: false, msg: 'Failed to udpate tutor', err: err})
+    }
+    res.json({success: true, msg: 'Updated tutor'})
+  })
+  // res.json({success: false, msg: errObj, test: 'here'})
 })
 
 router.get('/', (req, res) => {

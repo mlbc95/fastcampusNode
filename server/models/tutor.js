@@ -58,6 +58,7 @@ module.exports.validateFName = function (tutor, obj) {
 }
 
 module.exports.validateLName = function (tutor, obj) {
+  console.log('in lname validator')
   // If the lName is in user object and doesnt pass the regex test
   if ('lName' in tutor && !validator.isAlpha(tutor.lName.trim())) {
     // Insert failure logic
@@ -68,6 +69,7 @@ module.exports.validateLName = function (tutor, obj) {
 }
 
 module.exports.validateCourses = function (tutor, obj) {
+  console.log('in course validator')
   // If the object is present and equal to an array we process further
   if ('courses' in tutor && !lodash.isArray(tutor.courses)) {
     // The object exists but is in an invalid format
@@ -99,6 +101,7 @@ module.exports.validateCourses = function (tutor, obj) {
 }
 
 module.exports.validateAvailable = function (tutor, obj) {
+  console.log('in available validator')
   // If the object is present and equal to an array we process further
   if ('available' in tutor && !lodash.isArray(tutor.available)) {
     // The object exists but is in an invalid format
@@ -132,6 +135,7 @@ module.exports.validateAvailable = function (tutor, obj) {
 }
 
 module.exports.validateOffice = function (tutor, obj) {
+  console.log('in office validator')
   if ('office' in tutor && !lodash.isObject(tutor.office)) {
     // Error as the office is not an object
     obj.office = 'Please enter the office in a valid format'
@@ -149,12 +153,20 @@ module.exports.validateOffice = function (tutor, obj) {
   }
 }
 
+module.exports.validateSchool = function (tutor, obj) {
+  console.log('in school validator')
+  const regex = /\w+/
+  if ('school' in tutor && !regex.test(tutor.school)) {
+    obj.scool = 'Please enter a valid school'
+  }
+}
 module.exports.addTutorValidationWrapper = function (tutor, obj, callback) {
-  Tutor.validatrFName(tutor, obj)
+  Tutor.validateFName(tutor, obj)
   Tutor.validateLName(tutor, obj)
   Tutor.validateCourses(tutor, obj)
   Tutor.validateAvailable(tutor, obj)
   Tutor.validateOffice(tutor, obj)
+  Tutor.validateSchool(tutor, obj)
   callback()
 }
 
