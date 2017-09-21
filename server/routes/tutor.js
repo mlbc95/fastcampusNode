@@ -7,7 +7,7 @@ const typeCheck = require('type-check').typeCheck
   This file contains api calls for Tutor
 */
 
-router.post('/addTutor', (req, res) => {
+router.post('/', (req, res) => {
   const errObj = {}
   Tutor.addTutorValidationWrapper(req.body, errObj, (err) => {
     if (err) {
@@ -26,7 +26,7 @@ router.post('/addTutor', (req, res) => {
   })
 })
 
-router.post('/updateTutor', (req, res) => {
+router.put('/', (req, res) => {
   const errObj = {}
   const updatedTutor = {}
   lodash.foIn(req.body, function (val, key) {
@@ -82,5 +82,20 @@ router.post('/updateTutor', (req, res) => {
         break
     }
   })
+  if (lodash.isEmpty(errObj)) {
+    Tutor.updateTutor(req.body._id, updatedTutor, (err) => {
+      // Handle error
+      if (err) {
+        console.log(err)
+        res.json({success: false, msg: 'Failed to udpate tutor', err: err})
+      }
+      res.json({success: true, msg: 'Updated tutor'})
+    })
+  }
+  res.json({success: false, msg: errObj})
+})
+
+router.get('/', (req, res) => {
+
 })
 module.exports = router
