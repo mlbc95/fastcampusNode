@@ -148,3 +148,7 @@ module.exports.validateOffice = function (tutor, obj) {
     }
   }
 }
+
+module.exports.addTutor = function (newTutor, callback) {
+  
+}
