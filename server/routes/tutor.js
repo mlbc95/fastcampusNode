@@ -3,6 +3,7 @@ const Tutor = require('../models/tutor.js')
 const lodash = require('lodash')
 const router = new express.Router()
 const typeCheck = require('type-check').typeCheck
+const validator = require('validator')
 /*
   This file contains api calls for Tutor
 */
@@ -83,18 +84,24 @@ router.put('/', (req, res) => {
     }
   })
   console.log(errObj)
-  Tutor.updateTutor(req.body._id, updatedTutor, (err) => {
-    // Handle error
-    if (!lodash.isEmpty(err)) {
-      console.log(err)
-      res.json({success: false, msg: 'Failed to udpate tutor', err: err})
-    }
-    res.json({success: true, msg: 'Updated tutor'})
-  })
-  // res.json({success: false, msg: errObj, test: 'here'})
+  if (lodash.isEmpty(errObj)) {
+    console.log('empty')
+    Tutor.updateTutor(req.body._id, updatedTutor, (err) => {
+      // Handle error
+      if (!lodash.isEmpty(err)) {
+        console.log(err)
+        res.json({success: false, msg: 'Failed to udpate tutor', err: err})
+      }
+      res.json({success: true, msg: 'Updated tutor'})
+    })
+  } else {
+    res.json({success: false, msg: errObj, test: 'here'})
+  }
 })
 
 router.get('/', (req, res) => {
-
+  if (validator.isMondoId(req.query.id)) {
+    Tutor.
+  }
 })
 module.exports = router

@@ -32,7 +32,7 @@ const TutorSchema = mongoose.Schema({
         day: String,
         hours: [
           {
-            type: String
+            slot: String
           }
         ]
       }
@@ -181,4 +181,8 @@ module.exports.addTutor = function (newTutor, callback) {
 module.exports.updateTutor = function (id, updatedTutor, callback) {
   console.log(updatedTutor)
   Tutor.findByIdAndUpdate({_id: mongoose.Types.ObjectId(id)}, updatedTutor, callback)
+}
+
+module.exports.getTutor = function (id, callback) {
+  Tutor.findById(id, callback)
 }
