@@ -6,6 +6,9 @@ const passport = require('passport')
 // const config = require('../../config/database')
 const router = new express.Router()
 
+// Middleware for now, this will later be use to authenticate the calls coming in to 
+// the path /academ
+
 router.post('/addDegree', (req, res) => {
   console.log('/addDegree')
 })

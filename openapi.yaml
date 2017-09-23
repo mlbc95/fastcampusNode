@@ -1,0 +1,62 @@
+swagger: "2.0"
+
+info:
+  version: 1.0.0
+  title: Simple API
+  description: A simple API to learn how to write OpenAPI Specification
+
+schemes:
+  - https
+host: fast-campus-server-dev.herokuapp.com
+basePath: /
+
+paths:
+  /users/getAllUsers:
+    get:
+      summary: Gets all users
+      description: Returns all users.
+      responses:
+        200:
+          description: retrun all users
+          schema:
+            type: array
+            items:
+              required:
+                - username
+              properties:
+                fName:
+                  type: string
+                lName:
+                  type: string
+                username:
+                  type: string
+                email:
+                  type: string
+                school: 
+                  type: string
+                lastLogin: 
+                  type: string 
+                classes: 
+                  type: array
+                degree:
+                  type: array 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 

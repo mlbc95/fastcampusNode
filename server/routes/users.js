@@ -6,7 +6,6 @@ const User = require('../models/user')
 const config = require('../../config/database')
 const bcrypt = require('bcryptjs')
 const router = new express.Router()
-const classes = require('../data.json')
 
 /*
   This file contains api calls for user profile, updateUser, getAllUsers, classes
@@ -88,10 +87,6 @@ router.get('/getAllUsers', (req, res) => {
       res.json({success: true, data: ret})
     }
   })
-})
-
-router.get('/classes', (req, res, next) => {
-  return res.json(classes)
 })
 
 module.exports = router
