@@ -55,7 +55,6 @@ mongoose.connection.on("error", () => {
 });
 
 
-
 /**
  * Express configuration.
  */
@@ -121,14 +120,6 @@ app.post("/account/delete", passportConfig.isAuthenticated, userController.postD
 app.post("/tutor", tutorController.postTutor);
 app.get("/tutor", tutorController.getTutor);
 app.patch("/tutor", tutorController.putTutor);
-/**
- * OAuth authentication routes. (Sign in)
- */
-app.get("/auth/facebook", passport.authenticate("facebook", { scope: ["email", "public_profile"] }));
-app.get("/auth/facebook/callback", passport.authenticate("facebook", { failureRedirect: "/login" }), (req, res) => {
-  res.redirect(req.session.returnTo || "/");
-});
-
 
 
 /**

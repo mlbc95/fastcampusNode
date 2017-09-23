@@ -31,6 +31,7 @@ class ErrorMessage {
     }
     errors: Array<ErrorMessage>;
   }
+
 /**
  * POST /tutor
  * Add tutor to the db
@@ -259,43 +260,42 @@ export let putTutor = (req: Request, res: Response, next: NextFunction) => {
  * gets a tutor by ID or gets them all if no id is set
  */
 export let getTutor = (req: Request, res: Response, next: NextFunction) => {
+    // Log incoming query
     console.log(req.query);
+    // Create custom query
     const qs = new MongoQS ({
         custom: {
-            id: "mongoid"
+            urlQueryParamName: function (query: TutorModel, input: TutorModel) {
+                // Validate input coming through
+                if (input.id) {
+                    query["_id"] = input.id;
+                }
+                if (input.fName) {
+                    query["fName"] = input.fName;
+                }
+                if (input.lName) {
+                    query["lName"] = input.lName;
+                }
+                if (input.school) {
+                    query["school"] = input.school;
+                }
+                if (input.courses) {
+                    query["courses"] = input.courses;
+                }
+                if (input.available) {
+                    query["available"] = input.available;
+                }
+                if (input.office) {
+                    query["office"] = input.office;
+                }
+            }
         }
     });
+    // parse query
     const query = qs.parse(req.query);
-    console.log(query);
-    Tutor.find({query}, (err, docs) => {
-        if (err) {return false; }
-        console.log(docs);
+    // query and return to front end
+    Tutor.find(query, (err, ret: Document []) => {
+        console.log(ret);
+        res.json({msg: ret});
     });
-    /*
-    // Create array object we can push on for custom error messages
-    const erArray: ErrorArray = new ErrorArray();
-    if (req.query.id && !validator.isMongoId(req.query.id)) {
-        const erObj: ErrorMessage = new ErrorMessage("Please use a valid mongo id", "id", req.query.id);
-        erArray.errors.push(erObj);
-    }
-
-    // If we have errors handle them
-    if (!lodash.isEmpty(erArray.errors)) {
-        req.flash("errors", erArray);
-        return res.status(400).json({msg: "Errors present", errors: erArray});
-    }
-
-    if (req.query.id) {
-        Tutor.findById(req.query.id, (err, tutor: TutorModel) => {
-            if (err) {return res.status(400).json({err: err}); }
-            res.json({tutor: tutor});
-        });
-    } else {
-        Tutor.find({}, (err, tutor: TutorModel []) => {
-            if (err) {return res.status(400).json({err: err}); }
-            res.json({tutor: tutor});
-        });
-    }
-    */
-
 };
