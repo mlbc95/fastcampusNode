@@ -10,8 +10,6 @@ Important Links -
 
 Helpful Learn Links 
 
-Parse and pass URL queries to MongoDB query (mongo-querystring)
-  https://www.npmjs.com/package/mongo-querystring
+  Parse and pass URL queries to MongoDB query ([**mongo-querystring**](https://www.npmjs.com/package/mongo-querystring))
 
-Free Online Classes on MongoDB from MongoDB, Inc.
-  https://university.mongodb.com/courses/M101JS/about
+  [Free Online Classes on MongoDB from MongoDB, Inc.]( https://university.mongodb.com/courses/M101JS/about)
