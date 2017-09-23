@@ -10,6 +10,7 @@ import { default as Tutor, Course, DayOfWeek, Office, TutorModel } from "../mode
 import { Request, Response, NextFunction } from "express";
 import { LocalStrategyInfo } from "passport-local";
 import { WriteError } from "mongodb";
+const MongoQS = require("mongo-querystring");
 const request = require("express-validator");
 // Custom classes
 class ErrorMessage {
@@ -31,7 +32,7 @@ class ErrorMessage {
     errors: Array<ErrorMessage>;
   }
 /**
- * POST /addTutor
+ * POST /tutor
  * Add tutor to the db
  */
 export let postTutor = (req: Request, res: Response, next: NextFunction) => {
@@ -136,7 +137,7 @@ export let postTutor = (req: Request, res: Response, next: NextFunction) => {
 };
 
 /**
- * PUT /tutor/
+ * PATCH /tutor/
  * updates tutor by ID in the DB
  */
 export let putTutor = (req: Request, res: Response, next: NextFunction) => {
@@ -254,10 +255,23 @@ export let putTutor = (req: Request, res: Response, next: NextFunction) => {
 };
 
 /**
- * GET /tutor/
+ * GET /tutor
  * gets a tutor by ID or gets them all if no id is set
  */
 export let getTutor = (req: Request, res: Response, next: NextFunction) => {
+    console.log(req.query);
+    const qs = new MongoQS ({
+        custom: {
+            id: "mongoid"
+        }
+    });
+    const query = qs.parse(req.query);
+    console.log(query);
+    Tutor.find({query}, (err, docs) => {
+        if (err) {return false; }
+        console.log(docs);
+    });
+    /*
     // Create array object we can push on for custom error messages
     const erArray: ErrorArray = new ErrorArray();
     if (req.query.id && !validator.isMongoId(req.query.id)) {
@@ -282,5 +296,6 @@ export let getTutor = (req: Request, res: Response, next: NextFunction) => {
             res.json({tutor: tutor});
         });
     }
+    */
 
 };

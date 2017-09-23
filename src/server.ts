@@ -110,18 +110,17 @@ app.use(express.static(path.join(__dirname, "public"), { maxAge: 31557600000 }))
 /**
  * Primary app routes.
  */
-app.post("/login", userController.postLogin);
+app.post("/auth/login", userController.postLogin);
+app.post("/auth/signup", userController.postSignup);
 app.post("/forgot", userController.postForgot);
 app.get("/reset/:token", userController.getReset);
 app.post("/reset/:token", userController.postReset);
-app.post("/signup", userController.postSignup);
 app.post("/account/profile", passportConfig.isAuthenticated, userController.postUpdateProfile);
 app.post("/account/password", passportConfig.isAuthenticated, userController.postUpdatePassword);
 app.post("/account/delete", passportConfig.isAuthenticated, userController.postDeleteAccount);
-app.get("/account/unlink/:provider", passportConfig.isAuthenticated, userController.getOauthUnlink);
-app.post("/tutor/", tutorController.postTutor);
-app.get("/tutor/", tutorController.getTutor);
-app.put("/tutor/", tutorController.putTutor);
+app.post("/tutor", tutorController.postTutor);
+app.get("/tutor", tutorController.getTutor);
+app.patch("/tutor", tutorController.putTutor);
 /**
  * OAuth authentication routes. (Sign in)
  */
@@ -131,10 +130,6 @@ app.get("/auth/facebook/callback", passport.authenticate("facebook", { failureRe
 });
 
 
-/**
- * Error Handler. Provides full stack - remove for production
- */
-// app.use(errorHandler());
 
 /**
  * Start Express server.
