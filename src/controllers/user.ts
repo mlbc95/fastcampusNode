@@ -410,24 +410,6 @@ export let postDeleteAccount = (req: Request, res: Response, next: NextFunction)
 };
 
 /**
- * GET /account/unlink/:provider
- * Unlink OAuth provider.
- */
-export let getOauthUnlink = (req: Request, res: Response, next: NextFunction) => {
-  const provider = req.params.provider;
-  User.findById(req.user.id, (err, user: any) => {
-    if (err) { return next(err); }
-    user[provider] = undefined;
-    user.tokens = user.tokens.filter((token: AuthToken) => token.kind !== provider);
-    user.save((err: WriteError) => {
-      if (err) { return next(err); }
-      req.flash("info", { msg: `${provider} account has been unlinked.` });
-      res.redirect("/account");
-    });
-  });
-};
-
-/**
  * GET /reset/:token
  * Reset Password page.
  */

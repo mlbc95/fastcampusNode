@@ -30,6 +30,8 @@ dotenv.config({ path: ".env.example" });
 /**
  * Controllers (route handlers).
  */
+import * as signupController from "./controllers/signup";
+import * as studentController from "./controllers/student";
 import * as userController from "./controllers/user";
 import * as tutorController from "./controllers/tutor";
 
@@ -109,14 +111,11 @@ app.use(express.static(path.join(__dirname, "public"), { maxAge: 31557600000 }))
 /**
  * Primary app routes.
  */
-app.post("/auth/login", userController.postLogin);
-app.post("/auth/signup", userController.postSignup);
-app.post("/forgot", userController.postForgot);
-app.get("/reset/:token", userController.getReset);
-app.post("/reset/:token", userController.postReset);
-app.post("/account/profile", passportConfig.isAuthenticated, userController.postUpdateProfile);
-app.post("/account/password", passportConfig.isAuthenticated, userController.postUpdatePassword);
-app.post("/account/delete", passportConfig.isAuthenticated, userController.postDeleteAccount);
+app.post("/auth/login", studentController.postLogin);
+app.post("/auth/signup", signupController.postSignup);
+app.post("/account/profile", passportConfig.isAuthenticated, studentController.postUpdateProfile);
+app.post("/account/password", passportConfig.isAuthenticated, studentController.postUpdatePassword);
+app.post("/account/delete", passportConfig.isAuthenticated, studentController.postDeleteAccount);
 app.post("/tutor", tutorController.postTutor);
 app.get("/tutor", tutorController.getTutor);
 app.patch("/tutor", tutorController.putTutor);
