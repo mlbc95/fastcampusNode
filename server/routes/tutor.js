@@ -77,14 +77,14 @@ router.post('/', (req, res) => {
         // Handle errors
         if (err) {
           console.log(err)
-          res.json({success: false})
+          res.json({msg: err})
         }
         // Adding the tutor was successful, send message to front end
-        res.json({success: true, msg: req.body})
+        res.json({msg: req.body})
       })
     } else {
       // We had errors in validation, pass info back to front end
-      res.json({success: false, err: errObj, oldBody: req.body})
+      res.json({err: errObj, oldBody: req.body})
     }
   })
 })
@@ -164,14 +164,14 @@ router.put('/', (req, res) => {
       // Handle error
       if (!lodash.isEmpty(err)) {
         console.log(err)
-        res.json({success: false, msg: 'Failed to udpate tutor', err: err})
+        res.json({msg: 'Failed to udpate tutor', err: err})
       }
       // Send success response
-      res.json({success: true, msg: 'Updated tutor'})
+      res.json({msg: 'Updated tutor'})
     })
   } else {
     // Validation failed, send message to front end
-    res.json({success: false, msg: errObj, oldBody: req.body})
+    res.json({msg: errObj, oldBody: req.body})
   }
 })
 
@@ -184,26 +184,26 @@ router.get('/', (req, res) => {
       // Handle erross
       if (err) {
         console.log(err)
-        res.json({success: false})
+        res.json({msg: err})
       } else {
         // Success, send response to front end
         console.log(ret)
-        res.json({success: true, msg: ret})
+        res.json({msg: ret})
       }
     })
   } else if (req.query.id && !validator.isMongoId(req.query.id)) {
     // If it is not a valid mongo id
-    res.json({success: false, msg: 'Please use valid mongo id'})
+    res.json({msg: 'Please use valid mongo id'})
   } else {
     // There was no id present, request is after all tutors
     Tutor.getAllTutors((err, ret) => {
       // Handle errors
       if (err) {
         console.log(err)
-        res.json({success: false})
+        res.json({msg: err})
       } else {
         // Query succeeded, send response to frontend
-        res.json({success: true, msg: ret})
+        res.json({msg: ret})
       }
     })
   }

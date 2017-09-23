@@ -71,10 +71,10 @@ router.post('/updateUser', (req, res) => {
   User.updateUser(req.body._id, updatedUser, (err) => {
     if (err) {
       console.log(err)
-      res.json({success: false, msg: 'Error occured, fialed to update '})
+      res.json({msg: 'Error occured, fialed to update '})
       console.log('Error occured, fialed to update.')
     } else {
-      res.json({success: true, msg: 'Updated '})
+      res.json({msg: 'Updated '})
       console.log('Updated')
     }
   })
@@ -85,7 +85,7 @@ router.get('/getAllUsers', (req, res) => {
     if (err) {
       console.log('there is an error')
     } else {
-      res.json({success: true, data: ret})
+      res.json({data: ret})
     }
   })
 })
