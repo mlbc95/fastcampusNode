@@ -58,7 +58,7 @@ router.get('/getCourse', (req, res, next) => {
     }
   })
   if (!sent) {
-    return res.json({success: false, courseList: 'No courses found for selected field.'})
+    return res.json({success: false, courseList: 'No courses found for the selected field.'})
   }
 })
 module.exports = router
