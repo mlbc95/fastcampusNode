@@ -32,7 +32,6 @@ const app = express()
 
 // Allow CORS
 app.use(function (req, res, next) {
-  console.log(req.body)
   res.header('Access-Control-Allow-Origin', '*')
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
   next()
@@ -61,6 +60,8 @@ const authRoutes = require('./server/routes/auth') // /login /signup /profile
 const academicRoutes = require('./server/routes/academics')
 const apiRoutes = require('./server/routes/api')
 const userRoute = require('./server/routes/users')
+
+const tutorRoute = require('./server/routes/tutor')
 const classesRoute = require('./server/routes/classes.js')
 
 // to push
@@ -69,6 +70,7 @@ app.use('/auth', authRoutes)
 app.use('/academ', academicRoutes)
 app.use('/api', apiRoutes)
 app.use('/users', userRoute)
+app.use('/tutor', tutorRoute)
 app.use('/class', classesRoute)
 // app.use('/updateInfo', updateInfoRoutes)
 

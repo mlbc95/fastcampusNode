@@ -72,8 +72,7 @@ router.post('/signup', (req, res) => {
     // Error handling
     if (err) {
       console.log(err)
-      res.json({success: false,
-        err: err,
+      res.json({ err: err,
         msg: 'Soemthing went wrong on our end.  Plesae try again.'})
     } else {
       // No error, check to see if the username is taken
@@ -81,8 +80,7 @@ router.post('/signup', (req, res) => {
         // Means user namename is taken, error out
         let erArray = {}
         erArray.username = 'This username is already taken.  Please choose another.'
-        res.json({success: false,
-          msg: erArray
+        res.json({ msg: erArray
         })
       } else {
         // Username is not taken so add new user
@@ -91,15 +89,13 @@ router.post('/signup', (req, res) => {
           // Handle error
           if (err) {
             console.log(err)
-            res.json({success: false,
-              err: err})
+            res.json({err: err})
           } else {
             // Add user and set token
             const token = jwt.sign(newUser, config.secret, {
               expiresIn: 604800 // 1 week
             })
-            res.json({success: true,
-              token: 'JWT ' + token,
+            res.json({token: 'JWT ' + token,
               msg: 'User registered'})
           }
         })
@@ -128,7 +124,7 @@ router.post('/login', (req, res) => {
       // Set RFC 7235 401 header info
       res.status(401).setHeader('WWW-Authenticate', 'Basic realm="FASTCampus"')
       // Set app specific info and return
-      return res.json({success: false, msg: 'User not found.'})
+      return res.json({msg: 'User not found.'})
     }
     // If the user does exist check the password
     User.comparePassword(password, user.password, (err, isMatch) => {
@@ -158,7 +154,7 @@ router.post('/login', (req, res) => {
         // Set RFC 7235 401 header info
         res.status(401).setHeader('WWW-Authenticate', 'Basic realm="FASTCampus"')
         // Set app specific messages and return to client
-        return res.json({success: false, msg: 'Wrong password'})
+        return res.json({msg: 'Wrong password'})
       }
     })
   })
@@ -179,13 +175,11 @@ router.post('/logout', (req, res) => {
     if (err) {
       // Log error for trouble shooting
       console.log(err)
-      res.json({success: false,
-        err: err,
+      res.json({ err: err,
         msg: 'Soemthing went wrong on our end.  Plesae try again.'})
     } else {
       // Send client success response
       res.json({
-        success: true,
         msg: 'Lastlogin updated'
       })
     }
