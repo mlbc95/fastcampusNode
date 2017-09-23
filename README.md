@@ -5,14 +5,13 @@ Now we use [concurrently](https://github.com/kimmobrunfeldt/concurrently) which 
 To install dependencies `npm instal`
 To start the server locally `node server.js`, this will launch the server AND the client altogether.
 
-Important Links -< need links>
+Important Links -
 
-The stucture so far (Jul 15, 2017) is 
 
-├── README.md
-├── server
-│   └── routes
-│       └── auth.js
-├── server.js
-├── start-client.js
-└── yarn.lock
+Helpful Learn Links 
+
+Parse and pass URL queries to MongoDB query (mongo-querystring)
+  https://www.npmjs.com/package/mongo-querystring
+
+Free Online Classes on MongoDB from MongoDB, Inc.
+  https://university.mongodb.com/courses/M101JS/about

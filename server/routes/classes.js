@@ -48,17 +48,17 @@ router.get('/fields', (req, res, next) => {
 */
 router.get('/getCourse', (req, res, next) => {
   if (!req.get('field')) {
-    return res.json({success: false, courseList: 'No course Selected'})
+    return res.json({courseList: 'No course Selected'})
   }
   var sent = false
   lodash.forEach(fS17Courses, function (value, key) {
     if (fS17Courses[key].field === req.get('field')) {
       sent = true
-      return res.json({sucess: true, courseList: fS17Courses[key].courses})
+      return res.json({courseList: fS17Courses[key].courses})
     }
   })
   if (!sent) {
-    return res.json({success: false, courseList: 'No courses found for the selected field.'})
+    return res.json({courseList: 'No courses found for the selected field.'})
   }
 })
 module.exports = router
