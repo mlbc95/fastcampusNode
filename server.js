@@ -3,6 +3,8 @@ const bodyParser = require('body-parser')
 const passport = require('passport')
 const mongoose = require('mongoose')
 const config = require('./config/database')
+var logger = require('morgan')
+var favicon = require('serve-favicon')
 var swaggerTools = require('swagger-tools')
 var YAML = require('yamljs')
 var swaggerDoc = YAML.load('openapi.yaml')
@@ -41,6 +43,7 @@ app.use(function (req, res, next) {
 // Passport Middleware
 app.use(passport.initialize())
 app.use(passport.session())
+app.use(logger('dev'))
 swaggerTools.initializeMiddleware(swaggerDoc, function (middleware) {
   // Serve the Swagger documents and Swagger UI
   app.use(middleware.swaggerUi())
@@ -61,7 +64,8 @@ const authRoutes = require('./server/routes/auth') // /login /signup /profile
 const academicRoutes = require('./server/routes/academics')
 const apiRoutes = require('./server/routes/api')
 const userRoute = require('./server/routes/users')
-const classesRoute = require('./server/routes/classes.js')
+const classesRoute = require('./server/routes/classes')
+const chat = require('./server/routes/messages')
 
 // to push
 // list of backend routes in our app
@@ -70,6 +74,7 @@ app.use('/academ', academicRoutes)
 app.use('/api', apiRoutes)
 app.use('/users', userRoute)
 app.use('/class', classesRoute)
+app.use('/chat', chat)
 // app.use('/updateInfo', updateInfoRoutes)
 
 app.listen(port, () => {
