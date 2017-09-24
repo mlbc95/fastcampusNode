@@ -61,7 +61,8 @@
     "passport-facebook": "^2.1.1",
     "passport-local": "^1.0.0",
     "pug": "^2.0.0-beta6",
-    "request": "^2.78.0"
+    "request": "^2.78.0",
+    "validator": "^8.2.0"
   },
   "devDependencies": {
     "@types/async": "^2.0.40",
