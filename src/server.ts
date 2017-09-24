@@ -35,6 +35,7 @@ import * as loginController from "./controllers/login";
 import * as studentController from "./controllers/student";
 import * as userController from "./controllers/user";
 import * as tutorController from "./controllers/tutor";
+import * as courseController from "./controllers/course";
 
 /**
  * API keys and Passport configuration.
@@ -108,6 +109,8 @@ app.post("/tutor", tutorController.postTutor);
 app.get("/tutor", tutorController.getTutor);
 app.patch("/tutor", tutorController.patchTutor);
 app.delete("/tutor", tutorController.deleteTutor);
+// Course routes
+app.post("/course", courseController.postCourse);
 
 
 /**
