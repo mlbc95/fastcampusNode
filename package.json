@@ -1,13 +1,13 @@
 {
-  "name": "express-typescript-starter",
+  "name": "FASTCampus Server",
   "version": "0.1.0",
   "description": "A starting point for Node.js express apps with TypeScript",
   "repository": {
     "type": "git",
-    "url": "https://github.com/sahat/hackathon-starter.git"
+    "url": "https://github.com/mlbc95/fastcampusNode"
   },
-  "author": "Bowden Kelly",
-  "license": "MIT",
+  "author": "FASTCampus",
+  "license": "Private",
   "scripts": {
     "start": "npm run build && npm run watch",
     "build": "npm run && npm run build-ts && npm run tslint && npm run copy-static-assets",
