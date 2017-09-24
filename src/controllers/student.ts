@@ -17,7 +17,7 @@ const request = require("express-validator");
  * POST /account/profile
  * Update profile information.
  */
-export let postUpdateProfile = (req: Request, res: Response, next: NextFunction) => {
+export let patchStudent = (req: Request, res: Response, next: NextFunction) => {
   // Create array object we can push on for custom error messages
   const erArray: ErrorArray = new ErrorArray();
 
@@ -160,36 +160,6 @@ export let postUpdateProfile = (req: Request, res: Response, next: NextFunction)
   });
 };
 
-/**
- * POST /account/password
- * Update current password.
- */
-export let postUpdatePassword = (req: Request, res: Response, next: NextFunction) => {
-  req.assert("password", "Password must be at least 4 characters long").len({ min: 4 });
-  req.assert("confirmPassword", "Passwords do not match").equals(req.body.password);
-
-  const errors = req.validationErrors();
-
-  if (errors) {
-    req.flash("errors", errors);
-    return res.redirect("/account");
-  }
-
-  Student.findById(req.user.id, (err, user: StudentModel) => {
-    if (err) { return next(err); }
-    user.password = req.body.password;
-    user.save((err: WriteError) => {
-      if (err) { return next(err); }
-      req.flash("success", { msg: "Password has been changed." });
-      res.redirect("/account");
-    });
-  });
-};
-
-/**
- * POST /account/delete
- * Delete user account.
- */
 export let postDeleteAccount = (req: Request, res: Response, next: NextFunction) => {
   Student.remove({ _id: req.user.id }, (err) => {
     if (err) { return next(err); }

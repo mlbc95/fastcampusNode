@@ -1,7 +1,7 @@
 import * as bcrypt from "bcrypt-nodejs";
 import * as crypto from "crypto";
 import * as mongoose from "mongoose";
-import { User } from "./GenericUser";
+import { User } from "./User";
 const options = {discriminatorKey: "Kind", timestamps: true};
 
 export type TutorModel = mongoose.Document & {

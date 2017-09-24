@@ -10,27 +10,10 @@ import { default as Tutor, Course, DayOfWeek, Office, TutorModel } from "../mode
 import { Request, Response, NextFunction } from "express";
 import { LocalStrategyInfo } from "passport-local";
 import { WriteError } from "mongodb";
+import { ErrorArray, ErrorMessage } from "../helperclasses/errors";
 const MongoQS = require("mongo-querystring");
 const request = require("express-validator");
-// Custom classes
-class ErrorMessage {
-    constructor(msg: string, param: string, value: any) {
-      this.param = param;
-      this.msg = msg;
-      this.value = value;
-    }
-    msg: string;
-    param: string;
-    value: any;
-    location: string;
-    nestedErrors: Array<ErrorMessage>;
-  }
-  class ErrorArray {
-    constructor() {
-      this.errors = new Array<ErrorMessage>();
-    }
-    errors: Array<ErrorMessage>;
-  }
+
 
 /**
  * POST /tutor
@@ -141,7 +124,7 @@ export let postTutor = (req: Request, res: Response, next: NextFunction) => {
  * PATCH /tutor/
  * updates tutor by ID in the DB
  */
-export let putTutor = (req: Request, res: Response, next: NextFunction) => {
+export let patchTutor = (req: Request, res: Response, next: NextFunction) => {
     console.log(req.body);
 
     // Validate as much of the schema as we can with checkbody
@@ -257,7 +240,7 @@ export let putTutor = (req: Request, res: Response, next: NextFunction) => {
 
 /**
  * GET /tutor
- * gets a tutor by ID or gets them all if no id is set
+ *
  */
 export let getTutor = (req: Request, res: Response, next: NextFunction) => {
     // Log incoming query

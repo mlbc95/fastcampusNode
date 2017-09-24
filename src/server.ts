@@ -111,14 +111,13 @@ app.use(express.static(path.join(__dirname, "public"), { maxAge: 31557600000 }))
 /**
  * Primary app routes.
  */
-app.post("/auth/login", studentController.postLogin);
 app.post("/auth/signup", signupController.postSignup);
 app.post("/account/profile", passportConfig.isAuthenticated, studentController.postUpdateProfile);
-app.post("/account/password", passportConfig.isAuthenticated, studentController.postUpdatePassword);
+// app.post("/account/password", passportConfig.isAuthenticated, studentController.postUpdatePassword);
 app.post("/account/delete", passportConfig.isAuthenticated, studentController.postDeleteAccount);
 app.post("/tutor", tutorController.postTutor);
 app.get("/tutor", tutorController.getTutor);
-app.patch("/tutor", tutorController.putTutor);
+app.patch("/tutor", tutorController.patchTutor);
 
 
 /**

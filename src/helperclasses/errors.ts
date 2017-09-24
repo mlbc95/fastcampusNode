@@ -1,4 +1,4 @@
-class ErrorMessage {
+export class ErrorMessage {
     constructor(msg: string, param: string, value: any) {
       this.param = param;
       this.msg = msg;
@@ -10,7 +10,7 @@ class ErrorMessage {
     location: string;
     nestedErrors: Array<ErrorMessage>;
   }
-  class ErrorArray {
+  export class ErrorArray {
     constructor() {
       this.errors = new Array<ErrorMessage>();
     }
