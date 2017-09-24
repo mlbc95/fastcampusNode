@@ -13,11 +13,6 @@ import { LocalStrategyInfo } from "passport-local";
 import { WriteError } from "mongodb";
 const request = require("express-validator");
 
-/**
- * Because there are differnt objects being returned and TypeScript is strongly
- * typed, switch statements are needed in order to return the objects properly
- */
-
  export let postSignin = (req: Request, res: Response, next: NextFunction) => {
    // Check the incoming request
   req.assert("username", "Email is not valid").notEmpty();
