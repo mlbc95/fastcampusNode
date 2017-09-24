@@ -115,7 +115,7 @@ export let postTutor = (req: Request, res: Response, next: NextFunction) => {
     });
     tutor.save((err) => {
         if (err) {
-            res.status(503).json({err: err});
+            res.status(500).json({err: err});
         }
         res.status(201).json({tutor: tutor});
     });
@@ -233,7 +233,7 @@ export let patchTutor = (req: Request, res: Response, next: NextFunction) => {
         }
         tutor.save((err) => {
             if (err) {
-                return res.status(503).json({err: err});
+                return res.status(500).json({err: err});
             }
             res.json({msg: "Tutor has been updated", tutor: tutor});
         });

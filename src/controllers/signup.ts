@@ -160,7 +160,7 @@ export let postSignup = (req: Request, res: Response, next: NextFunction) => {
             Student.findOne({ username: req.body.username }, (err, existingStudent) => {
                 // Handle error
                 if (err) {
-                    res.status(503).json({err: err});
+                    res.status(500).json({err: err});
                 }
                 // If we found a user error out and return to client
                 if (existingStudent) {
@@ -169,11 +169,11 @@ export let postSignup = (req: Request, res: Response, next: NextFunction) => {
                 // Did not find user, save to db and return object to client
                 user.save((err) => {
                     if (err) {
-                        res.status(503).json({err: err});
+                        res.status(500).json({err: err});
                     }
                     req.logIn(user, (err) => {
                     if (err) {
-                        return res.status(503).json({err: err});
+                        return res.status(500).json({err: err});
                     }
                     res.json({user: user});
                     });

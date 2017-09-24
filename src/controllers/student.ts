@@ -153,7 +153,7 @@ export let patchStudent = (req: Request, res: Response, next: NextFunction) => {
           res.status(400).json({msg: "The email address you have entered is already associated with an account."});
         }
         // General error, set status to 400 to indicate bad information
-        return res.status(503).json({err: err});
+        return res.status(500).json({err: err});
       }
       // Success, set status to 201 to indicate resouce created
       res.status(201).json({user: user});

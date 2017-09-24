@@ -45,7 +45,7 @@ const request = require("express-validator");
     } else {
       req.logIn(user, (err) => {
         if (err) {
-            res.status(503).json({err: err});
+            res.status(500).json({err: err});
         }
         res.status(200).json({user: user});
       });
