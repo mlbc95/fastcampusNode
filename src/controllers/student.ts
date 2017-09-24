@@ -162,6 +162,12 @@ export let patchStudent = (req: Request, res: Response, next: NextFunction) => {
   });
 };
 
+/**
+ * DELETE /student
+ * @param req
+ * @param res
+ * @param next
+ */
 export let deleteStudent = (req: Request, res: Response, next: NextFunction) => {
   Student.remove({ _id: req.body.id }, (err) => {
     if (err) { return next(err); }

@@ -282,3 +282,11 @@ export let getTutor = (req: Request, res: Response, next: NextFunction) => {
         res.json({msg: ret});
     });
 };
+
+export let deleteTutor = (req: Request, res: Response, next: NextFunction) => {
+    Tutor.remove({ _id: req.body.id }, (err) => {
+      if (err) { return next(err); }
+      req.logout();
+      res.status(200).json({msg: "Account deleted"});
+    });
+  };
