@@ -235,7 +235,7 @@ export let patchTutor = (req: Request, res: Response, next: NextFunction) => {
             if (err) {
                 return res.status(500).json({err: err});
             }
-            res.json({msg: "Tutor has been updated", tutor: tutor});
+            res.status(200).json({msg: "Tutor has been updated", tutor: tutor});
         });
     });
 };
@@ -281,14 +281,15 @@ export let getTutor = (req: Request, res: Response, next: NextFunction) => {
     // query and return to front end
     Tutor.find(query, (err, ret: Document []) => {
         console.log(ret);
-        res.json({msg: ret});
+        res.status(200).json({msg: ret});
     });
 };
 
 export let deleteTutor = (req: Request, res: Response, next: NextFunction) => {
     Tutor.remove({ _id: req.body.id }, (err) => {
-      if (err) { return next(err); }
-      req.logout();
-      res.status(200).json({msg: "Account deleted"});
+        if (err) {
+            return res.status(500).json({err: err});
+        }
+        res.status(200).json({msg: "Tutor deleted"});
     });
   };

@@ -205,13 +205,15 @@ export let getCourse = (req: Request, res: Response, next: NextFunction) => {
     // query and return to front end
     Course.find(query, (err, ret: Document []) => {
         console.log(ret);
-        res.json({msg: ret});
+        res.status(200).json({msg: ret});
     });
 };
 
 export let deleteCourse = (req: Request, res: Response, next: NextFunction) => {
     Course.remove({ _id: req.body.id }, (err) => {
-      if (err) { return next(err); }
-      res.status(200).json({msg: "Account deleted"});
+        if (err) {
+            return res.status(500).json({err: err});
+        }
+        res.status(200).json({msg: "Course deleted"});
     });
   };
