@@ -175,7 +175,7 @@ export let postSignup = (req: Request, res: Response, next: NextFunction) => {
                     if (err) {
                         return res.status(500).json({err: err});
                     }
-                    res.status(200).json({user: user});
+                    res.status(201).json({user: user});
                     });
                 });
             });

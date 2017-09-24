@@ -155,8 +155,8 @@ export let patchStudent = (req: Request, res: Response, next: NextFunction) => {
         // General error, set status to 400 to indicate bad information
         return res.status(500).json({err: err});
       }
-      // Success, set status to 201 to indicate resouce created
-      res.status(201).json({user: user});
+      // Success, set status to 200 to indicate success
+      res.status(200).json({user: user});
     });
   });
 };
@@ -169,8 +169,9 @@ export let patchStudent = (req: Request, res: Response, next: NextFunction) => {
  */
 export let deleteStudent = (req: Request, res: Response, next: NextFunction) => {
   Student.remove({ _id: req.body.id }, (err) => {
-    if (err) { return next(err); }
-    req.logout();
+    if (err) {
+      return res.status(500).json({err: err});
+    }
     res.status(200).json({msg: "Account deleted"});
   });
 };

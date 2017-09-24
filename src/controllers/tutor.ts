@@ -282,8 +282,11 @@ export let getTutor = (req: Request, res: Response, next: NextFunction) => {
     const query = qs.parse(req.query);
     // query and return to front end
     Tutor.find(query, (err, ret: Document []) => {
+        if (err) {
+            return res.status(500).json({err: err});
+        }
         console.log(ret);
-        res.status(200).json({msg: ret});
+        res.status(200).json({tutor: ret});
     });
 };
 
