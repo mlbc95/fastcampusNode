@@ -15,7 +15,6 @@ export type UserModel = mongoose.Document & {
   passwordResetExpires: Date,
 
   comparePassword: (candidatePassword: string, cb: (err: any, isMatch: any) => {}) => void,
-  validateFName: (fName: string, cb: (err: any) => {}) => void
 };
 
 export type AuthToken = {

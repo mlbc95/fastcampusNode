@@ -31,6 +31,7 @@ dotenv.config({ path: ".env.example" });
  * Controllers (route handlers).
  */
 import * as signupController from "./controllers/signup";
+import * as loginController from "./controllers/login";
 import * as studentController from "./controllers/student";
 import * as userController from "./controllers/user";
 import * as tutorController from "./controllers/tutor";
@@ -113,6 +114,7 @@ app.use(express.static(path.join(__dirname, "public"), { maxAge: 31557600000 }))
  */
 // Singup and login routes
 app.post("/auth/signup", signupController.postSignup);
+app.post("/auth/login", loginController.postSignin);
 // Additional Student routes
 app.patch("/student", passportConfig.isAuthenticated, studentController.patchStudent);
 app.delete("/student", passportConfig.isAuthenticated, studentController.deleteStudent);

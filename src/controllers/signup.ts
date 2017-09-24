@@ -11,26 +11,8 @@ import * as student from "../models/student";
 import { Request, Response, NextFunction } from "express";
 import { LocalStrategyInfo } from "passport-local";
 import { WriteError } from "mongodb";
+import { ErrorArray, ErrorMessage } from "../helperclasses/errors";
 const request = require("express-validator");
-
-class ErrorMessage {
-  constructor(msg: string, param: string, value: any) {
-    this.param = param;
-    this.msg = msg;
-    this.value = value;
-  }
-  msg: string;
-  param: string;
-  value: any;
-  location: string;
-  nestedErrors: Array<ErrorMessage>;
-}
-class ErrorArray {
-  constructor() {
-    this.errors = new Array<ErrorMessage>();
-  }
-  errors: Array<ErrorMessage>;
-}
 
 export let postSignup = (req: Request, res: Response, next: NextFunction) => {
     // log request body
