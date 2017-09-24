@@ -28,14 +28,15 @@ const request = require("express-validator");
 
   // If we have errors handle them
   if (errors) {
-    req.flash("errors", errors);
     res.status(401).json({msg: "Not all data was present to login.  Please try again.", err: errors}).header("WWW-Authenticate", "Basic, realm=\"FASTCampus\"");
   }
 
   // No errors proceed and try to login
   passport.authenticate("local", (err: Error, user: UserModel, info: LocalStrategyInfo) => {
     // Handle error
-    if (err) { return next(err); }
+    if (err) {
+      return res.status(500).json({err: err});
+    }
     // If we do not get a user
     console.log(user);
     console.log("here");

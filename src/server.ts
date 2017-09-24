@@ -111,6 +111,9 @@ app.patch("/tutor", tutorController.patchTutor);
 app.delete("/tutor", tutorController.deleteTutor);
 // Course routes
 app.post("/course", courseController.postCourse);
+app.get("/course", courseController.getCourse);
+app.patch("/course", courseController.patchTutor);
+app.delete("/course", courseController.deleteCourse);
 
 
 /**

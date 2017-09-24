@@ -147,7 +147,9 @@ export let patchTutor = (req: Request, res: Response, next: NextFunction) => {
     // Find tutor and update
     Course.findById(req.body.id, (err, tutor: CourseModel) => {
         // Handle error
-        if (err) { return next(err); }
+        if (err) {
+            return res.status(500).json({err: err});
+        }
         // Set objects that are present
         if (req.body.subject) {
             tutor.subject = req.body.subject;
@@ -171,7 +173,9 @@ export let patchTutor = (req: Request, res: Response, next: NextFunction) => {
 };
 
 /**
- * GET /course
+ *  GET /course
+ * @param req.query should have the query that the front end is after
+ * @param res returns 200 and object on success, 500 on error with err message
  *
  */
 export let getCourse = (req: Request, res: Response, next: NextFunction) => {
@@ -204,6 +208,9 @@ export let getCourse = (req: Request, res: Response, next: NextFunction) => {
     const query = qs.parse(req.query);
     // query and return to front end
     Course.find(query, (err, ret: Document []) => {
+        if (err) {
+            return res.status(500).json({err: err});
+        }
         console.log(ret);
         res.status(200).json({msg: ret});
     });

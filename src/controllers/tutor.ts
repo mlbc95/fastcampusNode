@@ -211,7 +211,9 @@ export let patchTutor = (req: Request, res: Response, next: NextFunction) => {
     // Find tutor and update
     Tutor.findById(req.body.id, (err, tutor: TutorModel) => {
         // Handle error
-        if (err) { return next(err); }
+        if (err) {
+            return res.status(500).json({err: err});
+        }
         // Set objects that are present
         if (req.body.fName) {
             tutor.fName = req.body.fName;
