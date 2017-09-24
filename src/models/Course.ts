@@ -19,7 +19,7 @@ const courseSchema = new mongoose.Schema({
     number: String,
     name: String,
     Section: Array
-});
+}, {timestamps: true});
 
 const Course = mongoose.model("Course", courseSchema);
 export default Course;
