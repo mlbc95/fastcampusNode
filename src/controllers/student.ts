@@ -117,8 +117,7 @@ export let patchStudent = (req: Request, res: Response, next: NextFunction) => {
   console.log(erArray.errors);
   // If we got errors error out and return to client
   if (!lodash.isEmpty(erArray.errors)) {
-    req.flash("errors", erArray);
-    return res.status(400).json({msg: "Data did not pass validation", err: erArray.errors, data: req.body});
+    return res.status(400).json({msg: "Data did not pass validation", err: erArray.errors});
   }
 
   Student.findById(req.body.id, (err, user: StudentModel) => {
@@ -154,7 +153,7 @@ export let patchStudent = (req: Request, res: Response, next: NextFunction) => {
           res.status(400).json({msg: "The email address you have entered is already associated with an account."});
         }
         // General error, set status to 400 to indicate bad information
-        return res.status(400).json({err: err});
+        return res.status(503).json({err: err});
       }
       // Success, set status to 201 to indicate resouce created
       res.status(201).json({user: user});

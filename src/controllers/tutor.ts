@@ -101,7 +101,6 @@ export let postTutor = (req: Request, res: Response, next: NextFunction) => {
 
     // Validation done, check if errors are present
     if (!lodash.isEmpty(erArray.errors)) {
-        req.flash("errors", erArray);
         return res.status(400).json({msg: "Data did not pass validation", err: erArray.errors, data: req.body});
     }
 
@@ -115,8 +114,10 @@ export let postTutor = (req: Request, res: Response, next: NextFunction) => {
         office: req.body.office || {}
     });
     tutor.save((err) => {
-        if (err) { res.status(400).json({err: err}); }
-        res.json({tutor: tutor});
+        if (err) {
+            res.status(503).json({err: err});
+        }
+        res.status(201).json({tutor: tutor});
     });
 };
 
@@ -205,8 +206,7 @@ export let patchTutor = (req: Request, res: Response, next: NextFunction) => {
 
     // Validation done, check if errors are present
     if (!lodash.isEmpty(erArray.errors)) {
-        req.flash("errors", erArray);
-        return res.status(400).json({msg: "Data did not pass validation", err: erArray.errors, data: req.body});
+        return res.status(400).json({msg: "Data did not pass validation", err: erArray.errors});
     }
     // Find tutor and update
     Tutor.findById(req.body.id, (err, tutor: TutorModel) => {
@@ -232,7 +232,9 @@ export let patchTutor = (req: Request, res: Response, next: NextFunction) => {
             tutor.office = req.body.office;
         }
         tutor.save((err) => {
-            if (err) { return res.status(400).json({err: err}); }
+            if (err) {
+                return res.status(503).json({err: err});
+            }
             res.json({msg: "Tutor has been updated", tutor: tutor});
         });
     });

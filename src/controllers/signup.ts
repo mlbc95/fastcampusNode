@@ -159,18 +159,21 @@ export let postSignup = (req: Request, res: Response, next: NextFunction) => {
             // Make sure that the username does not exist in the db already
             Student.findOne({ username: req.body.username }, (err, existingStudent) => {
                 // Handle error
-                if (err) { return res.status(400).json({err: err}); }
+                if (err) {
+                    res.status(503).json({err: err});
+                }
                 // If we found a user error out and return to client
                 if (existingStudent) {
-                    req.flash("errors", { msg: "Account with that username address already exists." });
                     return res.status(400).json({msg: "Account with that username address already exists."});
                 }
                 // Did not find user, save to db and return object to client
                 user.save((err) => {
-                    if (err) { return res.status(400).json({err: err}); }
+                    if (err) {
+                        res.status(503).json({err: err});
+                    }
                     req.logIn(user, (err) => {
                     if (err) {
-                        return res.status(400).json({err: err});
+                        return res.status(503).json({err: err});
                     }
                     res.json({user: user});
                     });
