@@ -14,8 +14,8 @@ const request = require("express-validator");
 // Custom classes
 
 /**
- * POST /account/profile
- * Update profile information.
+ * PATCH /student
+ * Update student information.
  */
 export let patchStudent = (req: Request, res: Response, next: NextFunction) => {
   // Create array object we can push on for custom error messages
@@ -149,22 +149,23 @@ export let patchStudent = (req: Request, res: Response, next: NextFunction) => {
     user.save((err: WriteError) => {
       if (err) {
         if (err.code === 11000) {
-          req.flash("errors", { msg: "The email address you have entered is already associated with an account." });
-          res.json({msg: "The email address you have entered is already associated with an account."});
+          // Write error from the db, email or username is taken
+          // set header to 400 to indicate bad information
+          res.status(400).json({msg: "The email address you have entered is already associated with an account."});
         }
+        // General error, set status to 400 to indicate bad information
         return res.status(400).json({err: err});
       }
-      req.flash("success", { msg: "Profile information has been updated." });
-      res.json({user: user});
+      // Success, set status to 201 to indicate resouce created
+      res.status(201).json({user: user});
     });
   });
 };
 
-export let postDeleteAccount = (req: Request, res: Response, next: NextFunction) => {
-  Student.remove({ _id: req.user.id }, (err) => {
+export let deleteStudent = (req: Request, res: Response, next: NextFunction) => {
+  Student.remove({ _id: req.body.id }, (err) => {
     if (err) { return next(err); }
     req.logout();
-    req.flash("info", { msg: "Your account has been deleted." });
-    res.redirect("/");
+    res.status(200).json({msg: "Account deleted"});
   });
 };
