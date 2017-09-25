@@ -110,18 +110,19 @@ app.use(express.static(path.join(__dirname, "public"), { maxAge: 31557600000 }))
 app.post("/auth/signup", signupController.postSignup);
 app.post("/auth/login", loginController.postSignin);
 // Additional Student routes
-app.patch("/student", passportConfig.isAuthenticated, studentController.patchStudent);
-app.delete("/student", passportConfig.isAuthenticated, studentController.deleteStudent);
+app.patch("/students", passportConfig.isAuthenticated, studentController.patchStudent);
+app.delete("/students", passportConfig.isAuthenticated, studentController.deleteStudent);
 // Additional Tutor routes
-app.post("/tutor", tutorController.postTutor);
-app.get("/tutor", tutorController.getTutor);
-app.patch("/tutor", tutorController.patchTutor);
+app.post("/tutors", tutorController.postTutor);
+app.get("/tutors", tutorController.getTutor);
+app.patch("/tutorss", tutorController.patchTutor);
 app.delete("/tutor", tutorController.deleteTutor);
 // Course routes
-app.post("/course", courseController.postCourse);
-app.get("/course", courseController.getCourse);
-app.patch("/course", courseController.patchTutor);
-app.delete("/course", courseController.deleteCourse);
+app.post("/courses", courseController.postCourse);
+app.get("/courses", courseController.getCourse);
+app.patch("/courses", courseController.patchTutor);
+app.delete("/courses", courseController.deleteCourse);
+
 
 
 /**
