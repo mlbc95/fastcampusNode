@@ -1,5 +1,15 @@
 {
+<<<<<<< HEAD
   "name": "fastcampusserver",
+=======
+  "name": "launcher",
+  "version": "1.0.0",
+  "main": "server.js",
+  "repository": "ssh://git@bitbucket.org/AndresRodH/fastcampus-react.git",
+  "author": "Andres Rodriguez <andrese.rodriguezh@gmail.com>",
+  "license": "MIT",
+  "name": "fastcampus-server",
+>>>>>>> 8c4df4610e73978af53ef4f788322ba053cc1257
   "version": "0.1.0",
   "description": "A starting point for Node.js express apps with TypeScript",
   "repository": {
