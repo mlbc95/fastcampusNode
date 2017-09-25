@@ -1,15 +1,5 @@
 {
-<<<<<<< HEAD
   "name": "fastcampusserver",
-=======
-  "name": "launcher",
-  "version": "1.0.0",
-  "main": "server.js",
-  "repository": "ssh://git@bitbucket.org/AndresRodH/fastcampus-react.git",
-  "author": "Andres Rodriguez <andrese.rodriguezh@gmail.com>",
-  "license": "MIT",
-  "name": "fastcampus-server",
->>>>>>> 8c4df4610e73978af53ef4f788322ba053cc1257
   "version": "0.1.0",
   "description": "A starting point for Node.js express apps with TypeScript",
   "repository": {
@@ -49,6 +39,7 @@
     "testEnvironment": "node"
   },
   "dependencies": {
+    "@types/validator": "^6.2.3",
     "async": "^2.1.2",
     "bcrypt-nodejs": "^0.0.3",
     "body-parser": "^1.15.2",
@@ -72,7 +63,11 @@
     "passport-local": "^1.0.0",
     "pug": "^2.0.0-beta6",
     "request": "^2.78.0",
-    "validator": "^8.2.0"
+    "validator": "^8.2.0",
+    "swagger": "^0.7.5",
+    "swagger-tools": "^0.10.1",
+    "swagger-ui": "^3.2.1",
+     "yamljs": "^0.3.0"
   },
   "devDependencies": {
     "@types/async": "^2.0.40",

@@ -12,12 +12,6 @@
 - [Free Online Classes on MongoDB from MongoDB, Inc.]( https://university.mongodb.com/courses/M101JS/about)
 
 
-<<<<<<< HEAD
-  Parse and pass URL queries to MongoDB query ([**mongo-querystring**](https://www.npmjs.com/package/mongo-querystring))
-
-  [Free Online Classes on MongoDB from MongoDB, Inc.]( https://university.mongodb.com/courses/M101JS/about)
-=======
->>>>>>> 8c4df4610e73978af53ef4f788322ba053cc1257
 # TypeScript Node Starter
 
 [![Dependency Status](https://david-dm.org/Microsoft/TypeScript-Node-Starter.svg)](https://david-dm.org/Microsoft/TypeScript-Node-Starter) [![Build Status](https://travis-ci.org/Microsoft/TypeScript-Node-Starter.svg?branch=master)](https://travis-ci.org/Microsoft/TypeScript-Node-Starter) 
