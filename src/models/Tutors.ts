@@ -16,7 +16,6 @@ export type TutorModel = mongoose.Document & {
     passwordResetExpires: Date,
     courses: Course[],
     available: DayOfWeek[],
-    office: Office
 
     comparePassword: (candidatePassword: string, cb: (err: any, isMatch: any) => {}) => void,
 };
