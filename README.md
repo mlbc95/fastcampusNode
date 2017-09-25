@@ -5,15 +5,15 @@ Now we use [concurrently](https://github.com/kimmobrunfeldt/concurrently) which 
 To install dependencies `npm instal`
 To start the server locally `node server.js`, this will launch the server AND the client altogether.
 
-Important Links -
-- ** dev Heroku api ** : https://fast-campus-server-dev.herokuapp.com/
-- ** prod Hroku api ** : https://fast-campus-server.herokuapp.com/
-- ** bower dev ** : https://fast-campus-server-dev.herokuapp.com/api-docs
-Helpful Learn Links 
+**Important Links**
+- **dev Heroku api** : https://fast-campus-server-dev.herokuapp.com/
+- **prod Hroku api** : https://fast-campus-server.herokuapp.com/
+- **bower dev** : https://fast-campus-server-dev.herokuapp.com/api-docs
 
-  Parse and pass URL queries to MongoDB query ([**mongo-querystring**](https://www.npmjs.com/package/mongo-querystring))
+**Helpful Learn Links **
+-Parse and pass URL queries to MongoDB query ([**mongo-querystring**](https://www.npmjs.com/package/mongo-querystring))
 
-  [Free Online Classes on MongoDB from MongoDB, Inc.]( https://university.mongodb.com/courses/M101JS/about)
+-[Free Online Classes on MongoDB from MongoDB, Inc.]( https://university.mongodb.com/courses/M101JS/about)
 
 
 # TypeScript Node Starter
