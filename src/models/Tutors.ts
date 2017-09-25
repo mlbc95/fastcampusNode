@@ -39,7 +39,6 @@ export type Office = {
 const tutorSchema = new mongoose.Schema({
     courses: Array,
     available: Array,
-    office: Object
 }, options);
 
 const Tutor = mongoose.model("Tutor", tutorSchema);
