@@ -3,7 +3,7 @@
 Now we use [concurrently](https://github.com/kimmobrunfeldt/concurrently) which is a library that helps you run two processes at a time... I chose this only because I think it's better to use just one command to boot the whole thing.
 
 To install dependencies `npm instal`
-To start the server locally `node server.js`, this will launch the server AND the client altogether.
+To start the server locally `node start` in the root of the app, this will launch the server.
 
 **Important Links**
 - **dev Heroku api** : https://fast-campus-server-dev.herokuapp.com/
