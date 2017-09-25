@@ -112,10 +112,11 @@ app.post("/auth/login", loginController.postSignin);
 // Additional Student routes
 app.patch("/students", passportConfig.isAuthenticated, studentController.patchStudent);
 app.delete("/students", passportConfig.isAuthenticated, studentController.deleteStudent);
+
 // Additional Tutor routes
 app.post("/tutors", tutorController.postTutor);
 app.get("/tutors", tutorController.getTutor);
-app.patch("/tutorss", tutorController.patchTutor);
+app.patch("/tutors", tutorController.patchTutor);
 app.delete("/tutor", tutorController.deleteTutor);
 // Course routes
 app.post("/courses", courseController.postCourse);
