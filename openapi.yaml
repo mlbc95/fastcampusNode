@@ -247,6 +247,30 @@ components:
       required:
         - id
   responses:
+    PatchStudent:
+      type: object
+      properties:
+        id:
+          type: string
+        fName:
+          type: string
+        lName:
+          type: string
+        email:
+          type: string
+        username:
+          type: string
+        password:
+          type: string
+        pNumber:
+          type: string
+        school:
+          type: string
+        degrees:
+          type: array
+          $ref: "#/components/schemas/Degrees"
+        courses:
+          $ref: "#/components/schemas/Courses"
     Tutor:
       type: object
       properties:
@@ -396,10 +420,13 @@ paths:
         content:
           'application/json':
             schema:
-              $ref: "#/components/parameters/PatchStudent"
+              $ref: "#/components/responses/PatchStudent"
       responses:
         200:
-          description: The user has been updated.  No information is being sent back at this time.
+          description: The user has been updated.  Updated student is sent back
+          schema:
+            type: object
+            $ref: "#/components/responses/PatchStudent"
         400:
           description: The data did not pass validation, returns array with failing items along with message and value.  This error also occurs when we try to add a user and the username already exists.
           schema:
@@ -560,7 +587,7 @@ paths:
               err: err
     post:
       summary: Add course to db
-      description: This method is used to add a tutor to the db.
+      description: This method is used to add a course to the db.
       produces:
         - application/json
       parameters:
@@ -591,13 +618,13 @@ paths:
             properties:
               err: err
     patch:
-      summary: This is used to update the tutor
-      description: This method is used to update a particular tutor by id.  It expects the id and fields that need updated in the body.
+      summary: This is used to update the course
+      description: This method is used to update a particular course by id.  It expects the id and fields that need updated in the body.
       produces:
         - application/json
       parameters:
         - in: req.body
-          name: Tutor to update and updated info
+          name: Course to update and updated info
           required: true
           schema:
             $ref: "#/components/schemas/Course"
