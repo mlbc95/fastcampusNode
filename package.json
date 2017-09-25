@@ -15,9 +15,6 @@
   "author": "FASTCampus",
   "license": "Private",
   "scripts": {
-<<<<<<< HEAD
-    "start": "node server.js"
-=======
     "start": "npm run build && npm run watch",
     "build": "npm run && npm run build-ts && npm run tslint && npm run copy-static-assets",
     "serve": "nodemon dist/server.js",
@@ -46,7 +43,6 @@
       "**/test/**/*.test.(ts|js)"
     ],
     "testEnvironment": "node"
->>>>>>> typesriptPort
   },
   "dependencies": {
     "babel-core": "^6.25.0",
@@ -83,21 +79,9 @@
     "passport": "0.3.2",
     "passport-facebook": "^2.1.1",
     "passport-local": "^1.0.0",
-<<<<<<< HEAD
-    "pdf2json": "^1.1.7",
-    "qs": "^6.5.0",
-    "request": "^2.81.0",
-    "request-promise": "^4.2.1",
-    "swagger": "^0.7.5",
-    "swagger-tools": "^0.10.1",
-    "swagger-ui": "^3.2.1",
-    "validator": "^8.0.0",
-    "yamljs": "^0.3.0"
-=======
     "pug": "^2.0.0-beta6",
     "request": "^2.78.0",
     "validator": "^8.2.0"
->>>>>>> typesriptPort
   },
   "devDependencies": {
     "babel-eslint": "^7.2.3",
