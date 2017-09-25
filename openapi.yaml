@@ -603,7 +603,7 @@ paths:
             $ref: "#/components/schemas/Course"
       responses:
         200:
-          description: The user has been updated.
+          description: The course has been updated.
           schema:
             $ref: "#/components/schemas/Course"
         400:
@@ -617,8 +617,8 @@ paths:
             properties:
               err: err
     delete:
-      summary: Used to delete the tutor
-      description: This method is used to delete the tutor object fromt the db.  This is not reverisble.
+      summary: Used to delete the course
+      description: This method is used to delete the course object fromt the db.  This is not reverisble.
       produces:
         - application/json
       parameters:
