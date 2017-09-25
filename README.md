@@ -8,7 +8,7 @@ To start the server locally `node server.js`, this will launch the server AND th
 **Important Links**
 - **dev Heroku api** : https://fast-campus-server-dev.herokuapp.com/
 - **prod Hroku api** : https://fast-campus-server.herokuapp.com/
-- **bower dev** : https://fast-campus-server-dev.herokuapp.com/api-docs
+- **bower dev** : https://fast-campus-server.herokuapp.com/docs/
 
 **Helpful Learn Links**
 - Parse and pass URL queries to MongoDB query ([**mongo-querystring**](https://www.npmjs.com/package/mongo-querystring))
