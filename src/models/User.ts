@@ -3,19 +3,19 @@ import * as crypto from "crypto";
 import * as mongoose from "mongoose";
 const options = {discriminatorKey: "Kind", timestamps: true};
 
-export type UserModel = mongoose.Document & {
-  fName: string,
-  lName: string,
-  email: string,
-  username: string,
-  school: string,
-  password: string,
-  pNumber: string,
-  passwordResetToken: string,
-  passwordResetExpires: Date,
+export interface UserModel extends mongoose.Document {
+  fName: string;
+  lName: string;
+  email: string;
+  username: string;
+  school: string;
+  password: string;
+  pNumber: string;
+  passwordResetToken: string;
+  passwordResetExpires: Date;
 
-  comparePassword: (candidatePassword: string, cb: (err: any, isMatch: any) => {}) => void,
-};
+  comparePassword: (candidatePassword: string, cb: (err: any, isMatch: any) => {}) => void;
+}
 
 export type AuthToken = {
   accessToken: string,
