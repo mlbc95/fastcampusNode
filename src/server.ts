@@ -16,7 +16,10 @@ import * as mongoose from "mongoose";
 import * as passport from "passport";
 import * as validator from "validator";
 import * as lodash from "lodash";
-import expressValidator = require("express-validator");
+import * as expressValidator from "express-validator"
+import * as swaggerTools from 'swagger-tools'
+import  * as YAML from 'yamljs'
+var swaggerDoc = YAML.load('openapi.yaml')
 
 
 const MongoStore = mongo(session);
@@ -94,6 +97,11 @@ app.use(function (req, res, next) {
   next();
 });
 app.use(express.static(path.join(__dirname, "public"), { maxAge: 31557600000 }));
+
+swaggerTools.initializeMiddleware(swaggerDoc, function (middleware) {
+  // Serve the Swagger documents and Swagger UI
+  app.use(middleware.swaggerUi())
+})
 
 /**
  * Primary app routes.

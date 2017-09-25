@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # FastCampus
 
 Now we use [concurrently](https://github.com/kimmobrunfeldt/concurrently) which is a library that helps you run two processes at a time... I chose this only because I think it's better to use just one command to boot the whole thing.
@@ -14,7 +13,6 @@ Helpful Learn Links
   Parse and pass URL queries to MongoDB query ([**mongo-querystring**](https://www.npmjs.com/package/mongo-querystring))
 
   [Free Online Classes on MongoDB from MongoDB, Inc.]( https://university.mongodb.com/courses/M101JS/about)
-=======
 # TypeScript Node Starter
 
 [![Dependency Status](https://david-dm.org/Microsoft/TypeScript-Node-Starter.svg)](https://david-dm.org/Microsoft/TypeScript-Node-Starter) [![Build Status](https://travis-ci.org/Microsoft/TypeScript-Node-Starter.svg?branch=master)](https://travis-ci.org/Microsoft/TypeScript-Node-Starter) 
@@ -432,4 +430,3 @@ Here is a section of miscellaneous tips.
 
 # Hackathon Starter Project
 A majority of this quick start's content was inspired or adapted from Sahat's excellent [Hackathon Starter project](https://github.com/sahat/hackathon-starter).
->>>>>>> typesriptPort
