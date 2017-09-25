@@ -1,5 +1,13 @@
 # FastCampus
 
+<<<<<<< HEAD
+=======
+Now we use [concurrently](https://github.com/kimmobrunfeldt/concurrently) which is a library that helps you run two processes at a time... I chose this only because I think it's better to use just one command to boot the whole thing.
+
+To install dependencies `npm instal`
+To start the server locally `node start` in the root of the app, this will launch the server.
+
+>>>>>>> 1ca7981c5d658e57c8b93fecb840df256322093c
 **Important Links**
 - **dev Heroku api** : https://fast-campus-server-dev.herokuapp.com/
 - **prod Hroku api** : https://fast-campus-server.herokuapp.com/
