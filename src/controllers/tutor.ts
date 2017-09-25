@@ -189,19 +189,16 @@ export let patchTutor = (req: Request, res: Response, next: NextFunction) => {
                     erArray.errors.push(erObj);
                 }
             });
+            if (!typeCheck("String", value.office.building)) {
+                const erObj: ErrorMessage = new ErrorMessage("Please use only letters and spaces for name", "office.building[" + x + "]", req.body.office.building);
+                erArray.errors.push(erObj);
+            }
+            if (!typeCheck("String", value.office.roomNumber)) {
+                const erObj: ErrorMessage = new ErrorMessage("Please use only letters and spaces for number", "office.building[" + x + "]", req.body.office.roomNumber);
+                erArray.errors.push(erObj);
+            }
             x++;
         });
-    }
-    // Check office attribute
-    if (req.body.office) {
-        if (!typeCheck("String", req.body.office.building)) {
-            const erObj: ErrorMessage = new ErrorMessage("Please use only letters and spaces for name", "office.building[" + x + "]", req.body.office.building);
-            erArray.errors.push(erObj);
-        }
-        if (!typeCheck("String", req.body.office.roomNumber)) {
-            const erObj: ErrorMessage = new ErrorMessage("Please use only letters and spaces for number", "office.building[" + x + "]", req.body.office.roomNumber);
-            erArray.errors.push(erObj);
-        }
     }
 
     // Validation done, check if errors are present
@@ -229,9 +226,6 @@ export let patchTutor = (req: Request, res: Response, next: NextFunction) => {
         }
         if (req.body.available) {
             tutor.available = req.body.available;
-        }
-        if (req.body.office) {
-            tutor.office = req.body.office;
         }
         tutor.save((err) => {
             if (err) {
@@ -271,9 +265,6 @@ export let getTutor = (req: Request, res: Response, next: NextFunction) => {
                 }
                 if (input.available) {
                     query["available"] = input.available;
-                }
-                if (input.office) {
-                    query["office"] = input.office;
                 }
             }
         }

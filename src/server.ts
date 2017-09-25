@@ -17,8 +17,8 @@ import * as passport from "passport";
 import * as validator from "validator";
 import * as lodash from "lodash";
 import * as expressValidator from "express-validator";
-import * as swaggerTools from "swagger-tools";
-import  * as YAML from "yamljs";
+// import * as swaggerTools from "swagger-tools";
+// import  * as YAML from "yamljs";
 // const swaggerDoc = YAML.load("openapi.yaml");
 
 
