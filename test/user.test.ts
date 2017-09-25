@@ -2,7 +2,7 @@ import {} from "jest";
 import * as supertest from "supertest";
 const request = supertest("http://localhost:8000");
 
-describe("GET /login", () => {
+describe("GET /auth/login", () => {
   it("should return 200 OK", (done) => {
     request.get("/login")
       .expect(200, done);

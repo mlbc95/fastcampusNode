@@ -625,6 +625,7 @@ paths:
       parameters:
         - in: req.body
           name: Course to update and updated info
+          
           required: true
           schema:
             $ref: "#/components/schemas/Course"
