@@ -28,7 +28,8 @@ export type Course = {
 
 export type DayOfWeek = {
     day: string,
-    hours: string[]
+    hours: string[],
+    office: Office
 };
 
 export type Office = {
