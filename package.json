@@ -5,7 +5,7 @@
   "repository": "ssh://git@bitbucket.org/AndresRodH/fastcampus-react.git",
   "author": "Andres Rodriguez <andrese.rodriguezh@gmail.com>",
   "license": "MIT",
-  "name": "FASTCampus Server",
+  "name": "FASTCampus-Server",
   "version": "0.1.0",
   "description": "A starting point for Node.js express apps with TypeScript",
   "repository": {
