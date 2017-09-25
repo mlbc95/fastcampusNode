@@ -39,7 +39,9 @@
     "testEnvironment": "node"
   },
   "dependencies": {
+    "@types/swagger-tools": "^0.10.4",
     "@types/validator": "^6.2.3",
+    "@types/yamljs": "^0.2.30",
     "async": "^2.1.2",
     "bcrypt-nodejs": "^0.0.3",
     "body-parser": "^1.15.2",
@@ -63,11 +65,12 @@
     "passport-local": "^1.0.0",
     "pug": "^2.0.0-beta6",
     "request": "^2.78.0",
-    "validator": "^8.2.0",
     "swagger": "^0.7.5",
     "swagger-tools": "^0.10.1",
     "swagger-ui": "^3.2.1",
-     "yamljs": "^0.3.0"
+    "tslint": "^5.7.0",
+    "validator": "^8.2.0",
+    "yamljs": "^0.3.0"
   },
   "devDependencies": {
     "@types/async": "^2.0.40",
