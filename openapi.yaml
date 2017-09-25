@@ -11,18 +11,6 @@ host: fast-campus-server-dev.herokuapp.com
 basePath: /
 
 paths:
-<<<<<<< HEAD
-  /users/getAllUsers:
-    get:
-      summary: Gets all users
-      description: Returns all users.
-      responses:
-        200:
-          description: retrun all users
-          schema:
-            type: array
-            items:
-=======
   /auth/signup:
     post:
       summary: Used to signup new users
@@ -71,7 +59,6 @@ paths:
           description: The data sent has resulted in a successful login. The schema shown in the response is of the generic user object.  Depending on the type of user it will respond with the approriate type of user.
           schema:
             type: user
->>>>>>> typesriptPort
               required:
                 - username
               properties:
@@ -85,34 +72,6 @@ paths:
                   type: string
                 school: 
                   type: string
-<<<<<<< HEAD
-                lastLogin: 
-                  type: string 
-                classes: 
-                  type: array
-                degree:
-                  type: array 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
-=======
         401:
           description: The data did not pass validation, returns array with failing items along with message and value.  The headers that get set are according to RFC 7235.
           schema:
@@ -221,13 +180,13 @@ paths:
                       type: string
                     hours: array
                       type: string
-                office:
-                  type: office
-                    properties:
-                      building: 
-                        type: string
-                      roomNumber:
-                        type: string
+                    office:
+                      type: office
+                        properties:
+                          building: 
+                            type: string
+                          roomNumber:
+                            type: string
         500:
           description: The server encountered a general error while processing the request.  It will return an object err containint the errors. Because this is a catch all it is hard to define a schema for it.
           schema:
@@ -273,13 +232,13 @@ paths:
                       type: string
                     hours: array
                       type: string
-                office:
-                  type: office
-                    properties:
-                      building: 
-                        type: string
-                      roomNumber:
-                        type: string
+                    office:
+                      type: office
+                        properties:
+                          building: 
+                            type: string
+                          roomNumber:
+                            type: string
         400:
           description: The data did not pass validation, returns array with failing items along with message and value.  This error also occurs when we try to add a user and the username already exists.
           schema:
@@ -337,13 +296,13 @@ paths:
                       type: string
                     hours: array
                       type: string
-                office:
-                  type: office
-                    properties:
-                      building: 
-                        type: string
-                      roomNumber:
-                        type: string
+                    office:
+                      type: office
+                        properties:
+                          building: 
+                            type: string
+                          roomNumber:
+                            type: string
         400:
           description: The data did not pass validation, returns array with failing items along with message and value.  This error also occurs when we try to add a user and the username already exists.
           schema:
@@ -505,4 +464,3 @@ paths:
           schema:
             type: array
               err: err
->>>>>>> typesriptPort
