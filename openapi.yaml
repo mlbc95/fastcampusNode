@@ -1,3 +1,4 @@
+# Base info declaration
 swagger: "2.0"
 
 info:
@@ -9,122 +10,382 @@ schemes:
   - https
 host: fast-campus-server-dev.herokuapp.com
 basePath: /
+components:
+  schemas:
+    Tutor:
+      type: object
+      properties:
+        fName:
+          type: string
+        lName:
+          type: string
+        username:
+          type: string
+        email:
+          type: string
+        school: 
+          type: string
+        pNmber: 
+          type: string
+        passwordResetToken:
+          type: string
+        passwordResetExpires:
+          type: date
+        courses:
+          type: array
+          items:
+            properties:
+              number: 
+                type: string
+              name:
+                type: string
+        available:
+          $ref: "#/components/schemas/Available"
+    Available:
+      type: array
+      properties:
+        day:
+          type: string
+        hours:
+          type: array
+          properties:
+            time: 
+              type: string
+        office:
+          type: object
+          properties:
+            building: 
+              type: string
+            roomNumber:
+              type: string
+    User:
+      type: object
+      properties:
+        fName:
+          type: string
+        lName:
+          type: string
+        email:
+          type: string
+        username:
+          type: string
+        password:
+          type: string
+        pNumber:
+          type: string
+        school:
+          type: string
+    Degrees:
+      type: array
+      $ref: "#/components/schemas/Degree"
+    Degree:
+      type: object
+      properties:
+        level:
+          type: string
+        name:
+          type: string
+    Courses:
+      type: object
+      properties:
+          number: 
+            type: string
+          name: 
+            type: string,
+          crnNumber: 
+            type: number
+          section: 
+            type: string
+          startTime: 
+            type: number
+          endTime: 
+            type: number,
+          professor:
+            type: array
+            properties:
+              name:
+                type: string
+  parameters:
+    PostTutor:
+        type: object
+        properties:
+          fName:
+            type: string
+          lName:
+            type: string
+          username:
+            type: string
+          email:
+            type: string
+          school: 
+            type: string
+          pNmber: 
+            type: string
+          courses:
+            type: array
+            items:
+              properties:
+                number: 
+                  type: string
+                name:
+                  type: string
+          available:
+            $ref: "#/components/schemas/Available"
+    PatchTutor:
+      type: object
+      properties:
+        id:
+          type: string
+        fName:
+          type: string
+        lName:
+          type: string
+        username:
+          type: string
+        email:
+          type: string
+        school: 
+          type: string
+        pNmber: 
+          type: string
+        passwordResetToken:
+          type: string
+        passwordResetExpires:
+          type: date
+        courses:
+          type: array
+          items:
+            properties:
+              number: 
+                type: string
+              name:
+                type: string
+        available:
+          $ref: "#/components/schemas/Available"
+      required:
+        - id
+    Login:
+      type: object
+      properties:
+        username:
+          type: string
+        password:
+          type: string
+      required:
+        - username
+        - password
+    User:
+      type: object
+      properties:
+        fName:
+          type: string
+        lName:
+          type: string
+        email:
+          type: string
+        username:
+          type: string
+        password:
+          type: string
+        pNumber:
+          type: string
+        school:
+          type: string
+      required:
+        - username
+        - email
+        - password
+        - school
+    PatchStudent:
+      type: object
+      properties:
+        id:
+          type: string
+        fName:
+          type: string
+        lName:
+          type: string
+        email:
+          type: string
+        username:
+          type: string
+        password:
+          type: string
+        pNumber:
+          type: string
+        school:
+          type: string
+        degrees:
+          type: array
+          $ref: "#/components/schemas/Degrees"
+        courses:
+          $ref: "#/components/schemas/Courses"
+      required:
+        - id
+  responses:
+    Tutor:
+      type: object
+      properties:
+        id:
+          type: string
+        fName:
+          type: string
+        lName:
+          type: string
+        username:
+          type: string
+        email:
+          type: string
+        school: 
+          type: string
+        pNmber: 
+          type: string
+        passwordResetToken:
+          type: string
+        passwordResetExpires:
+          type: date
+        courses:
+          type: array
+          items:
+            properties:
+              number: 
+                type: string
+              name:
+                type: string
+        available:
+          $ref: "#/components/schemas/Available"
+    ValidationError:
+      type: array
+      items: 
+        properties:
+          msg:
+            type: string
+          param:
+            type: string
+          value: 
+            type: string
+    User:
+      type: object
+      properties:
+        _id:
+          type: string
+        fName:
+          type: string
+        lName:
+          type: string
+        email:
+          type: string
+        username:
+          type: string
+        password:
+          type: string
+        pNumber:
+          type: string
+        school:
+          type: string
+        id:
+          type: string
 
 paths:
   /auth/signup:
     post:
-      summary: Used to signup new users
-      description: this is the route to post all new users.  The url should contain the type of user being added while the body contains the content to be added.
+      summary: Signs up a new user
+      description: This is the route to post all new users.  The url should contain the type of user being added while the body contains the content to be added.
+      produces:
+        - application/json
+      parameters:
+      - in: req.body
+        name: user
+        description: JSON of the user to be added
+        required: true
+        schema:
+          $ref: "#/components/parameters/User"
+      requestBody:
+        content:
+          'application/json':
+            schema:
+              $ref: "#/components/parameters/User"
       responses:
         201:
           description: The user was created successfully.  Depending on the type of user that was submited it will return the approrite type of object.  The schema provided below is a somewhat generic object that represents the bare minimum for the response.
           schema:
-            type: user
-              required:
-                - username
-              properties:
-                fName:
-                  type: string
-                lName:
-                  type: string
-                username:
-                  type: string
-                email:
-                  type: string
-                school: 
-                  type: string
+              $ref: "#/components/responses/User"
         400:
           description: The data did not pass validation, returns array with failing items along with message and value.  This error also occurs when we try to add a user and the username already exists.
           schema:
             type: array
-            items: 
-              properties:
-                msg:
-                  type: string
-                param:
-                  type: string
-                value: 
-                  type: string
+            $ref: "#/components/responses/ValidationError"
         500:
           description: The server encountered a general error while processing the request.  It will return an object err containint the errors. Because this is a catch all it is hard to define a schema for it.
           schema:
             type: array
+            properties:
               err: err
   /auth/login:
     post:
       summary: This is used to login
       description: This is the route that is used to login to the application.  Every user, regardless of type, should pass through this same login screen.
+      produces:
+        - application/json
+      parameters:
+      - in: req.body
+        name: username/password
+        description: JSON of the user to be logged in
+        required: true
+        schema:
+          $ref: "#/components/parameters/Login"
+      requestBody:
+        content:
+          'application/json':
+            schema:
+              $ref: "#/components/parameters/User"
       responses:
         200:
           description: The data sent has resulted in a successful login. The schema shown in the response is of the generic user object.  Depending on the type of user it will respond with the approriate type of user.
           schema:
-            type: user
-              required:
-                - username
-              properties:
-                fName:
-                  type: string
-                lName:
-                  type: string
-                username:
-                  type: string
-                email:
-                  type: string
-                school: 
-                  type: string
+            $ref: "#/components/responses/User"
         401:
           description: The data did not pass validation, returns array with failing items along with message and value.  The headers that get set are according to RFC 7235.
           schema:
             type: array
-            items: 
-              properties:
-                msg:
-                  type: string
-                param:
-                  type: string
-                value: 
-                  type: string
+            $ref: "#/components/responses/ValidationError"
         500:
           description: The server encountered a general error while processing the request.  It will return an object err containint the errors. Because this is a catch all it is hard to define a schema for it.
           schema:
             type: array
+            properties:
               err: err
   /student:
     patch:
       summary: This is used to update the student
-      description: This method is used to update a particular student by id.  It expects the id and fields that need updated in the body.
+      description: This method is used to update a particular student by id.  It expects the id and fields that need updated in the body. The degree should be an array of the type degree that is shown in the JSON here.
+      produces:
+        - application/json
+      parameters:
+      - in: req.body
+        name: Updated Student
+        description: JSON of the student to update
+        required: true
+        schema:
+          $ref: "#/components/parameters/PatchStudent"
+      requestBody:
+        content:
+          'application/json':
+            schema:
+              $ref: "#/components/parameters/PatchStudent"
       responses:
         200:
-          description: The user has been updated.
-          schema:
-            type: user
-              properties:
-                fName:
-                  type: string
-                lName:
-                  type: string
-                username:
-                  type: string
-                email:
-                  type: string
-                school: 
-                  type: string
+          description: The user has been updated.  No information is being sent back at this time.
         400:
           description: The data did not pass validation, returns array with failing items along with message and value.  This error also occurs when we try to add a user and the username already exists.
           schema:
             type: array
-            items: 
-              properties:
-                msg:
-                  type: string
-                param:
-                  type: string
-                value: 
-                  type: string
+            $ref: "#/components/responses/ValidationError"
         500:
           description: The server encountered a general error while processing the request.  It will return an object err containint the errors. Because this is a catch all it is hard to define a schema for it.
           schema:
             type: array
+            properties:
               err: err
     delete:
       summary: Used to delete the student
@@ -133,334 +394,121 @@ paths:
         200:
           description: The student has been successfully deleted
           schema:
-            msg: string
+            type: object
+            properties:
+              msg: 
+                type: string
         500:
           description: The server encountered a general error while processing the request.  It will return an object err containint the errors. Because this is a catch all it is hard to define a schema for it.
           schema:
             type: array
+            properties:
               err: err
   /tutor:
     get:
       summary: Get tutors from the db
       description: This method is used to query the db
+      produces:
+        - application/json
+      parameters:
+      - in: req.query
+        name: Updated Student
+        description: query string to get the desired tutors
+        required: true
       responses:
         200:
           description: successful query, returns an array of tutors 
           schema:
-            type: tutor
-              properties:
-                fName:
-                  type: string
-                lName:
-                  type: string
-                username:
-                  type: string
-                email:
-                  type: string
-                school: 
-                  type: string
-                pNmber: 
-                  type: string
-                passwordResetToken:
-                  type: string
-                passwordResetExpires:
-                  type: date
-                courses:
-                  type: array
-                  items:
-                    properties:
-                      number: 
-                        type: number
-                      name:
-                        type: string
-                available:
-                  type: array
-                  items:
-                    day:
-                      type: string
-                    hours: array
-                      type: string
-                    office:
-                      type: office
-                        properties:
-                          building: 
-                            type: string
-                          roomNumber:
-                            type: string
+            $ref: "#/components/schemas/Tutor"
         500:
           description: The server encountered a general error while processing the request.  It will return an object err containint the errors. Because this is a catch all it is hard to define a schema for it.
           schema:
             type: array
+            properties:
               err: err
     post:
       summary: Add tutor to db
       description: This method is used to add a tutor to the db.
+      produces:
+        - application/json
+      parameters:
+        - in: req.body
+          name: new Tutor
+          description: the new tutor object to be added to the db
+          required: true
+          schema:
+            $ref: "#/components/parameters/PostTutor"
+      requestBody:
+        content:
+          'application/json':
+            schema:
+              $ref: "#/components/parameters/PostTutor"
       responses:
         201:
           description: The tutor was created successfully. 
           schema:
-            type: tutor
-              properties:
-                fName:
-                  type: string
-                lName:
-                  type: string
-                username:
-                  type: string
-                email:
-                  type: string
-                school: 
-                  type: string
-                pNmber: 
-                  type: string
-                passwordResetToken:
-                  type: string
-                passwordResetExpires:
-                  type: date
-                courses:
-                  type: array
-                  items:
-                    properties:
-                      number: 
-                        type: number
-                      name:
-                        type: string
-                available:
-                  type: array
-                  items:
-                    day:
-                      type: string
-                    hours: array
-                      type: string
-                    office:
-                      type: office
-                        properties:
-                          building: 
-                            type: string
-                          roomNumber:
-                            type: string
+            $ref: "#/components/responses/Tutor"
         400:
           description: The data did not pass validation, returns array with failing items along with message and value.  This error also occurs when we try to add a user and the username already exists.
           schema:
-            type: array
-            items: 
-              properties:
-                msg:
-                  type: string
-                param:
-                  type: string
-                value: 
-                  type: string
+            $ref: "#/components/responses/ValidationError"
         500:
           description: The server encountered a general error while processing the request.  It will return an object err containint the errors. Because this is a catch all it is hard to define a schema for it.
           schema:
             type: array
+            properties:
               err: err
     patch:
       summary: This is used to update the tutor
       description: This method is used to update a particular tutor by id.  It expects the id and fields that need updated in the body.
+      produces:
+        - application/json
+      parameters:
+        - in: req.body
+          name: Tutor to update and updated info
+          required: true
+          schema:
+            $ref: "#/components/parameters/PatchTutor"
       responses:
         200:
           description: The user has been updated.
           schema:
-            type: tutor
-              properties:
-                fName:
-                  type: string
-                lName:
-                  type: string
-                username:
-                  type: string
-                email:
-                  type: string
-                school: 
-                  type: string
-                pNmber: 
-                  type: string
-                passwordResetToken:
-                  type: string
-                passwordResetExpires:
-                  type: date
-                courses:
-                  type: array
-                  items:
-                    properties:
-                      number: 
-                        type: number
-                      name:
-                        type: string
-                available:
-                  type: array
-                  items:
-                    day:
-                      type: string
-                    hours: array
-                      type: string
-                    office:
-                      type: office
-                        properties:
-                          building: 
-                            type: string
-                          roomNumber:
-                            type: string
+            $ref: "#/components/responses/Tutor"
         400:
           description: The data did not pass validation, returns array with failing items along with message and value.  This error also occurs when we try to add a user and the username already exists.
           schema:
-            type: array
-            items: 
-              properties:
-                msg:
-                  type: string
-                param:
-                  type: string
-                value: 
-                  type: string
+            $ref: "#/components/responses/ValidationError"
         500:
           description: The server encountered a general error while processing the request.  It will return an object err containint the errors. Because this is a catch all it is hard to define a schema for it.
           schema:
             type: array
+            properties:
               err: err
     delete:
       summary: Used to delete the tutor
       description: This method is used to delete the tutor object fromt the db.  This is not reverisble.
+      produces:
+        - application/json
+      parameters:
+        - in: req.body
+          name: tutor.id
+          required: true
+          schema:
+            type: object
+            propreties:
+              id:
+                type: string
       responses:
         200:
           description: The tutor has been successfully deleted
           schema:
-            msg: string
+            type: object
+            properties:
+              msg: 
+                type: string
         500:
           description: The server encountered a general error while processing the request.  It will return an object err containint the errors. Because this is a catch all it is hard to define a schema for it.
           schema:
             type: array
-              err: err
-  /course:
-    get:
-      summary: Get courses from the db
-      description: This method is used to query the db
-      responses:
-        200:
-          description: successful query, returns an array of courses 
-          schema:
-            type: course
-              properties:
-                subject:
-                  type: string
-                number:
-                  type: string
-                name:
-                  type: string
-                sections: 
-                  type: array
-                    properties:
-                      crnNumber:
-                        type: string
-                      sectionNumber:
-                        type: string
-                      time:
-                        type: string
-                      professor:
-                        type: string
-        500:
-          description: The server encountered a general error while processing the request.  It will return an object err containint the errors. Because this is a catch all it is hard to define a schema for it.
-          schema:
-            type: array
-              err: err
-    post:
-      summary: Add course to db
-      description: This method is used to add a course to the db.
-      responses:
-        200:
-          description: successful query, returns an array of courses 
-          schema:
-            type: course
-              properties:
-                subject:
-                  type: string
-                number:
-                  type: string
-                name:
-                  type: string
-                sections: 
-                  type: array
-                    properties:
-                      crnNumber:
-                        type: string
-                      sectionNumber:
-                        type: string
-                      time:
-                        type: string
-                      professor:
-                        type: string
-        400:
-          description: The data did not pass validation, returns array with failing items along with message and value.  This error also occurs when we try to add a user and the username already exists.
-          schema:
-            type: array
-            items: 
-              properties:
-                msg:
-                  type: string
-                param:
-                  type: string
-                value: 
-                  type: string
-        500:
-          description: The server encountered a general error while processing the request.  It will return an object err containint the errors. Because this is a catch all it is hard to define a schema for it.
-          schema:
-            type: array
-              err: err
-    patch:
-      summary: This is used to update the tutor
-      description: This method is used to update a particular course by id.  It expects the id and fields that need updated in the body.
-      responses:
-        200:
-          description: successful query, returns an array of courses 
-          schema:
-            type: course
-              properties:
-                subject:
-                  type: string
-                number:
-                  type: string
-                name:
-                  type: string
-                sections: 
-                  type: array
-                    properties:
-                      crnNumber:
-                        type: string
-                      sectionNumber:
-                        type: string
-                      time:
-                        type: string
-                      professor:
-                        type: string
-        400:
-          description: The data did not pass validation, returns array with failing items along with message and value.  This error also occurs when we try to add a user and the username already exists.
-          schema:
-            type: array
-            items: 
-              properties:
-                msg:
-                  type: string
-                param:
-                  type: string
-                value: 
-                  type: string
-        500:
-          description: The server encountered a general error while processing the request.  It will return an object err containint the errors. Because this is a catch all it is hard to define a schema for it.
-          schema:
-            type: array
-              err: err
-    delete:
-      summary: Used to delete the course
-      description: This method is used to delete the course object fromt the db.  This is not reverisble.
-      responses:
-        200:
-          description: The course has been successfully deleted
-          schema:
-            msg: string
-        500:
-          description: The server encountered a general error while processing the request.  It will return an object err containint the errors. Because this is a catch all it is hard to define a schema for it.
-          schema:
-            type: array
+            properties:
               err: err
