@@ -12,6 +12,30 @@ host: fast-campus-server-dev.herokuapp.com
 basePath: /
 components:
   schemas:
+    Section:
+      type: object
+      properties:
+        crnNumber:
+          type: string
+        sectionNumber:
+          type: string
+        name:
+          type: string
+        professor:
+          type: string
+    Course:
+      type: object
+      properties:
+        subject:
+          type: string
+        number:
+          type: string
+        name:
+          type: string
+        sections:
+          type: array
+          items:
+            $ref: "#/components/schemas/Section"
     Tutor:
       type: object
       properties:
@@ -355,7 +379,7 @@ paths:
             type: array
             properties:
               err: err
-  /student:
+  /students:
     patch:
       summary: This is used to update the student
       description: This method is used to update a particular student by id.  It expects the id and fields that need updated in the body. The degree should be an array of the type degree that is shown in the JSON here.
@@ -404,7 +428,7 @@ paths:
             type: array
             properties:
               err: err
-  /tutor:
+  /tutors:
     get:
       summary: Get tutors from the db
       description: This method is used to query the db
@@ -474,6 +498,114 @@ paths:
           description: The user has been updated.
           schema:
             $ref: "#/components/responses/Tutor"
+        400:
+          description: The data did not pass validation, returns array with failing items along with message and value.  This error also occurs when we try to add a user and the username already exists.
+          schema:
+            $ref: "#/components/responses/ValidationError"
+        500:
+          description: The server encountered a general error while processing the request.  It will return an object err containint the errors. Because this is a catch all it is hard to define a schema for it.
+          schema:
+            type: array
+            properties:
+              err: err
+    delete:
+      summary: Used to delete the tutor
+      description: This method is used to delete the tutor object fromt the db.  This is not reverisble.
+      produces:
+        - application/json
+      parameters:
+        - in: req.body
+          name: tutor.id
+          required: true
+          schema:
+            type: object
+            propreties:
+              id:
+                type: string
+      responses:
+        200:
+          description: The tutor has been successfully deleted
+          schema:
+            type: object
+            properties:
+              msg: 
+                type: string
+        500:
+          description: The server encountered a general error while processing the request.  It will return an object err containint the errors. Because this is a catch all it is hard to define a schema for it.
+          schema:
+            type: array
+            properties:
+              err: err
+  /courses:
+    get:
+      summary: Get courses from the db
+      description: This method is used to query the db
+      produces:
+        - application/json
+      parameters:
+      - in: req.query
+        name: query string
+        description: query string to get the desired courses
+        required: true
+      responses:
+        200:
+          description: successful query, returns an array of courses 
+          schema:
+            $ref: "#/components/schemas/Course"
+        500:
+          description: The server encountered a general error while processing the request.  It will return an object err containint the errors. Because this is a catch all it is hard to define a schema for it.
+          schema:
+            type: array
+            properties:
+              err: err
+    post:
+      summary: Add course to db
+      description: This method is used to add a tutor to the db.
+      produces:
+        - application/json
+      parameters:
+        - in: req.body
+          name: new Tutor
+          description: the new tutor object to be added to the db
+          required: true
+          schema:
+            $ref: "#/components/schemas/Course"
+      requestBody:
+        content:
+          'application/json':
+            schema:
+              $ref: "#/components/schemas/Course"
+      responses:
+        201:
+          description: The tutor was created successfully. 
+          schema:
+            $ref: "#/components/schemas/Course"
+        400:
+          description: The data did not pass validation, returns array with failing items along with message and value.  This error also occurs when we try to add a user and the username already exists.
+          schema:
+            $ref: "#/components/responses/ValidationError"
+        500:
+          description: The server encountered a general error while processing the request.  It will return an object err containint the errors. Because this is a catch all it is hard to define a schema for it.
+          schema:
+            type: array
+            properties:
+              err: err
+    patch:
+      summary: This is used to update the tutor
+      description: This method is used to update a particular tutor by id.  It expects the id and fields that need updated in the body.
+      produces:
+        - application/json
+      parameters:
+        - in: req.body
+          name: Tutor to update and updated info
+          required: true
+          schema:
+            $ref: "#/components/schemas/Course"
+      responses:
+        200:
+          description: The user has been updated.
+          schema:
+            $ref: "#/components/schemas/Course"
         400:
           description: The data did not pass validation, returns array with failing items along with message and value.  This error also occurs when we try to add a user and the username already exists.
           schema:
