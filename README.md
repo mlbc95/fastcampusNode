@@ -10,10 +10,10 @@ To start the server locally `node server.js`, this will launch the server AND th
 - **prod Hroku api** : https://fast-campus-server.herokuapp.com/
 - **bower dev** : https://fast-campus-server-dev.herokuapp.com/api-docs
 
-**Helpful Learn Links **
--Parse and pass URL queries to MongoDB query ([**mongo-querystring**](https://www.npmjs.com/package/mongo-querystring))
+**Helpful Learn Links**
+- Parse and pass URL queries to MongoDB query ([**mongo-querystring**](https://www.npmjs.com/package/mongo-querystring))
 
--[Free Online Classes on MongoDB from MongoDB, Inc.]( https://university.mongodb.com/courses/M101JS/about)
+- [Free Online Classes on MongoDB from MongoDB, Inc.]( https://university.mongodb.com/courses/M101JS/about)
 
 
 # TypeScript Node Starter
