@@ -99,9 +99,9 @@ export class FcValidation {
             x++;
         });
         if (!lodash.isEmpty(erArray)) {
-            return erArray;
-        } else {
             return undefined;
+        } else {
+            return erArray;
         }
     }
     static validateTutorCourses (courses: tutor.Course[]): ErrorArray {
@@ -120,9 +120,9 @@ export class FcValidation {
             x++;
         });
         if (!lodash.isEmpty(erArray)) {
-            return erArray;
-        } else {
             return undefined;
+        } else {
+            return erArray;
         }
     }
     static validateAvailable (available: tutor.DayOfWeek[]): ErrorArray {
@@ -141,26 +141,26 @@ export class FcValidation {
                 }
             });
             if (!typeCheck("String", value.office.building)) {
-                const erObj: ErrorMessage = new ErrorMessage("Please use only letters and spaces for name", "office.building[" + x + "]", req.body.office.building);
+                const erObj: ErrorMessage = new ErrorMessage("Please use only letters and spaces for name", "office.building[" + x + "]", value.office.building);
                 erArray.errors.push(erObj);
             }
             if (!typeCheck("String", value.office.roomNumber)) {
-                const erObj: ErrorMessage = new ErrorMessage("Please use only letters and spaces for number", "office.building[" + x + "]", req.body.office.roomNumber);
+                const erObj: ErrorMessage = new ErrorMessage("Please use only letters and spaces for number", "office.building[" + x + "]", value.office.roomNumber);
                 erArray.errors.push(erObj);
             }
             x++;
         });
         if (!lodash.isEmpty(erArray)) {
-            return erArray;
-        } else {
             return undefined;
+        } else {
+            return erArray;
         }
     }
     static validateDegrees (degrees: student.Degree[]): ErrorArray {
         const erArray = new ErrorArray();
         let x = 0;
+        console.log(degrees);
         lodash.forEach(degrees, function (value: student.Degree) {
-            console.log(value);
 
             // If the level is not characters error out
             if (!validator.isAlpha(value.level)) {
@@ -177,9 +177,9 @@ export class FcValidation {
             x++;
         });
         if (!lodash.isEmpty(erArray)) {
-            return erArray;
-        } else {
             return undefined;
+        } else {
+            return erArray;
         }
     }
     static studentValidationWrapper (student: student.StudentModel, erArray: ErrorArray) {
