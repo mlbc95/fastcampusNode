@@ -1,7 +1,7 @@
 import * as bcrypt from "bcrypt-nodejs";
 import * as crypto from "crypto";
 import * as mongoose from "mongoose";
-import { UserModel } from "./User";
+import { UserModel, User } from "./User";
 const options = {discriminatorKey: "Kind", timestamps: true};
 
 export interface StudentModel extends UserModel, mongoose.Document  {

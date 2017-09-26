@@ -120,7 +120,7 @@ export let patchStudent = (req: Request, res: Response, next: NextFunction) => {
     return res.status(400).json({msg: "Data did not pass validation", err: erArray.errors});
   }
 
-  Student.findById(req.body.id, (err, user: StudentModel) => {
+  Student.findById(req.body.id, (err: any, user: StudentModel) => {
     // Handle Error
     if (err) { return next(err); }
     // Set objects that are present

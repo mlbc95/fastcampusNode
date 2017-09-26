@@ -5,7 +5,7 @@ import * as passport from "passport";
 import * as validator from "validator";
 import * as lodash from "lodash";
 const typeCheck = require("type-check").typeCheck;
-import { default as User, UserModel, AuthToken } from "../models/User";
+import * as User from "../models/User";
 import { Request, Response, NextFunction } from "express";
 import { LocalStrategyInfo } from "passport-local";
 import { WriteError } from "mongodb";
@@ -17,3 +17,5 @@ const request = require("express-validator");
  * This is the User routes that all objects inherit
  * This should only be used for generic objects and routes
  */
+
+ User.default.schema.methods.validateFName;

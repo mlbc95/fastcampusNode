@@ -13,6 +13,7 @@ import { LocalStrategyInfo } from "passport-local";
 import { WriteError } from "mongodb";
 import { ErrorArray, ErrorMessage } from "../helperclasses/errors";
 const request = require("express-validator");
+import * as fc from "../helperclasses/fcValidation";
 
 export let postSignup = (req: Request, res: Response, next: NextFunction) => {
     // log request body
@@ -73,69 +74,7 @@ export let postSignup = (req: Request, res: Response, next: NextFunction) => {
      */
     switch (req.query["kind"]) {
         case "student":
-            // Create counter for our array
-            let x: number = 0;
-
-            // Loop through the degrees and add error message onto our array
-            lodash.forEach(req.body.degrees, function (value: student.Degree) {
-                console.log(value);
-
-                // If the level is not characters error out
-                if (!validator.isAlpha(value.level)) {
-                    const erObj: ErrorMessage = new ErrorMessage("Please use only letters and spaces for level", "degrees.level[" + x + "]", value.level);
-                    erArray.errors.push(erObj);
-                }
-
-                // If the name is not characters error out
-                if (!validator.isAlpha(value.name)) {
-                    const erObj: ErrorMessage = new ErrorMessage("Please use only letters and spaces for name", "degrees.name[" + x + "]", value.name);
-                    erArray.errors.push(erObj);
-                }
-                // Increase our array counter
-                x++;
-            });
-
-            // Reset array counter
-            x = 0;
-
-            // Loop through courses and validate them
-            lodash.forEach(req.body.courses, function (value: student.Course) {
-                if (!typeCheck("Number", value.number)) {
-                    const erObj: ErrorMessage = new ErrorMessage("Please use only numbers for course number", "courses.number[" + x + "]", value.number);
-                    erArray.errors.push(erObj);
-                }
-                const nameRegex = /[A-Za-z ]*/;
-                if (!nameRegex.test(value.name)) {
-                    const erObj: ErrorMessage = new ErrorMessage("Please use only letters and spaces for course name", "courses.name[" + x + "]", value.name);
-                    erArray.errors.push(erObj);
-                }
-                if (!typeCheck("Number", value.crnNumber)) {
-                    const erObj: ErrorMessage = new ErrorMessage("Please use only numbers for crnNumber", "courses.crnNumber[" + x + "]", value.crnNumber);
-                    erArray.errors.push(erObj);
-                }
-                // This needs to be stricter regex
-                if (!validator.isAlphanumeric(value.section)) {
-                    const erObj: ErrorMessage = new ErrorMessage("Please use only numbers and letters for section", "courses.section[" + x + "]", value.section);
-                    erArray.errors.push(erObj);
-                }
-                if (!typeCheck("Number", value.startTime)) {
-                    const erObj: ErrorMessage = new ErrorMessage("Please use only numbers for start time", "courses.startTime[" + x + "]", value.startTime);
-                    erArray.errors.push(erObj);
-                }
-                if (!typeCheck("Number", value.endTime)) {
-                    const erObj: ErrorMessage = new ErrorMessage("Please use only numbers for end time", "courses.endTime[" + x + "]", value.endTime);
-                    erArray.errors.push(erObj);
-                }
-                let y = 0;
-                lodash.forEach(value.professor, function (val: string){
-                    // Needs stricter regex
-                    if (!validator.isAlpha(val)) {
-                    const erObj: ErrorMessage = new ErrorMessage("Please use only letters professor", "courses.professor[" + x + "][" + y + "]", val);
-                    erArray.errors.push(erObj);
-                    }
-                    y++;
-                });
-            });
+            const erArray = new ErrorArray(fc.FcValidation.studentValidationWrapper(req.body));
 
             // If we got errors error out and return to client
             if (!lodash.isEmpty(erArray.errors)) {
