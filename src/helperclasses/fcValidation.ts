@@ -4,6 +4,7 @@ import * as mongoose from "mongoose";
 const typeCheck = require("type-check").typeCheck;
 import { ErrorArray, ErrorMessage } from "./errors";
 import * as student from "../models/Student";
+import * as tutor from "../models/Tutors";
 
 export class FcValidation {
     static validateFName (fName: string): ErrorMessage {
@@ -49,35 +50,42 @@ export class FcValidation {
         }
         return undefined;
     }
-    static validateCourses (courses: student.Course[]): ErrorArray {
+    static validateStudentCourses (courses: student.Course[]): ErrorArray {
         const erArray = new ErrorArray();
-        const x = 0;
+        let x = 0;
         lodash.forEach(courses, function (value: student.Course) {
             if (!typeCheck("Number", value.number)) {
                 const erObj: ErrorMessage = new ErrorMessage("Please use only numbers for course number", "courses.number[" + x + "]", value.number);
                 erArray.errors.push(erObj);
             }
-            const nameRegex = /[A-Za-z ]*/;
-            if (!nameRegex.test(value.name)) {
+            const regex = /((\w+) ?){1,}/;
+            if (!regex.test(value.name)) {
                 const erObj: ErrorMessage = new ErrorMessage("Please use only letters and spaces for course name", "courses.name[" + x + "]", value.name);
                 erArray.errors.push(erObj);
             }
-            if (!typeCheck("Number", value.crnNumber)) {
-                const erObj: ErrorMessage = new ErrorMessage("Please use only numbers for crnNumber", "courses.crnNumber[" + x + "]", value.crnNumber);
-                erArray.errors.push(erObj);
+            if (value.crnNumber) {
+                if (!typeCheck("Number", value.crnNumber)) {
+                    const erObj: ErrorMessage = new ErrorMessage("Please use only numbers for crnNumber", "courses.crnNumber[" + x + "]", value.crnNumber);
+                    erArray.errors.push(erObj);
+                }
             }
-            // This needs to be stricter regex
-            if (!validator.isAlphanumeric(value.section)) {
-                const erObj: ErrorMessage = new ErrorMessage("Please use only numbers and letters for section", "courses.section[" + x + "]", value.section);
-                erArray.errors.push(erObj);
+            if (value.section) {
+                if (!regex.test(value.section)) {
+                    const erObj: ErrorMessage = new ErrorMessage("Please use only numbers and letters for section", "courses.section[" + x + "]", value.section);
+                    erArray.errors.push(erObj);
+                }
             }
-            if (!typeCheck("Number", value.startTime)) {
-                const erObj: ErrorMessage = new ErrorMessage("Please use only numbers for start time", "courses.startTime[" + x + "]", value.startTime);
-                erArray.errors.push(erObj);
+            if (value.startTime) {
+                if (!typeCheck("Number", value.startTime)) {
+                    const erObj: ErrorMessage = new ErrorMessage("Please use only numbers for start time", "courses.startTime[" + x + "]", value.startTime);
+                    erArray.errors.push(erObj);
+                }
             }
-            if (!typeCheck("Number", value.endTime)) {
-                const erObj: ErrorMessage = new ErrorMessage("Please use only numbers for end time", "courses.endTime[" + x + "]", value.endTime);
-                erArray.errors.push(erObj);
+            if (value.endTime) {
+                if (!typeCheck("Number", value.endTime)) {
+                    const erObj: ErrorMessage = new ErrorMessage("Please use only numbers for end time", "courses.endTime[" + x + "]", value.endTime);
+                    erArray.errors.push(erObj);
+                }
             }
             let y = 0;
             lodash.forEach(value.professor, function (val: string){
@@ -88,6 +96,59 @@ export class FcValidation {
                 }
                 y++;
             });
+            x++;
+        });
+        if (!lodash.isEmpty(erArray)) {
+            return erArray;
+        } else {
+            return undefined;
+        }
+    }
+    static validateTutorCourses (courses: tutor.Course[]): ErrorArray {
+        const erArray = new ErrorArray();
+        let x = 0;
+        lodash.forEach(courses, function (value: tutor.Course) {
+            if (!typeCheck("Number", value.number)) {
+                const erObj: ErrorMessage = new ErrorMessage("Please use only numbers for course number", "courses.number[" + x + "]", value.number);
+                erArray.errors.push(erObj);
+            }
+            const regex = /((\w+) ?){1,}/;
+            if (!regex.test(value.name)) {
+                const erObj: ErrorMessage = new ErrorMessage("Please use only letters and spaces for course name", "courses.name[" + x + "]", value.name);
+                erArray.errors.push(erObj);
+            }
+            x++;
+        });
+        if (!lodash.isEmpty(erArray)) {
+            return erArray;
+        } else {
+            return undefined;
+        }
+    }
+    static validateAvailable (available: tutor.DayOfWeek[]): ErrorArray {
+        let x = 0;
+        const erArray = new ErrorArray();
+        lodash.forEach(available, function (value: tutor.DayOfWeek) {
+            if (!typeCheck("String", value.day)) {
+                const erObj: ErrorMessage = new ErrorMessage("Please use only letters for day", "available.day[" + x + "]", value.day);
+                erArray.errors.push(erObj);
+            }
+            const y = 0;
+            lodash.forEach(value.hours, function (val: string[]) {
+                if (!typeCheck("String", val)) {
+                    const erObj: ErrorMessage = new ErrorMessage("Please use only numbers", "available.hours[" + x + "][" + y + "]", val);
+                    erArray.errors.push(erObj);
+                }
+            });
+            if (!typeCheck("String", value.office.building)) {
+                const erObj: ErrorMessage = new ErrorMessage("Please use only letters and spaces for name", "office.building[" + x + "]", req.body.office.building);
+                erArray.errors.push(erObj);
+            }
+            if (!typeCheck("String", value.office.roomNumber)) {
+                const erObj: ErrorMessage = new ErrorMessage("Please use only letters and spaces for number", "office.building[" + x + "]", req.body.office.roomNumber);
+                erArray.errors.push(erObj);
+            }
+            x++;
         });
         if (!lodash.isEmpty(erArray)) {
             return erArray;
@@ -121,8 +182,7 @@ export class FcValidation {
             return undefined;
         }
     }
-    static studentValidationWrapper (student: student.StudentModel) {
-        const erArray = new ErrorArray();
+    static studentValidationWrapper (student: student.StudentModel, erArray: ErrorArray) {
         if (student.fName && FcValidation.validateFName(student.fName)) {
             erArray.errors.push(FcValidation.validateFName(student.fName));
         }
@@ -141,8 +201,8 @@ export class FcValidation {
         if (student.pNumber && FcValidation.validatePNumber(student.pNumber)) {
             erArray.errors.push(FcValidation.validatePNumber(student.pNumber));
         }
-        if (student.courses && FcValidation.validateCourses(student.courses)) {
-            lodash.forEach(FcValidation.validateCourses(student.courses), function (val) {
+        if (student.courses && FcValidation.validateStudentCourses(student.courses)) {
+            lodash.forEach(FcValidation.validateStudentCourses(student.courses), function (val) {
                 erArray.errors.push(val);
             });
         }
@@ -151,10 +211,35 @@ export class FcValidation {
                 erArray.errors.push(val);
             });
         }
-        if (!lodash.isEmpty(erArray)) {
-            return erArray;
-        } else {
-            return undefined;
+    }
+    static tutorValidationWrapper (tutor: tutor.TutorModel, erArray: ErrorArray) {
+        if (tutor.fName && FcValidation.validateFName(tutor.fName)) {
+            erArray.errors.push(FcValidation.validateFName(tutor.fName));
+        }
+        if (tutor.lName && FcValidation.validateLName(tutor.lName)) {
+            erArray.errors.push(FcValidation.validateLName(tutor.lName));
+        }
+        if (tutor.email && FcValidation.validateEmail(tutor.email)) {
+            erArray.errors.push(FcValidation.validateEmail(tutor.email));
+        }
+        if (tutor.school && FcValidation.validateSchool(tutor.school)) {
+            erArray.errors.push(FcValidation.validateSchool(tutor.school));
+        }
+        if (tutor.username && FcValidation.validateUsername(tutor.username)) {
+            erArray.errors.push(FcValidation.validateUsername(tutor.username));
+        }
+        if (tutor.pNumber && FcValidation.validatePNumber(tutor.pNumber)) {
+            erArray.errors.push(FcValidation.validatePNumber(tutor.pNumber));
+        }
+        if (tutor.courses && FcValidation.validateTutorCourses(tutor.courses)) {
+            lodash.forEach(FcValidation.validateTutorCourses(tutor.courses), function (val) {
+                erArray.errors.push(val);
+            });
+        }
+        if (tutor.available && FcValidation.validateAvailable(tutor.available)) {
+            lodash.forEach(FcValidation.validateAvailable(tutor.available), function (value) {
+                erArray.errors.push(value);
+            });
         }
     }
 }

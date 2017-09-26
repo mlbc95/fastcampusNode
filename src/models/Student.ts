@@ -25,7 +25,6 @@ export type Course = {
   professor: string[]
 };
 export const studentSchema = new mongoose.Schema({
-  year: String,
   degrees: Array,
   courses: Array
 }, options);
