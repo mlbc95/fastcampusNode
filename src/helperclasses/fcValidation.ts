@@ -53,45 +53,38 @@ export class FcValidation {
     static validateStudentCourses (courses: student.Course[]): ErrorArray {
         const erArray = new ErrorArray();
         let x = 0;
-        lodash.forEach(courses, function (value: student.Course) {
-            if (!typeCheck("Number", value.number)) {
-                const erObj: ErrorMessage = new ErrorMessage("Please use only numbers for course number", "courses.number[" + x + "]", value.number);
+        lodash.forEach(courses, function (course: student.Course) {
+            if (!typeCheck("Number", course.number)) {
+                const erObj: ErrorMessage = new ErrorMessage("Please use only numbers for course number", "courses.number[" + x + "]", course.number);
                 erArray.errors.push(erObj);
             }
-            const regex = /((\w+) ?){1,}/;
-            if (!regex.test(value.name)) {
-                const erObj: ErrorMessage = new ErrorMessage("Please use only letters and spaces for course name", "courses.name[" + x + "]", value.name);
+            const CourseRegex = /((\w+) ?){1,}/;
+            if (course.name && !CourseRegex.test(course.name)) {
+                const erObj: ErrorMessage = new ErrorMessage("Please use only letters and spaces for course name", "courses.name[" + x + "]", course.name);
                 erArray.errors.push(erObj);
             }
-            if (value.crnNumber) {
-                if (!typeCheck("Number", value.crnNumber)) {
-                    const erObj: ErrorMessage = new ErrorMessage("Please use only numbers for crnNumber", "courses.crnNumber[" + x + "]", value.crnNumber);
-                    erArray.errors.push(erObj);
-                }
+            if (course.crnNumber && !typeCheck("Number", course.crnNumber)) {
+                const erObj: ErrorMessage = new ErrorMessage("Please use only numbers for crnNumber", "courses.crnNumber[" + x + "]", course.crnNumber);
+                erArray.errors.push(erObj);
             }
-            if (value.section) {
-                if (!regex.test(value.section)) {
-                    const erObj: ErrorMessage = new ErrorMessage("Please use only numbers and letters for section", "courses.section[" + x + "]", value.section);
-                    erArray.errors.push(erObj);
-                }
+            if (course.section && !CourseRegex.test(course.section)) {
+                const erObj: ErrorMessage = new ErrorMessage("Please use only numbers and letters for section", "courses.section[" + x + "]", course.section);
+                erArray.errors.push(erObj);
             }
-            if (value.startTime) {
-                if (!typeCheck("Number", value.startTime)) {
-                    const erObj: ErrorMessage = new ErrorMessage("Please use only numbers for start time", "courses.startTime[" + x + "]", value.startTime);
-                    erArray.errors.push(erObj);
-                }
+            if (course.startTime && !typeCheck("Number", course.startTime)) {
+                const erObj: ErrorMessage = new ErrorMessage("Please use only numbers for start time", "courses.startTime[" + x + "]", course.startTime);
+                erArray.errors.push(erObj);
             }
-            if (value.endTime) {
-                if (!typeCheck("Number", value.endTime)) {
-                    const erObj: ErrorMessage = new ErrorMessage("Please use only numbers for end time", "courses.endTime[" + x + "]", value.endTime);
-                    erArray.errors.push(erObj);
-                }
+            if (course.endTime && !typeCheck("Number", course.endTime)) {
+                const erObj: ErrorMessage = new ErrorMessage("Please use only numbers for end time", "courses.endTime[" + x + "]", course.endTime);
+                erArray.errors.push(erObj);
             }
+
             let y = 0;
-            lodash.forEach(value.professor, function (val: string){
+            lodash.forEach(course.professor, function (prof: string){
                 // Needs stricter regex
-                if (!validator.isAlpha(val)) {
-                const erObj: ErrorMessage = new ErrorMessage("Please use only letters professor", "courses.professor[" + x + "][" + y + "]", val);
+                if (!validator.isAlpha(prof)) {
+                const erObj: ErrorMessage = new ErrorMessage("Please use only letters professor", "courses.professor[" + x + "][" + y + "]", prof);
                 erArray.errors.push(erObj);
                 }
                 y++;
@@ -107,14 +100,14 @@ export class FcValidation {
     static validateTutorCourses (courses: tutor.Course[]): ErrorArray {
         const erArray = new ErrorArray();
         let x = 0;
-        lodash.forEach(courses, function (value: tutor.Course) {
-            if (!typeCheck("Number", value.number)) {
-                const erObj: ErrorMessage = new ErrorMessage("Please use only numbers for course number", "courses.number[" + x + "]", value.number);
+        lodash.forEach(courses, function (course: tutor.Course) {
+            if (!typeCheck("Number", course.number)) {
+                const erObj: ErrorMessage = new ErrorMessage("Please use only numbers for course number", "courses.number[" + x + "]", course.number);
                 erArray.errors.push(erObj);
             }
             const regex = /((\w+) ?){1,}/;
-            if (!regex.test(value.name)) {
-                const erObj: ErrorMessage = new ErrorMessage("Please use only letters and spaces for course name", "courses.name[" + x + "]", value.name);
+            if (!regex.test(course.name)) {
+                const erObj: ErrorMessage = new ErrorMessage("Please use only letters and spaces for course name", "courses.name[" + x + "]", course.name);
                 erArray.errors.push(erObj);
             }
             x++;
