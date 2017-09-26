@@ -74,7 +74,7 @@ export let postSignup = (req: Request, res: Response, next: NextFunction) => {
      */
     switch (req.query["kind"]) {
         case "student":
-            const erArray = new ErrorArray(fc.FcValidation.studentValidationWrapper(req.body));
+            // const erArray = new ErrorArray(fc.FcValidation.studentValidationWrapper(req.body));
 
             // If we got errors error out and return to client
             if (!lodash.isEmpty(erArray.errors)) {

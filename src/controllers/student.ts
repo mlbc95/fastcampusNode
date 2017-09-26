@@ -122,7 +122,9 @@ export let patchStudent = (req: Request, res: Response, next: NextFunction) => {
 
   Student.findById(req.body.id, (err: any, user: StudentModel) => {
     // Handle Error
-    if (err) { return next(err); }
+    if (err) {
+      return res.status(500).json({err: err});
+    }
     // Set objects that are present
     if (req.body.email) {
       user.email = req.body.email;
