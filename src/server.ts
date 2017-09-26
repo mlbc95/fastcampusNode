@@ -117,7 +117,7 @@ app.delete("/students", passportConfig.isAuthenticated, studentController.delete
 app.post("/tutors", tutorController.postTutor);
 app.get("/tutors", tutorController.getTutor);
 app.patch("/tutors", tutorController.patchTutor);
-app.delete("/tutor", tutorController.deleteTutor);
+app.delete("/tutors", tutorController.deleteTutor);
 // Course routes
 app.post("/courses", courseController.postCourse);
 app.get("/courses", courseController.getCourse);
