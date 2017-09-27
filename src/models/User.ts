@@ -2,7 +2,10 @@ import * as bcrypt from "bcrypt-nodejs";
 import * as crypto from "crypto";
 import * as mongoose from "mongoose";
 const options = {discriminatorKey: "Kind", timestamps: true};
-
+import * as er from "../helperclasses/errors";
+import * as validator from "validator";
+import * as lodash from "lodash";
+const typeCheck = require("type-check").typeCheck;
 export interface UserModel extends mongoose.Document {
   fName: string;
   lName: string;
@@ -15,6 +18,7 @@ export interface UserModel extends mongoose.Document {
   passwordResetExpires: Date;
 
   comparePassword: (candidatePassword: string, cb: (err: any, isMatch: any) => {}) => void;
+  validateFName: (fName: string, erObj: er.ErrorArray, cb: (err: any) => {}) => {};
 }
 
 export type AuthToken = {
@@ -22,7 +26,7 @@ export type AuthToken = {
   kind: string
 };
 
-const userSchema = new mongoose.Schema({
+export const userSchema = new mongoose.Schema({
   fName: String,
   lName: String,
   email: { type: String, unique: true },
@@ -49,7 +53,13 @@ userSchema.pre("save", function save(next) {
     });
   });
 });
-
+userSchema.methods.validateFName = function (fName: string, cb: (err: any, erObj1: er.ErrorMessage) => {}) {
+  if (fName && !validator.isAlpha(fName)) {
+    const erObj1: er.ErrorMessage = new er.ErrorMessage("Please use only letters for first name", "fName", fName);
+    return erObj1;
+  }
+  return undefined;
+};
 userSchema.methods.comparePassword = function (candidatePassword: string, cb: (err: any, isMatch: any) => {}) {
   bcrypt.compare(candidatePassword, this.password, (err: mongoose.Error, isMatch: boolean) => {
     cb(err, isMatch);

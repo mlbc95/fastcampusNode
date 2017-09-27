@@ -1,24 +1,13 @@
 import * as bcrypt from "bcrypt-nodejs";
 import * as crypto from "crypto";
 import * as mongoose from "mongoose";
-import { User } from "./User";
+import { User, UserModel } from "./User";
 const options = {discriminatorKey: "Kind", timestamps: true};
 
-export type TutorModel = mongoose.Document & {
-    fName: string,
-    lName: string,
-    email: string,
-    username: string,
-    school: string,
-    password: string,
-    pNumber: string,
-    passwordResetToken: string,
-    passwordResetExpires: Date,
-    courses: Course[],
-    available: DayOfWeek[],
-
-    comparePassword: (candidatePassword: string, cb: (err: any, isMatch: any) => {}) => void,
-};
+export interface TutorModel extends UserModel, Document {
+    courses: Course[];
+    available: DayOfWeek[];
+}
 
 export type Course = {
     number: number,
