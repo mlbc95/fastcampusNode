@@ -7,6 +7,11 @@ import * as student from "../models/Student";
 import * as tutor from "../models/Tutors";
 
 export class FcValidation {
+    /**
+     * Functions return undefined due to TypeScript not allowing null or false.
+     *
+     * Functions are negated in order to avoid having empty success.
+     */
     static validateFName (fName: string): ErrorMessage {
         if (!typeCheck("String", fName) && !validator.isAlpha(fName)) {
             const errorMessage: ErrorMessage = new ErrorMessage("Please use only letters for first name", "fName", fName);
@@ -29,6 +34,7 @@ export class FcValidation {
         return undefined;
     }
     static validateSchool (school: string): ErrorMessage {
+        // This regex allows a word followed by an optional space.  This pattern must occur at least once
         const regex = /((\w+) ?){1,}/;
         if (!typeCheck("String", school) && !regex.test(school)) {
             const errorMessage: ErrorMessage = new ErrorMessage("Please enter a valid school name", "school", school);
@@ -58,6 +64,7 @@ export class FcValidation {
                 const errorMessage: ErrorMessage = new ErrorMessage("Please use only numbers for course number", "courses.number[" + i + "]", course.number);
                 errorArray.errors.push(errorMessage);
             }
+            // This regex allows a word followed by an optional space.  This pattern must occur at least once
             const CourseRegex = /((\w+) ?){1,}/;
             if (course.name && !CourseRegex.test(course.name)) {
                 const errorMessage: ErrorMessage = new ErrorMessage("Please use only letters and spaces for course name", "courses.name[" + i + "]", course.name);
@@ -84,8 +91,8 @@ export class FcValidation {
             lodash.forEach(course.professor, function (prof: string){
                 // Needs stricter regex
                 if (!validator.isAlpha(prof)) {
-                const errorMessage: ErrorMessage = new ErrorMessage("Please use only letters professor", "courses.professor[" + i + "][" + j + "]", prof);
-                errorArray.errors.push(errorMessage);
+                    const errorMessage: ErrorMessage = new ErrorMessage("Please use only letters professor", "courses.professor[" + i + "][" + j + "]", prof);
+                    errorArray.errors.push(errorMessage);
                 }
                 j++;
             });
@@ -105,6 +112,7 @@ export class FcValidation {
                 const errorMessage: ErrorMessage = new ErrorMessage("Please use only numbers for course number", "courses.number[" + i + "]", course.number);
                 errorArray.errors.push(errorMessage);
             }
+            // This regex allows a word followed by an optional space.  This pattern must occur at least once
             const regex = /((\w+) ?){1,}/;
             if (!regex.test(course.name)) {
                 const errorMessage: ErrorMessage = new ErrorMessage("Please use only letters and spaces for course name", "courses.name[" + i + "]", course.name);
@@ -154,19 +162,14 @@ export class FcValidation {
         const errorArray = new ErrorArray();
         let i = 0;
         lodash.forEach(degrees, function (value: student.Degree) {
-
-            // If the level is not characters error out
             if (!validator.isAlpha(value.level)) {
                 const errorMessage: ErrorMessage = new ErrorMessage("Please use only letters and spaces for level", "degrees.level[" + i + "]", value.level);
                 errorArray.errors.push(errorMessage);
             }
-
-            // If the name is not characters error out
             if (!validator.isAlpha(value.name)) {
                 const errorMessage: ErrorMessage = new ErrorMessage("Please use only letters and spaces for name", "degrees.name[" + i + "]", value.name);
                 errorArray.errors.push(errorMessage);
             }
-            // Increase our array counter
             i++;
         });
         if (!lodash.isEmpty(errorArray)) {
@@ -195,13 +198,13 @@ export class FcValidation {
             errorArray.errors.push(FcValidation.validatePNumber(student.pNumber));
         }
         if (student.courses && FcValidation.validateStudentCourses(student.courses)) {
-            lodash.forEach(FcValidation.validateStudentCourses(student.courses), function (val) {
-                errorArray.errors.push(val);
+            lodash.forEach(FcValidation.validateStudentCourses(student.courses), function (error) {
+                errorArray.errors.push(error);
             });
         }
         if (student.degrees && FcValidation.validateDegrees(student.degrees)) {
-            lodash.forEach(FcValidation.validateDegrees(student.degrees), function (val) {
-                errorArray.errors.push(val);
+            lodash.forEach(FcValidation.validateDegrees(student.degrees), function (error) {
+                errorArray.errors.push(error);
             });
         }
     }
@@ -225,13 +228,13 @@ export class FcValidation {
             errorArray.errors.push(FcValidation.validatePNumber(tutor.pNumber));
         }
         if (tutor.courses && FcValidation.validateTutorCourses(tutor.courses)) {
-            lodash.forEach(FcValidation.validateTutorCourses(tutor.courses), function (val) {
-                errorArray.errors.push(val);
+            lodash.forEach(FcValidation.validateTutorCourses(tutor.courses), function (error) {
+                errorArray.errors.push(error);
             });
         }
         if (tutor.available && FcValidation.validateAvailable(tutor.available)) {
-            lodash.forEach(FcValidation.validateAvailable(tutor.available), function (value) {
-                errorArray.errors.push(value);
+            lodash.forEach(FcValidation.validateAvailable(tutor.available), function (error) {
+                errorArray.errors.push(error);
             });
         }
     }
