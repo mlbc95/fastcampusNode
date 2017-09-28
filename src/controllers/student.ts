@@ -6,14 +6,71 @@ import * as validator from "validator";
 import * as lodash from "lodash";
 import * as fc from "../helperclasses/fcValidation";
 const typeCheck = require("type-check").typeCheck;
-import { default as Student, StudentModel, Degree, Course } from "../models/Student";
+import { default as Student, StudentModel, Degree } from "../models/Student";
 import { ErrorMessage, ErrorArray } from "../helperclasses/errors";
 import { Request, Response, NextFunction } from "express";
 import { LocalStrategyInfo } from "passport-local";
 import { WriteError } from "mongodb";
 const request = require("express-validator");
-// Custom classes
-
+const MongoQS = require("mongo-querystring");
+/**
+ * GET Students
+ * @param req
+ * @param res
+ * @param next
+ */
+export let getStudent = (req: Request, res: Response, next: NextFunction) => {
+  // Log incoming query
+  console.log(req.query);
+  // Create custom query
+  const qs = new MongoQS ({
+      custom: {
+        urlQueryParamName: function (query: StudentModel, input: StudentModel) {
+          // Validate input coming through
+          if (input.id) {
+            query["_id"] = input.id;
+          }
+          if (input.fName) {
+            query["fName"] = input.fName;
+          }
+          if (input.lName) {
+            query["lName"] = input.lName;
+          }
+          if (input.email) {
+            query["email"] = input.email;
+          }
+          if (input.username) {
+            query["username"] = input.username;
+          }
+          if (input.school) {
+            query["school"] = input.school;
+          }
+          if (input.pNumber) {
+            query["pNumber"] = input.pNumber;
+          }
+          if (input.courses) {
+            query["courses"] = input.courses;
+          }
+          if (input.completedCourses) {
+            query["completedCourses"] = input.completedCourses;
+          }
+          if (input.degrees) {
+            query["degrees"] = input.degrees;
+          }
+        }
+      }
+  });
+  // parse query
+  const query = qs.parse(req.query);
+  // query and return to front end
+  Student.find(query, (err, ret: Document []) => {
+      if (err) {
+          return res.status(500).json({err: err});
+      }
+      console.log(ret);
+      res.status(200).json({msg: ret});
+  });
+};
 /**
  * PATCH /student
  * Update student information.
@@ -56,6 +113,9 @@ export let patchStudent = (req: Request, res: Response, next: NextFunction) => {
     }
     if (req.body.courses) {
       user.courses = req.body.courses;
+    }
+    if (req.body.completedCourses) {
+      user.completedCourses = req.body.completedCourses;
     }
     user.save((err: WriteError) => {
       if (err) {
