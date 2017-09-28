@@ -67,6 +67,7 @@
     "swagger": "^0.7.5",
     "swagger-tools": "^0.10.1",
     "swagger-ui": "^3.2.1",
+    "tsc": "*",
     "tslint": "^5.7.0",
     "validator": "^8.2.0",
     "yamljs": "^0.3.0"

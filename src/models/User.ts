@@ -2,7 +2,10 @@ import * as bcrypt from "bcrypt-nodejs";
 import * as crypto from "crypto";
 import * as mongoose from "mongoose";
 const options = {discriminatorKey: "Kind", timestamps: true};
-
+import * as er from "../helperclasses/errors";
+import * as validator from "validator";
+import * as lodash from "lodash";
+const typeCheck = require("type-check").typeCheck;
 export interface UserModel extends mongoose.Document {
   fName: string;
   lName: string;
@@ -11,6 +14,7 @@ export interface UserModel extends mongoose.Document {
   school: string;
   password: string;
   pNumber: string;
+  courses: Course;
   passwordResetToken: string;
   passwordResetExpires: Date;
 
@@ -21,8 +25,16 @@ export type AuthToken = {
   accessToken: string,
   kind: string
 };
-
-const userSchema = new mongoose.Schema({
+export type Course = {
+  number: number,
+  name: string,
+  crnNumber: number,
+  section: string,
+  startTime: number,
+  endTime: number,
+  professor: string[]
+};
+export const userSchema = new mongoose.Schema({
   fName: String,
   lName: String,
   email: { type: String, unique: true },
@@ -30,6 +42,7 @@ const userSchema = new mongoose.Schema({
   school: String,
   password: String,
   pNumber: String,
+  courses: Array,
   passwordResetToken: String,
   passwordResetExpires: Date,
 }, options);
@@ -49,14 +62,12 @@ userSchema.pre("save", function save(next) {
     });
   });
 });
-
 userSchema.methods.comparePassword = function (candidatePassword: string, cb: (err: any, isMatch: any) => {}) {
   bcrypt.compare(candidatePassword, this.password, (err: mongoose.Error, isMatch: boolean) => {
     cb(err, isMatch);
   });
 };
 
-// export const User: UserType = mongoose.model<UserType>('User', userSchema);
 export const User = mongoose.model("User", userSchema);
 export default User;
 
