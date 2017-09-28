@@ -85,37 +85,37 @@ export let getTeacher = (req: Request, res: Response, next: NextFunction) => {
       return res.status(400).json({msg: "Data did not pass validation", err: erArray.errors});
     }
 
-    Teacher.findById(req.body.id, (err: any, user: TeacherModel) => {
+    Teacher.findById(req.body.id, (err: any, teacher: TeacherModel) => {
       // Handle Error
       if (err) {
         return res.status(500).json({err: err});
       }
       // Set objects that are present
       if (req.body.email) {
-        user.email = req.body.email;
+        teacher.email = req.body.email;
       }
       if (req.body.fName) {
-        user.fName = req.body.fName;
+        teacher.fName = req.body.fName;
       }
       if (req.body.lName) {
-        user.lName = req.body.lName;
+        teacher.lName = req.body.lName;
       }
       if (req.body.school) {
-        user.school = req.body.school;
+        teacher.school = req.body.school;
       }
       if (req.body.pNumber) {
-        user.pNumber = req.body.pNumber;
+        teacher.pNumber = req.body.pNumber;
       }
       if (req.body.status) {
-        user.status = req.body.status;
+        teacher.status = req.body.status;
       }
       if (req.body.courses) {
-        user.courses = req.body.courses;
+        teacher.courses = req.body.courses;
       }
       if (req.body.officeHours) {
-        user.officeHours = req.body.officeHours;
+        teacher.officeHours = req.body.officeHours;
       }
-      user.save((err: WriteError) => {
+      teacher.save((err: WriteError) => {
         if (err) {
           if (err.code === 11000) {
             // Write error from the db, email or username is taken
@@ -126,7 +126,7 @@ export let getTeacher = (req: Request, res: Response, next: NextFunction) => {
           return res.status(500).json({err: err});
         }
         // Success, set status to 200 to indicate success
-        res.status(200).json({user: user});
+        res.status(200).json({user: teacher});
       });
     });
   };

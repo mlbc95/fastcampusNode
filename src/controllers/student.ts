@@ -15,9 +15,6 @@ const request = require("express-validator");
 const MongoQS = require("mongo-querystring");
 /**
  * GET Students
- * @param req
- * @param res
- * @param next
  */
 export let getStudent = (req: Request, res: Response, next: NextFunction) => {
   // Log incoming query
@@ -26,7 +23,6 @@ export let getStudent = (req: Request, res: Response, next: NextFunction) => {
   const qs = new MongoQS ({
       custom: {
         urlQueryParamName: function (query: StudentModel, input: StudentModel) {
-          // Validate input coming through
           if (input.id) {
             query["_id"] = input.id;
           }
@@ -87,37 +83,37 @@ export let patchStudent = (req: Request, res: Response, next: NextFunction) => {
     return res.status(400).json({msg: "Data did not pass validation", err: erArray.errors});
   }
 
-  Student.findById(req.body.id, (err: any, user: StudentModel) => {
+  Student.findById(req.body.id, (err: any, student: StudentModel) => {
     // Handle Error
     if (err) {
       return res.status(500).json({err: err});
     }
     // Set objects that are present
     if (req.body.email) {
-      user.email = req.body.email;
+      student.email = req.body.email;
     }
     if (req.body.fName) {
-      user.fName = req.body.fName;
+      student.fName = req.body.fName;
     }
     if (req.body.lName) {
-      user.lName = req.body.lName;
+      student.lName = req.body.lName;
     }
     if (req.body.school) {
-      user.school = req.body.school;
+      student.school = req.body.school;
     }
     if (req.body.pNumber) {
-      user.pNumber = req.body.pNumber;
+      student.pNumber = req.body.pNumber;
     }
     if (req.body.degrees) {
-      user.degrees = req.body.degrees;
+      student.degrees = req.body.degrees;
     }
     if (req.body.courses) {
-      user.courses = req.body.courses;
+      student.courses = req.body.courses;
     }
     if (req.body.completedCourses) {
-      user.completedCourses = req.body.completedCourses;
+      student.completedCourses = req.body.completedCourses;
     }
-    user.save((err: WriteError) => {
+    student.save((err: WriteError) => {
       if (err) {
         if (err.code === 11000) {
           // Write error from the db, email or username is taken
@@ -128,7 +124,7 @@ export let patchStudent = (req: Request, res: Response, next: NextFunction) => {
         return res.status(500).json({err: err});
       }
       // Success, set status to 200 to indicate success
-      res.status(200).json({user: user});
+      res.status(200).json({user: student});
     });
   });
 };
