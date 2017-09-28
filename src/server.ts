@@ -36,8 +36,7 @@ dotenv.config({ path: ".env.example" });
 import * as signupController from "./controllers/signup";
 import * as loginController from "./controllers/login";
 import * as studentController from "./controllers/student";
-import * as userController from "./controllers/user";
-import * as tutorController from "./controllers/tutor";
+import * as teacherController from "./controllers/teacher";
 import * as courseController from "./controllers/course";
 
 /**
@@ -110,21 +109,22 @@ app.use(express.static(path.join(__dirname, "public"), { maxAge: 31557600000 }))
 app.post("/auth/signup", signupController.postSignup);
 app.post("/auth/login", loginController.postSignin);
 // Additional Student routes
+app.get("/students", studentController.getStudent);
 app.patch("/students", passportConfig.isAuthenticated, studentController.patchStudent);
 app.delete("/students", passportConfig.isAuthenticated, studentController.deleteStudent);
-
-// Additional Tutor routes
-app.post("/tutors", tutorController.postTutor);
-app.get("/tutors", tutorController.getTutor);
-app.patch("/tutors", tutorController.patchTutor);
-app.delete("/tutor", tutorController.deleteTutor);
+// Additional Teacher routes
+app.get("/teachers", teacherController.getTeacher);
+app.patch("/teachers", teacherController.patchTeacher);
+app.delete("/teachers", teacherController.deleteTeacher);
 // Course routes
 app.post("/courses", courseController.postCourse);
 app.get("/courses", courseController.getCourse);
 app.patch("/courses", courseController.patchTutor);
 app.delete("/courses", courseController.deleteCourse);
 
-
+app.use(function (req, res) {
+  return res.status(400).json({err: "Not working"});
+});
 
 /**
  * Start Express server.

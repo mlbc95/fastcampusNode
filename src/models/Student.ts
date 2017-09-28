@@ -1,5 +1,3 @@
-import * as bcrypt from "bcrypt-nodejs";
-import * as crypto from "crypto";
 import * as mongoose from "mongoose";
 import { UserModel, User } from "./User";
 const options = {discriminatorKey: "role", timestamps: true};

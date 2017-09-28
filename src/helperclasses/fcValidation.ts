@@ -4,7 +4,8 @@ import * as mongoose from "mongoose";
 const typeCheck = require("type-check").typeCheck;
 import { ErrorArray, ErrorMessage } from "./errors";
 import * as student from "../models/Student";
-import * as tutor from "../models/Tutors";
+import * as teacher from "../models/Teacher";
+import * as user from "../models/User";
 
 export class FcValidation {
     /**
@@ -49,10 +50,10 @@ export class FcValidation {
         }
         return undefined;
     }
-    static validateStudentCourses (courseArrayIn: student.Course[]): ErrorArray {
+    static validateUserCourses (courseArrayIn: user.Course[]): ErrorArray {
         const errorArray = new ErrorArray();
         let i = 0;
-        _.forEach(courseArrayIn, function (course: student.Course) {
+        _.forEach(courseArrayIn, function (course: user.Course) {
             if (!typeCheck("Number", course.number)) {
                 const errorMessage: ErrorMessage = new ErrorMessage("Please use only numbers for course number", "courses.number[" + i + "]", course.number);
                 errorArray.errors.push(errorMessage);
@@ -94,18 +95,25 @@ export class FcValidation {
             return errorArray;
         }
     }
-    static validateTutorCourses (courseArrayIn: tutor.Course[]): ErrorArray {
-        const errorArray = new ErrorArray();
-        let i = 0;
-        _.forEach(courseArrayIn, function (course: tutor.Course) {
-            if (!typeCheck("Number", course.number)) {
-                const errorMessage: ErrorMessage = new ErrorMessage("Please use only numbers for course number", "courses.number[" + i + "]", course.number);
+    static validateCompletedCourses (completedCourses: student.CompletedCourse[]): ErrorArray {
+       const errorArray = new ErrorArray();
+       let x = 0;
+        _.forEach(completedCourses, function (completedCourse: student.CompletedCourse) {
+            if (completedCourse.subject && !FcValidation.validateWordWithSpacePattern(completedCourse.subject)) {
+                errorArray.errors.push(FcValidation.validateWordWithSpacePattern(completedCourse.subject, "completedCourse.subject[" + x + "]", "PLease enter valid subject name"));
+            }
+            if (completedCourse.number && !validator.isNumeric(completedCourse.number)) {
+                const errorMessage = new ErrorMessage("Please enter valid number", "completedCourse.number[" + x + "]", completedCourse.number);
                 errorArray.errors.push(errorMessage);
             }
-            if (course.name && !FcValidation.validateWordWithSpacePattern(course.name)) {
-                errorArray.errors.push(FcValidation.validateWordWithSpacePattern(course.name, "courses.name[" + i + "]", "Please use only letters and spaces for course name"));
+            if (completedCourse.name && !FcValidation.validateWordWithSpacePattern(completedCourse.name)) {
+                errorArray.errors.push(FcValidation.validateWordWithSpacePattern(completedCourse.name, "completedCourse.name[" + x + "]", "PLease enter valid name"));
             }
-            i++;
+            if (completedCourse.grade && !/[ABCDF]{1}/.test(completedCourse.grade)) {
+                const errorMessage = new ErrorMessage("Please enter valid grade", "completedCourse.grade[" + x + "]", completedCourse.grade);
+                errorArray.errors.push(errorMessage);
+            }
+            x++;
         });
         if (!_.isEmpty(errorArray)) {
             return undefined;
@@ -113,18 +121,18 @@ export class FcValidation {
             return errorArray;
         }
     }
-    static validateAvailable (dayOfWeekArray: tutor.DayOfWeek[]): ErrorArray {
+    static validateOfficeHours (dayOfWeekArray: teacher.DayOfWeek[]): ErrorArray {
         let i = 0;
         const errorArray = new ErrorArray();
-        _.forEach(dayOfWeekArray, function (dayOfWeek: tutor.DayOfWeek) {
+        _.forEach(dayOfWeekArray, function (dayOfWeek: teacher.DayOfWeek) {
             if (!typeCheck("String", dayOfWeek.day)) {
-                const errorMessage: ErrorMessage = new ErrorMessage("Please use only letters for day", "available.day[" + i + "]", dayOfWeek.day);
+                const errorMessage: ErrorMessage = new ErrorMessage("Please use only letters for day", "officeHourse.day[" + i + "]", dayOfWeek.day);
                 errorArray.errors.push(errorMessage);
             }
             let j = 0;
             _.forEach(dayOfWeek.hours, function (val: string[]) {
                 if (!typeCheck("String", val)) {
-                    const errorMessage: ErrorMessage = new ErrorMessage("Please use only numbers", "available.hours[" + i + "][" + j + "]", val);
+                    const errorMessage: ErrorMessage = new ErrorMessage("Please use only numbers", "officeHourse.hours[" + i + "][" + j + "]", val);
                     errorArray.errors.push(errorMessage);
                 }
                 j++;
@@ -181,8 +189,13 @@ export class FcValidation {
         if (student.pNumber && FcValidation.validatePNumber(student.pNumber)) {
             errorArray.errors.push(FcValidation.validatePNumber(student.pNumber));
         }
-        if (student.courses && FcValidation.validateStudentCourses(student.courses)) {
-            _.forEach(FcValidation.validateStudentCourses(student.courses), function (error) {
+        if (student.courses && FcValidation.validateUserCourses(student.courses)) {
+            _.forEach(FcValidation.validateUserCourses(student.courses), function (error) {
+                errorArray.errors.push(error);
+            });
+        }
+        if (student.completedCourses && FcValidation.validateCompletedCourses(student.completedCourses)) {
+            _.forEach(FcValidation.validateCompletedCourses(student.completedCourses), function(error) {
                 errorArray.errors.push(error);
             });
         }
@@ -192,32 +205,32 @@ export class FcValidation {
             });
         }
     }
-    static tutorValidationWrapper (tutor: tutor.TutorModel, errorArray: ErrorArray) {
-        if (tutor.fName && FcValidation.validateAlphaString(tutor.fName, "fName" , "Please enter a valid name")) {
-            errorArray.errors.push(FcValidation.validateAlphaString(tutor.fName, "fName" , "Please enter a valid name"));
+    static teacherValidationWrapper (teacher: teacher.TeacherModel, errorArray: ErrorArray) {
+        if (teacher.fName && FcValidation.validateAlphaString(teacher.fName, "fName" , "Please enter a valid name")) {
+            errorArray.errors.push(FcValidation.validateAlphaString(teacher.fName, "fName" , "Please enter a valid name"));
         }
-        if (tutor.lName && FcValidation.validateAlphaString(tutor.lName, "lName" , "Please enter a valid name")) {
-            errorArray.errors.push(FcValidation.validateAlphaString(tutor.lName, "lName" , "Please enter a valid name"));
+        if (teacher.lName && FcValidation.validateAlphaString(teacher.lName, "lName" , "Please enter a valid name")) {
+            errorArray.errors.push(FcValidation.validateAlphaString(teacher.lName, "lName" , "Please enter a valid name"));
         }
-        if (tutor.email && FcValidation.validateEmail(tutor.email)) {
-            errorArray.errors.push(FcValidation.validateEmail(tutor.email));
+        if (teacher.email && FcValidation.validateEmail(teacher.email)) {
+            errorArray.errors.push(FcValidation.validateEmail(teacher.email));
         }
-        if (tutor.school && FcValidation.validateWordWithSpacePattern(tutor.school)) {
-            errorArray.errors.push(FcValidation.validateWordWithSpacePattern(tutor.school, "school", "Please user only letters and spaces"));
+        if (teacher.school && FcValidation.validateWordWithSpacePattern(teacher.school)) {
+            errorArray.errors.push(FcValidation.validateWordWithSpacePattern(teacher.school, "school", "Please user only letters and spaces"));
         }
-        if (tutor.username && FcValidation.validateUsername(tutor.username)) {
-            errorArray.errors.push(FcValidation.validateUsername(tutor.username));
+        if (teacher.username && FcValidation.validateUsername(teacher.username)) {
+            errorArray.errors.push(FcValidation.validateUsername(teacher.username));
         }
-        if (tutor.pNumber && FcValidation.validatePNumber(tutor.pNumber)) {
-            errorArray.errors.push(FcValidation.validatePNumber(tutor.pNumber));
+        if (teacher.pNumber && FcValidation.validatePNumber(teacher.pNumber)) {
+            errorArray.errors.push(FcValidation.validatePNumber(teacher.pNumber));
         }
-        if (tutor.courses && FcValidation.validateTutorCourses(tutor.courses)) {
-            _.forEach(FcValidation.validateTutorCourses(tutor.courses), function (error) {
+        if (teacher.courses && FcValidation.validateUserCourses(teacher.courses)) {
+            _.forEach(FcValidation.validateUserCourses(teacher.courses), function (error) {
                 errorArray.errors.push(error);
             });
         }
-        if (tutor.available && FcValidation.validateAvailable(tutor.available)) {
-            _.forEach(FcValidation.validateAvailable(tutor.available), function (error) {
+        if (teacher.officeHours && FcValidation.validateOfficeHours(teacher.officeHours)) {
+            _.forEach(FcValidation.validateOfficeHours(teacher.officeHours), function (error) {
                 errorArray.errors.push(error);
             });
         }

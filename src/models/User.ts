@@ -14,7 +14,7 @@ export interface UserModel extends mongoose.Document {
   school: string;
   password: string;
   pNumber: string;
-  courses: Course;
+  courses: Course[];
   passwordResetToken: string;
   passwordResetExpires: Date;
 
