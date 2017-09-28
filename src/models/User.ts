@@ -14,18 +14,26 @@ export interface UserModel extends mongoose.Document {
   school: string;
   password: string;
   pNumber: string;
+  courses: Course;
   passwordResetToken: string;
   passwordResetExpires: Date;
 
   comparePassword: (candidatePassword: string, cb: (err: any, isMatch: any) => {}) => void;
-  validateFName: (fName: string, erObj: er.ErrorArray, cb: (err: any) => {}) => {};
 }
 
 export type AuthToken = {
   accessToken: string,
   kind: string
 };
-
+export type Course = {
+  number: number,
+  name: string,
+  crnNumber: number,
+  section: string,
+  startTime: number,
+  endTime: number,
+  professor: string[]
+};
 export const userSchema = new mongoose.Schema({
   fName: String,
   lName: String,
@@ -34,6 +42,7 @@ export const userSchema = new mongoose.Schema({
   school: String,
   password: String,
   pNumber: String,
+  courses: Array,
   passwordResetToken: String,
   passwordResetExpires: Date,
 }, options);
@@ -53,20 +62,12 @@ userSchema.pre("save", function save(next) {
     });
   });
 });
-userSchema.methods.validateFName = function (fName: string, cb: (err: any, erObj1: er.ErrorMessage) => {}) {
-  if (fName && !validator.isAlpha(fName)) {
-    const erObj1: er.ErrorMessage = new er.ErrorMessage("Please use only letters for first name", "fName", fName);
-    return erObj1;
-  }
-  return undefined;
-};
 userSchema.methods.comparePassword = function (candidatePassword: string, cb: (err: any, isMatch: any) => {}) {
   bcrypt.compare(candidatePassword, this.password, (err: mongoose.Error, isMatch: boolean) => {
     cb(err, isMatch);
   });
 };
 
-// export const User: UserType = mongoose.model<UserType>('User', userSchema);
 export const User = mongoose.model("User", userSchema);
 export default User;
 
