@@ -1,17 +1,10 @@
-import * as async from "async";
-import * as crypto from "crypto";
-import * as nodemailer from "nodemailer";
 import * as passport from "passport";
-import * as validator from "validator";
 import * as lodash from "lodash";
 import * as fc from "../helperclasses/fcValidation";
-const typeCheck = require("type-check").typeCheck;
 import { default as Student, StudentModel, Degree } from "../models/Student";
 import { ErrorMessage, ErrorArray } from "../helperclasses/errors";
 import { Request, Response, NextFunction } from "express";
-import { LocalStrategyInfo } from "passport-local";
 import { WriteError } from "mongodb";
-const request = require("express-validator");
 const MongoQS = require("mongo-querystring");
 /**
  * GET Students

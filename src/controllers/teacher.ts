@@ -1,18 +1,11 @@
-import * as async from "async";
-import * as crypto from "crypto";
-import * as nodemailer from "nodemailer";
 import * as passport from "passport";
-import * as validator from "validator";
 import * as lodash from "lodash";
-const typeCheck = require("type-check").typeCheck;
 import * as fc from "../helperclasses/fcValidation";
 import { default as Teacher, DayOfWeek, Office, TeacherModel } from "../models/Teacher";
 import { Request, Response, NextFunction } from "express";
-import { LocalStrategyInfo } from "passport-local";
 import { WriteError } from "mongodb";
 import { ErrorArray, ErrorMessage } from "../helperclasses/errors";
 const MongoQS = require("mongo-querystring");
-const request = require("express-validator");
 
 /**
  * GET Teachers
