@@ -123,7 +123,7 @@ app.patch("/courses", courseController.patchTutor);
 app.delete("/courses", courseController.deleteCourse);
 
 app.use(function (req, res) {
-  return res.status(400);
+  return res.status(400).json({err: "Not working"});
 });
 
 /**
