@@ -36,8 +36,7 @@ dotenv.config({ path: ".env.example" });
 import * as signupController from "./controllers/signup";
 import * as loginController from "./controllers/login";
 import * as studentController from "./controllers/student";
-import * as userController from "./controllers/user";
-import * as tutorController from "./controllers/tutor";
+import * as teacherController from "./controllers/teacher";
 import * as courseController from "./controllers/course";
 
 /**
@@ -113,17 +112,19 @@ app.post("/auth/login", loginController.postSignin);
 app.get("/students", studentController.getStudent);
 app.patch("/students", passportConfig.isAuthenticated, studentController.patchStudent);
 app.delete("/students", passportConfig.isAuthenticated, studentController.deleteStudent);
-// Additional Tutor routes
-app.get("/teachers", tutorController.getTutor);
-app.patch("/teachers", tutorController.patchTutor);
-app.delete("/teachers", tutorController.deleteTutor);
+// Additional Teacher routes
+app.get("/teachers", teacherController.getTeacher);
+app.patch("/teachers", teacherController.patchTeacher);
+app.delete("/teachers", teacherController.deleteTeacher);
 // Course routes
 app.post("/courses", courseController.postCourse);
 app.get("/courses", courseController.getCourse);
 app.patch("/courses", courseController.patchTutor);
 app.delete("/courses", courseController.deleteCourse);
 
-
+app.use(function (req, res) {
+  return res.status(400);
+});
 
 /**
  * Start Express server.

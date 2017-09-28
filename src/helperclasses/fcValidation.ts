@@ -109,7 +109,7 @@ export class FcValidation {
             if (completedCourse.name && !FcValidation.validateWordWithSpacePattern(completedCourse.name)) {
                 errorArray.errors.push(FcValidation.validateWordWithSpacePattern(completedCourse.name, "completedCourse.name[" + x + "]", "PLease enter valid name"));
             }
-            if (completedCourse.grade && !/[ABCDF]{1}/.test(completedCourse.grade)){
+            if (completedCourse.grade && !/[ABCDF]{1}/.test(completedCourse.grade)) {
                 const errorMessage = new ErrorMessage("Please enter valid grade", "completedCourse.grade[" + x + "]", completedCourse.grade);
                 errorArray.errors.push(errorMessage);
             }
