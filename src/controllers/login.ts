@@ -7,7 +7,7 @@ import * as lodash from "lodash";
 const typeCheck = require("type-check").typeCheck;
 import { default as User, UserModel, AuthToken  } from "../models/User";
 import { default as Student } from "../models/Student";
-import * as student from "../models/student";
+import * as student from "../models/Student";
 import { Request, Response, NextFunction } from "express";
 import { LocalStrategyInfo } from "passport-local";
 import { WriteError } from "mongodb";
