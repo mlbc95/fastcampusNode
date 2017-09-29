@@ -77,9 +77,7 @@
     "tsc": "^1.20150623.0",
     "tslint": "^5.7.0",
     "validator": "^8.2.0",
-    "yamljs": "^0.3.0"
-  },
-  "devDependencies": {
+    "yamljs": "^0.3.0",
     "@types/async": "^2.0.40",
     "@types/bcrypt-nodejs": "0.0.30",
     "@types/body-parser": "^1.16.2",
