@@ -2,6 +2,7 @@
   "name": "fastcampusserver",
   "version": "0.1.0",
   "description": "A starting point for Node.js express apps with TypeScript",
+  "main": "dist/server.js",
   "engines": {
     "node": "^8.5.0",
     "npm": "^5.4.2"
