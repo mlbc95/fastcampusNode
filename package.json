@@ -1,5 +1,5 @@
 {
-  "name": "fastcampusserver",
+  "name": "fast-campus-server",
   "version": "0.1.0",
   "description": "A starting point for Node.js express apps with TypeScript",
   "main": "dist/server.js",
@@ -108,6 +108,6 @@
     "shelljs": "^0.7.7",
     "supertest": "^2.0.1",
     "ts-jest": "^19.0.8",
-    "typescript": "^2.4.0"
+    "typescript": "^2.5.3"
   }
 }
