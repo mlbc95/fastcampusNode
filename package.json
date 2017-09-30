@@ -107,9 +107,7 @@
     "tslint": "^5.7.0",
     "typescript": "^2.5.3",
     "validator": "^8.2.0",
-    "yamljs": "^0.3.0"
-  },
-  "devDependencies": {
+    "yamljs": "^0.3.0",
     "@types/cors": "^2.8.1"
   }
 }
