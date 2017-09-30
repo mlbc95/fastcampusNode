@@ -1,13 +1,7 @@
-import * as async from "async";
 import * as crypto from "crypto";
-import * as nodemailer from "nodemailer";
 import * as passport from "passport";
-import * as validator from "validator";
 import * as lodash from "lodash";
-const typeCheck = require("type-check").typeCheck;
 import { default as User, UserModel, AuthToken  } from "../models/User";
-import { default as Student } from "../models/Student";
-import * as student from "../models/student";
 import { Request, Response, NextFunction } from "express";
 import { LocalStrategyInfo } from "passport-local";
 import { WriteError } from "mongodb";
@@ -43,6 +37,9 @@ const request = require("express-validator");
         if (err) {
             res.status(500).json({err: err});
         }
+        user.password = undefined;
+        user.passwordResetExpires = undefined;
+        user.passwordResetToken = undefined;
         res.status(200).json({user: user});
       });
     }
