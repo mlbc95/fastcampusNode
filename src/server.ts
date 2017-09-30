@@ -44,6 +44,9 @@ import * as courseController from "./controllers/course";
  */
 import * as passportConfig from "./config/passport";
 
+// enabling Cors for typescript
+import * as cors from "cors";
+
 /**
  * Create Express server.
  */
@@ -89,13 +92,31 @@ app.use((req, res, next) => {
   res.locals.user = req.user;
   next();
 });
+
+const options: cors.CorsOptions = {
+  allowedHeaders: ["Origin", "X-Requested-With", "Content-Type", "Accept", "X-Access-Token"],
+  credentials: true,
+  methods: "GET,HEAD,OPTIONS,PUT,PATCH,POST,DELETE",
+  preflightContinue: false
+};
+
+app.use(cors(options));
+
+
 // Allow CORS
 app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Methods", "DELETE");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
 });
+
+
 app.use(express.static(path.join(__dirname, "public"), { maxAge: 31557600000 }));
+
+app.use(cors(options));
+// enable pre-flight
+app.options("*", cors(options));
 
 // swaggerTools.initializeMiddleware(swaggerDoc, function (middleware) {
   // Serve the Swagger documents and Swagger UI
