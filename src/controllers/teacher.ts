@@ -56,7 +56,7 @@ export let getTeacher = (req: Request, res: Response, next: NextFunction) => {
     const query = qs.parse(req.query);
     if (_.isEmpty(query)) {
       // If query is empty send back 403 stating that the query must have parameters
-      res.status(400).json({msg: "Must have parameters"});
+      return res.status(400).json({msg: "Must have parameters"});
     }
     // query and return to front end
     Teacher.find(query, (err, teachers: TeacherModel []) => {
@@ -70,7 +70,7 @@ export let getTeacher = (req: Request, res: Response, next: NextFunction) => {
           teacher.passwordResetToken = undefined;
         });
         console.log(teachers);
-        res.status(200).json({user: teachers});
+        return res.status(200).json({user: teachers});
     });
   };
   /**
@@ -131,7 +131,7 @@ export let getTeacher = (req: Request, res: Response, next: NextFunction) => {
           if (err.code === 11000) {
             // Write error from the db, email or username is taken
             // set header to 400 to indicate bad information
-            res.status(400).json({msg: "The email address you have entered is already associated with an account."});
+            return res.status(400).json({msg: "The email address you have entered is already associated with an account."});
           }
           // General error, set status to 400 to indicate bad information
           return res.status(500).json({err: err});
@@ -144,7 +144,7 @@ export let getTeacher = (req: Request, res: Response, next: NextFunction) => {
           teach.passwordResetToken = undefined;
         });
         // Success, set status to 200 to indicate success
-        res.status(200).json({user: teacher});
+        return res.status(200).json({user: teacher});
       });
     });
   };
@@ -164,6 +164,6 @@ export let getTeacher = (req: Request, res: Response, next: NextFunction) => {
       if (err) {
         return res.status(500).json({err: err});
       }
-      res.status(200).json({msg: "Account deleted"});
+      return res.status(200).json({msg: "Account deleted"});
     });
   };

@@ -17,7 +17,7 @@ const request = require("express-validator");
 
   // If we have errors handle them
   if (errors) {
-    res.status(401).json({msg: "Not all data was present to login.  Please try again.", err: errors}).header("WWW-Authenticate", "Basic, realm=\"FASTCampus\"");
+    return res.status(401).json({msg: "Not all data was present to login.  Please try again.", err: errors}).header("WWW-Authenticate", "Basic, realm=\"FASTCampus\"");
   }
 
   // No errors proceed and try to login
@@ -27,20 +27,20 @@ const request = require("express-validator");
       return res.status(500).json({err: err});
     }
     // If we do not get a user
-    console.log(user);
-    console.log("here");
+    // console.log(user);
+    // console.log("here");
     if (!user) {
         // User did not authenticate, send 401 and approriate header
       res.status(401).json({msg: info.message}).header("WWW-Authenticate", "Basic, realm=\"FASTCampus\"");
     } else {
       req.logIn(user, (err) => {
         if (err) {
-            res.status(500).json({err: err});
+            return res.status(500).json({err: err});
         }
         user.password = undefined;
         user.passwordResetExpires = undefined;
         user.passwordResetToken = undefined;
-        res.status(200).json({user: user});
+        return res.status(200).json({user: user});
       });
     }
   // Forward request
