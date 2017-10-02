@@ -49,7 +49,7 @@ export let postSignup = (req: Request, res: Response, next: NextFunction) => {
             User.findOne({ username: req.body.username }, (err, existingUser) => {
                 // Handle error
                 if (err) {
-                    res.status(500).json({err: err});
+                    return res.status(500).json({err: err});
                 }
                 // If we found a user error out and return to client
                 if (existingUser) {
@@ -58,13 +58,13 @@ export let postSignup = (req: Request, res: Response, next: NextFunction) => {
                 // Did not find user, save to db and return object to client
                 student.save((err) => {
                     if (err) {
-                        res.status(500).json({err: err});
+                        return res.status(500).json({err: err});
                     }
                     req.logIn(student, (err) => {
                     if (err) {
                         return res.status(500).json({err: err});
                     }
-                    res.status(201).json({user: student});
+                    return res.status(201).json({user: student});
                     });
                 });
             });
@@ -96,7 +96,7 @@ export let postSignup = (req: Request, res: Response, next: NextFunction) => {
             User.findOne({ username: req.body.username }, (err, existingUser) => {
                 // Handle error
                 if (err) {
-                    res.status(500).json({err: err});
+                    return res.status(500).json({err: err});
                 }
                 // If we found a user error out and return to client
                 if (existingUser) {
@@ -105,19 +105,18 @@ export let postSignup = (req: Request, res: Response, next: NextFunction) => {
                 // Did not find user, save to db and return object to client
                 teacher.save((err) => {
                     if (err) {
-                        res.status(500).json({err: err});
+                        return res.status(500).json({err: err});
                     }
                     req.logIn(teacher, (err) => {
                     if (err) {
                         return res.status(500).json({err: err});
                     }
-                    res.status(201).json({user: teacher});
+                    return res.status(201).json({user: teacher});
                     });
                 });
             });
             break;
         default:
-            res.json(400);
-            break;
+            return res.json(400);
     }
 };
