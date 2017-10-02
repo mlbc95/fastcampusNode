@@ -36,7 +36,7 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/Section"
-    Tutor:
+    Teacher:
       type: object
       properties:
         fName:
@@ -55,17 +55,32 @@ components:
           type: string
         passwordResetExpires:
           type: date
+        status:
+          type: string
         courses:
           type: array
           items:
-            properties:
+          properties:
               number: 
                 type: string
-              name:
+              name: 
+                type: string,
+              crnNumber: 
+                type: number
+              section: 
                 type: string
-        available:
-          $ref: "#/components/schemas/Available"
-    Available:
+              startTime: 
+                type: number
+              endTime: 
+                type: number,
+              professor:
+                type: array
+                properties:
+                  name:
+                    type: string
+        officeHours:
+          $ref: "#/components/schemas/OfficeHours"
+    OfficeHours:
       type: array
       properties:
         day:
@@ -82,55 +97,56 @@ components:
               type: string
             roomNumber:
               type: string
-    User:
+    Student:
       type: object
       properties:
         fName:
           type: string
         lName:
           type: string
-        email:
-          type: string
         username:
           type: string
-        password:
+        email:
           type: string
-        pNumber:
+        school: 
           type: string
-        school:
+        pNmber: 
           type: string
-    Degrees:
-      type: array
-      $ref: "#/components/schemas/Degree"
-    Degree:
-      type: object
-      properties:
-        level:
+        passwordResetToken:
           type: string
-        name:
-          type: string
-    Courses:
-      type: object
-      properties:
-          number: 
-            type: string
-          name: 
-            type: string,
-          crnNumber: 
-            type: number
-          section: 
-            type: string
-          startTime: 
-            type: number
-          endTime: 
-            type: number,
-          professor:
-            type: array
-            properties:
-              name:
+        passwordResetExpires:
+          type: date
+        degrees:
+         type: array
+         items:
+          properties:
+            level:
+              type: string
+            name:
+              type: string
+        courses:
+          type: array
+          items:
+          properties:
+              number: 
                 type: string
+              name: 
+                type: string,
+              crnNumber: 
+                type: number
+              section: 
+                type: string
+              startTime: 
+                type: number
+              endTime: 
+                type: number,
+              professor:
+                type: array
+                properties:
+                  name:
+                    type: string
   parameters:
-    PostTutor:
+    PostTeacher:
         type: object
         properties:
           fName:
@@ -155,7 +171,7 @@ components:
                   type: string
           available:
             $ref: "#/components/schemas/Available"
-    PatchTutor:
+    PatchTeacher:
       type: object
       properties:
         id:
@@ -271,7 +287,7 @@ components:
           $ref: "#/components/schemas/Degrees"
         courses:
           $ref: "#/components/schemas/Courses"
-    Tutor:
+    Teacher:
       type: object
       properties:
         id:
@@ -404,6 +420,27 @@ paths:
             properties:
               err: err
   /students:
+    get:
+      summary: Get students from the db
+      description: This method is used to query the db using mongo-querystring
+      produces:
+        - application/json
+      parameters:
+      - in: req.query
+        name: Updated Student
+        description: query string to get the desired student
+        required: true
+      responses:
+        200:
+          description: successful query, returns an array of student
+          schema:
+            $ref: "#/components/schemas/Student"
+        500:
+          description: The server encountered a general error while processing the request.  It will return an object err containint the errors. Because this is a catch all it is hard to define a schema for it.
+          schema:
+            type: array
+            properties:
+              err: err
     patch:
       summary: This is used to update the student
       description: This method is used to update a particular student by id.  It expects the id and fields that need updated in the body. The degree should be an array of the type degree that is shown in the JSON here.
@@ -415,18 +452,18 @@ paths:
         description: JSON of the student to update
         required: true
         schema:
-          $ref: "#/components/parameters/PatchStudent"
+          $ref: "#/components/schemas/Student"
       requestBody:
         content:
           'application/json':
             schema:
-              $ref: "#/components/responses/PatchStudent"
+              $ref: "#/components/schemas/Student"
       responses:
         200:
           description: The user has been updated.  Updated student is sent back
           schema:
             type: object
-            $ref: "#/components/responses/PatchStudent"
+            $ref: "#/components/schemas/Student"
         400:
           description: The data did not pass validation, returns array with failing items along with message and value.  This error also occurs when we try to add a user and the username already exists.
           schema:
@@ -455,54 +492,22 @@ paths:
             type: array
             properties:
               err: err
-  /tutors:
+  /teachers:
     get:
-      summary: Get tutors from the db
-      description: This method is used to query the db
+      summary: Get teacherss from the db
+      description: This method is used to query the db using mongo-querystring
       produces:
         - application/json
       parameters:
       - in: req.query
         name: Updated Student
-        description: query string to get the desired tutors
+        description: query string to get the desired teacherss
         required: true
       responses:
         200:
-          description: successful query, returns an array of tutors 
+          description: successful query, returns an array of teacherss 
           schema:
-            $ref: "#/components/schemas/Tutor"
-        500:
-          description: The server encountered a general error while processing the request.  It will return an object err containint the errors. Because this is a catch all it is hard to define a schema for it.
-          schema:
-            type: array
-            properties:
-              err: err
-    post:
-      summary: Add tutor to db
-      description: This method is used to add a tutor to the db.
-      produces:
-        - application/json
-      parameters:
-        - in: req.body
-          name: new Tutor
-          description: the new tutor object to be added to the db
-          required: true
-          schema:
-            $ref: "#/components/parameters/PostTutor"
-      requestBody:
-        content:
-          'application/json':
-            schema:
-              $ref: "#/components/parameters/PostTutor"
-      responses:
-        201:
-          description: The tutor was created successfully. 
-          schema:
-            $ref: "#/components/responses/Tutor"
-        400:
-          description: The data did not pass validation, returns array with failing items along with message and value.  This error also occurs when we try to add a user and the username already exists.
-          schema:
-            $ref: "#/components/responses/ValidationError"
+            $ref: "#/components/schemas/Teacher"
         500:
           description: The server encountered a general error while processing the request.  It will return an object err containint the errors. Because this is a catch all it is hard to define a schema for it.
           schema:
@@ -510,21 +515,21 @@ paths:
             properties:
               err: err
     patch:
-      summary: This is used to update the tutor
-      description: This method is used to update a particular tutor by id.  It expects the id and fields that need updated in the body.
+      summary: This is used to update the Teacher
+      description: This method is used to update a particular Teacher by id.  It expects the id and fields that need updated in the body.
       produces:
         - application/json
       parameters:
         - in: req.body
-          name: Tutor to update and updated info
+          name: Teacher to update and updated info
           required: true
           schema:
-            $ref: "#/components/parameters/PatchTutor"
+            $ref: "#/components/schemas/Teacher"
       responses:
         200:
           description: The user has been updated.
           schema:
-            $ref: "#/components/responses/Tutor"
+            $ref: "#/components/schemas/Teacher"
         400:
           description: The data did not pass validation, returns array with failing items along with message and value.  This error also occurs when we try to add a user and the username already exists.
           schema:
@@ -536,13 +541,13 @@ paths:
             properties:
               err: err
     delete:
-      summary: Used to delete the tutor
-      description: This method is used to delete the tutor object fromt the db.  This is not reverisble.
+      summary: Used to delete the Teacher
+      description: This method is used to delete the Teacher object fromt the db.  This is not reverisble.
       produces:
         - application/json
       parameters:
         - in: req.body
-          name: tutor.id
+          name: teacher.id
           required: true
           schema:
             type: object
@@ -551,7 +556,7 @@ paths:
                 type: string
       responses:
         200:
-          description: The tutor has been successfully deleted
+          description: The teacher has been successfully deleted
           schema:
             type: object
             properties:
@@ -592,8 +597,8 @@ paths:
         - application/json
       parameters:
         - in: req.body
-          name: new Tutor
-          description: the new tutor object to be added to the db
+          name: new teacher
+          description: the new teacher object to be added to the db
           required: true
           schema:
             $ref: "#/components/schemas/Course"
@@ -604,7 +609,7 @@ paths:
               $ref: "#/components/schemas/Course"
       responses:
         201:
-          description: The tutor was created successfully. 
+          description: The teacher was created successfully. 
           schema:
             $ref: "#/components/schemas/Course"
         400:
@@ -651,7 +656,7 @@ paths:
         - application/json
       parameters:
         - in: req.body
-          name: tutor.id
+          name: teacher.id
           required: true
           schema:
             type: object
@@ -660,7 +665,7 @@ paths:
                 type: string
       responses:
         200:
-          description: The tutor has been successfully deleted
+          description: The teacher has been successfully deleted
           schema:
             type: object
             properties:

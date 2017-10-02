@@ -1,5 +1,5 @@
 import * as passport from "passport";
-import * as lodash from "lodash";
+import * as _ from "lodash";
 import * as fc from "../helperclasses/fcValidation";
 import { default as Student, StudentModel, Degree } from "../models/Student";
 import { ErrorMessage, ErrorArray } from "../helperclasses/errors";
@@ -11,6 +11,7 @@ const MongoQS = require("mongo-querystring");
  */
 export let getStudent = (req: Request, res: Response, next: NextFunction) => {
   // Log incoming query
+  console.log("GET /students");
   console.log(req.query);
   // Create custom query
   const qs = new MongoQS ({
@@ -51,13 +52,24 @@ export let getStudent = (req: Request, res: Response, next: NextFunction) => {
   });
   // parse query
   const query = qs.parse(req.query);
+  // Handle empty query
+  if (_.isEmpty(query)) {
+    // If query is empty send back 403 stating that the query must have parameters
+    return res.status(400).json({msg: "Must have parameters"});
+  }
   // query and return to front end
-  Student.find(query, (err, ret: Document []) => {
+  Student.find(query, (err, students: StudentModel []) => {
       if (err) {
           return res.status(500).json({err: err});
       }
-      console.log(ret);
-      res.status(200).json({msg: ret});
+      // Clean out unwanted items from json in the return response
+      _.forEach(students, function (student) {
+        student.password = undefined;
+        student.passwordResetExpires = undefined;
+        student.passwordResetToken = undefined;
+      });
+      console.log(students);
+      res.status(200).json({user: students});
   });
 };
 /**
@@ -65,6 +77,13 @@ export let getStudent = (req: Request, res: Response, next: NextFunction) => {
  * Update student information.
  */
 export let patchStudent = (req: Request, res: Response, next: NextFunction) => {
+  // Log incoming request
+  console.log("PATCH /students");
+  console.log(req.body);
+  // Handle empty request or missing id
+  if (!req.body || !req.body.id) {
+    return res.status(400).json({msg: "Bad request"});
+  }
   // Create array object we can push on for custom error messages
   const erArray: ErrorArray = new ErrorArray();
   // Error check through our wrapper class
@@ -72,7 +91,7 @@ export let patchStudent = (req: Request, res: Response, next: NextFunction) => {
 
   console.log(erArray.errors);
   // If we got errors error out and return to client
-  if (!lodash.isEmpty(erArray.errors)) {
+  if (!_.isEmpty(erArray.errors)) {
     return res.status(400).json({msg: "Data did not pass validation", err: erArray.errors});
   }
 
@@ -111,11 +130,17 @@ export let patchStudent = (req: Request, res: Response, next: NextFunction) => {
         if (err.code === 11000) {
           // Write error from the db, email or username is taken
           // set header to 400 to indicate bad information
-          res.status(400).json({msg: "The email address you have entered is already associated with an account."});
+          res.status(400).json({msg: "The email address or username you have entered is already associated with an account."});
         }
         // General error, set status to 400 to indicate bad information
         return res.status(500).json({err: err});
       }
+      // Clean out unwanted items from json in the return response
+      _.forEach(student, function (student) {
+        student.password = undefined;
+        student.passwordResetExpires = undefined;
+        student.passwordResetToken = undefined;
+      });
       // Success, set status to 200 to indicate success
       res.status(200).json({user: student});
     });
@@ -127,6 +152,12 @@ export let patchStudent = (req: Request, res: Response, next: NextFunction) => {
  *
  */
 export let deleteStudent = (req: Request, res: Response, next: NextFunction) => {
+  console.log("DELETE /students");
+  console.log(req.body);
+  // Handle empty request or missing id
+  if (!req.body || !req.body.id) {
+    return res.status(400).json({msg: "Bad request"});
+  }
   Student.remove({ _id: req.body.id }, (err) => {
     if (err) {
       return res.status(500).json({err: err});

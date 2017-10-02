@@ -44,6 +44,9 @@ import * as courseController from "./controllers/course";
  */
 import * as passportConfig from "./config/passport";
 
+// enabling Cors for typescript
+import * as cors from "cors";
+
 /**
  * Create Express server.
  */
@@ -89,13 +92,19 @@ app.use((req, res, next) => {
   res.locals.user = req.user;
   next();
 });
+
+
 // Allow CORS
-app.use(function (req, res, next) {
+app.use("/*", function(req, res, next){
   res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE,OPTIONS");
+  res.header("Access-Control-Allow-Headers", "Content-Type, Authorization, Content-Length, X-Requested-With");
   next();
 });
+
+
 app.use(express.static(path.join(__dirname, "public"), { maxAge: 31557600000 }));
+
 
 // swaggerTools.initializeMiddleware(swaggerDoc, function (middleware) {
   // Serve the Swagger documents and Swagger UI
@@ -123,7 +132,7 @@ app.patch("/courses", courseController.patchTutor);
 app.delete("/courses", courseController.deleteCourse);
 
 app.use(function (req, res) {
-  return res.status(400).json({err: "Not working"});
+  return res.status(404).json({err: "invalid request"});
 });
 
 /**

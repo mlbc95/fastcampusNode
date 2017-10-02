@@ -1,5 +1,5 @@
 import * as passport from "passport";
-import * as lodash from "lodash";
+import * as _ from "lodash";
 import * as fc from "../helperclasses/fcValidation";
 import { default as Teacher, DayOfWeek, Office, TeacherModel } from "../models/Teacher";
 import { Request, Response, NextFunction } from "express";
@@ -12,6 +12,7 @@ const MongoQS = require("mongo-querystring");
  */
 export let getTeacher = (req: Request, res: Response, next: NextFunction) => {
     // Log incoming query
+    console.log("GET /teachers");
     console.log(req.query);
     // Create custom query
     const qs = new MongoQS ({
@@ -53,13 +54,23 @@ export let getTeacher = (req: Request, res: Response, next: NextFunction) => {
     });
     // parse query
     const query = qs.parse(req.query);
+    if (_.isEmpty(query)) {
+      // If query is empty send back 403 stating that the query must have parameters
+      res.status(400).json({msg: "Must have parameters"});
+    }
     // query and return to front end
-    Teacher.find(query, (err, ret: Document []) => {
+    Teacher.find(query, (err, teachers: TeacherModel []) => {
         if (err) {
             return res.status(500).json({err: err});
         }
-        console.log(ret);
-        res.status(200).json({msg: ret});
+        // Clean out unwanted fields from teacher
+        _.forEach(teachers, function (teacher) {
+          teacher.password = undefined;
+          teacher.passwordResetExpires = undefined;
+          teacher.passwordResetToken = undefined;
+        });
+        console.log(teachers);
+        res.status(200).json({user: teachers});
     });
   };
   /**
@@ -67,6 +78,13 @@ export let getTeacher = (req: Request, res: Response, next: NextFunction) => {
    * Update teacher information.
    */
   export let patchTeacher = (req: Request, res: Response, next: NextFunction) => {
+    // Log incoming query
+    console.log("PATCH /teachers");
+    console.log(req.body);
+    // Handle empty request or missing id
+    if (!req.body || !req.body.id) {
+      return res.status(400).json({msg: "Bad request"});
+    }
     // Create array object we can push on for custom error messages
     const erArray: ErrorArray = new ErrorArray();
     // Error check through our wrapper class
@@ -74,7 +92,7 @@ export let getTeacher = (req: Request, res: Response, next: NextFunction) => {
 
     console.log(erArray.errors);
     // If we got errors error out and return to client
-    if (!lodash.isEmpty(erArray.errors)) {
+    if (!_.isEmpty(erArray.errors)) {
       return res.status(400).json({msg: "Data did not pass validation", err: erArray.errors});
     }
 
@@ -118,6 +136,13 @@ export let getTeacher = (req: Request, res: Response, next: NextFunction) => {
           // General error, set status to 400 to indicate bad information
           return res.status(500).json({err: err});
         }
+        // Clean out unwanted fields from teacher
+        // Clean out unwanted items from json in the return response
+        _.forEach(teacher, function (teach) {
+          teach.password = undefined;
+          teach.passwordResetExpires = undefined;
+          teach.passwordResetToken = undefined;
+        });
         // Success, set status to 200 to indicate success
         res.status(200).json({user: teacher});
       });
@@ -129,6 +154,12 @@ export let getTeacher = (req: Request, res: Response, next: NextFunction) => {
    *
    */
   export let deleteTeacher = (req: Request, res: Response, next: NextFunction) => {
+    console.log("DELETE /teachers");
+    console.log(req.body);
+    // Handle empty request or missing id
+    if (!req.body || !req.body.id) {
+      return res.status(400).json({msg: "Bad request"});
+    }
     Teacher.remove({ _id: req.body.id }, (err) => {
       if (err) {
         return res.status(500).json({err: err});
