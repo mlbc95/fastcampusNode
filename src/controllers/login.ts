@@ -33,8 +33,8 @@ const request = require("express-validator");
       return res.status(500).json({err: err});
     }
     // If we do not get a user
-    console.log(user);
-    console.log("here");
+    // console.log(user);
+    // console.log("here");
     if (!user) {
         // User did not authenticate, send 401 and approriate header
       res.status(401).json({msg: info.message}).header("WWW-Authenticate", "Basic, realm=\"FASTCampus\"");
