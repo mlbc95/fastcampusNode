@@ -82,9 +82,9 @@ export let postCourse = (req: Request, res: Response, next: NextFunction) => {
     });
     course.save((err) => {
         if (err) {
-            res.status(500).json({err: err});
+            return res.status(500).json({err: err});
         }
-        res.status(201).json({course: course});
+        return res.status(201).json({course: course});
     });
 };
 
@@ -167,7 +167,7 @@ export let patchTutor = (req: Request, res: Response, next: NextFunction) => {
             if (err) {
                 return res.status(500).json({err: err});
             }
-            res.json({msg: "Tutor has been updated", tutor: tutor});
+            return res.json({msg: "Tutor has been updated", tutor: tutor});
         });
     });
 };
@@ -212,7 +212,7 @@ export let getCourse = (req: Request, res: Response, next: NextFunction) => {
             return res.status(500).json({err: err});
         }
         console.log(ret);
-        res.status(200).json({msg: ret});
+        return res.status(200).json({msg: ret});
     });
 };
 
@@ -221,6 +221,6 @@ export let deleteCourse = (req: Request, res: Response, next: NextFunction) => {
         if (err) {
             return res.status(500).json({err: err});
         }
-        res.status(200).json({msg: "Course deleted"});
+        return res.status(200).json({msg: "Course deleted"});
     });
   };

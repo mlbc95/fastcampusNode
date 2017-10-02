@@ -69,7 +69,7 @@ export let getStudent = (req: Request, res: Response, next: NextFunction) => {
         student.passwordResetToken = undefined;
       });
       console.log(students);
-      res.status(200).json({user: students});
+      return res.status(200).json({user: students});
   });
 };
 /**
@@ -130,7 +130,7 @@ export let patchStudent = (req: Request, res: Response, next: NextFunction) => {
         if (err.code === 11000) {
           // Write error from the db, email or username is taken
           // set header to 400 to indicate bad information
-          res.status(400).json({msg: "The email address or username you have entered is already associated with an account."});
+          return res.status(400).json({msg: "The email address or username you have entered is already associated with an account."});
         }
         // General error, set status to 400 to indicate bad information
         return res.status(500).json({err: err});
@@ -142,7 +142,7 @@ export let patchStudent = (req: Request, res: Response, next: NextFunction) => {
         student.passwordResetToken = undefined;
       });
       // Success, set status to 200 to indicate success
-      res.status(200).json({user: student});
+      return res.status(200).json({user: student});
     });
   });
 };
@@ -162,6 +162,6 @@ export let deleteStudent = (req: Request, res: Response, next: NextFunction) => 
     if (err) {
       return res.status(500).json({err: err});
     }
-    res.status(200).json({msg: "Account deleted"});
+    return res.status(200).json({msg: "Account deleted"});
   });
 };
