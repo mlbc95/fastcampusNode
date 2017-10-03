@@ -48,7 +48,9 @@ export let optionsSignin = (req: Request, res: Response, next: NextFunction) => 
         if (err) {
             return res.status(500).json({err: err});
         }
+        console.log(user);
         user.id = user._id;
+        console.log(user);
         user.password = undefined;
         user.passwordResetExpires = undefined;
         user.passwordResetToken = undefined;
@@ -59,7 +61,8 @@ export let optionsSignin = (req: Request, res: Response, next: NextFunction) => 
   })(req, res, next);
 };
 export let optionsLogout = (req: Request, res: Response, next: NextFunction) => {
-  return res.status(200).header("Allow", "POST, OPTIONS");
+  res.status(200).header("Allow", "POST, OPTIONS");
+  res.send();
 };
 export let postLogout = (req: Request, res: Response, next: NextFunction) => {
   if (req.body.id) {
