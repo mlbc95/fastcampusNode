@@ -7,6 +7,12 @@ import { Request, Response, NextFunction } from "express";
 import { WriteError } from "mongodb";
 const MongoQS = require("mongo-querystring");
 /**
+ * Handles preflight headers
+ */
+export let optionsStudent = (req: Request, res: Response, next: NextFunction) => {
+  return res.status(200).header("Allow", "GET, PATCH, DELETE, OPTIONS");
+};
+/**
  * GET Students
  */
 export let getStudent = (req: Request, res: Response, next: NextFunction) => {

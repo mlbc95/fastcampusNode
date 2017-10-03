@@ -6,7 +6,12 @@ import { Request, Response, NextFunction } from "express";
 import { WriteError } from "mongodb";
 import { ErrorArray, ErrorMessage } from "../helperclasses/errors";
 const MongoQS = require("mongo-querystring");
-
+/**
+ * Handle preflighted headers
+ */
+export let optionsTeacher = (req: Request, res: Response, next: NextFunction) => {
+  return res.status(200).header("Allow", "GET, PATCH, DELETE, OPTIONS");
+};
 /**
  * GET Teachers
  */

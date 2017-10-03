@@ -97,9 +97,14 @@ app.use((req, res, next) => {
 // Allow CORS
 app.use("/*", function(req, res, next){
   res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE,OPTIONS");
+  // res.header("ALLOW", "GET,PUT,POST,DELETE,OPTIONS");
   res.header("Access-Control-Allow-Headers", "Content-Type, Authorization, Content-Length, X-Requested-With");
-  next();
+  if ("OPTIONS" === req.method) {
+    res.header("Allow", "POST, GET, PATCH, PUT, DELETE, OPTIONS");
+    return res.sendStatus(200);
+  } else {
+    next();
+  }
 });
 
 
@@ -116,15 +121,21 @@ app.use(express.static(path.join(__dirname, "public"), { maxAge: 31557600000 }))
  */
 // Singup and login routes
 app.post("/auth/signup", signupController.postSignup);
+app.options("/auth/signup", signupController.optionsSignUp);
 app.post("/auth/login", loginController.postSignin);
+app.options("/auth/login", loginController.optionsSignin);
+app.post("/auth/logout", loginController.postLogout);
+app.options("/auth/logout", loginController.optionsLogout);
 // Additional Student routes
 app.get("/students", studentController.getStudent);
 app.patch("/students", passportConfig.isAuthenticated, studentController.patchStudent);
 app.delete("/students", passportConfig.isAuthenticated, studentController.deleteStudent);
+app.options("/students", studentController.optionsStudent);
 // Additional Teacher routes
 app.get("/teachers", teacherController.getTeacher);
 app.patch("/teachers", teacherController.patchTeacher);
 app.delete("/teachers", teacherController.deleteTeacher);
+app.options("/teachers", teacherController.optionsTeacher);
 // Course routes
 app.post("/courses", courseController.postCourse);
 app.get("/courses", courseController.getCourse);

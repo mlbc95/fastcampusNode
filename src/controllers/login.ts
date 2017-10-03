@@ -1,19 +1,23 @@
-import * as async from "async";
 import * as crypto from "crypto";
-import * as nodemailer from "nodemailer";
 import * as passport from "passport";
-import * as validator from "validator";
 import * as lodash from "lodash";
-const typeCheck = require("type-check").typeCheck;
 import { default as User, UserModel, AuthToken  } from "../models/User";
-import { default as Student } from "../models/Student";
-import * as student from "../models/Student";
 import { Request, Response, NextFunction } from "express";
 import { LocalStrategyInfo } from "passport-local";
 import { WriteError } from "mongodb";
 const request = require("express-validator");
 
+// Handle preflighted requests
+export let optionsSignin = (req: Request, res: Response, next: NextFunction) => {
+  res.status(200).header("Allow", "POST, OPTIONS");
+  res.send();
+};
+/**
+ * POST /auth/login
+ * Used to signin to the application
+ */
  export let postSignin = (req: Request, res: Response, next: NextFunction) => {
+   // console.log(req);
    // Check the incoming request
   req.assert("username", "Email is not valid").notEmpty();
   req.assert("password", "Password cannot be blank").notEmpty();
@@ -34,8 +38,8 @@ const request = require("express-validator");
       return res.status(500).json({err: err});
     }
     // If we do not get a user
-    console.log(user);
-    console.log("here");
+    // console.log(user);
+    // console.log("here");
     if (!user) {
         // User did not authenticate, send 401 and approriate header
       res.status(401).json({msg: info.message}).header("WWW-Authenticate", "Basic, realm=\"FASTCampus\"");
@@ -44,9 +48,31 @@ const request = require("express-validator");
         if (err) {
             return res.status(500).json({err: err});
         }
+        user.password = undefined;
+        user.passwordResetExpires = undefined;
+        user.passwordResetToken = undefined;
         return res.status(200).json({user: user});
       });
     }
   // Forward request
   })(req, res, next);
+};
+export let optionsLogout = (req: Request, res: Response, next: NextFunction) => {
+  return res.status(200).header("Allow", "POST, OPTIONS");
+};
+export let postLogout = (req: Request, res: Response, next: NextFunction) => {
+  User.findById(req.body.id, function (err: any, user: UserModel) {
+    // Handle error
+    if (err) {
+      return res.status(500).json({err: err});
+    }
+    user.lastLogin = new Date();
+    user.save((err: any) => {
+      if (err) {
+        return res.status(500).json({err: err});
+      }
+      res.clearCookie("connect.sid");
+    });
+  });
+  return res.status(200).json({msg: "loggedout"});
 };

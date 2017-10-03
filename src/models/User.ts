@@ -17,6 +17,7 @@ export interface UserModel extends mongoose.Document {
   courses: Course[];
   passwordResetToken: string;
   passwordResetExpires: Date;
+  lastLogin: Date;
 
   comparePassword: (candidatePassword: string, cb: (err: any, isMatch: any) => {}) => void;
 }
@@ -45,6 +46,7 @@ export const userSchema = new mongoose.Schema({
   courses: Array,
   passwordResetToken: String,
   passwordResetExpires: Date,
+  lastLogin: Date,
 }, options);
 
 /**

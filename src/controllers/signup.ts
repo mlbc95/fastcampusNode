@@ -1,15 +1,27 @@
 import * as passport from "passport";
 import * as _ from "lodash";
 import { default as User, UserModel, AuthToken  } from "../models/User";
-import { default as Student } from "../models/Student";
-import { default as Teacher } from "../models/Teacher";
+import { default as Student, StudentModel } from "../models/Student";
+import { default as Teacher, TeacherModel } from "../models/Teacher";
 import { Request, Response, NextFunction } from "express";
 import { LocalStrategyInfo } from "passport-local";
 import { WriteError } from "mongodb";
 import { ErrorArray, ErrorMessage } from "../helperclasses/errors";
 const request = require("express-validator");
 import * as fc from "../helperclasses/fcValidation";
+/**
+ * Handle preflighted headers
+ */
+export let optionsSignUp = (req: Request, res: Response, next: NextFunction) => {
+    return res.status(200).header("Allow", "POST, OPTIONS");
+};
 
+/**
+ *
+ * @param req
+ * @param res
+ * @param next
+ */
 export let postSignup = (req: Request, res: Response, next: NextFunction) => {
     // log request body
     console.log(req.body);
@@ -61,10 +73,16 @@ export let postSignup = (req: Request, res: Response, next: NextFunction) => {
                         return res.status(500).json({err: err});
                     }
                     req.logIn(student, (err) => {
-                    if (err) {
-                        return res.status(500).json({err: err});
-                    }
-                    return res.status(201).json({user: student});
+                        if (err) {
+                            return res.status(500).json({err: err});
+                        }
+                        // Forced to cast object to StudentModel
+                        _.forEach(student, function(castedStudent: StudentModel) {
+                            castedStudent.password = undefined;
+                            castedStudent.passwordResetExpires = undefined;
+                            castedStudent.passwordResetToken = undefined;
+                        });
+                        res.status(201).json({user: student});
                     });
                 });
             });
@@ -108,10 +126,16 @@ export let postSignup = (req: Request, res: Response, next: NextFunction) => {
                         return res.status(500).json({err: err});
                     }
                     req.logIn(teacher, (err) => {
-                    if (err) {
-                        return res.status(500).json({err: err});
-                    }
-                    return res.status(201).json({user: teacher});
+                        if (err) {
+                            return res.status(500).json({err: err});
+                        }
+                        // Forced to cast object to StudentModel
+                        _.forEach(teacher, function (castedTeacher: TeacherModel) {
+                            castedTeacher.password = undefined;
+                            castedTeacher.passwordResetExpires = undefined;
+                            castedTeacher.passwordResetToken = undefined;
+                        });
+                        res.status(201).json({user: teacher});
                     });
                 });
             });
