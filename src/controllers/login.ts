@@ -9,7 +9,7 @@ const request = require("express-validator");
 
 // Handle preflighted requests
 export let optionsSignin = (req: Request, res: Response, next: NextFunction) => {
-  return res.send(200).header("Allow", "POST, OPTIONS");
+  return res.status(200).header("Allow", "POST, OPTIONS");
 };
 /**
  * POST /auth/login
@@ -56,7 +56,7 @@ export let optionsSignin = (req: Request, res: Response, next: NextFunction) => 
   })(req, res, next);
 };
 export let optionsLogout = (req: Request, res: Response, next: NextFunction) => {
-  return res.send(200).header("Allow", "POST, OPTIONS");
+  return res.status(200).header("Allow", "POST, OPTIONS");
 };
 export let postLogout = (req: Request, res: Response, next: NextFunction) => {
   User.findById(req.body.id, function (err: any, user: UserModel) {
