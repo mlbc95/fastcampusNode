@@ -2,10 +2,7 @@ import * as async from "async";
 import * as crypto from "crypto";
 import * as nodemailer from "nodemailer";
 import * as passport from "passport";
-import * as validator from "validator";
 import * as lodash from "lodash";
-const typeCheck = require("type-check").typeCheck;
-// import { ErrorMessage, ErrorArray } from "errors";
 import { Request, Response, NextFunction } from "express";
 import { LocalStrategyInfo } from "passport-local";
 import { WriteError } from "mongodb";
@@ -14,62 +11,65 @@ import { ErrorArray, ErrorMessage } from "../helperclasses/errors";
 const MongoQS = require("mongo-querystring");
 const request = require("express-validator");
 
+/**
+ *  GET /course
+ * @param req.query should have the query that the front end is after
+ * @param res returns 200 and object on success, 500 on error with err message
+ *
+ */
+export let getCourse = (req: Request, res: Response, next: NextFunction) => {
+    // Log incoming query
+    console.log(req.query);
+    // Create custom query
+    const qs = new MongoQS ({
+        custom: {
+            urlQueryParamName: function (query: CourseModel, input: CourseModel) {
+                // Validate input coming through
+                if (input.id) {
+                    query["_id"] = input.id;
+                }
+                if (input.subject) {
+                    query["subject"] = input.subject;
+                }
+                if (input.number) {
+                    query["number"] = input.number;
+                }
+                if (input.name) {
+                    query["name"] = input.name;
+                }
+                if (input.sections) {
+                    query["sections"] = input.sections;
+                }
+            }
+        }
+    });
+    // parse query
+    const query = qs.parse(req.query);
+    // query and return to front end
+    Course.find(query, (err, ret: Document []) => {
+        if (err) {
+            return res.status(500).json({err: err});
+        }
+        console.log(ret);
+        return res.status(200).json({msg: ret});
+    });
+};
 
 /**
  * POST /course
  * Add course to the db
  */
 export let postCourse = (req: Request, res: Response, next: NextFunction) => {
+    console.log("POST /courses");
     console.log(req.body);
     // Create array object we can push on for custom error messages
     const erArray: ErrorArray = new ErrorArray();
 
-    // Validate as much of the schema as we can with checkbody
-    const regex = /([A-Za-z ,-])\w+/;
-    if (req.body.subject && !regex.test(req.body.subject)) {
-        const erObj: ErrorMessage = new ErrorMessage("Please enter a valid subject name", "subject", req.body.subject);
-        erArray.errors.push(erObj);
-    }
-    const numRegex = /\d+/;
-    if (req.body.number && !numRegex.test(req.body.number)) {
-        const erObj: ErrorMessage = new ErrorMessage("Please enter a valid number", "number", req.body.number);
-        erArray.errors.push(erObj);
-    }
-    if (req.body.name && !regex.test(req.body.name)) {
-        const erObj: ErrorMessage = new ErrorMessage("Please enter a valid name", "name", req.body.name);
-        erArray.errors.push(erObj);
-    }
-
-
-    // Create counter for our array
-    let x: number = 0;
-
-    // Run validation on remaining attributes
-    // Validate courses if present
-    if (req.body.sections) {
-        lodash.forEach(req.body.sections, function (value: Section) {
-            if (!typeCheck("String", value.crnNumber)) {
-                const erObj: ErrorMessage = new ErrorMessage("Please use only numbers for number", "sections.number[" + x + "]", value.crnNumber);
-                erArray.errors.push(erObj);
-            }
-            if (!typeCheck("String", value.sectionNumber)) {
-                const erObj: ErrorMessage = new ErrorMessage("Please use only letters and spaces for name", "sections.sectionNumber[" + x + "]", value.sectionNumber);
-                erArray.errors.push(erObj);
-            }
-            if (!typeCheck("String", value.time)) {
-                const erObj: ErrorMessage = new ErrorMessage("Please use only letters and spaces for name", "sections.sectionNumber[" + x + "]", value.sectionNumber);
-                erArray.errors.push(erObj);
-            }
-            if (!typeCheck("String", value.professor)) {
-                const erObj: ErrorMessage = new ErrorMessage("Please use only letters and spaces for name", "sections.sectionNumber[" + x + "]", value.sectionNumber);
-                erArray.errors.push(erObj);
-            }
-            x++;
-        });
-    }
+    // Pass to validation wrapper
+    fc.
 
     // Validation done, check if errors are present
-    if (!lodash.isEmpty(erArray.errors)) {
+    if (!lodash.isEmpty(erArray.errors)); {
         return res.status(400).json({msg: "Data did not pass validation", err: erArray.errors, data: req.body});
     }
 
@@ -172,49 +172,7 @@ export let patchTutor = (req: Request, res: Response, next: NextFunction) => {
     });
 };
 
-/**
- *  GET /course
- * @param req.query should have the query that the front end is after
- * @param res returns 200 and object on success, 500 on error with err message
- *
- */
-export let getCourse = (req: Request, res: Response, next: NextFunction) => {
-    // Log incoming query
-    console.log(req.query);
-    // Create custom query
-    const qs = new MongoQS ({
-        custom: {
-            urlQueryParamName: function (query: CourseModel, input: CourseModel) {
-                // Validate input coming through
-                if (input.id) {
-                    query["_id"] = input.id;
-                }
-                if (input.subject) {
-                    query["subject"] = input.subject;
-                }
-                if (input.number) {
-                    query["number"] = input.number;
-                }
-                if (input.name) {
-                    query["name"] = input.name;
-                }
-                if (input.sections) {
-                    query["sections"] = input.sections;
-                }
-            }
-        }
-    });
-    // parse query
-    const query = qs.parse(req.query);
-    // query and return to front end
-    Course.find(query, (err, ret: Document []) => {
-        if (err) {
-            return res.status(500).json({err: err});
-        }
-        console.log(ret);
-        return res.status(200).json({msg: ret});
-    });
-};
+
 
 export let deleteCourse = (req: Request, res: Response, next: NextFunction) => {
     Course.remove({ _id: req.body.id }, (err) => {
