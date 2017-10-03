@@ -65,7 +65,7 @@ export let postLogout = (req: Request, res: Response, next: NextFunction) => {
       return res.status(500).json({err: err});
     }
     user.lastLoggedIn = new Date();
-    user.save((err: any) {
+    user.save((err: any) => {
       if (err) {
         return res.status(500).json({err: err});
       }
