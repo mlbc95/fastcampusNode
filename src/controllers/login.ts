@@ -8,7 +8,7 @@ import { WriteError } from "mongodb";
 const request = require("express-validator");
 
  export let postSignin = (req: Request, res: Response, next: NextFunction) => {
-   console.log(req)
+   console.log(req);
    // Check the incoming request
   req.assert("username", "Email is not valid").notEmpty();
   req.assert("password", "Password cannot be blank").notEmpty();
