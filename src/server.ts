@@ -100,6 +100,7 @@ app.use("/*", function(req, res, next){
   // res.header("ALLOW", "GET,PUT,POST,DELETE,OPTIONS");
   res.header("Access-Control-Allow-Headers", "Content-Type, Authorization, Content-Length, X-Requested-With");
   if ("OPTIONS" === req.method) {
+    res.header("Allow", "POST, GET, PATCH, PUT, DELETE, OPTIONS");
     return res.send(200);
   } else {
     next();
