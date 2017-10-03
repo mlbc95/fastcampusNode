@@ -23,6 +23,7 @@ const request = require("express-validator");
 
   // If we have errors handle them
   if (errors) {
+    console.log("in error at login");
     return res.status(401).json({msg: "Not all data was present to login.  Please try again.", err: errors}).header("WWW-Authenticate", "Basic, realm=\"FASTCampus\"");
   }
 
