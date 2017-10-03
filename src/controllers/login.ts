@@ -7,6 +7,14 @@ import { LocalStrategyInfo } from "passport-local";
 import { WriteError } from "mongodb";
 const request = require("express-validator");
 
+// Handle preflighted requests
+export let optionsSignin = (req: Request, res: Response, next: NextFunction) => {
+  return res.status(200).header("Allow", "POST, OPTIONS");
+};
+/**
+ * POST /auth/login
+ * Used to signin to the application
+ */
  export let postSignin = (req: Request, res: Response, next: NextFunction) => {
    console.log(req);
    // Check the incoming request

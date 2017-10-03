@@ -9,7 +9,19 @@ import { WriteError } from "mongodb";
 import { ErrorArray, ErrorMessage } from "../helperclasses/errors";
 const request = require("express-validator");
 import * as fc from "../helperclasses/fcValidation";
+/**
+ * Handle preflighted headers
+ */
+export let optionsSignUp = (req: Request, res: Response, next: NextFunction) => {
+    return res.status(200).header("Allow", "POST, OPTIONS");
+};
 
+/**
+ *
+ * @param req
+ * @param res
+ * @param next
+ */
 export let postSignup = (req: Request, res: Response, next: NextFunction) => {
     // log request body
     console.log(req.body);
