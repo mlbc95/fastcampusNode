@@ -6,6 +6,7 @@ import { ErrorArray, ErrorMessage } from "./errors";
 import * as student from "../models/Student";
 import * as teacher from "../models/Teacher";
 import * as user from "../models/User";
+import * as course from "../models/Course";
 
 export class FcValidation {
     /**
@@ -35,6 +36,14 @@ export class FcValidation {
             return errorMessage;
           }
           return undefined;
+    }
+    static validateNumberString (propertyValue: string, propertyName: string = "", failureMessage: string = ""): ErrorMessage {
+        const regex = /\d+/;
+        if (!typeCheck("String", propertyValue) && !regex.test(propertyValue)) {
+            const errorMessage: ErrorMessage = new ErrorMessage(failureMessage, propertyName, propertyValue);
+            return errorMessage;
+        }
+        return undefined;
     }
     static validateUsername (username: string): ErrorMessage {
         if (!typeCheck("String", username) && !validator.isAlphanumeric(username)) {
@@ -120,6 +129,18 @@ export class FcValidation {
         } else {
             return errorArray;
         }
+    }
+    static validateMongoIdArray (propertyValue: string[], propertyName: string = "", failureMessage: string = ""): ErrorMessage {
+        let x = 0;
+        const errorArray = new ErrorArray();
+        _.forEach(propertyValue, function (MongoId: string) {
+            if (!validator.isMongoId(MongoId)) {
+                const errorMessage = new ErrorMessage("Please enter valid mongoid", propertyName + "[" + x + "]", MongoId);
+                errorArray.errors.push(errorMessage);
+            }
+            x++;
+        });
+        return undefined;
     }
     static validateOfficeHours (dayOfWeekArray: teacher.DayOfWeek[]): ErrorArray {
         let i = 0;
@@ -231,6 +252,32 @@ export class FcValidation {
         }
         if (teacher.officeHours && FcValidation.validateOfficeHours(teacher.officeHours)) {
             _.forEach(FcValidation.validateOfficeHours(teacher.officeHours), function (error) {
+                errorArray.errors.push(error);
+            });
+        }
+    }
+    static courseValidationWrapper (course: course.CourseModel, errorArray: ErrorArray) {
+        if (course.subject && FcValidation.validateWordWithSpacePattern(course.subject)) {
+            errorArray.errors.push(FcValidation.validateWordWithSpacePattern(course.subject, "subject", "Please enter valid subject"));
+        }
+        if (course.number && FcValidation.validateNumberString(course.number)) {
+            errorArray.errors.push(FcValidation.validateNumberString(course.number, "course.number", "Please use only numbers"));
+        }
+        if (course.name && FcValidation.validateWordWithSpacePattern(course.name)) {
+            errorArray.errors.push(FcValidation.validateWordWithSpacePattern(course.name, "course.name", "Please use words for the name"));
+        }
+        if (course.teachers && FcValidation.validateMongoIdArray(course.teachers)) {
+            _.forEach(FcValidation.validateMongoIdArray(course.teachers, "course.teachers", "Please enter valid MongoId"), function (error) {
+                errorArray.errors.push(error);
+            });
+        }
+        if (course.tutors && FcValidation.validateMongoIdArray(course.tutors)) {
+            _.forEach(FcValidation.validateMongoIdArray(course.tutors, "course.tutors", "Please enter valid MongoId"), function (error) {
+                errorArray.errors.push(error);
+            });
+        }
+        if (course.students && FcValidation.validateMongoIdArray(course.students)) {
+            _.forEach(FcValidation.validateMongoIdArray(course.students, "course.students", "Please enter valid MongoId"), function (error) {
                 errorArray.errors.push(error);
             });
         }

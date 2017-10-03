@@ -1,12 +1,12 @@
 import * as mongoose from "mongoose";
 
 export type CourseModel = mongoose.Document & {
-    subject: String,
+    subject: string,
     number: string,
     name: string,
-    teachers: Array<mongoose.Types.ObjectId>,
-    tutors: Array<mongoose.Types.ObjectId>,
-    students: Array<mongoose.Types.ObjectId>,
+    teachers: string[],
+    tutors: string[],
+    students: string[],
     sections: Section[]
 };
 
