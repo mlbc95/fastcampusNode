@@ -55,3 +55,7 @@ export let optionsSignin = (req: Request, res: Response, next: NextFunction) => 
   // Forward request
   })(req, res, next);
 };
+
+export let postLogout = (req: Request, res: Response, next: NextFunction) => {
+  return res.status(200).json({msg: "loggedout"});
+};
