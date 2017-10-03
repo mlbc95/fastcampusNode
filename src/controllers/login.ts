@@ -17,14 +17,14 @@ const request = require("express-validator");
 
   // If we have errors handle them
   if (errors) {
-    return res.status(401).json({msg: "Not all data was present to login.  Please try again.", err: errors}).header("WWW-Authenticate", "Basic, realm=\"FASTCampus\"");
+    res.status(401).json({msg: "Not all data was present to login.  Please try again.", err: errors}).header("WWW-Authenticate", "Basic, realm=\"FASTCampus\"");
   }
 
   // No errors proceed and try to login
   passport.authenticate("local", (err: Error, user: UserModel, info: LocalStrategyInfo) => {
     // Handle error
     if (err) {
-      return res.status(500).json({err: err});
+      res.status(500).json({err: err});
     }
     // If we do not get a user
     // console.log(user);
@@ -35,12 +35,12 @@ const request = require("express-validator");
     } else {
       req.logIn(user, (err) => {
         if (err) {
-            return res.status(500).json({err: err});
+            res.status(500).json({err: err});
         }
         user.password = undefined;
         user.passwordResetExpires = undefined;
         user.passwordResetToken = undefined;
-        return res.status(200).json({user: user});
+        res.status(200).json({user: user});
       });
     }
   // Forward request
