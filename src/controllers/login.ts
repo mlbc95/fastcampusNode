@@ -48,6 +48,7 @@ export let optionsSignin = (req: Request, res: Response, next: NextFunction) => 
         if (err) {
             return res.status(500).json({err: err});
         }
+        user.id = user._id;
         user.password = undefined;
         user.passwordResetExpires = undefined;
         user.passwordResetToken = undefined;
