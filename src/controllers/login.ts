@@ -83,6 +83,7 @@ export let postLogout = (req: Request, res: Response, next: NextFunction) => {
     });
     return res.status(200).json({msg: "loggedout"});
   } else {
-    return res.status(401).json({msg: "Missing id"});
+    req.logOut();
+    return res.status(200).json({msg: "Missing id"});
   }
 };
