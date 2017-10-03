@@ -1,6 +1,6 @@
 import * as crypto from "crypto";
 import * as passport from "passport";
-import * as lodash from "lodash";
+import * as _ from "lodash";
 import { default as User, UserModel, AuthToken  } from "../models/User";
 import { Request, Response, NextFunction } from "express";
 import { LocalStrategyInfo } from "passport-local";
@@ -26,7 +26,7 @@ export let optionsSignin = (req: Request, res: Response, next: NextFunction) => 
   const errors = req.validationErrors();
 
   // If we have errors handle them
-  if (errors) {
+  if (!_.isEmpty(errors)) {
     console.log("in error at login");
     return res.status(401).json({msg: "Not all data was present to login.  Please try again.", err: errors}).header("WWW-Authenticate", "Basic, realm=\"FASTCampus\"");
   }
