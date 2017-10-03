@@ -123,6 +123,7 @@ app.options("/auth/signup", signupController.optionsSignUp);
 app.post("/auth/login", loginController.postSignin);
 app.options("/auth/login", loginController.optionsSignin);
 app.post("/auth/logout", loginController.postLogout);
+app.options("/auth/logout", loginController.optionsLogout);
 // Additional Student routes
 app.get("/students", studentController.getStudent);
 app.patch("/students", passportConfig.isAuthenticated, studentController.patchStudent);

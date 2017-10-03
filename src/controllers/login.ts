@@ -55,7 +55,9 @@ export let optionsSignin = (req: Request, res: Response, next: NextFunction) => 
   // Forward request
   })(req, res, next);
 };
-
+export let optionsLogout = (req: Request, res: Response, next: NextFunction) => {
+  return res.send(200).header("Allow", "POST, OPTIONS");
+};
 export let postLogout = (req: Request, res: Response, next: NextFunction) => {
   User.findById(req.body.id, function (err: any, user: UserModel) {
     // Handle error
