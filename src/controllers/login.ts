@@ -17,7 +17,7 @@ export let optionsSignin = (req: Request, res: Response, next: NextFunction) => 
  * Used to signin to the application
  */
  export let postSignin = (req: Request, res: Response, next: NextFunction) => {
-   console.log(req);
+   // console.log(req);
    // Check the incoming request
   req.assert("username", "Email is not valid").notEmpty();
   req.assert("password", "Password cannot be blank").notEmpty();
