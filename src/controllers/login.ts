@@ -57,5 +57,18 @@ export let optionsSignin = (req: Request, res: Response, next: NextFunction) => 
 };
 
 export let postLogout = (req: Request, res: Response, next: NextFunction) => {
+  User.findById(req.body.id, function (err: any, user: UserModel) {
+    // Handle error
+    if (err) {
+      return res.status(500).json({err: err});
+    }
+    user.lastLoggedIn = new Date();
+    user.save((err: any) {
+      if (err) {
+        return res.status(500).json({err: err});
+      }
+      res.clearCookie("connect.sid");
+    });
+  });
   return res.status(200).json({msg: "loggedout"});
 };
