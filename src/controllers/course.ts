@@ -1,13 +1,10 @@
-import * as async from "async";
-import * as crypto from "crypto";
-import * as nodemailer from "nodemailer";
 import * as passport from "passport";
 import * as lodash from "lodash";
 import { Request, Response, NextFunction } from "express";
-import { LocalStrategyInfo } from "passport-local";
 import { WriteError } from "mongodb";
 import { default as Course, Section, CourseModel } from "../models/Course";
 import { ErrorArray, ErrorMessage } from "../helperclasses/errors";
+import * as fc from "../helperclasses/fcValidation";
 const MongoQS = require("mongo-querystring");
 const request = require("express-validator");
 
@@ -37,6 +34,15 @@ export let getCourse = (req: Request, res: Response, next: NextFunction) => {
                 if (input.name) {
                     query["name"] = input.name;
                 }
+                if (input.teachers) {
+                    query["teachers"] = input.teachers;
+                }
+                if (input.tutors) {
+                    query["tutors"] = input.tutors;
+                }
+                if (input.students) {
+                    query["students"] = input.students;
+                }
                 if (input.sections) {
                     query["sections"] = input.sections;
                 }
@@ -47,11 +53,12 @@ export let getCourse = (req: Request, res: Response, next: NextFunction) => {
     const query = qs.parse(req.query);
     // query and return to front end
     Course.find(query, (err, ret: Document []) => {
+        // Handle error
         if (err) {
-            return res.status(500).json({err: err});
+            return res.status(500).json({err});
         }
         console.log(ret);
-        return res.status(200).json({msg: ret});
+        return res.status(200).json({ret});
     });
 };
 
@@ -66,10 +73,10 @@ export let postCourse = (req: Request, res: Response, next: NextFunction) => {
     const erArray: ErrorArray = new ErrorArray();
 
     // Pass to validation wrapper
-    fc.
+    fc.FcValidation.courseValidationWrapper(req.body, erArray);
 
     // Validation done, check if errors are present
-    if (!lodash.isEmpty(erArray.errors)); {
+    if (!lodash.isEmpty(erArray.errors)) {
         return res.status(400).json({msg: "Data did not pass validation", err: erArray.errors, data: req.body});
     }
 
@@ -78,13 +85,18 @@ export let postCourse = (req: Request, res: Response, next: NextFunction) => {
         subject: req.body.subject,
         number: req.body.number,
         name: req.body.name,
+        teachers: req.body.teachers,
+        tutors: req.body.tutors,
+        students: req.body.students,
         sections: req.body.sections
     });
+    // Save the course to the db
     course.save((err) => {
+        // Handle error
         if (err) {
-            return res.status(500).json({err: err});
+            return res.status(500).json({err});
         }
-        return res.status(201).json({course: course});
+        return res.status(201).json({course});
     });
 };
 
@@ -97,77 +109,48 @@ export let patchTutor = (req: Request, res: Response, next: NextFunction) => {
     // Create array object we can push on for custom error messages
     const erArray: ErrorArray = new ErrorArray();
 
-    // Validate as much of the schema as we can with checkbody
-    const regex = /[A-Za-z -,]*/;
-    if (req.body.subject && !regex.test(req.body.subject)) {
-        const erObj: ErrorMessage = new ErrorMessage("Please enter a valid subject name", "subject", req.body.subject);
-        erArray.errors.push(erObj);
-    }
-    const numRegex = /\d+/;
-    if (req.body.number && !numRegex.test(req.body.number)) {
-        const erObj: ErrorMessage = new ErrorMessage("Please enter a valid number", "number", req.body.number);
-        erArray.errors.push(erObj);
-    }
-    if (req.body.name && !regex.test(req.body.name)) {
-        const erObj: ErrorMessage = new ErrorMessage("Please enter a valid name", "name", req.body.name);
-        erArray.errors.push(erObj);
-    }
+    // Pass to validation wrapper
+    fc.FcValidation.courseValidationWrapper(req.body, erArray);
 
-
-    // Create counter for our array
-    let x: number = 0;
-
-    // Run validation on remaining attributes
-    // Validate courses if present
-    if (req.body.sections) {
-        lodash.forEach(req.body.sections, function (value: Section) {
-            if (!typeCheck("String", value.crnNumber)) {
-                const erObj: ErrorMessage = new ErrorMessage("Please use only numbers for number", "sections.number[" + x + "]", value.crnNumber);
-                erArray.errors.push(erObj);
-            }
-            if (!typeCheck("String", value.sectionNumber)) {
-                const erObj: ErrorMessage = new ErrorMessage("Please use only letters and spaces for name", "sections.sectionNumber[" + x + "]", value.sectionNumber);
-                erArray.errors.push(erObj);
-            }
-            if (!typeCheck("String", value.time)) {
-                const erObj: ErrorMessage = new ErrorMessage("Please use only letters and spaces for name", "sections.sectionNumber[" + x + "]", value.sectionNumber);
-                erArray.errors.push(erObj);
-            }
-            if (!typeCheck("String", value.professor)) {
-                const erObj: ErrorMessage = new ErrorMessage("Please use only letters and spaces for name", "sections.sectionNumber[" + x + "]", value.sectionNumber);
-                erArray.errors.push(erObj);
-            }
-            x++;
-        });
-    }
     // Validation done, check if errors are present
     if (!lodash.isEmpty(erArray.errors)) {
         return res.status(400).json({msg: "Data did not pass validation", err: erArray.errors});
     }
     // Find tutor and update
-    Course.findById(req.body.id, (err, tutor: CourseModel) => {
+    Course.findById(req.body.id, (err, course: CourseModel) => {
         // Handle error
         if (err) {
-            return res.status(500).json({err: err});
+            return res.status(500).json({err});
         }
         // Set objects that are present
         if (req.body.subject) {
-            tutor.subject = req.body.subject;
+            course.subject = req.body.subject;
         }
         if (req.body.number) {
-            tutor.number = req.body.number;
+            course.number = req.body.number;
         }
         if (req.body.name) {
-            tutor.name = req.body.name;
+            course.name = req.body.name;
+        }
+        if (req.body.teachers) {
+            course.teachers = req.body.teachers;
+        }
+        if (req.body.tutors) {
+            course.tutors = req.body.tutors;
+        }
+        if (req.body.students) {
+            course.students = req.body.students;
         }
         if (req.body.sections) {
-            tutor.sections = req.body.sections;
+            course.sections = req.body.sections;
         }
-        tutor.save((err) => {
+        // Save the updated course
+        course.save((err) => {
+            // Handle error
             if (err) {
-                return res.status(500).json({err: err});
+                return res.status(500).json({err});
             }
-            return res.json({msg: "Tutor has been updated", tutor: tutor});
+            return res.json({msg: "Tutor has been updated", course});
         });
     });
 };
@@ -175,9 +158,11 @@ export let patchTutor = (req: Request, res: Response, next: NextFunction) => {
 
 
 export let deleteCourse = (req: Request, res: Response, next: NextFunction) => {
+    // Remove course from the db
     Course.remove({ _id: req.body.id }, (err) => {
+        // Handle error
         if (err) {
-            return res.status(500).json({err: err});
+            return res.status(500).json({err});
         }
         return res.status(200).json({msg: "Course deleted"});
     });
