@@ -201,9 +201,6 @@ export class FcValidation {
         if (student.email && FcValidation.validateEmail(student.email)) {
             errorArray.errors.push(FcValidation.validateEmail(student.email));
         }
-        if (student.school && FcValidation.validateWordWithSpacePattern(student.school)) {
-            errorArray.errors.push(FcValidation.validateWordWithSpacePattern(student.school, "school", "Please user only letters and spaces"));
-        }
         if (student.username && FcValidation.validateUsername(student.username)) {
             errorArray.errors.push(FcValidation.validateUsername(student.username));
         }
