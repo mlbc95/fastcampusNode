@@ -62,7 +62,7 @@ export let postSignup = (req: Request, res: Response, next: NextFunction) => {
                         return res.status(500).json({err: err});
                     }
                     req.logIn(student, (err) => {
-                        if (_.isEmpty(err)) {
+                        if (!_.isEmpty(err)) {
                             console.log("here");
                             return res.status(500).json({err: err});
                         }
