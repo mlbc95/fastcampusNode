@@ -7,38 +7,14 @@ import * as validator from "validator";
 import * as lodash from "lodash";
 const typeCheck = require("type-check").typeCheck;
 export interface UserModel extends mongoose.Document {
-  fName: {
-    type: string,
-    default: ""
-  };
-  lName: {
-    type: string,
-    default: ""
-  };
-  email: {
-    type: string,
-    default: ""
-  };
-  username: {
-    type: string,
-    default: ""
-  };
-  school: {
-    type: string,
-    default: ""
-  };
-  password: {
-    type: string,
-    default: ""
-  };
-  pNumber: {
-    type: string,
-    default: ""
-  };
-  courses: {
-    type: Course[],
-    default: Course[]
-  };
+  fName: string;
+  lName: string;
+  email: string;
+  username: string;
+  school: string;
+  password: string;
+  pNumber: string;
+  courses: Course[];
   passwordResetToken: string;
   passwordResetExpires: Date;
   lastLogin: Date;
