@@ -44,18 +44,7 @@ export let postSignup = (req: Request, res: Response, next: NextFunction) => {
             }
 
             // We passed validation create new student
-            const student = new Student({
-                fName: req.body.fName || "",
-                lName: req.body.lName || "",
-                school: req.body.school,
-                pNumber: req.body.pNumber || "",
-                degrees: req.body.degrees || [],
-                courses: req.body.courses || [],
-                email: req.body.email,
-                password: req.body.password,
-                username: req.body.username,
-                completedCourses: req.body.completedCourses || []
-            });
+            const student = new Student({...req.body});
 
             // Make sure that the username does not exist in the db already
             User.findOne({ username: req.body.username }, (err, existingUser) => {
@@ -97,18 +86,7 @@ export let postSignup = (req: Request, res: Response, next: NextFunction) => {
             }
 
             // We passed validation create new student
-            const teacher = new Teacher({
-                fName: req.body.fName || "",
-                lName: req.body.lName || "",
-                school: req.body.school,
-                pNumber: req.body.pNumber || "",
-                courses: req.body.courses || [],
-                email: req.body.email,
-                password: req.body.password,
-                username: req.body.username,
-                status: req.body.status || "",
-                officeHours: req.body.officeHours || []
-            });
+            const teacher = new Teacher({...req.body});
 
             // Make sure that the username does not exist in the db already
             User.findOne({ username: req.body.username }, (err, existingUser) => {

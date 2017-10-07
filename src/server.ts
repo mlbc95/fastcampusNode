@@ -97,11 +97,11 @@ app.use((req, res, next) => {
 // Allow CORS
 app.use("/*", function(req, res, next){
   res.header("Access-Control-Allow-Origin", "*");
-  // res.header("ALLOW", "GET,PUT,POST,DELETE,OPTIONS");
+  res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE,PATCH");
   res.header("Access-Control-Allow-Headers", "Content-Type, Authorization, Content-Length, X-Requested-With");
   if ("OPTIONS" === req.method) {
-    res.header("Allow", "POST, GET, PATCH, PUT, DELETE, OPTIONS");
-    return res.sendStatus(200);
+    // res.header("Allow", "POST, GET, PATCH, PUT, DELETE, OPTIONS");
+    return res.send(200);
   } else {
     next();
   }

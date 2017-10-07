@@ -1,13 +1,34 @@
 import * as mongoose from "mongoose";
 
 export type CourseModel = mongoose.Document & {
-    subject: string,
-    number: string,
-    name: string,
-    teachers: string[],
-    tutors: string[],
-    students: string[],
-    sections: Section[]
+    subject: {
+        type: string,
+        default: ""
+      },
+    number: {
+        type: string,
+        default: ""
+      },
+    name: {
+        type: string,
+        default: ""
+      },
+    teachers: {
+        type: string[],
+        default: string[]
+    },
+    tutors: {
+        type: string[],
+        default: string[]
+    },
+    students: {
+        type: string[],
+        default: string[]
+    },
+    sections: {
+      type: Section[],
+      default: Section[]
+    }
 };
 
 export type Section = {

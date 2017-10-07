@@ -2,19 +2,40 @@ import * as mongoose from "mongoose";
 import { UserModel, User } from "./User";
 const options = {discriminatorKey: "role", timestamps: true};
 export interface TeacherModel extends UserModel, mongoose.Document  {
-    status: string;
-    officeHours: DayOfWeek[];
+    status: {
+        type: string,
+        default: ""
+    };
+    officeHours: {
+        type: DayOfWeek[],
+        default: DayOfWeek[]
+    };
 }
 
 export type DayOfWeek = {
-    day: string,
-    hours: string[],
-    office: Office
+    day: {
+        type: string
+        default: ""
+    },
+    hours: {
+        type: string[],
+        default: string[]
+    },
+    office: {
+        type: Office,
+        default: {}
+    }
 };
 
 export type Office = {
-    building: string,
-    roomNumber: string
+    building: {
+        type: string,
+        default: ""
+    },
+    roomNumber: {
+        type: string,
+        default: ""
+    }
 };
 
 
