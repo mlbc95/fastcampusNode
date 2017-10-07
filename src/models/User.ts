@@ -1,7 +1,7 @@
 import * as bcrypt from "bcrypt-nodejs";
 import * as crypto from "crypto";
 import * as mongoose from "mongoose";
-const options = {discriminatorKey: "Kind", timestamps: true};
+const options = {discriminatorKey: "role", timestamps: true};
 import * as er from "../helperclasses/errors";
 import * as validator from "validator";
 import * as lodash from "lodash";
