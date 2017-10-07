@@ -24,5 +24,5 @@ export const studentSchema = new mongoose.Schema({
   completedCourses: Array
 }, options);
 
-const Student = User.discriminator("Student", studentSchema);
+const Student = User.discriminator("student", studentSchema);
 export default Student;

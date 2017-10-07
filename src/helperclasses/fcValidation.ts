@@ -191,6 +191,67 @@ export class FcValidation {
             return errorArray;
         }
     }
+    static validationWrapper (obj: any, errorArray: ErrorArray) {
+        if (obj.fName && FcValidation.validateAlphaString(obj.fName, "fName" , "Please enter a valid name")) {
+            errorArray.errors.push(FcValidation.validateAlphaString(obj.fName, "fName" , "Please enter a valid name"));
+        }
+        if (obj.lName && FcValidation.validateAlphaString(obj.lName, "lName" , "Please enter a valid name")) {
+            errorArray.errors.push(FcValidation.validateAlphaString(obj.lName, "lName" , "Please enter a valid name"));
+        }
+        if (obj.email && FcValidation.validateEmail(obj.email)) {
+            errorArray.errors.push(FcValidation.validateEmail(obj.email));
+        }
+        if (obj.username && FcValidation.validateUsername(obj.username)) {
+            errorArray.errors.push(FcValidation.validateUsername(obj.username));
+        }
+        if (obj.pNumber && FcValidation.validatePNumber(obj.pNumber)) {
+            errorArray.errors.push(FcValidation.validatePNumber(obj.pNumber));
+        }
+        if (obj.courses && FcValidation.validateUserCourses(obj.courses)) {
+            _.forEach(FcValidation.validateUserCourses(obj.courses), function (error: any) {
+                errorArray.errors.push(error);
+            });
+        }
+        if (obj.completedCourses && FcValidation.validateCompletedCourses(obj.completedCourses)) {
+            _.forEach(FcValidation.validateCompletedCourses(obj.completedCourses), function(error) {
+                errorArray.errors.push(error);
+            });
+        }
+        if (obj.degrees && FcValidation.validateDegrees(obj.degrees)) {
+            _.forEach(FcValidation.validateDegrees(obj.degrees), function (error) {
+                errorArray.errors.push(error);
+            });
+        }
+        if (obj.officeHours && FcValidation.validateOfficeHours(obj.officeHours)) {
+            _.forEach(FcValidation.validateOfficeHours(obj.officeHours), function (error) {
+                errorArray.errors.push(error);
+            });
+        }
+        if (obj.subject && FcValidation.validateWordWithSpacePattern(obj.subject)) {
+            errorArray.errors.push(FcValidation.validateWordWithSpacePattern(obj.subject, "subject", "Please enter valid subject"));
+        }
+        if (obj.number && FcValidation.validateNumberString(obj.number)) {
+            errorArray.errors.push(FcValidation.validateNumberString(obj.number, "course.number", "Please use only numbers"));
+        }
+        if (obj.name && FcValidation.validateWordWithSpacePattern(obj.name)) {
+            errorArray.errors.push(FcValidation.validateWordWithSpacePattern(obj.name, "course.name", "Please use words for the name"));
+        }
+        if (obj.teachers && FcValidation.validateMongoIdArray(obj.teachers)) {
+            _.forEach(FcValidation.validateMongoIdArray(obj.teachers, "course.teachers", "Please enter valid MongoId"), function (error) {
+                errorArray.errors.push(error);
+            });
+        }
+        if (obj.tutors && FcValidation.validateMongoIdArray(obj.tutors)) {
+            _.forEach(FcValidation.validateMongoIdArray(obj.tutors, "course.tutors", "Please enter valid MongoId"), function (error) {
+                errorArray.errors.push(error);
+            });
+        }
+        if (obj.students && FcValidation.validateMongoIdArray(obj.students)) {
+            _.forEach(FcValidation.validateMongoIdArray(obj.students, "course.students", "Please enter valid MongoId"), function (error) {
+                errorArray.errors.push(error);
+            });
+        }
+    }
     static studentValidationWrapper (student: student.StudentModel, errorArray: ErrorArray) {
         if (student.fName && FcValidation.validateAlphaString(student.fName, "fName" , "Please enter a valid name")) {
             errorArray.errors.push(FcValidation.validateAlphaString(student.fName, "fName" , "Please enter a valid name"));
