@@ -1,6 +1,6 @@
 import * as crypto from "crypto";
 import * as passport from "passport";
-import * as _ from "lodash";
+import * as lodash from "lodash";
 import { default as User, UserModel, AuthToken  } from "../models/User";
 import { Request, Response, NextFunction } from "express";
 import { LocalStrategyInfo } from "passport-local";
@@ -26,8 +26,7 @@ export let optionsSignin = (req: Request, res: Response, next: NextFunction) => 
   const errors = req.validationErrors();
 
   // If we have errors handle them
-  if (!_.isEmpty(errors)) {
-    console.log("in error at login");
+  if (errors) {
     return res.status(401).json({msg: "Not all data was present to login.  Please try again.", err: errors}).header("WWW-Authenticate", "Basic, realm=\"FASTCampus\"");
   }
 
@@ -48,9 +47,6 @@ export let optionsSignin = (req: Request, res: Response, next: NextFunction) => 
         if (err) {
             return res.status(500).json({err: err});
         }
-        console.log(user);
-        user.id = user._id;
-        console.log(user);
         user.password = undefined;
         user.passwordResetExpires = undefined;
         user.passwordResetToken = undefined;
@@ -61,29 +57,21 @@ export let optionsSignin = (req: Request, res: Response, next: NextFunction) => 
   })(req, res, next);
 };
 export let optionsLogout = (req: Request, res: Response, next: NextFunction) => {
-  res.status(200).header("Allow", "POST, OPTIONS");
-  res.send();
+  return res.status(200).header("Allow", "POST, OPTIONS");
 };
 export let postLogout = (req: Request, res: Response, next: NextFunction) => {
-  if (req.body.id) {
-    User.findById(req.body.id, function (err: any, user: UserModel) {
-      // Handle error
+  User.findById(req.body.id, function (err: any, user: UserModel) {
+    // Handle error
+    if (err) {
+      return res.status(500).json({err: err});
+    }
+    user.lastLogin = new Date();
+    user.save((err: any) => {
       if (err) {
         return res.status(500).json({err: err});
       }
-      user.lastLogin = new Date();
-      user.save((err: any) => {
-        if (err) {
-          return res.status(500).json({err: err});
-        }
-        req.logOut();
-        res.clearCookie("connect.sid");
-        res.removeHeader("set-cookie");
-      });
+      res.clearCookie("connect.sid");
     });
-    return res.status(200).json({msg: "loggedout"});
-  } else {
-    req.logOut();
-    return res.status(200).json({msg: "Missing id"});
-  }
+  });
+  return res.status(200).json({msg: "loggedout"});
 };
