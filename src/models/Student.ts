@@ -3,19 +3,43 @@ import { UserModel, User } from "./User";
 const options = {discriminatorKey: "role", timestamps: true};
 
 export interface StudentModel extends UserModel, mongoose.Document  {
-  completedCourses: CompletedCourse[];
-  degrees: Degree[];
+  completedCourses: {
+    type: CompletedCourse[],
+    default: CompletedCourse[]
+  };
+  degrees: {
+    type: Degree[],
+    default: Degree[]
+  };
 }
 
 export type CompletedCourse = {
-  subject: string,
-  name: string,
-  number: string,
-  grade: string
+  subject: {
+    type: string,
+    default: ""
+  },
+  name: {
+    type: string,
+    default: ""
+  },
+  number: {
+    type: string,
+    default: ""
+  },
+  grade: {
+    type: string,
+    default: ""
+  }
 };
 export type Degree = {
-  level: string,
-  name: string
+  level: {
+    type: string,
+    default: ""
+  },
+  name: {
+    type: string,
+    default: ""
+  }
 };
 
 
