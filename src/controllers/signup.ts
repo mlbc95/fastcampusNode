@@ -63,6 +63,7 @@ export let postSignup = (req: Request, res: Response, next: NextFunction) => {
                     }
                     req.logIn(student, (err) => {
                         if (err) {
+                            console.log("here");
                             return res.status(500).json({err: err});
                         }
                         // Forced to cast object to StudentModel
