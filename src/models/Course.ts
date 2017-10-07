@@ -25,7 +25,10 @@ export type CourseModel = mongoose.Document & {
         type: string[],
         default: string[]
     },
-    sections: Section[]
+    sections: {
+      type: Section[],
+      default: Section[]
+    }
 };
 
 export type Section = {

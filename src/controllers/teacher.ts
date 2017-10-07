@@ -144,6 +144,7 @@ export let getTeacher = (req: Request, res: Response, next: NextFunction) => {
         // Clean out unwanted fields from teacher
         // Clean out unwanted items from json in the return response
         _.forEach(teacher, function (teach) {
+          teach.id = teach._id;
           teach.password = undefined;
           teach.passwordResetExpires = undefined;
           teach.passwordResetToken = undefined;
