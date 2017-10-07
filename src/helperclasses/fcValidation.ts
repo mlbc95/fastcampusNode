@@ -30,7 +30,7 @@ export class FcValidation {
     }
     static validateWordWithSpacePattern (propertyValue: string, propertyName: string = "", failureMessage: string = ""): ErrorMessage {
         // This regex allows a word followed by an optional space.  This pattern must occur at least once
-        const regex = /((\w+) ?){1,}/;
+        const regex = /((\w+)[ -]?){1,}/;
         if (!typeCheck("String", propertyValue) && !regex.test(propertyValue)) {
             const errorMessage: ErrorMessage = new ErrorMessage(failureMessage, propertyName, propertyValue);
             return errorMessage;
