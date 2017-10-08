@@ -191,7 +191,8 @@ export class FcValidation {
             return errorArray;
         }
     }
-    static validationWrapper (obj: any, errorArray: ErrorArray) {
+    static validationWrapper (obj: any) {
+        let errorArray: ErrorArray = new ErrorArray();
         if (obj.fName && FcValidation.validateAlphaString(obj.fName, "fName" , "Please enter a valid name")) {
             errorArray.errors.push(FcValidation.validateAlphaString(obj.fName, "fName" , "Please enter a valid name"));
         }
@@ -251,6 +252,7 @@ export class FcValidation {
                 errorArray.errors.push(error);
             });
         }
+        return errorArray;
     }
     static studentValidationWrapper (student: student.StudentModel, errorArray: ErrorArray) {
         if (student.fName && FcValidation.validateAlphaString(student.fName, "fName" , "Please enter a valid name")) {

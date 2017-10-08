@@ -79,24 +79,22 @@ components:
                   name:
                     type: string
         officeHours:
-          $ref: "#/components/schemas/OfficeHours"
-    OfficeHours:
-      type: array
-      properties:
-        day:
-          type: string
-        hours:
           type: array
           properties:
-            time: 
+            day:
               type: string
-        office:
-          type: object
-          properties:
-            building: 
-              type: string
-            roomNumber:
-              type: string
+            hours:
+              type: array
+              properties:
+                time: 
+                  type: string
+            office:
+              type: object
+              properties:
+                building: 
+                  type: string
+                roomNumber:
+                  type: string
     Student:
       type: object
       properties:
@@ -145,6 +143,18 @@ components:
                 properties:
                   name:
                     type: string
+        completedCourses:
+          type: array
+          items:
+          properties:
+            subject:
+              type: string
+            name:
+              type: string
+            number:
+              type: string
+            grade:
+              type: string
   parameters:
     PostTeacher:
         type: object
@@ -331,30 +341,45 @@ components:
     User:
       type: object
       properties:
-        _id:
-          type: string
         fName:
           type: string
         lName:
           type: string
-        email:
-          type: string
         username:
           type: string
-        password:
+        email:
           type: string
-        pNumber:
+        school: 
           type: string
-        school:
+        pNmber: 
           type: string
-        id:
-          type: string
+        courses:
+          type: array
+          items:
+          properties:
+              number: 
+                type: string
+              name: 
+                type: string,
+              crnNumber: 
+                type: number
+              section: 
+                type: string
+              startTime: 
+                type: number
+              endTime: 
+                type: number,
+              professor:
+                type: array
+                properties:
+                  name:
+                    type: string
 
 paths:
   /auth/signup:
     post:
       summary: Signs up a new user
-      description: This is the route to post all new users.  The url should contain the type of user being added while the body contains the content to be added.
+      description: This is the route to post all new users.  The url should contain the type of user being added while the body contains the content to be added.  The only items that are required are username, email, password and school.
       produces:
         - application/json
       parameters:
@@ -364,6 +389,10 @@ paths:
         required: true
         schema:
           $ref: "#/components/parameters/User"
+      - in: req.query
+        name: role
+        description: Role of the user, should be attached to url as ?role="type"
+        required: true
       requestBody:
         content:
           'application/json':
@@ -371,7 +400,7 @@ paths:
               $ref: "#/components/parameters/User"
       responses:
         201:
-          description: The user was created successfully.  Depending on the type of user that was submited it will return the approrite type of object.  The schema provided below is a somewhat generic object that represents the bare minimum for the response.
+          description: The user was created successfully.  Depending on the type of user that was submited it will return the approrite type of object.  If it is a teacher it will also return status as a empty string and officeHours as an empty array.  If it is a student it will return degrees as an empty array and completedCourses as an empty array.
           schema:
               $ref: "#/components/responses/User"
         400:
@@ -380,11 +409,10 @@ paths:
             type: array
             $ref: "#/components/responses/ValidationError"
         500:
-          description: The server encountered a general error while processing the request.  It will return an object err containint the errors. Because this is a catch all it is hard to define a schema for it.
+          description: The server encountered a general error while processing the request.  It will return an object err containint the errors. Because we are catching server errors it is somewhat difficult to parse the exact data.  The errors will be rough but the data will be there.
           schema:
             type: array
-            properties:
-              err: err
+            $ref: "#/components/responses/ValidationError"
   /auth/login:
     post:
       summary: This is used to login
