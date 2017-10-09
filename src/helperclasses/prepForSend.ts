@@ -1,6 +1,6 @@
 import * as _ from "lodash";
 export function prepForSend (obj: any) {
-    if(!_.isEmpty(obj.password)) {
+    if (!_.isEmpty(obj.password)) {
         delete obj.password;
         obj.password = undefined;
     }
@@ -13,7 +13,7 @@ export function prepForSend (obj: any) {
     const newObj = {
         id: obj._id,
         ...obj._doc
-    }
+    };
     delete newObj._id;
     return newObj;
 }

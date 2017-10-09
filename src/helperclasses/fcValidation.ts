@@ -192,7 +192,7 @@ export class FcValidation {
         }
     }
     static validationWrapper (obj: any) {
-        let errorArray: ErrorArray = new ErrorArray();
+        const errorArray: ErrorArray = new ErrorArray();
         if (obj.fName && FcValidation.validateAlphaString(obj.fName, "fName" , "Please enter a valid name")) {
             errorArray.errors.push(FcValidation.validateAlphaString(obj.fName, "fName" , "Please enter a valid name"));
         }

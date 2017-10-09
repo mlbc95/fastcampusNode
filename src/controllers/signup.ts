@@ -8,7 +8,8 @@ import { LocalStrategyInfo } from "passport-local";
 import { WriteError } from "mongodb";
 import { prepForSend } from "../helperclasses/prepForSend";
 import { ErrorArray, ErrorMessage } from "../helperclasses/errors";
-import * as jwt from "express-jwt";
+import { jwtKey } from "../config/jwt";
+import * as jwt from "jsonwebtoken";
 const request = require("express-validator");
 import * as fc from "../helperclasses/fcValidation";
 
@@ -36,19 +37,21 @@ import * as fc from "../helperclasses/fcValidation";
  *              err | Error Array | contains an array of msg, param, value of the issues
  *      Success:
  *          201 (Created):
- *              Returns created user in JSON at user
- *              id | string | MongoDB ID
- *              fName | string |  first name
- *              lName | string | last name
- *              email | string | email
- *              username | string | username
- *              school | string | school, REQUIRED
- *              courses | Course Array | will be an empty array at this point
- *              role | string | the role of the user
- *              teacher.status | string | ONLY RETURNS IF ROLE IS TEACHER
- *              teacher.officeHours | Office Hours Array | ONLY RETURNS IF ROLE IS TEACHER, will be empty array
- *              student.completedCourses | Completed Courses Array | ONLY RETURNS IF STUDENT, will be empty array
- *              student.degree | Degrees Array | ONLY RETURNS IF STUDENT, degrees of user
+ *              JSON:
+ *                user:
+ *                  id | string | MongoDB ID
+ *                  fName | string |  first name
+ *                  lName | string | last name
+ *                  email | string | email
+ *                  username | string | username
+ *                  school | string | school
+ *                  courses | Course Array | array of courses
+ *                  role | string | the role of the user
+ *                  teacher.status | string | ONLY RETURNS IF ROLE IS TEACHER
+ *                  teacher.officeHours | Office Hours Array | ONLY RETURNS IF ROLE IS TEACHER
+ *                  student.completedCourses | Completed Courses Array | ONLY RETURNS IF STUDENT
+ *                  student.degree | Degrees Array | ONLY RETURNS IF STUDENT, degrees of user
+ *                token | string | JWT token
  *
  */
 export let postSignup = (req: Request, res: Response, next: NextFunction) => {
@@ -58,6 +61,8 @@ export let postSignup = (req: Request, res: Response, next: NextFunction) => {
 
     // Create user object
     let newUser: any;
+
+    // Switch on role
     switch (req.query["role"]) {
         case "student":
             newUser = new Student ({...req.body});
@@ -93,17 +98,14 @@ export let postSignup = (req: Request, res: Response, next: NextFunction) => {
                 erArray.errors.push(new ErrorMessage(err.errmsg.split(":")[0], err.errmsg.split(":")[1], err.errmsg.split(":")[3]));
                 return res.status(500).json({err: erArray.errors});
             }
-            // Login in
-            req.logIn(newUser, (err) => {
-                // Handle error
-                if (!_.isEmpty(err)) {
-                    erArray.errors.push(new ErrorMessage(err.errmsg.split(":")[0], err.errmsg.split(":")[1], err.errmsg.split(":")[3]));
-                    return res.status(500).json({err: erArray.errors});
-                }
-                // Clear out password info
-                const user = prepForSend(newUser);
-                res.status(201).json({user});
-            });
+            // Clear out password info
+            const user = prepForSend(newUser);
+
+            // Create token
+            const token = jwt.sign(user, jwtKey(), {expiresIn: 604800});
+
+            // Return to client
+            res.status(201).json({user, token: "JWT " + token});
         });
     });
 };
