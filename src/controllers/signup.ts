@@ -71,7 +71,7 @@ export let postSignup = (req: Request, res: Response, next: NextFunction) => {
             newUser = new Teacher ({...req.body});
             break;
         default:
-            return res.status(400).json({err: {msg: "Please send a role along with JSON body."}});
+            return res.status(400).json({error: {message: "Please send a role along with JSON body."}});
     }
     // Pass to main validation wrapper
     const erArray: ErrorArray = fc.FcValidation.validationWrapper(newUser);

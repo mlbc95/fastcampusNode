@@ -120,5 +120,5 @@ export let postLogout = (req: Request, res: Response, next: NextFunction) => {
       res.clearCookie("connect.sid");
     });
   });
-  return res.status(200).json({msg: "loggedout"});
+  return res.status(200).json({message: "loggedout"});
 };
