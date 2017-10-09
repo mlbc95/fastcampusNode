@@ -8,19 +8,13 @@ import { LocalStrategyInfo } from "passport-local";
 import { WriteError } from "mongodb";
 import { prepForSend } from "../helperclasses/prepForSend";
 import { ErrorArray, ErrorMessage } from "../helperclasses/errors";
+import * as jwt from "express-jwt";
 const request = require("express-validator");
 import * as fc from "../helperclasses/fcValidation";
-/**
- * Handle preflighted headers
- */
-
-export let optionsSignUp = (req: Request, res: Response, next: NextFunction) => {
-    return res.status(200).header("Allow", "POST, OPTIONS");
-};
 
 /**
  * /auth/signup | POST | allows uers to sign up
- *  Content-Type: application/json     
+ *  Content-Type: application/json
  *  Information Expected:
  *      req.body (JSON):
  *          fName | string |  first name
@@ -55,11 +49,11 @@ export let optionsSignUp = (req: Request, res: Response, next: NextFunction) => 
  *              teacher.officeHours | Office Hours Array | ONLY RETURNS IF ROLE IS TEACHER, will be empty array
  *              student.completedCourses | Completed Courses Array | ONLY RETURNS IF STUDENT, will be empty array
  *              student.degree | Degrees Array | ONLY RETURNS IF STUDENT, degrees of user
- * 
+ *
  */
 export let postSignup = (req: Request, res: Response, next: NextFunction) => {
     // log request body
-    console.log("POST /auth/signup")
+    console.log("POST /auth/signup");
     console.log(req.body);
 
     // Create user object
@@ -72,7 +66,7 @@ export let postSignup = (req: Request, res: Response, next: NextFunction) => {
             newUser = new Teacher ({...req.body});
             break;
         default:
-            return res.status(400).json({err:{msg: "Please send a role along with JSON body."}});
+            return res.status(400).json({err: {msg: "Please send a role along with JSON body."}});
     }
     // Pass to main validation wrapper
     const erArray: ErrorArray = fc.FcValidation.validationWrapper(newUser);
@@ -90,7 +84,7 @@ export let postSignup = (req: Request, res: Response, next: NextFunction) => {
         }
         // If we found a user error out and return to client
         if (existingUser) {
-            return res.status(400).json({err:{msg: "Account with that username address already exists."}});
+            return res.status(400).json({err: {msg: "Account with that username address already exists."}});
         }
         // Did not find user, save to db and return object to client
         newUser.save((err: any) => {
