@@ -6,7 +6,8 @@ import { default as User, UserModel, AuthToken  } from "../models/User";
 import { prepForSend } from "../helperclasses/prepForSend";
 import { Request, Response, NextFunction } from "express";
 import { LocalStrategyInfo } from "passport-local";
-import { WriteError } from "mongodb";
+import { jwtKey } from "../helperclasses/jwtConfig";
+import * as jwt from "jsonwebtoken";
 const request = require("express-validator");
 /**
  * /auth/login | POST | Used to logout to the application
@@ -26,19 +27,21 @@ const request = require("express-validator");
  *              err | Error Array | contains an array of msg, param, value of the issues
  *      Success:
  *          200 (Success):
- *              Returns created user in JSON at user
- *              id | string | MongoDB ID
- *              fName | string |  first name
- *              lName | string | last name
- *              email | string | email
- *              username | string | username
- *              school | string | school, REQUIRED
- *              courses | Course Array | array of courses
- *              role | string | the role of the user
- *              teacher.status | string | ONLY RETURNS IF ROLE IS TEACHER
- *              teacher.officeHours | Office Hours Array | ONLY RETURNS IF ROLE IS TEACHER
- *              student.completedCourses | Completed Courses Array | ONLY RETURNS IF STUDENT
- *              student.degree | Degrees Array | ONLY RETURNS IF STUDENT, degrees of user
+ *              JSON:
+ *                user:
+ *                  id | string | MongoDB ID
+ *                  fName | string |  first name
+ *                  lName | string | last name
+ *                  email | string | email
+ *                  username | string | username
+ *                  school | string | school
+ *                  courses | Course Array | array of courses
+ *                  role | string | the role of the user
+ *                  teacher.status | string | ONLY RETURNS IF ROLE IS TEACHER
+ *                  teacher.officeHours | Office Hours Array | ONLY RETURNS IF ROLE IS TEACHER
+ *                  student.completedCourses | Completed Courses Array | ONLY RETURNS IF STUDENT
+ *                  student.degree | Degrees Array | ONLY RETURNS IF STUDENT, degrees of user
+ *                token | string | JWT token
  */
 
 /**
@@ -86,18 +89,14 @@ const request = require("express-validator");
     if (_.isEmpty(orignalUser)) {
         // User did not authenticate, send 401 and approriate header
       return res.header("WWW-Authenticate", "Basic, realm=\"FASTCampus\"").status(401).json({err: {msg: info.message}});
-    } else {
-      req.logIn(orignalUser, (err) => {
-        // Handle errors
-        if (!_.isEmpty(err)) {
-            erArray.errors.push(new ErrorMessage(err.errmsg.split(":")[0], err.errmsg.split(":")[1], err.errmsg.split(":")[3]));
-            return res.status(500).json({err: erArray.errors});
-        }
-        // Prep for sending and return
-        const user = prepForSend(orignalUser);
-        return res.status(200).json({user: user});
-      });
     }
+    // Prep for sending
+    const user = prepForSend(orignalUser);
+
+    // Create token
+    const token = jwt.sign(user, jwtKey, {expiresIn: 604800});
+
+    return res.status(200).json({user, token: "JWT " + token});
   // Forward request
   })(req, res, next);
 };

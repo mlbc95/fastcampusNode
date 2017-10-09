@@ -8,7 +8,8 @@ import { LocalStrategyInfo } from "passport-local";
 import { WriteError } from "mongodb";
 import { prepForSend } from "../helperclasses/prepForSend";
 import { ErrorArray, ErrorMessage } from "../helperclasses/errors";
-import * as jwt from "express-jwt";
+import { jwtKey } from "../helperclasses/jwtConfig";
+import * as jwt from "jsonwebtoken";
 const request = require("express-validator");
 import * as fc from "../helperclasses/fcValidation";
 
@@ -93,17 +94,14 @@ export let postSignup = (req: Request, res: Response, next: NextFunction) => {
                 erArray.errors.push(new ErrorMessage(err.errmsg.split(":")[0], err.errmsg.split(":")[1], err.errmsg.split(":")[3]));
                 return res.status(500).json({err: erArray.errors});
             }
-            // Login in
-            req.logIn(newUser, (err) => {
-                // Handle error
-                if (!_.isEmpty(err)) {
-                    erArray.errors.push(new ErrorMessage(err.errmsg.split(":")[0], err.errmsg.split(":")[1], err.errmsg.split(":")[3]));
-                    return res.status(500).json({err: erArray.errors});
-                }
-                // Clear out password info
-                const user = prepForSend(newUser);
-                res.status(201).json({user});
-            });
+            // Clear out password info
+            const user = prepForSend(newUser);
+
+            // Create token
+            const token = jwt.sign(user, jwtKey, {expiresIn: 604800});
+
+            // Return to client
+            res.status(201).json({user, token: "JWT " + token});
         });
     });
 };
