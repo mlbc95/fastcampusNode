@@ -105,7 +105,7 @@ export let postSignup = (req: Request, res: Response, next: NextFunction) => {
             const token = jwt.sign(user, jwtKey(), {expiresIn: 604800});
 
             // Return to client
-            res.status(201).json({user, token: "JWT " + token});
+            res.status(201).json({user, token});
         });
     });
 };

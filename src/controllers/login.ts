@@ -96,7 +96,7 @@ const request = require("express-validator");
     // Create token
     const token = jwt.sign(user, jwtKey(), {expiresIn: 604800});
 
-    return res.status(200).json({user, token: "JWT " + token});
+    return res.status(200).json({user, token});
   // Forward request
   })(req, res, next);
 };
