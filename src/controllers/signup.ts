@@ -89,7 +89,7 @@ export let postSignup = (req: Request, res: Response, next: NextFunction) => {
         }
         // If we found a user error out and return to client
         if (existingUser) {
-            return res.status(400).json({err: {msg: "Account with that username address already exists."}});
+            return res.status(400).json({error: {message: "Account with that username address already exists."}});
         }
         // Did not find user, save to db and return object to client
         newUser.save((err: any) => {
