@@ -78,14 +78,14 @@ export let postSignup = (req: Request, res: Response, next: NextFunction) => {
 
     // If we have errors pass them back to frontend
     if (!_.isEmpty(erArray.errors)) {
-        return res.status(400).json({err: erArray.errors});
+        return res.status(400).json({error: erArray.errors});
     }
     // Look for username
     User.findOne({ username: req.body.username }, (err, existingUser) => {
         // Handle error
         if (!_.isEmpty(err)) {
             erArray.errors.push(new ErrorMessage(err.errmsg.split(":")[0], err.errmsg.split(":")[1], err.errmsg.split(":")[3]));
-            return res.status(500).json({err: erArray.errors});
+            return res.status(500).json({error: erArray.errors});
         }
         // If we found a user error out and return to client
         if (existingUser) {
@@ -96,7 +96,7 @@ export let postSignup = (req: Request, res: Response, next: NextFunction) => {
             // Handle error
             if (!_.isEmpty(err)) {
                 erArray.errors.push(new ErrorMessage(err.errmsg.split(":")[0], err.errmsg.split(":")[1], err.errmsg.split(":")[3]));
-                return res.status(500).json({err: erArray.errors});
+                return res.status(500).json({error: erArray.errors});
             }
             // Clear out password info
             const user = prepForSend(newUser);

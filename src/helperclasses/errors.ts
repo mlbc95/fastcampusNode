@@ -1,11 +1,11 @@
 export class ErrorMessage {
-    constructor(msg: string, param: string, value: any) {
-      this.param = param;
-      this.msg = msg;
+    constructor(message: string, parameter: string, value: any) {
+      this.parameter = parameter;
+      this.message = message;
       this.value = value;
     }
-    msg: string;
-    param: string;
+    message: string;
+    parameter: string;
     value: any;
     location: string;
     nestedErrors: Array<ErrorMessage>;

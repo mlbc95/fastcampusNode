@@ -76,19 +76,19 @@ const request = require("express-validator");
 
   // If we have errors handle them
   if (!_.isEmpty(errors)) {
-    return res.header("WWW-Authenticate", "Basic, realm=\"FASTCampus\"").status(401).json({err: errors});
+    return res.header("WWW-Authenticate", "Basic, realm=\"FASTCampus\"").status(401).json({error: errors});
   }
 
   // No errors proceed and try to login
-  passport.authenticate("local", (err: Error, orignalUser: UserModel, info: LocalStrategyInfo) => {
+  passport.authenticate("local", (error: Error, orignalUser: UserModel, info: LocalStrategyInfo) => {
     // Handle error
-    if (!_.isEmpty(err)) {
-      return res.status(500).json({err: err});
+    if (!_.isEmpty(error)) {
+      return res.status(500).json({error});
     }
     // If we do not get a user
     if (_.isEmpty(orignalUser)) {
         // User did not authenticate, send 401 and approriate header
-      return res.header("WWW-Authenticate", "Basic, realm=\"FASTCampus\"").status(401).json({err: {msg: info.message}});
+      return res.header("WWW-Authenticate", "Basic, realm=\"FASTCampus\"").status(401).json({error: {message: info.message}});
     }
     // Prep for sending
     const user = prepForSend(orignalUser);
@@ -103,11 +103,11 @@ const request = require("express-validator");
 export let postLogout = (req: Request, res: Response, next: NextFunction) => {
   const erArray: ErrorArray = new ErrorArray();
   // Find user
-  User.findById(req.body.id, function (err: any, user: UserModel) {
+  User.findById(req.body.id, function (error: any, user: UserModel) {
     // Handle error
-    if (!_.isEmpty(err)) {
-      erArray.errors.push(new ErrorMessage(err.errmsg.split(":")[0], err.errmsg.split(":")[1], err.errmsg.split(":")[3]));
-      return res.status(500).json({err: erArray.errors});
+    if (!_.isEmpty(error)) {
+      erArray.errors.push(new ErrorMessage(error.errmsg.split(":")[0], error.errmsg.split(":")[1], error.errmsg.split(":")[3]));
+      return res.status(500).json({error: erArray.errors});
     }
     // Update last login
     user.lastLogin = new Date();
@@ -115,7 +115,7 @@ export let postLogout = (req: Request, res: Response, next: NextFunction) => {
     user.save((err: any) => {
       if (!_.isEmpty(err)) {
         erArray.errors.push(new ErrorMessage(err.errmsg.split(":")[0], err.errmsg.split(":")[1], err.errmsg.split(":")[3]));
-        return res.status(500).json({err: erArray.errors});
+        return res.status(500).json({error: erArray.errors});
       }
       res.clearCookie("connect.sid");
     });
