@@ -6,120 +6,104 @@ import { default as Teacher, TeacherModel } from "../models/Teacher";
 import { Request, Response, NextFunction } from "express";
 import { LocalStrategyInfo } from "passport-local";
 import { WriteError } from "mongodb";
+import { prepForSend } from "../helperclasses/prepForSend";
 import { ErrorArray, ErrorMessage } from "../helperclasses/errors";
+import * as jwt from "express-jwt";
 const request = require("express-validator");
 import * as fc from "../helperclasses/fcValidation";
-/**
- * Handle preflighted headers
- */
-export let optionsSignUp = (req: Request, res: Response, next: NextFunction) => {
-    return res.status(200).header("Allow", "POST, OPTIONS");
-};
 
 /**
+ * /auth/signup | POST | allows uers to sign up
+ *  Content-Type: application/json
+ *  Information Expected:
+ *      req.body (JSON):
+ *          fName | string |  first name
+ *          lName | string | last name
+ *          email | string | email, REQUIRED
+ *          username | string | username, REQUIRED
+ *          password | string | password, REQUIRED
+ *          school | string | school, REQUIRED
+ *          degree | Degrees Array | degrees of user
+ *      req.query["role"]:
+ *          string | role | role of the user to add, should be passed in req.query
+ *  Returns:
+ *      Fail:
+ *          400 (Bad Request):
+ *              Caused by validation errors, username/email being present
+ *              err | Error Array | contains an array of msg, param, value of the issues
+ *          500 (Internal Serve Error):
+ *              Caused by the server encountering an internal error
+ *              err | Error Array | contains an array of msg, param, value of the issues
+ *      Success:
+ *          201 (Created):
+ *              Returns created user in JSON at user
+ *              id | string | MongoDB ID
+ *              fName | string |  first name
+ *              lName | string | last name
+ *              email | string | email
+ *              username | string | username
+ *              school | string | school, REQUIRED
+ *              courses | Course Array | will be an empty array at this point
+ *              role | string | the role of the user
+ *              teacher.status | string | ONLY RETURNS IF ROLE IS TEACHER
+ *              teacher.officeHours | Office Hours Array | ONLY RETURNS IF ROLE IS TEACHER, will be empty array
+ *              student.completedCourses | Completed Courses Array | ONLY RETURNS IF STUDENT, will be empty array
+ *              student.degree | Degrees Array | ONLY RETURNS IF STUDENT, degrees of user
  *
- * @param req
- * @param res
- * @param next
  */
 export let postSignup = (req: Request, res: Response, next: NextFunction) => {
     // log request body
+    console.log("POST /auth/signup");
     console.log(req.body);
 
-    // Create array object we can push on for custom error messages
-    const erArray: ErrorArray = new ErrorArray();
-
-    /**
-     * The switch handles different users types based on the query
-     */
+    // Create user object
+    let newUser: any;
     switch (req.query["role"]) {
         case "student":
-            // Run validation on the student object
-            fc.FcValidation.studentValidationWrapper(req.body, erArray);
-
-            // If we got errors error out and return to client
-            if (!_.isEmpty(erArray.errors)) {
-                req.flash("errors", erArray);
-                return res.status(400).json({msg: "Data did not pass validation", err: erArray.errors, data: req.body});
-            }
-
-            // We passed validation create new student
-            const student = new Student({...req.body});
-
-            // Make sure that the username does not exist in the db already
-            User.findOne({ username: req.body.username }, (err, existingUser) => {
-                // Handle error
-                if (err) {
-                    return res.status(500).json({err: err});
-                }
-                // If we found a user error out and return to client
-                if (existingUser) {
-                    return res.status(400).json({msg: "Account with that username address already exists."});
-                }
-                // Did not find user, save to db and return object to client
-                student.save((err) => {
-                    if (err) {
-                        return res.status(500).json({err: err});
-                    }
-                    req.logIn(student, (err) => {
-                        if (!_.isEmpty(err)) {
-                            console.log("here");
-                            return res.status(500).json({err: err});
-                        }
-                        // Forced to cast object to StudentModel
-                        _.forEach(student, function(castedStudent: StudentModel) {
-                            castedStudent.password = undefined;
-                            castedStudent.passwordResetExpires = undefined;
-                            castedStudent.passwordResetToken = undefined;
-                        });
-                        res.status(201).json({user: student});
-                    });
-                });
-            });
+            newUser = new Student ({...req.body});
             break;
         case "teacher":
-            // Run validation on the student object
-            fc.FcValidation.teacherValidationWrapper(req.body, erArray);
-
-            // If we got errors error out and return to client
-            if (!_.isEmpty(erArray.errors)) {
-                return res.status(400).json({msg: "Data did not pass validation", err: erArray.errors, data: req.body});
-            }
-
-            // We passed validation create new student
-            const teacher = new Teacher({...req.body});
-
-            // Make sure that the username does not exist in the db already
-            User.findOne({ username: req.body.username }, (err, existingUser) => {
-                // Handle error
-                if (err) {
-                    return res.status(500).json({err: err});
-                }
-                // If we found a user error out and return to client
-                if (existingUser) {
-                    return res.status(400).json({msg: "Account with that username address already exists."});
-                }
-                // Did not find user, save to db and return object to client
-                teacher.save((err) => {
-                    if (err) {
-                        return res.status(500).json({err: err});
-                    }
-                    req.logIn(teacher, (err) => {
-                        if (err) {
-                            return res.status(500).json({err: err});
-                        }
-                        // Forced to cast object to StudentModel
-                        _.forEach(teacher, function (castedTeacher: TeacherModel) {
-                            castedTeacher.password = undefined;
-                            castedTeacher.passwordResetExpires = undefined;
-                            castedTeacher.passwordResetToken = undefined;
-                        });
-                        res.status(201).json({user: teacher});
-                    });
-                });
-            });
+            newUser = new Teacher ({...req.body});
             break;
         default:
-            return res.json(400);
+            return res.status(400).json({err: {msg: "Please send a role along with JSON body."}});
     }
+    // Pass to main validation wrapper
+    const erArray: ErrorArray = fc.FcValidation.validationWrapper(newUser);
+
+    // If we have errors pass them back to frontend
+    if (!_.isEmpty(erArray.errors)) {
+        return res.status(400).json({err: erArray.errors});
+    }
+    // Look for username
+    User.findOne({ username: req.body.username }, (err, existingUser) => {
+        // Handle error
+        if (!_.isEmpty(err)) {
+            erArray.errors.push(new ErrorMessage(err.errmsg.split(":")[0], err.errmsg.split(":")[1], err.errmsg.split(":")[3]));
+            return res.status(500).json({err: erArray.errors});
+        }
+        // If we found a user error out and return to client
+        if (existingUser) {
+            return res.status(400).json({err: {msg: "Account with that username address already exists."}});
+        }
+        // Did not find user, save to db and return object to client
+        newUser.save((err: any) => {
+            // Handle error
+            if (!_.isEmpty(err)) {
+                erArray.errors.push(new ErrorMessage(err.errmsg.split(":")[0], err.errmsg.split(":")[1], err.errmsg.split(":")[3]));
+                return res.status(500).json({err: erArray.errors});
+            }
+            // Login in
+            req.logIn(newUser, (err) => {
+                // Handle error
+                if (!_.isEmpty(err)) {
+                    erArray.errors.push(new ErrorMessage(err.errmsg.split(":")[0], err.errmsg.split(":")[1], err.errmsg.split(":")[3]));
+                    return res.status(500).json({err: erArray.errors});
+                }
+                // Clear out password info
+                const user = prepForSend(newUser);
+                res.status(201).json({user});
+            });
+        });
+    });
 };
