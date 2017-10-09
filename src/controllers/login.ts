@@ -17,9 +17,10 @@ const request = require("express-validator");
  *          password | string | password
  *  Returns:
  *      Fail:
- *          400 (Bad Request):
+ *          401 (Unauthorized):
  *              Caused by validation errors, username/email being present
  *              err | Error Array | contains an array of msg, param, value of the issues
+ *              WWW-Authenticate | header | header required by RFC 7235, relam set to FASTCampus
  *          500 (Internal Serve Error):
  *              Caused by the server encountering an internal error
  *              err | Error Array | contains an array of msg, param, value of the issues
@@ -32,11 +33,11 @@ const request = require("express-validator");
  *              email | string | email
  *              username | string | username
  *              school | string | school, REQUIRED
- *              courses | Course Array | will be an empty array at this point
+ *              courses | Course Array | array of courses
  *              role | string | the role of the user
  *              teacher.status | string | ONLY RETURNS IF ROLE IS TEACHER
- *              teacher.officeHours | Office Hours Array | ONLY RETURNS IF ROLE IS TEACHER, will be empty array
- *              student.completedCourses | Completed Courses Array | ONLY RETURNS IF STUDENT, will be empty array
+ *              teacher.officeHours | Office Hours Array | ONLY RETURNS IF ROLE IS TEACHER
+ *              student.completedCourses | Completed Courses Array | ONLY RETURNS IF STUDENT
  *              student.degree | Degrees Array | ONLY RETURNS IF STUDENT, degrees of user
  */
 
@@ -56,21 +57,10 @@ const request = require("express-validator");
  *              err | Error Array | contains an array of msg, param, value of the issues
  *      Success:
  *          200 (Success):
- *              Returns created user in JSON at user
- *              id | string | MongoDB ID
- *              fName | string |  first name
- *              lName | string | last name
- *              email | string | email
- *              username | string | username
- *              school | string | school, REQUIRED
- *              courses | Course Array | will be an empty array at this point
- *              role | string | the role of the user
- *              teacher.status | string | ONLY RETURNS IF ROLE IS TEACHER
- *              teacher.officeHours | Office Hours Array | ONLY RETURNS IF ROLE IS TEACHER, will be empty array
- *              student.completedCourses | Completed Courses Array | ONLY RETURNS IF STUDENT, will be empty array
- *              student.degree | Degrees Array | ONLY RETURNS IF STUDENT, degrees of user
+ *              msg | string | message to let frontend know that we logged out
  */
  export let postSignin = (req: Request, res: Response, next: NextFunction) => {
+   // Log for the console
   console.log("POST /auth/login");
   console.log(req.body);
    // Check the incoming request
@@ -80,6 +70,7 @@ const request = require("express-validator");
   // Create error array
   const errors = req.validationErrors();
   const erArray: ErrorArray = new ErrorArray();
+
   // If we have errors handle them
   if (!_.isEmpty(errors)) {
     return res.header("WWW-Authenticate", "Basic, realm=\"FASTCampus\"").status(401).json({err: errors});
@@ -87,7 +78,6 @@ const request = require("express-validator");
 
   // No errors proceed and try to login
   passport.authenticate("local", (err: Error, orignalUser: UserModel, info: LocalStrategyInfo) => {
-    console.log("here");
     // Handle error
     if (!_.isEmpty(err)) {
       return res.status(500).json({err: err});
@@ -103,7 +93,7 @@ const request = require("express-validator");
             erArray.errors.push(new ErrorMessage(err.errmsg.split(":")[0], err.errmsg.split(":")[1], err.errmsg.split(":")[3]));
             return res.status(500).json({err: erArray.errors});
         }
-        // Prep for sending
+        // Prep for sending and return
         const user = prepForSend(orignalUser);
         return res.status(200).json({user: user});
       });
@@ -112,15 +102,21 @@ const request = require("express-validator");
   })(req, res, next);
 };
 export let postLogout = (req: Request, res: Response, next: NextFunction) => {
+  const erArray: ErrorArray = new ErrorArray();
+  // Find user
   User.findById(req.body.id, function (err: any, user: UserModel) {
     // Handle error
-    if (err) {
-      return res.status(500).json({err: err});
+    if (!_.isEmpty(err)) {
+      erArray.errors.push(new ErrorMessage(err.errmsg.split(":")[0], err.errmsg.split(":")[1], err.errmsg.split(":")[3]));
+      return res.status(500).json({err: erArray.errors});
     }
+    // Update last login
     user.lastLogin = new Date();
+    // Save user
     user.save((err: any) => {
-      if (err) {
-        return res.status(500).json({err: err});
+      if (!_.isEmpty(err)) {
+        erArray.errors.push(new ErrorMessage(err.errmsg.split(":")[0], err.errmsg.split(":")[1], err.errmsg.split(":")[3]));
+        return res.status(500).json({err: erArray.errors});
       }
       res.clearCookie("connect.sid");
     });
