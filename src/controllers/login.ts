@@ -6,7 +6,7 @@ import { default as User, UserModel, AuthToken  } from "../models/User";
 import { prepForSend } from "../helperclasses/prepForSend";
 import { Request, Response, NextFunction } from "express";
 import { LocalStrategyInfo } from "passport-local";
-import { jwtKey } from "../helperclasses/jwtConfig";
+import { jwtKey } from "../config/jwt";
 import * as jwt from "jsonwebtoken";
 const request = require("express-validator");
 /**

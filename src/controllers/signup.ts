@@ -8,7 +8,7 @@ import { LocalStrategyInfo } from "passport-local";
 import { WriteError } from "mongodb";
 import { prepForSend } from "../helperclasses/prepForSend";
 import { ErrorArray, ErrorMessage } from "../helperclasses/errors";
-import { jwtKey } from "../helperclasses/jwtConfig";
+import { jwtKey } from "../config/jwt";
 import * as jwt from "jsonwebtoken";
 const request = require("express-validator");
 import * as fc from "../helperclasses/fcValidation";
