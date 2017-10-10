@@ -7,6 +7,7 @@ export interface Lab extends mongoose.Document {
     room: string;
     name: string;
     description: string;
+    relatedCourses: string[];
 }
 
 export type DayOfWeek = {
@@ -20,7 +21,8 @@ export const labSchema = new mongoose.Schema({
     building: String,
     room: String,
     name: String,
-    description: String
+    description: String,
+    relatedCourses: Array
 });
 
 export const Lab = mongoose.model("Lab", labSchema);
