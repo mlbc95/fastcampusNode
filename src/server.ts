@@ -36,6 +36,7 @@ dotenv.config({ path: ".env.example" });
  */
 import * as signupController from "./controllers/signup";
 import * as loginController from "./controllers/login";
+import * as logoutController from "./controllers/logout";
 import * as studentController from "./controllers/student";
 import * as teacherController from "./controllers/teacher";
 import * as courseController from "./controllers/course";
@@ -120,20 +121,20 @@ app.use(express.static(path.join(__dirname, "public"), { maxAge: 31557600000 }))
 /**
  * Primary app routes.
  */
-// Singup and login routes
+// Singup routes
 app.post("/auth/signup", signupController.postSignup);
+// Login routes
 app.post("/auth/login", loginController.postSignin);
-app.post("/auth/logout", loginController.postLogout);
-// Additional Student routes
+// Logout routes
+app.post("/auth/logout", logoutController.postLogout);
+// Student routes
 app.get("/students", studentController.getStudent);
 app.patch("/students", studentController.patchStudent);
 app.delete("/students", studentController.deleteStudent);
-app.options("/students", studentController.optionsStudent);
-// Additional Teacher routes
+// Teacher routes
 app.get("/teachers", teacherController.getTeacher);
 app.patch("/teachers", teacherController.patchTeacher);
 app.delete("/teachers", teacherController.deleteTeacher);
-app.options("/teachers", teacherController.optionsTeacher);
 // Course routes
 app.post("/courses", courseController.postCourse);
 app.get("/courses", courseController.getCourse);
