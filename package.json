@@ -87,6 +87,7 @@
     "express-session": "^1.15.6",
     "express-validator": "^3.2.1",
     "fbgraph": "^1.4.1",
+    "firebase-admin": "^5.4.2",
     "jest": "^19.0.2",
     "jsonwebtoken": "^8.0.1",
     "lodash": "^4.17.4",
