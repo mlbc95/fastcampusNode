@@ -15,9 +15,9 @@ export let postConvo = (req: Request, res: Response, next: NextFunction) => {
     const newConvoRef = convoRef.push();
     const today = new Date();
     newConvoRef.update({users: uArray, messages: [], created: today}).then(() => {
-        curl.getJSON("https://fastcampusdb.firebaseio.com/users.json", {}, (err: any, response: any, body: any) => {
-            console.log(body);
-            _.forIn(body, (userBody, id) => {
+        admin.database().ref("users").once("value", (snap) => {
+            console.log(snap.val());
+            _.forIn(snap.val(), (userBody, id) => {
                 console.log(userBody);
                 _.forEach(req.body.users, (user) => {
                     if (id === user) {
