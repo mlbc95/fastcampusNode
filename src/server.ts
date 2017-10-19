@@ -18,11 +18,16 @@ import * as validator from "validator";
 import * as lodash from "lodash";
 import * as expressValidator from "express-validator";
 import * as jwt from "./config/jwt";
-// import * as swaggerTools from "swagger-tools";
-// import  * as YAML from "yamljs";
-// const swaggerDoc = YAML.load("openapi.yaml");
-
-
+import * as admin from "firebase-admin";
+const serviceAccount = require("./fastcampusdbServiceKey.json");
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount),
+  databaseURL: "https://fastcampusdb.firebaseio.com"
+});
+const convoRef = admin.database().ref("convos");
+const newConvoRef = convoRef.push();
+const today = new Date();
+newConvoRef.update({users: ["asdf"], messages: [], created: today}).then(() => {});
 const MongoStore = mongo(session);
 
 /**
@@ -39,6 +44,7 @@ import * as loginController from "./controllers/login";
 import * as studentController from "./controllers/student";
 import * as teacherController from "./controllers/teacher";
 import * as courseController from "./controllers/course";
+import * as convoController from "./controllers/convo";
 
 /**
  * API keys and Passport configuration.
@@ -57,42 +63,18 @@ const app = express();
  * Connect to MongoDB.
  */
 // mongoose.Promise = global.Promise;
-mongoose.connect(process.env.MONGODB_URI || process.env.MONGOLAB_URI);
-
-mongoose.connection.on("error", () => {
-  console.log("MongoDB connection error. Please make sure MongoDB is running.");
-  process.exit();
-});
 
 
 /**
  * Express configuration.
  */
 app.set("port", process.env.PORT || 3000);
-app.set("views", path.join(__dirname, "../views"));
-app.set("view engine", "pug");
 app.use(compression());
 app.use(logger("dev"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(expressValidator());
-app.use(session({
-  resave: true,
-  saveUninitialized: true,
-  secret: process.env.SESSION_SECRET,
-  store: new MongoStore({
-    url: process.env.MONGODB_URI || process.env.MONGOLAB_URI,
-    autoReconnect: true
-  })
-}));
-app.use(passport.initialize());
-app.use(passport.session());
-app.use(flash());
 app.use(lusca.xssProtection(true));
-app.use((req, res, next) => {
-  res.locals.user = req.user;
-  next();
-});
 
 
 // Allow CORS
@@ -121,24 +103,7 @@ app.use(express.static(path.join(__dirname, "public"), { maxAge: 31557600000 }))
  * Primary app routes.
  */
 // Singup and login routes
-app.post("/auth/signup", signupController.postSignup);
-app.post("/auth/login", loginController.postSignin);
-app.post("/auth/logout", loginController.postLogout);
-// Additional Student routes
-app.get("/students", studentController.getStudent);
-app.patch("/students", studentController.patchStudent);
-app.delete("/students", studentController.deleteStudent);
-app.options("/students", studentController.optionsStudent);
-// Additional Teacher routes
-app.get("/teachers", teacherController.getTeacher);
-app.patch("/teachers", teacherController.patchTeacher);
-app.delete("/teachers", teacherController.deleteTeacher);
-app.options("/teachers", teacherController.optionsTeacher);
-// Course routes
-app.post("/courses", courseController.postCourse);
-app.get("/courses", courseController.getCourse);
-app.patch("/courses", courseController.patchTutor);
-app.delete("/courses", courseController.deleteCourse);
+app.post("/convo", convoController.postConvo);
 
 app.use(function (req, res) {
   return res.status(404).json({err: "invalid request"});

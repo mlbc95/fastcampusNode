@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "fastcampusdb",
+  "private_key_id": "31e8b96d52fad98ebd12628eb3e3dac93aa39edc",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDfQcqWVb7XtVsq\n1YneA3EGQPL69bS0/wlrt4qO7G1tpBauG6EvGTaRKWZB5PwJMnpIj3sHEAalWE1A\ne6CYRD5OoAYNo/ZgoF6IHnKoRgTAcZ4W2e70dMvG6jfbN1GIAwSBuSx/41Ilykop\nJ8zbxOG8P24gSSDyenxxydNHQjNoxuXnc6GguhxaCH1PEqGnNaxJ+M67Ux5xoMZa\nN3axlCZLNX2zkrEsUxEO9WOeCPjy45Gl2vUGG3FQJ9y7goYmm35l6uWrsKnZY2ft\nCT0PEHCAoNdybfgdVopuzUOQvYZcbMUyg212ofa5pRugFatOn2MypL7jp5j09pTj\n2g8FjME5AgMBAAECggEADP1d2UykoZYZl3bMclySpk2f3ZJveNL4dDod/5YZwVX5\nZFiy8oO16TEGlDmroOjdFMz1WGo6KsNmHkT7KXTaB7bXl1JVhtZ53ZNg8jG9u8k4\njKWSOcq0Yw7UYGa58Y8UY2xX3pqGOHDqSvX3/Ub5p9tsb8g1eKpABJpctsIPLe69\n1HpRHCJ5oAur3pV6NSRz400LIQyHWm8J27oP22wQ88FVHEY8jKORDPlgnLDTopGk\nJEiWTxjrVp0PPkDRJrjnyvxFjVRKqm+fdItimwUk2o5Y+vqyp6uIjcZcaiqg/1Bm\n6gLa9LX8yaERuA7uIPcawtkWlW8cru+6pAj/z2GggQKBgQD079mQE/9qvfPP2d4r\nSgywW+ldnfjyzvjV251W1wHvKJhq/FQPnxKUtNQdYEUaG9jGVLgpvSvzqDjXHOho\nPfPx/AZXmB12Xovynt8USCE3sWut2CqqwBDTL21kjIC/Brrq2ozGM1SbeHxnIwww\ni9KotUO2v9B5KsiqT+ucElW3gQKBgQDpV0Lz+I/GrkewtIiKKUC2/0s5JnBKRNku\nZtucSLa6s4ReE+lnmJtiYDo6AmuoB7BwgMdy2GY8CUWP6qWahRzEkoGNHxMBFB7B\nkdDBxVTkUklgZcrIefgMimWbZDTHRXzvGl9wXa6neMqOZYvHa8zfawTXVIsKzmxZ\nHgFO2NWluQKBgGa6vjY2nPbJCpxPlWX0ndPOCNex7Prxod4YSSpl7TLAhQTCJgOT\nRTjHivtzKChmK4oreD5RUEDWeliGkFdAPLNub76HVzwRNYMh7RBVnFD+gdodAvAw\ntB3PE4OLhmgYS4c6+LYcS00VwJ+FTJSD4GvP8sGQO8DGF/mOoZQJAJiBAoGBALMs\nGTIjM6t42X2bMpj8Uj/ySj2pAWJV+XpC6vDXeNBl1gczPO8aZH4mq68teqL8vIO2\nru/FsML6z5pRsDW1bsCWSrolGT+jxnYWVHjl4GitssA9iXdlCI4Am0K1sD0vY15q\nHsy2cs0P2GF9IdbQNPF9SKtbtKRomxPXEWQM5gipAoGAX5LDRFXkLDZzzP0AQM/p\nr6gaUv9zhPU0SXsmaZIoEtfoWAPBmmo1kKokjx1PDzMcs8+1g0CAWc3VVib7e6iX\ncCnPFpTlzQFXTEcMXxh78YTDu46No+esmsJszskgfCmnRFNMUnswVMTZcMCI5nR3\ntTcKnKQ5/Bghvj5sNjLNLBE=\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-vz83d@fastcampusdb.iam.gserviceaccount.com",
+  "client_id": "103385936501407686884",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://accounts.google.com/o/oauth2/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-vz83d%40fastcampusdb.iam.gserviceaccount.com"
+}

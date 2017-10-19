@@ -9,6 +9,6 @@ declare namespace Express {
 interface Flash {
     flash(type: string, message: any): void;
 }
-
+declare module 'curl';
 declare module "express-flash";
 
