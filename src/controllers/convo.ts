@@ -3,7 +3,18 @@ import * as _ from "lodash";
 import { Request, Response, NextFunction } from "express";
 import * as admin from "firebase-admin";
 import * as curl from "curl";
-
+/**
+ * @api {post} /convo Create a new conversation between users
+ * @apiName CreateConvo
+ * @apiGroup Convo
+ * 
+ * @apiParam {Array} userIds An array of ids to be associated with the conversation
+ * 
+ * @apiSuccess {String} ok Sends 200 on success
+ * 
+ * @apiSuccessExample Success-Response:
+ * HTTP/1.1 200 OK
+ */
 export let postConvo = (req: Request, res: Response, next: NextFunction) => {
     console.log(req.query);
     const uArray: any = [];

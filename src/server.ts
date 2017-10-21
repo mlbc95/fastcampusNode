@@ -8,6 +8,7 @@ import * as logger from "morgan";
 import * as errorHandler from "errorhandler";
 import * as lusca from "lusca";
 import * as admin from "firebase-admin";
+import * as path from "path";
 const serviceAccount = require("./fastcampusdbServiceKey.json");
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
@@ -35,7 +36,7 @@ app.use(logger("dev"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(lusca.xssProtection(true));
-
+app.use(express.static(path.join(__dirname, "public"), { maxAge: 31557600000 }));
 
 // Allow CORS
 app.use("/*", function(req, res, next){
