@@ -17,7 +17,6 @@ import * as passport from "passport";
 import * as validator from "validator";
 import * as lodash from "lodash";
 import * as expressValidator from "express-validator";
-import * as jwt from "./config/jwt";
 import * as admin from "firebase-admin";
 const serviceAccount = require("./fastcampusdbServiceKey.json");
 admin.initializeApp({
@@ -34,17 +33,12 @@ dotenv.config({ path: ".env.example" });
 /**
  * Controllers (route handlers).
  */
-import * as signupController from "./controllers/signup";
-import * as loginController from "./controllers/login";
-import * as studentController from "./controllers/student";
-import * as teacherController from "./controllers/teacher";
-import * as courseController from "./controllers/course";
 import * as convoController from "./controllers/convo";
+import * as tutorController from "./controllers/tutor";
 
 /**
  * API keys and Passport configuration.
  */
-import * as passportConfig from "./config/passport";
 
 // enabling Cors for typescript
 import * as cors from "cors";
@@ -99,6 +93,7 @@ app.use(express.static(path.join(__dirname, "public"), { maxAge: 31557600000 }))
  */
 // Singup and login routes
 app.post("/convo", convoController.postConvo);
+app.post("/tutor", tutorController.postTutor);
 
 app.use(function (req, res) {
   return res.status(404).json({err: "invalid request"});

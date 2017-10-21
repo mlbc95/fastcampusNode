@@ -1,10 +1,9 @@
 import * as passport from "passport";
 import * as _ from "lodash";
 import { Request, Response, NextFunction } from "express";
-import { ErrorArray, ErrorMessage } from "../helperclasses/errors";
-import * as fc from "../helperclasses/fcValidation";
 import * as admin from "firebase-admin";
 import * as curl from "curl";
+
 export let postConvo = (req: Request, res: Response, next: NextFunction) => {
     console.log(req.query);
     const uArray: any = [];

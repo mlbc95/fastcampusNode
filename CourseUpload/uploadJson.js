@@ -21,8 +21,11 @@ fs.readFile('./output.txt', (err, data) => {
   let obj = JSON.parse(data)
   _.forIn(obj, (courses, subjectName) => {
       console.log(subjectName);
-    const subjectRef = courseRef.child(subjectName.toLowerCase().replace(/ /g, '_'))
+      const c = subjectName.toLowerCase().replace(/ /g, '_').replace(/&/g, 'and');
+      console.log(c);
+    const subjectRef = courseRef.child(c)
     _.forIn(courses, (course, courseNumber) => {
+      console.log(courseNumber);
       const individualCourseRef = subjectRef.child(courseNumber)
       individualCourseRef.set({name: course.name})
       _.forEach(course.sections, (section, sectionName) => {

@@ -1,30 +1,4 @@
-startSUBJECT: Accounting
-Fundamentals of Financial Accounting
-Managerial Accounting
-Financial Accounting and Reporting I
-Financial Accounting and Reporting II
-Cost Accounting
-Accounting Information Systems
-Income Taxes
-Internship in Accounting
-Special Administration Problems - Accounting (VITA) Program
-Independent Study in Accounting
-Financial Accounting and Reporting III
-Financial Accounting and Reporting IV
-Auditing
-Financial and Managerial Accounting
-Financial Reporting And Analysis
-Professional Accountancy I
-Professional Accountancy II
-Cost Systems Analysis
-Information Systems in Accounting
-Tax Research
-Graduate Internship in Accounting
-Individual Research in Accounting
-Graduate Topics in Taxation
-SUBJECT: Adult Education
-Internship
-SUBJECT: Air Science
+startSUBJECT: Air Science
 The Air Force Today
 Leadership Laboratory
 The Air Force Way
@@ -427,6 +401,7 @@ Microeconomic Analysis
 Econometric Theory and Methods
 Topics in Applied Econometrics
 Monetary Theory and Policy
+SUBJECT: Educ. Research & Eval. Method
 Problems
 Classroom Measurement and Evaluation
 Educational Research Methods and Design
