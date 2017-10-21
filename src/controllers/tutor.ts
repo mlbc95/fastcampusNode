@@ -1,7 +1,6 @@
 import * as _ from "lodash";
 import { Request, Response, NextFunction } from "express";
 import * as admin from "firebase-admin";
-import * as curl from "curl";
 /**
  * @api {post} /tutor Requests tutors available for student
  * @apiName PostTutor
