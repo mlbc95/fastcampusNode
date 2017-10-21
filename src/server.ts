@@ -24,11 +24,6 @@ admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
   databaseURL: "https://fastcampusdb.firebaseio.com"
 });
-const convoRef = admin.database().ref("convos");
-const newConvoRef = convoRef.push();
-const today = new Date();
-newConvoRef.update({users: ["asdf"], messages: [], created: today}).then(() => {});
-const MongoStore = mongo(session);
 
 /**
  * Load environment variables from .env file, where API keys and passwords are configured.
