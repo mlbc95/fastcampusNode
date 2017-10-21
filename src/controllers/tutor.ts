@@ -3,15 +3,23 @@ import * as _ from "lodash";
 import { Request, Response, NextFunction } from "express";
 import * as admin from "firebase-admin";
 import * as curl from "curl";
-
+/**
+ * @api {post} /tutor Requests tutors available for student
+ * @apiName PostTutor
+ * @apiGroup Tutor
+ *
+ * @apiParam {String} id Users unique ID
+ *
+ * @apiSuccess {Array} tutors An arrya of tutors available for the user
+ */
 export let postTutor = (req: Request, res: Response, next: NextFunction) => {
     console.log(req.query);
     const userId: string = req.body.user;
     const convoRef = admin.database().ref("users");
     // Get a snapshot of the user
     admin.database().ref("users/" + userId).once("value", (snap) => {
-        let courseArray: any = [];
-        let returnArray: any = [];
+        const courseArray: any = [];
+        const returnArray: any = [];
         console.log(snap.val());
         // Get a snapshot of the courses
         admin.database().ref("courses").once("value", (coursesSnap) => {
