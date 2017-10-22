@@ -2,7 +2,7 @@ import * as _ from "lodash";
 import { Request, Response, NextFunction } from "express";
 import * as admin from "firebase-admin";
 /**
- * @api {post} /convo Create a new conversation between users
+ * @api {post} /conversation Create a new conversation between users
  * @apiName CreateConvo
  * @apiGroup Convo
  *

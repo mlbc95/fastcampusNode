@@ -18,7 +18,7 @@ admin.initializeApp({
 /**
  * Controllers (route handlers).
  */
-import * as convoController from "./controllers/convo";
+import * as convoController from "./controllers/conversation";
 import * as tutorController from "./controllers/tutor";
 import * as appointmentController from "./controllers/appointment";
 
@@ -56,7 +56,7 @@ app.use("/*", function(req, res, next) {
  * Primary app routes.
  */
 // Singup and login routes
-app.post("/convo", convoController.postConvo);
+app.post("/conversation", convoController.postConvo);
 app.post("/tutor", tutorController.postTutor);
 app.post("/appointment", appointmentController.postAppointment);
 
