@@ -3,22 +3,12 @@
  */
 import * as express from "express";
 import * as compression from "compression";  // compresses requests
-import * as session from "express-session";
 import * as bodyParser from "body-parser";
 import * as logger from "morgan";
 import * as errorHandler from "errorhandler";
 import * as lusca from "lusca";
-import * as dotenv from "dotenv";
-import * as mongo from "connect-mongo";
-import * as flash from "express-flash";
-import * as path from "path";
-import * as mongoose from "mongoose";
-import * as passport from "passport";
-import * as validator from "validator";
-import * as lodash from "lodash";
-import * as expressValidator from "express-validator";
-import * as jwt from "./config/jwt";
 import * as admin from "firebase-admin";
+import * as path from "path";
 const serviceAccount = require("./fastcampusdbServiceKey.json");
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
@@ -26,38 +16,16 @@ admin.initializeApp({
 });
 
 /**
- * Load environment variables from .env file, where API keys and passwords are configured.
- */
-dotenv.config({ path: ".env.example" });
-
-
-/**
  * Controllers (route handlers).
  */
-import * as signupController from "./controllers/signup";
-import * as loginController from "./controllers/login";
-import * as studentController from "./controllers/student";
-import * as teacherController from "./controllers/teacher";
-import * as courseController from "./controllers/course";
-import * as convoController from "./controllers/convo";
-
-/**
- * API keys and Passport configuration.
- */
-import * as passportConfig from "./config/passport";
-
-// enabling Cors for typescript
-import * as cors from "cors";
+import * as convoController from "./controllers/conversation";
+import * as tutorController from "./controllers/tutor";
+import * as appointmentController from "./controllers/appointment";
 
 /**
  * Create Express server.
  */
 const app = express();
-
-/**
- * Connect to MongoDB.
- */
-// mongoose.Promise = global.Promise;
 
 
 /**
@@ -68,12 +36,11 @@ app.use(compression());
 app.use(logger("dev"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(expressValidator());
 app.use(lusca.xssProtection(true));
-
+app.use(express.static(path.join(__dirname, "public"), { maxAge: 31557600000 }));
 
 // Allow CORS
-app.use("/*", function(req, res, next){
+app.use("/*", function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE,PATCH");
   res.header("Access-Control-Allow-Headers", "Content-Type, Authorization, Content-Length, X-Requested-With");
@@ -85,20 +52,13 @@ app.use("/*", function(req, res, next){
   }
 });
 
-
-app.use(express.static(path.join(__dirname, "public"), { maxAge: 31557600000 }));
-
-
-// swaggerTools.initializeMiddleware(swaggerDoc, function (middleware) {
-  // Serve the Swagger documents and Swagger UI
-//  app.use(middleware.swaggerUi());
-// });
-
 /**
  * Primary app routes.
  */
 // Singup and login routes
-app.post("/convo", convoController.postConvo);
+app.post("/conversation", convoController.postConvo);
+app.post("/tutor", tutorController.postTutor);
+app.post("/appointment", appointmentController.postAppointment);
 
 app.use(function (req, res) {
   return res.status(404).json({err: "invalid request"});
