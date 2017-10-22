@@ -30,31 +30,47 @@ import * as admin from "firebase-admin";
  * @apiSuccessExample Success-Response:
  * HTTP/1.1 200 OK
  */
+
 export let postAppointment = (req: Request, res: Response, next: NextFunction) => {
+    // Log incoming query
     console.log(req.query);
+    // Create our user array
     const uArray: any = [];
+    // Pack the user array
     _.forEach(req.body.users, (user) => {
       uArray.push(user);
     });
+    // Handle missing data
+    if (_.isEmpty(uArray)) {
+        res.status(400).json({errors: {message: "missing users"}});
+    }
+    // Create db reference
     const apptRef = admin.database().ref("appointments");
+    // Create new appointment id
     const newConvoRef = apptRef.push();
+    // Create time stampe
     const today = new Date();
+    // Update the appointment with info
     newConvoRef.update({users: uArray, messages: [], created: today, time: req.body.time, building: req.body.building, relatedCourses: req.body.courses}).then(() => {
+        // Get snapshot of /users to go through
         admin.database().ref("users").once("value", (snap) => {
             console.log(snap.val());
+            // Loop through all users in the snapshot
             _.forIn(snap.val(), (userBody, id) => {
                 console.log(userBody);
+                // Loop through all users we were sent
                 _.forEach(req.body.users, (user) => {
+                    // If we found a match between our ids, update them with new appointment
                     if (id === user) {
-                        const userConvoRef = admin.database().ref("users/" + user + "/appointments");
+                        const userApptRef = admin.database().ref("users/" + user + "/appointments");
                         const c = newConvoRef.key;
                         if (_.isEmpty(userBody.appointments)) {
-                            userBody.convos = [];
+                            userBody.appointments = [];
                         }
-                        userBody.convos.push(c);
-                        console.log(userBody.convos);
-                        const newConvoArray = userBody.convos;
-                        userConvoRef.set(newConvoArray).then();
+                        userBody.appointments.push(c);
+                        console.log(userBody.appointments);
+                        const newApptArray = userBody.appointments;
+                        userApptRef.set(newApptArray).then();
                     }
                 });
             });

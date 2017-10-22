@@ -22,20 +22,34 @@ import * as admin from "firebase-admin";
  * HTTP/1.1 200 OK
  */
 export let postConvo = (req: Request, res: Response, next: NextFunction) => {
+    // Log incoming query
     console.log(req.query);
+    // Create new array to use
     const uArray: any = [];
+    // Pack array
     _.forEach(req.body.users, (user) => {
       uArray.push(user);
     });
+    // Handle missing data
+    if (_.isEmpty(uArray)) {
+        res.status(400).json({errors: {message: "missing users"}});
+    }
+    // Create db reference
     const convoRef = admin.database().ref("conversations");
+    // create new convo id
     const newConvoRef = convoRef.push();
     const today = new Date();
+    // Update convo with info
     newConvoRef.update({users: uArray, messages: [], created: today}).then(() => {
+        // Get snapshot of /users to go through
         admin.database().ref("users").once("value", (snap) => {
             console.log(snap.val());
+            // Loop through all users in the snapsho
             _.forIn(snap.val(), (userBody, id) => {
                 console.log(userBody);
+                // Loop through all of the users we were sent
                 _.forEach(req.body.users, (user) => {
+                    // If we found a match update the user with the new conversation
                     if (id === user) {
                         const userConvoRef = admin.database().ref("users/" + user + "/conversations");
                         const c = newConvoRef.key;
