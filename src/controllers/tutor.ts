@@ -35,7 +35,7 @@ import * as admin from "firebase-admin";
  *                   "2400",
  *                   "2410"
  *               ],
- *               "engligh": [
+ *               "englisgh": [
  *                   "4000",
  *                   "4100"
  *               ]

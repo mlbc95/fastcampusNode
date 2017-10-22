@@ -20,6 +20,7 @@ admin.initializeApp({
  */
 import * as convoController from "./controllers/convo";
 import * as tutorController from "./controllers/tutor";
+import * as appointmentController from "./controllers/appointment";
 
 /**
  * Create Express server.
@@ -57,6 +58,7 @@ app.use("/*", function(req, res, next) {
 // Singup and login routes
 app.post("/convo", convoController.postConvo);
 app.post("/tutor", tutorController.postTutor);
+app.post("/appointment", appointmentController.postAppointment);
 
 app.use(function (req, res) {
   return res.status(404).json({err: "invalid request"});
