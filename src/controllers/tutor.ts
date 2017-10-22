@@ -31,11 +31,11 @@ import * as admin from "firebase-admin";
  *           "pNumber": "6185206363",
  *           "school": "University of Missouri - St. Louis",
  *           "tutors": {
- *               "accounting": [
+ *               "Accounting": [
  *                   "2400",
  *                   "2410"
  *               ],
- *               "englisgh": [
+ *               "Englisgh": [
  *                   "4000",
  *                   "4100"
  *               ]
@@ -59,24 +59,23 @@ export let postTutor = (req: Request, res: Response, next: NextFunction) => {
         console.log(snap.val());
         // Get a snapshot of the courses
         admin.database().ref("courses").once("value", (coursesSnap) => {
+            // console.log(coursesSnap.val());
             // Itterate over subjectrs
-            _.forIn(coursesSnap.val(), (courses, subjectName) => {
+            _.forIn(coursesSnap.val(), (courses, uniqueId) => {
                 // Itterate over courses
-                if (subjectName === "accounting") {
-                    _.forIn(courses, (course, courseNumber) => {
-                        // Itterate over sections
-                        _.forEach(course.sections, (section: any, sectionName) => {
-                            // Itterate over Users' CRN's VS ones here
-                            _.forEach(snap.val().courses, (crn) => {
-                                if (crn.match(section.crnNumber)) {
-                                    const c = {subject: subjectName, courseNumber};
-                                    courseArray.push(c);
-                                    console.log("crn");
-                                }
-                            });
+                _.forIn(courses, (course, courseNumber) => {
+                    // Itterate over sections
+                    _.forEach(course.sections, (section: any, sectionName) => {
+                        // Itterate over Users' CRN's VS ones here
+                        _.forEach(snap.val().courses, (crn) => {
+                            if (crn.match(section.crnNumber)) {
+                                const c = {subject: courses.name, courseNumber};
+                                courseArray.push(c);
+                                console.log("crn");
+                            }
                         });
                     });
-                }
+                });
             });
         }).then();
         console.log(courseArray);

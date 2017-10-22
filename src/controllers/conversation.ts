@@ -27,7 +27,7 @@ export let postConvo = (req: Request, res: Response, next: NextFunction) => {
     _.forEach(req.body.users, (user) => {
       uArray.push(user);
     });
-    const convoRef = admin.database().ref("convos");
+    const convoRef = admin.database().ref("conversations");
     const newConvoRef = convoRef.push();
     const today = new Date();
     newConvoRef.update({users: uArray, messages: [], created: today}).then(() => {
@@ -37,7 +37,7 @@ export let postConvo = (req: Request, res: Response, next: NextFunction) => {
                 console.log(userBody);
                 _.forEach(req.body.users, (user) => {
                     if (id === user) {
-                        const userConvoRef = admin.database().ref("users/" + user + "/convos");
+                        const userConvoRef = admin.database().ref("users/" + user + "/conversations");
                         const c = newConvoRef.key;
                         if (_.isEmpty(userBody.convos)) {
                             userBody.convos = [];
